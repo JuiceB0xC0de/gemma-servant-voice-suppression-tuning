@@ -9,7 +9,6 @@ Outputs: results/analysis/*.json, figures/<bundle>/
 from __future__ import annotations
 
 import json
-import math
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -56,7 +55,8 @@ def boot_mean_ci(vals, n=2000):
 # ----------------------------------------------------------------------------- stage 1
 
 
-def analyze_profiles(s1):
+def analyze_profiles(s1, boot=None):
+    boot = boot or {}
     out = {}
     for m, S in s1.items():
         pool = S["pooling_choice"]["chosen"]
@@ -87,6 +87,28 @@ def analyze_profiles(s1):
             "n_tok_bella_mean": S["n_tok_bella_mean"], "n_tok_gemma_mean": S["n_tok_gemma_mean"],
             "median_norm_gemma": S["median_norm_gemma"],
         }
+        if m in boot:
+            Bp = boot[m]["pooling"][pool]
+            Bf = boot[m]["pooling"]["first"]
+            out[m]["uncertainty"] = {
+                "ci_lo": Bp["ci_lo"], "ci_hi": Bp["ci_hi"], "se": Bp["se"], "median_se": float(np.median(Bp["se"])),
+                "n_boot": boot[m]["n_boot"], "crests": Bp["crests"], "surviving_layers": Bp["surviving_layers"],
+                "n_crests_point_rule": len(maxima), "n_crests_surviving": Bp["n_crests_surviving"],
+                "p_interior_max": Bp["p_interior_max"],
+                "first32_surviving_layers": Bf["surviving_layers"], "first32_ci_lo": Bf["ci_lo"], "first32_ci_hi": Bf["ci_hi"],
+            }
+            out[m]["length_confound"] = {
+                "spearman_proj_ntok_bella": Bp["spearman_proj_ntok_bella"], "spearman_proj_ntok_gemma": Bp["spearman_proj_ntok_gemma"],
+                "d_length_partialled": Bp["d_length_partialled"], "d_from_length_fit_only": Bp["d_from_length_fit_only"],
+                "n_tok_test": boot[m]["n_tok_test"],
+                "mean_abs_spearman_bella": float(np.mean(np.abs(Bp["spearman_proj_ntok_bella"]))),
+                "mean_abs_spearman_gemma": float(np.mean(np.abs(Bp["spearman_proj_ntok_gemma"]))),
+                "partialled_maxima_above_null": interior_maxima(np.array(Bp["d_length_partialled"]), above=null),
+            }
+            surv = set(Bp["surviving_layers"])
+            s3s = [l for l in strongest3 if l in surv]
+            out[m]["strongest3_surviving"] = s3s
+            out[m]["strongest3_surviving_on_global"] = [int(l) for l in s3s if l in G]
     # Q1 on E2B
     e = out["E2B"]
     d = np.array(e["test_d"])
@@ -102,6 +124,14 @@ def analyze_profiles(s1):
                    "drop_a": float(d[a] - trough), "drop_b": float(d[b] - trough),
                    "supported": bool(d[a] - trough >= 0.15 and d[b] - trough >= 0.15)})
     q1["profile_range_d"] = float(d[1:-1].max() - d[1:-1].min())
+    if "uncertainty" in e:
+        bq = boot["E2B"]["pooling"][e["pooling"]]["q1"]
+        q1["bootstrap"] = bq
+        q1["crest_near_4_surviving"] = [l for l in c1 if l in set(e["uncertainty"]["surviving_layers"])]
+        q1["crest_near_13_14_surviving"] = [l for l in c2 if l in set(e["uncertainty"]["surviving_layers"])]
+        q1["supported_point_rule"] = q1["supported"]
+        q1["supported"] = bool(q1["supported"] and bq.get("drop_a_ci", [0])[0] > 0 and bq.get("drop_b_ci", [0])[0] > 0)
+        q1["rule_note"] = "supported requires the plan's point rule (two crests within +-1 of 4 and 13/14, both >= 0.15 d above the trough between them) AND both crest-minus-trough paired-bootstrap 95% intervals to exclude 0"
     q1["all_pool_maxima"] = interior_maxima(np.array(e["test_d_all"]), above=np.array(out["E2B"]["null_d_p95"]))
     q1["first32_pool_maxima"] = interior_maxima(np.array(e["test_d_first32"]), above=np.array(out["E2B"]["null_d_p95"]))
     # Q2
@@ -110,8 +140,17 @@ def analyze_profiles(s1):
     q2["e2b_holdout_L9_above_null"] = out["E2B"]["holdout_above_null"]
     q2["e2b_L9_d"] = out["E2B"]["d_at_holdout"]
     q2["same_absolute_layers"] = sorted(set(out["E2B"]["strongest3"]) & set(out["E4B"]["strongest3"])) if "E4B" in out else None
-    q2["supported"] = bool(all(q2[m]["n_on_global"] >= 2 for m in MODELS if m in out) and q2["e2b_holdout_L9_above_null"]
-                           and len(out) == 2)
+    q2["supported_point_rule"] = bool(all(q2[m]["n_on_global"] >= 2 for m in MODELS if m in out) and q2["e2b_holdout_L9_above_null"]
+                                      and len(out) == 2)
+    q2["supported"] = q2["supported_point_rule"]
+    if all("uncertainty" in out[m] for m in out):
+        for m in out:
+            q2[m]["strongest3_surviving"] = out[m]["strongest3_surviving"]
+            q2[m]["surviving_on_global"] = out[m]["strongest3_surviving_on_global"]
+            q2[m]["n_surviving_on_global"] = len(out[m]["strongest3_surviving_on_global"])
+            q2[m]["n_crests_surviving"] = out[m]["uncertainty"]["n_crests_surviving"]
+        q2["supported"] = bool(q2["supported_point_rule"] and all(q2[m]["n_surviving_on_global"] >= 2 for m in out))
+        q2["rule_note"] = "supported requires the plan's point rule AND that >=2 of the 3 strongest crests in each model survive the crest-minus-trough bootstrap; the L9 hold-out check is reported but is uninformative when every layer clears the null"
     # global vs sliding comparison (descriptive)
     for m in out:
         d = np.array(out[m]["test_d"])
@@ -261,8 +300,18 @@ def make_figures(prof, table, s3, colors):
                                  line=dict(color=colors["null"], width=1), fill="tozeroy", fillcolor="rgba(152,132,83,0.18)"))
         fig.add_trace(go.Scatter(x=x, y=P["test_d_first32"] if P["pooling"] == "all" else P["test_d_all"], mode="lines",
                                  name=f"{'first 32 tokens' if P['pooling']=='all' else 'all tokens'} pooling", line=dict(color=colors["context"], width=1.5, dash="dash"), opacity=0.7))
+        if "uncertainty" in P:
+            U = P["uncertainty"]
+            fig.add_trace(go.Scatter(x=x + x[::-1], y=U["ci_hi"] + U["ci_lo"][::-1], fill="toself", fillcolor="rgba(0,0,0,0.10)",
+                                     line=dict(width=0), name="95% paired bootstrap", hoverinfo="skip"))
+            fig.add_trace(go.Scatter(x=x, y=P["length_confound"]["d_length_partialled"], mode="lines", name="length-partialled d",
+                                     line=dict(color=colors[m], width=1.5, dash="dot"), opacity=0.8))
         fig.add_trace(go.Scatter(x=x, y=P["test_d"], mode="lines+markers", name=f"{P['pooling']} tokens pooling (chosen)",
                                  line=dict(color=colors[m], width=3), marker=dict(size=6)))
+        if "uncertainty" in P and P["uncertainty"]["surviving_layers"]:
+            sl = P["uncertainty"]["surviving_layers"]
+            fig.add_trace(go.Scatter(x=sl, y=[P["test_d"][l] for l in sl], mode="markers", name="crest survives bootstrap",
+                                     marker=dict(size=13, symbol="circle-open", color=colors[m], line=dict(width=2))))
         for g in P["global_layers"]:
             add_reference_line(fig, x=g, label=f"L{g}" if g == P["global_layers"][0] else None, color=colors["global"], width=1, dash="dot")
         fig.update_xaxes(title="Layer (0-indexed, output of decoder block)", dtick=2)
@@ -270,6 +319,9 @@ def make_figures(prof, table, s3, colors):
         apply_theme(fig, height=460)
         name = f"profile_{m}"
         save_figure_bundle(fig, name, root=str(FIG), data={"layer": x, "test_d": P["test_d"], "null_p95": P["null_d_p95"],
+                                                           "ci_lo": P.get("uncertainty", {}).get("ci_lo"), "ci_hi": P.get("uncertainty", {}).get("ci_hi"),
+                                                           "d_length_partialled": P.get("length_confound", {}).get("d_length_partialled"),
+                                                           "surviving_layers": P.get("uncertainty", {}).get("surviving_layers"),
                                                            "test_d_all": P["test_d_all"], "test_d_first32": P["test_d_first32"],
                                                            "global_layers": P["global_layers"], "pooling": P["pooling"]},
                            alt=f"Per-layer Cohen's d of the Bella-minus-Gemma direction in {m}, with the shuffled-label null band and dotted global-attention layers")
@@ -297,9 +349,9 @@ def make_figures(prof, table, s3, colors):
     for i, m in enumerate(ms, start=1):
         P = prof[m]
         x = list(range(P["n_layers"]))
-        fig.add_trace(go.Scatter(x=x, y=P["mean_proj_gemma"], mode="lines+markers", name=f"Gemma's own replies", legendgroup="g", showlegend=(i == 1),
+        fig.add_trace(go.Scatter(x=x, y=P["mean_proj_gemma"], mode="lines+markers", name="Gemma's own replies", legendgroup="g", showlegend=(i == 1),
                                  line=dict(color=colors[m], width=2.5), marker=dict(size=5)), row=i, col=1)
-        fig.add_trace(go.Scatter(x=x, y=P["mean_proj_bella"], mode="lines", name=f"Bella corpus replies", legendgroup="b", showlegend=(i == 1),
+        fig.add_trace(go.Scatter(x=x, y=P["mean_proj_bella"], mode="lines", name="Bella corpus replies", legendgroup="b", showlegend=(i == 1),
                                  line=dict(color=colors["context"], width=1.5, dash="dash")), row=i, col=1)
         add_reference_line(fig, y=0, label="0" if i == 1 else None, row=i, col=1, color=colors["null"], width=1)
         fig.update_xaxes(title="Layer (0-indexed)", row=i, col=1)
@@ -405,7 +457,8 @@ def main():
             ppl[m] = json.load(open(d / "neutral_perplexity.json"))
     if (ART / "E2B" / "run" / "stage3.json").exists():
         s3 = json.load(open(ART / "E2B" / "run" / "stage3.json"))
-    prof, q1, q2 = analyze_profiles(s1)
+    boot = {m: json.load(open(ART / m / "run" / "stage1_boot.json")) for m in s1 if (ART / m / "run" / "stage1_boot.json").exists()}
+    prof, q1, q2 = analyze_profiles(s1, boot)
     judg = read_jsonl(JUD) if JUD.exists() else []
     table, verdicts = analyze_steering(judg, s2meta, dose, ppl) if judg else ([], {})
     examples = representative_examples(judg, verdicts) if judg else {}
