@@ -103,7 +103,7 @@ class Judge:
         self.lock = threading.Lock()
         self.calls = 0
 
-    def _call(self, prompt, max_tokens=4):
+    def _call(self, prompt, max_tokens=16):
         body = {"model": self.model, "messages": [{"role": "user", "content": prompt}],
                 "max_completion_tokens": max_tokens, "reasoning_effort": "none", "logprobs": True, "top_logprobs": 5}
         req = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=json.dumps(body).encode(),
@@ -116,6 +116,9 @@ class Judge:
                 top = None
                 if c.get("logprobs") and c["logprobs"].get("content"):
                     top = [(x["token"], x["logprob"]) for x in c["logprobs"]["content"][0]["top_logprobs"]]
+                if not (c["message"]["content"] or "").strip() and attempt < 5:
+                    # intermittent: the model spends the budget on hidden tokens and returns nothing; retry
+                    continue
                 return {"text": c["message"]["content"], "top": top, "usage": d.get("usage")}
             except urllib.error.HTTPError as e:
                 msg = e.read().decode()[:300]
