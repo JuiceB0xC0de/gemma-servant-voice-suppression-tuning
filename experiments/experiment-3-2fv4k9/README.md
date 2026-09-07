@@ -7,25 +7,43 @@ dataset `juiceb0xc0de/gemma-4-e4b-SAE`, plus the per-layer summary table `atlas_
 and verify the Hub listing.
 
 ## Layout
-- `src/push_to_hub.sh`: the job script. `range_*` mode uploads one 14-layer folder with
-  `hf upload`; `verify` mode uploads the summary CSV and writes `hub_listing.json`.
+- `src/push_to_hub.sh`: the job script. Modes:
+  `layer <range_XX_YY> <NN>` uploads one layer dir as `layer_NN_s0/` (the mode that worked);
+  `range_*` uploads a whole 14-layer folder (worked once, for range_28_41);
+  `verify` uploads the summary CSV and writes `hub_listing.json`;
+  `private` sets the repo private and rewrites `hub_listing.json`.
+- `src/hub_tree.py`: pod-side check of which layers are complete/partial/missing on the Hub.
 - `results/hub_listing.json`: copy of the Hub file listing after upload (written by the verify job).
 
 ## How to reproduce
 Inputs (read-only store refs, staged with `input_artifacts`):
-`artifact://juiceb0xc0de-15787e/experiments/exp_01m1y0m9rsfnasj5vm2egaje0v/{range_00_13,range_14_27,range_28_41,results}/`.
+`artifact://juiceb0xc0de-15787e/experiments/exp_01m1y0m9rsfnasj5vm2egaje0v/{range_00_13,range_14_27,range_28_41}/saes/google_gemma-4-e4b-it/layer_NN_s0/`
+and `.../results/` (contains `atlas_summary.csv`).
 
-Because the on-demand fabric caps declared inputs at 32 GiB per job and each range folder is
-21.9 GB, the upload runs as three parallel CPU-only jobs (`python:3.11-slim`, 8 CPU, 16 GB,
-`HF_TOKEN` forwarded from job settings, `huggingface_hub[cli]` installed at job start):
+All jobs: `python:3.11-slim`, CPU only (4 CPU, 8 GB), `HF_TOKEN` forwarded from job settings
+(write-scoped), `huggingface_hub[cli]` 1.30.0 installed at job start, no other packages.
 
-    sh src/push_to_hub.sh range_00_13   # job 690867472644
-    sh src/push_to_hub.sh range_14_27   # job 198464546303
-    sh src/push_to_hub.sh range_28_41   # job 579631959165
-    sh src/push_to_hub.sh verify        # after the three finish
+    # one job per layer, each staging one ~1.7 GB layer directory
+    sh src/push_to_hub.sh layer range_00_13 00     # ... through range_28_41 41
+    sh src/push_to_hub.sh verify                   # uploads atlas_summary.csv, writes hub_listing.json
+    sh src/push_to_hub.sh private                  # only needed because the repo was created public
+
+What did not work, and why the procedure looks like this:
+- One job with all four inputs is refused: declared inputs are capped at 32 GiB per job (total 70 GB).
+- One job per 14-layer range folder (21.9 GB staged) died three times during input staging with
+  no log; only range_28_41 ever completed that way (commit 559bdede).
+- The first attempt failed with `403 Forbidden ... create a dataset under the namespace` because the
+  configured `HF_TOKEN` was read-only; the researcher swapped in a write token.
+- `hf upload --private` did not make the repo private (visibility is fixed at creation), so a final
+  `update_repo_settings(private=True)` job was needed.
 
 ## Outputs
 - HF dataset (private): https://huggingface.co/datasets/juiceb0xc0de/gemma-4-e4b-SAE with
-  `layer_NN_s0/{sae.pt,meta.json}` for NN = 00..41 and `atlas_summary.csv` at the root.
+  `layer_NN_s0/{sae.pt,meta.json}` for NN = 00..41 (each `sae.pt` 1,678,389,613 bytes) and
+  `atlas_summary.csv` (5,141 bytes) at the root; 70,492,474,314 bytes total. A stray 74-byte
+  `atlas_marker_s0.json` at the root came along with the range_28_41 folder upload.
   Source: SAEs trained in `exp_01m1y0m9rsfnasj5vm2egaje0v` on `google/gemma-4-e4b-it`; uploaded 2026-09-07.
-- `$SILICO_EXPERIMENT_ARTIFACTS_DIR/hub_listing.json` (verify job output, also in the artifact store).
+  Layers flagged in the source experiment for explained variance below 0.85: 17, 18, 19, 23
+  (uploaded unchanged; quality was not re-verified here).
+- `artifact://juiceb0xc0de-15787e/experiments/exp_01m1z0wefjes6r08s21t2fv4k9/hub_listing.json`
+  (also `results/hub_listing.json`), plus per-layer `upload_layer_NN.txt` commit receipts in the same store folder.

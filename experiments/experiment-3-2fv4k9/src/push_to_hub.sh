@@ -13,7 +13,7 @@ set -eu
 
 MODE="${1:?mode required}"
 REPO=juiceb0xc0de/gemma-4-e4b-SAE
-IN="$SILICO_INPUT_ARTIFACTS_DIR/experiments/exp_01m1y0m9rsfnasj5vm2egaje0v"
+IN="${SILICO_INPUT_ARTIFACTS_DIR:-/nonexistent}/experiments/exp_01m1y0m9rsfnasj5vm2egaje0v"
 OUT="$SILICO_EXPERIMENT_ARTIFACTS_DIR"
 mkdir -p "$OUT"
 
