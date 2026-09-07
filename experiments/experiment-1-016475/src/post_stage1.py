@@ -62,7 +62,9 @@ def main():
     n = A["bella_all"].shape[0]
     splits = splits[:n]
     test = np.where(splits == "test")[0]
+    train = np.where(splits == "train")[0]
     rng = np.random.default_rng(SEED)
+    N_PERM = 200
     L = A["bella_all"].shape[1]
     ntb, ntg = A["n_tok_bella"][test].astype(float), A["n_tok_gemma"][test].astype(float)
     res = {"model": s1["model"], "n_layers": L, "n_test_pairs": int(len(test)), "n_boot": N_BOOT, "pooling": {}}
@@ -74,8 +76,32 @@ def main():
         PB = np.einsum("nld,ld->nl", B, V)
         PG = np.einsum("nld,ld->nl", G, V)
         del B, G
+        # Proper permutation null: flip the side label of a random half of ALL pairs (train and test alike),
+        # refit the direction on train, score on test under the SAME flipped labels. Under exchangeability
+        # this is the distribution of |d| when the labels carry no information. (The run_model.py shuffled
+        # null flipped only train labels and scored on the true test labels, so the imbalance of the flip
+        # leaks the true direction into the null; it is reported but is not a chance reference.)
+        Btr = A[f"bella_{pool}"][train].astype(np.float32)
+        Gtr = A[f"gemma_{pool}"][train].astype(np.float32)
+        Bte = A[f"bella_{pool}"][test].astype(np.float32)
+        Gte = A[f"gemma_{pool}"][test].astype(np.float32)
+        perm_d = np.zeros((N_PERM, L))
+        for s in range(N_PERM):
+            ftr = rng.random(len(train)) < 0.5
+            fte = rng.random(len(test)) < 0.5
+            Xb = np.where(ftr[:, None, None], Gtr, Btr)
+            Xg = np.where(ftr[:, None, None], Btr, Gtr)
+            v = Xb.mean(0) - Xg.mean(0)  # [L, d]
+            v /= (np.linalg.norm(v, axis=1, keepdims=True) + 1e-8)
+            Yb = np.where(fte[:, None, None], Gte, Bte)
+            Yg = np.where(fte[:, None, None], Bte, Gte)
+            pb = np.einsum("nld,ld->nl", Yb, v)
+            pg = np.einsum("nld,ld->nl", Yg, v)
+            perm_d[s] = np.abs(d_vec(pb, pg))
+        del Btr, Gtr, Bte, Gte
+        perm_p95 = np.percentile(perm_d, 95, axis=0)
         d0 = d_vec(PB, PG)
-        null = np.array(s1["pooling"][pool]["null_shuffled_d_p95"])
+        null = perm_p95
         # paired bootstrap of the whole profile
         boot = np.stack([d_vec(PB[ix], PG[ix]) for ix in boot_idx])  # [N_BOOT, L]
         lo, hi = np.percentile(boot, 2.5, axis=0), np.percentile(boot, 97.5, axis=0)
@@ -132,6 +158,8 @@ def main():
         # d on pairs whose Gemma reply was not truncated (shorter replies)
         res["pooling"][pool] = {
             "test_d": d0.tolist(), "ci_lo": lo.tolist(), "ci_hi": hi.tolist(), "se": se.tolist(),
+            "perm_null_d_p95": perm_p95.tolist(), "perm_null_d_mean": perm_d.mean(0).tolist(), "perm_null_d_max": perm_d.max(0).tolist(),
+            "n_perm": N_PERM, "run_model_shuffled_null_p95": s1["pooling"][pool]["null_shuffled_d_p95"],
             "p_interior_max": is_max.tolist(), "interior_maxima_above_null": [int(l) for l in maxima],
             "crests": crests, "n_crests_surviving": int(sum(c["survives"] for c in crests)),
             "surviving_layers": [c["layer"] for c in crests if c["survives"]],

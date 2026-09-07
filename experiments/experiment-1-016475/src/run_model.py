@@ -18,8 +18,6 @@ import argparse
 import json
 import math
 import os
-import re
-import sys
 import time
 from pathlib import Path
 
@@ -471,7 +469,7 @@ def stage2(W: Wrapped, out: Path, args, s1, dirs, med_norm):
     red = read_jsonl(DATA / "red_team.jsonl")
     neutral = read_jsonl(DATA / "neutral.jsonl")
     layers = s1["stage2_layers"]["layers"]
-    coefs = COEFS
+    coefs = [float(c) for c in args.coefs.split(",")] if args.coefs else COEFS
     if args.smoke:
         evalp, crisis, red, neutral, test_pairs = evalp[:6], crisis[:3], red[:6], neutral[:6], test_pairs[:6]
         layers, coefs = layers[:2], [-1.0, 1.0]
@@ -486,6 +484,8 @@ def stage2(W: Wrapped, out: Path, args, s1, dirs, med_norm):
         rows = read_jsonl(gens_path)
         done = {(r["layer"], r["coef"]) for r in rows}
     dose = []
+    if (out / "dose_response.json").exists() and not args.smoke:
+        dose = [x for x in json.load(open(out / "dose_response.json")) if (x["layer"], x["coef"]) in done]
     t0 = time.time()
     cell_i = 0
     test_prefix = [W.chat_prefix(p["prompt"]) for p in test_pairs]
@@ -537,7 +537,8 @@ def stage2(W: Wrapped, out: Path, args, s1, dirs, med_norm):
         ppl.append({"layer": l, "coef": c, "mean_nll": float(-lp.mean()), "ppl": float(math.exp(-lp.mean())),
                     "median_ppl": float(np.exp(np.median(-lp))), "mean_len": float(nt.mean()), "nll": (-lp).tolist()})
     dump(out / "neutral_perplexity.json", ppl)
-    dump(out / "stage2_meta.json", {"layers": layers, "coefs": coefs, "n_chat_prompts": len(chat_items), "n_neutral": len(neutral),
+    all_coefs = sorted({r["coef"] for r in rows if r["layer"] != -1})
+    dump(out / "stage2_meta.json", {"layers": layers, "coefs": all_coefs, "coefs_this_run": coefs, "iteration": args.iteration, "n_chat_prompts": len(chat_items), "n_neutral": len(neutral),
                                     "gen_tokens": args.gen_tokens, "median_norm": [float(med_norm[l]) for l in layers],
                                     "timing_s": time.time() - t0, "cells": n_cells})
     log(f"stage2 done in {time.time()-t0:.0f}s")
@@ -712,12 +713,23 @@ def main():
     ap.add_argument("--gen_batch", type=int, default=48)
     ap.add_argument("--harvest_batch", type=int, default=16)
     ap.add_argument("--gen_tokens", type=int, default=128)
+    ap.add_argument("--coefs", default=None, help="comma list overriding COEFS (second steering iteration)")
+    ap.add_argument("--iteration", type=int, default=1)
+    ap.add_argument("--seed_from", default=None, help="directory holding a previous run's outputs to resume from (copied into out)")
     args = ap.parse_args()
     torch.manual_seed(SEED)
     np.random.seed(SEED)
     root = Path(args.out or os.environ.get("SILICO_EXPERIMENT_ARTIFACTS_DIR", HERE / "results" / "artifacts"))
     out = root / args.model / ("smoke" if args.smoke else "run")
     out.mkdir(parents=True, exist_ok=True)
+    if args.seed_from:
+        import shutil
+        for f in ("stage1.json", "directions.npz", "gemma_replies.jsonl", "steering_generations.jsonl", "dose_response.json",
+                  "neutral_perplexity.json", "stage2_meta.json", "stage3.json"):
+            src = Path(args.seed_from) / f
+            if src.exists():
+                shutil.copy(src, out / f)
+        log(f"seeded out dir from {args.seed_from}: {sorted(p.name for p in out.iterdir())}")
     log(f"config: {vars(args)} out={out}")
     stages = [int(s) for s in args.stages.split(",")]
     report_progress(step=0, total_steps=1, phase="loading")
