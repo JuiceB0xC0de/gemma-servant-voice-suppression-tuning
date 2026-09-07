@@ -69,7 +69,7 @@ for k in ("E2B_surviving", "E2B_all_maxima", "E4B_surviving", "E4B_all_maxima", 
 # --- Q3
 for m in ("E2B", "E4B"):
     b = TAB[(m, -1, 0.0)]
-    for k in ("bella", "corporate", "refusal", "crisis", "degenerate", "n_words", "ppl"):
+    for k in ("bella", "corporate", "refusal", "crisis", "degenerate", "neutral_degenerate", "n_words", "ppl"):
         claim(f"{m}_base_{k}", f"{m} unsteered {k}", r3(b[k]), f"steering_table[model={m},layer=-1,coef=0].{k}")
     claim(f"{m}_q3_any_pre", f"{m} any layer passes the pre-registered window rule", Q3[m]["supported_any_layer"], f"q3.{m}.supported_any_layer")
     claim(f"{m}_q3_any_post", f"{m} any layer passes the post-hoc window rule", Q3[m]["supported_any_layer_posthoc"], f"q3.{m}.supported_any_layer_posthoc")
@@ -79,11 +79,13 @@ for m in ("E2B", "E4B"):
         claim(f"{m}_L{l}_voice_fluent", f"{m} layer {l} coefficients with Bella gain, corporate halved and fluent", v["voice_window_fluent"], f"q3.{m}.layers.{l}.voice_window_fluent")
 cells = [("E4B", 7, -0.5), ("E4B", 7, -0.65), ("E4B", 7, -0.8), ("E4B", 7, -1.0), ("E2B", 9, -0.35), ("E2B", 9, -0.5), ("E2B", 9, -0.65), ("E2B", 4, -0.5), ("E2B", 4, -0.65), ("E4B", 11, -0.5), ("E4B", 11, -0.35), ("E2B", 28, -1.0), ("E2B", 19, -0.5),
          ("E4B", 10, -0.35), ("E4B", 10, -0.5), ("E4B", 10, -0.65), ("E4B", 10, -0.8), ("E2B", 13, -0.25), ("E2B", 13, -0.35), ("E2B", 13, -0.5), ("E2B", 13, -0.65), ("E4B", 4, -0.5), ("E4B", 4, -0.65), ("E4B", 4, -0.8), ("E4B", 22, -0.35), ("E4B", 22, -0.5)]
-for (m, l, c) in (("E4B", 10, -0.35), ("E4B", 10, -0.5), ("E4B", 7, -0.5), ("E4B", 7, -0.65), ("E2B", 13, -0.25), ("E2B", 13, -0.35)):
+for (m, l, c) in (("E4B", 10, -0.35), ("E4B", 10, -0.5), ("E4B", 10, -0.65), ("E4B", 7, -0.5), ("E4B", 7, -0.65), ("E2B", 13, -0.25), ("E2B", 13, -0.35)):
     pc = Q3[m]["layers"][str(l)]["per_coef"][str(c)]
     claim(f"{m}_L{l}_c{c}_checks_pre", f"{m} layer {l} coef {c} pre-registered checks", pc["checks"], f"q3.{m}.layers.{l}.per_coef.{c}.checks")
     claim(f"{m}_L{l}_c{c}_checks_post", f"{m} layer {l} coef {c} post-hoc checks", pc["checks_posthoc"], f"q3.{m}.layers.{l}.per_coef.{c}.checks_posthoc")
     claim(f"{m}_L{l}_c{c}_ppl_ratio", f"{m} layer {l} coef {c} neutral perplexity ratio to unsteered", r3(pc["ppl_ratio"]), f"q3.{m}.layers.{l}.per_coef.{c}.ppl_ratio")
+    claim(f"{m}_L{l}_c{c}_neutral_deg", f"{m} layer {l} coef {c} degeneration rate on the 100 neutral-stem continuations", r3(pc["neutral_degenerate"]), f"q3.{m}.layers.{l}.per_coef.{c}.neutral_degenerate")
+    claim(f"{m}_L{l}_c{c}_chat_deg", f"{m} layer {l} coef {c} degeneration rate on the judged chat replies", r3(pc["degenerate"]), f"q3.{m}.layers.{l}.per_coef.{c}.degenerate")
 for m in PROF:
     claim(f"{m}_stage2_layers_iter1", f"{m} layers steered in iteration 1 (chosen with the contaminated run-time null)", PROF[m]["stage2_layers_iter1"], f"profiles.{m}.stage2_layers_iter1")
     claim(f"{m}_crest_layers_added", f"{m} valid-null crest layers steered in iteration 3", PROF[m]["crest_layers_added_iter3"], f"profiles.{m}.crest_layers_added_iter3")
@@ -125,26 +127,28 @@ claim("data_crisis_eval", "crisis eval prompts", 30, "crisis_eval", source="expe
 claim("data_redteam", "red-team prompts", 160, "red_team", source="experiments/experiment-1-016475/results/data/manifest.json")
 
 report = {
-    "title": "The Bella-vs-Gemma direction is decodable at every layer of Gemma 4 E2B and E4B; scaling it down at E4B layer 10 frees the voice over two coefficients but fails the registered perplexity check",
+    "title": "The Bella-vs-Gemma direction is decodable at every layer of Gemma 4 E2B and E4B; scaling it down shifts chat replies toward Bella's voice but degrades open-ended continuations at the same coefficients",
     "headline": ("A mean-difference direction between Bella's replies and Gemma's own replies separates the two voices at every layer of both models "
                  "(d 2.5 to 5.0 on 100 held-out pairs). E2B meets the registered two-crest rule literally (layers 4 and 13, dip at layer 12), but the shape is a rise, "
                  "a plateau from layer 4 to 14 (range 0.78 d) and a decline: the predicted trough at layers 7 to 11 did not appear (d 4.50 to 4.82, higher than every layer past 14), "
                  "and layer 4 is not separable from layers 5 to 6 by bootstrap (layer 13 is). The crests do not fall on global-attention layers (Q2 refuted). "
-                 "Subtracting the direction at E4B layer 10, a bootstrap-surviving crest, moves Gemma toward Bella's register at coefficients -0.35 and -0.5 "
+                 "Subtracting the direction at E4B layer 10, a bootstrap-surviving crest, moves Gemma's chat replies toward Bella's register at coefficients -0.35 and -0.5 "
                  "(judged Bella-ness 1.13 to 2.98 and 4.06 / 7, corporate phrasing 0.20 to 0.10 and 0.07 hits per reply, refusal 0.994 to 0.969 and 0.968, crisis quality 3.03 to 3.16 and 3.24, "
-                 "degeneration 0 %), and E4B layer 7 does the same at -0.5 and -0.65. Under the registered rule the layer-10 cells and layer 7 -0.5 fail only the neutral-perplexity check "
-                 "(ratio 2.5 to 7.5 vs the 2x limit; the check penalises the voice change itself and rewards repetition) and, at -0.5, the two-sided crisis check because crisis quality improved by 0.21 to 0.28; "
-                 "layer 7 -0.65 passes perplexity (ratio 1.9) but drops refusal by 5.1 points. Q3 is therefore not supported under the registered rule; under the post-hoc rule that swaps perplexity for a "
-                 "degeneration rate it is supported at E4B layer 10 (two contiguous coefficients) and passes at layer 7 -0.5 only. E2B layer 13 (its surviving crest) gains voice at -0.25 and -0.35 (Bella-ness 3.68 and 4.32) but "
+                 "chat-reply degeneration 0 %), and E4B layer 7 does the same at -0.5 and -0.65. But the registered fluency canary, 100 neutral stems continued without the chat template, "
+                 "degenerates at exactly those coefficients: 24 % and 42 % of continuations at layer 10 (-0.35, -0.5), 34 % and 86 % at layer 7 (-0.5, -0.65), versus 0 % unsteered "
+                 "(repeated sentences, '***' runs to the token cap). Under the registered rule these cells fail the neutral-perplexity check (ratio 2.5 to 7.5 vs the 2x limit; layer 7 -0.65 passes it at 1.9x "
+                 "while 86 % of its continuations degenerate, so perplexity is a weak check) and the -0.5 cells fail the two-sided crisis check because crisis quality improved by 0.21 to 0.28. "
+                 "Under a post-hoc rule that swaps perplexity for degeneration rates on both the chat replies and the neutral stems (within 10 points of baseline), no E4B cell passes and E2B layer 13 passes at -0.35 alone "
+                 "(neutral degeneration 10 %). Q3 is therefore not supported under either rule in either model. E2B layer 13 (its surviving crest) gains voice at -0.25 and -0.35 (Bella-ness 3.68 and 4.32) but "
                  "misses the corporate halving by 0.01 at -0.25 and loses 23 refusal points at -0.5. Beyond about -0.65 every layer collapses into repetition or refusal loss."),
     "assessment": {"q1": "supported by the registered point rule and the paired bootstrap of the two crest-minus-dip drops, but on a one-layer dip at layer 12: layer 4 does not survive its own neighbour test (drop to layer 5 0.18, CI [-0.03, 0.43]), the predicted 7-11 trough is absent, and the profile is rise, plateau 4-14, decline rather than the sketched wave",
                    "q2": "refuted as registered (1 of 3 E2B crests and 0 of 3 E4B crests on global layers; both peak at layer 4). Post hoc: bootstrap-surviving crests sit one layer before a global block in E4B (5/5 with all-reply pooling, 3/4 with first-32 pooling); in E2B 3/4 surviving crests do so but the result is not significant once layer 4 is counted (all maxima 3/9, p=0.28). Suggestive only; adjacent layers are correlated and the crest list depends on pooling.",
-                   "q3": "not supported under the registered rule: E4B layer 10 at -0.35 and -0.5 and layer 7 at -0.5 pass Bella gain (+1.9 to +2.9), corporate halving, refusal (within 2.6 points) and degeneration (0 %) but fail the neutral-perplexity check (ratio 2.5 to 7.5), which penalises the voice change itself, and the -0.5 cells also fail the two-sided crisis check because crisis quality improved by 0.21 to 0.28; layer 7 -0.65 passes perplexity but drops refusal by 5.1 points. Under the post-hoc rule (degeneration instead of perplexity, crisis one-sided) E4B layer 10 passes over two contiguous coefficients (-0.35, -0.5) and layer 7 at -0.5 only; no E2B layer passes two coefficients (layer 13 passes at -0.35 alone; at -0.25 corporate is 0.11 vs the 0.10 needed).",
+                   "q3": "not supported under either rule in either model. Registered rule: E4B layer 10 at -0.35 and -0.5 and layer 7 at -0.5 pass Bella gain (+1.9 to +2.9), corporate halving, refusal (within 2.6 points) and chat-reply degeneration (0 %) but fail the neutral-perplexity check (ratio 2.5 to 7.5), and the -0.5 cells also fail the two-sided crisis check because crisis quality improved by 0.21 to 0.28; layer 7 -0.65 passes perplexity (1.9x) but drops refusal by 5.1 points. Post-hoc rule (degeneration on chat replies AND on the registered neutral stems within 10 points, crisis one-sided): the neutral-stem continuations degenerate at 24 % / 42 % (layer 10, -0.35 / -0.5), 34 % / 86 % (layer 7, -0.5 / -0.65) vs 0 % unsteered, so no E4B cell passes; E2B layer 13 passes at -0.35 alone (neutral degeneration 10 %) and at -0.25 misses the corporate halving by 0.01. The defensible statement is that on chat prompts E4B layer 10 at -0.35 / -0.5 raises judged Bella-ness by 1.9 to 2.9 points with corporate phrasing halved, refusal within 2.6 points and crisis within noise, while a quarter to nearly half of open-ended continuations degenerate.",
                    "overall": "partial_signal"},
     "decision_rules": {
         "q1": "two interior local maxima above the null within +-1 of layers 4 and 13/14, each >= 0.15 d above the minimum between them; tightened: crest-minus-trough paired-bootstrap 95% CI excludes 0",
         "q2": ">= 2 of the 3 strongest crests on global-attention layers in both models and E2B layer 9 above null; refuted if the same absolute layers peak in both models",
-        "q3": "Bella-ness +1.5, corporate hit rate halved, refusal and crisis within 5 points, neutral perplexity < 2x, over >= 2 contiguous coefficients; post-hoc variant swaps perplexity for a degeneration rate within 10 points and treats crisis one-sided",
+        "q3": "Bella-ness +1.5, corporate hit rate halved, refusal and crisis within 5 points, neutral perplexity < 2x, over >= 2 contiguous coefficients; post-hoc variant swaps perplexity for degeneration rates within 10 points of baseline on both the judged chat replies and the 100 registered neutral-stem continuations, and treats crisis one-sided",
     },
     "methods": {
         "models": {"E2B": "google/gemma-4-E2B-it @3e22461f (35 layers, d 1536)", "E4B": "google/gemma-4-E4B-it @ee0ef602 (42 layers, d 2560)"},
@@ -166,7 +170,7 @@ report = {
         "q1": {k: Q1[k] for k in ("supported", "supported_point_rule", "crest_a", "crest_b", "trough_layer", "d_a", "d_b", "trough_d", "drop_a", "drop_b", "bootstrap", "shape")},
         "q2": {"supported": Q2["supported_point_rule"], "E2B": Q2["E2B"], "E4B": Q2["E4B"], "same_absolute_layers": Q2["same_absolute_layers"], "global_minus_one_posthoc": G},
         "q3": {m: {"supported_any_layer": Q3[m]["supported_any_layer"], "supported_any_layer_posthoc": Q3[m]["supported_any_layer_posthoc"],
-                   "layers": {l: {k: v[k] for k in ("usable_window", "usable_window_posthoc", "voice_window", "voice_window_fluent")} for l, v in Q3[m]["layers"].items()}} for m in Q3},
+                   "layers": {l: {k: v[k] for k in ("usable_window", "usable_window_posthoc", "voice_window", "voice_window_fluent", "voice_window_chat_fluent_only")} for l, v in Q3[m]["layers"].items()}} for m in Q3},
         "steering_table": S["steering_table"],
         "examples": S["examples"],
         "sae": {l: {"features_needed": v["features_needed"], "calibration": v["calibration"], "cos_abs_top1": v["cos_abs_top1"], "n_features_abs_d_gt_1": v["n_features_abs_d_gt_1"]} for l, v in S["sae"].items()},
@@ -174,11 +178,11 @@ report = {
     },
     "limitations": [
         "The direction is a voice-plus-length direction: Gemma replies average 89 to 94 tokens (mostly truncated at 96) vs 37 to 45 for Bella; log token count alone separates the sides at d 1.7; within-Bella projections correlate with length at Spearman -0.4 to -0.8.",
-        "The Q3 perplexity criterion (neutral continuations scored under the unsteered model) rewards repetition and penalises short, lowercase, slang-heavy continuations, i.e. the voice change itself; every otherwise-passing cell fails on it, so the post-hoc verdict rests on a degeneration rate instead.",
+        "The Q3 perplexity criterion (neutral continuations scored under the unsteered model) is a weak fluency check in both directions: it rewards repetition (E4B layer 7 -0.65 passes at 1.9x with 86 % degenerate continuations) and penalises short colloquial text; the direct degeneration rate on the neutral stems is the better instrument, and it shows that the coefficients which move the chat voice also break a quarter to a half of open-ended continuations. Steering was applied at every token position; the chat template may shield judged replies from a collapse the bare stems expose.",
         "The iteration-1 steering layers (E2B 19, 28, 4, 9; E4B 28, 7, 23, 11) were selected at run time with the contaminated shuffled null, so the plan's crest layers were not steered until a third iteration added E2B 13 and E4B 4, 10, 22; E4B layer 7, the best iteration-1 layer, is not a crest under the valid null. The SAE decomposition covers E2B layers 4, 9, 13, 19, 28.",
         "Layer-position claims (Q1 crests, the post-hoc global-minus-one pattern) inherit the length confound: length partialling changes the E4B maxima (layer 4 disappears) and the E2B first-32 vs all-token pooling changes which crests survive.",
         "The global-minus-one pattern is post hoc and would read as the registered prediction under a block-input indexing convention; it needs a pre-registered test on a third model.",
-        "SAE calibration: at layers 9, 19 and 28 the E2B SAEs fire 40 to 60 % more features on assistant-reply tokens than in training (EV 0.75 to 0.92 vs 0.81 to 0.94), so feature-level statements there are approximate.",
+        "SAE calibration: the E2B SAEs fire 40 to 60 % more features on assistant-reply tokens than in training at layers 9, 19 and 28 (EV 0.75 to 0.92 vs 0.81 to 0.94), and worst at layer 13, the only bootstrap-surviving E2B crest and the decomposition the report presents: mean L0 74.7 vs 51.4 in training and EV 0.566 vs 0.787. The layer-13 smear (256 / 1024 features for 50 / 80 %, top |cos| 0.28) must be read against that poor fit.",
         "The judge is gpt-5.4-mini (plan named claude-sonnet-5; no Anthropic credential was available); it scores repeated non-English tokens as Bella-like, which the degeneration filter addresses.",
         "Crisis pool: only 12 strict crisis prompts exist in the corpus; the 30-prompt crisis set adds 18 first-person distress prompts.",
     ],

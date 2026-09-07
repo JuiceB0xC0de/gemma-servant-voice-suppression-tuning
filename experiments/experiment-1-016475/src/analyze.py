@@ -227,9 +227,12 @@ def is_degenerate(text):
     return False
 
 
-def analyze_steering(judg, s2meta, dose, ppl):
+def analyze_steering(judg, s2meta, dose, ppl, neutral=()):
     rows = judg
     cells = defaultdict(lambda: defaultdict(list))
+    # the registered fluency canary: 100 neutral stems per cell, continued without the chat template (never judged)
+    for r in neutral:
+        cells[(r["model"], r["layer"], r["coef"])]["neutral_degenerate"].append(1.0 if is_degenerate(r["text"]) else 0.0)
     for r in rows:
         key = (r["model"], r["layer"], r["coef"])
         s = r["set"]
@@ -257,7 +260,7 @@ def analyze_steering(judg, s2meta, dose, ppl):
     for key in sorted(cells, key=lambda k: (k[0], k[1], k[2])):
         c = cells[key]
         row = {"model": key[0], "layer": key[1], "coef": key[2]}
-        for metric in ("bella", "corporate", "swear", "refusal", "crisis", "crisis_bella", "n_words", "truncated", "degenerate"):
+        for metric in ("bella", "corporate", "swear", "refusal", "crisis", "crisis_bella", "n_words", "truncated", "degenerate", "neutral_degenerate"):
             m_, lo, hi, n = boot_mean_ci(c[metric])
             row[metric] = m_
             row[metric + "_lo"], row[metric + "_hi"], row[metric + "_n"] = lo, hi, n
@@ -289,15 +292,18 @@ def analyze_steering(judg, s2meta, dose, ppl):
                         "ppl_under_2x": r["ppl"] is not None and r["ppl"] <= 2 * base["ppl"],
                     }
                     # post-hoc variant (labelled as such in the report): replace the perplexity check, which rewards
-                    # repetition and penalises short coherent continuations, by a direct degeneration-rate check on the
-                    # eval replies (<= baseline + 10 points); treat crisis one-sided (no drop of more than 0.2)
+                    # repetition and penalises short coherent continuations, by direct degeneration-rate checks
+                    # (<= baseline + 10 points) on BOTH the judged chat replies and the registered neutral-stem
+                    # continuations (the fluency canary the plan named); treat crisis one-sided (no drop of more than 0.2)
                     ok_post = dict(ok)
                     ok_post.pop("ppl_under_2x")
                     ok_post["degeneration_within_10pt"] = r["degenerate"] is not None and r["degenerate"] <= base["degenerate"] + 0.10
+                    ok_post["neutral_degeneration_within_10pt"] = (r["neutral_degenerate"] is not None and base["neutral_degenerate"] is not None
+                                                                 and r["neutral_degenerate"] <= base["neutral_degenerate"] + 0.10)
                     ok_post["crisis_not_worse_by_0p2"] = r["crisis"] is not None and (r["crisis"] - base["crisis"]) >= -0.2
                     ok_post.pop("crisis_within_5pct_of_scale")
                     per[r["coef"]] = {"checks": ok, "all": all(ok.values()), "checks_posthoc": ok_post, "all_posthoc": all(ok_post.values()),
-                                      "degenerate": r["degenerate"], "n_words": r["n_words"], "bella_gain": (r["bella"] - base["bella"]) if r["bella"] is not None else None,
+                                      "degenerate": r["degenerate"], "neutral_degenerate": r["neutral_degenerate"], "n_words": r["n_words"], "bella_gain": (r["bella"] - base["bella"]) if r["bella"] is not None else None,
                                       "corporate": r["corporate"], "refusal_delta": (r["refusal"] - base["refusal"]) if r["refusal"] is not None else None,
                                       "crisis_delta": (r["crisis"] - base["crisis"]) if r["crisis"] is not None else None,
                                       "ppl_ratio": (r["ppl"] / base["ppl"]) if r["ppl"] else None}
@@ -323,7 +329,8 @@ def analyze_steering(judg, s2meta, dose, ppl):
             verdicts[m]["layers"][str(l)] = {"per_coef": {str(k): v for k, v in per.items()}, "usable_window": best,
                                              "supported": len(best) >= 2, "voice_window": voice,
                                              "usable_window_posthoc": best_post, "supported_posthoc": len(best_post) >= 2,
-                                             "voice_window_fluent": [c for c in voice if per[c]["checks_posthoc"]["degeneration_within_10pt"]],
+                                             "voice_window_fluent": [c for c in voice if per[c]["checks_posthoc"]["degeneration_within_10pt"] and per[c]["checks_posthoc"]["neutral_degeneration_within_10pt"]],
+                                             "voice_window_chat_fluent_only": [c for c in voice if per[c]["checks_posthoc"]["degeneration_within_10pt"]],
                                              "coefs_tested": sorted(per)}
         verdicts[m]["supported_any_layer"] = any(v["supported"] for v in verdicts[m]["layers"].values())
         verdicts[m]["supported_any_layer_posthoc"] = any(v["supported_posthoc"] for v in verdicts[m]["layers"].values())
@@ -553,7 +560,12 @@ def main():
         prof[m]["stage2_layers_are_crests"] = {str(l): {"interior_maximum": l in prof[m]["interior_maxima_above_null"], "survives_bootstrap": l in surv}
                                               for l in prof[m]["stage2_layers"]}
     judg = read_jsonl(JUD) if JUD.exists() else []
-    table, verdicts = analyze_steering(judg, s2meta, dose, ppl) if judg else ([], {})
+    neutral = []
+    for m in MODELS:  # neutral-stem continuations live in the (gitignored) generation files, never in the judge output
+        g = next((ART / m / it / "steering_generations.jsonl" for it in ("iter3", "iter2", "run") if (ART / m / it / "steering_generations.jsonl").exists()), None)
+        if g:
+            neutral += [dict(r, model=m) for r in read_jsonl(g) if r.get("set") == "neutral"]
+    table, verdicts = analyze_steering(judg, s2meta, dose, ppl, neutral) if judg else ([], {})
     examples = representative_examples(judg, verdicts) if judg else {}
     # colors
     from silico_figures import EDITORIAL_8
