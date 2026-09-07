@@ -1,0 +1,1 @@
+Mean projection of Gemma-side and Bella-side reply activations on the per-layer Bella-minus-Gemma direction, in units of the layer's median residual norm, one panel per model

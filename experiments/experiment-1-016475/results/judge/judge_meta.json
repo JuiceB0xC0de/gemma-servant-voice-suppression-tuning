@@ -1,6 +1,6 @@
 {
  "judge_model": "gpt-5.4-mini",
- "n_items": 16000,
+ "n_items": 26240,
  "invalid": {
   "bella": 0,
   "refusal": 0,

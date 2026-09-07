@@ -324,10 +324,12 @@ def representative_examples(judg, verdicts):
     for m, V in verdicts.items():
         best_l, best_c = None, None
         for l, v in V["layers"].items():
-            cand = v["usable_window"] or v["voice_window"]
+            def pick(v):
+                return v["usable_window"] or v["usable_window_posthoc"] or v["voice_window_fluent"] or []
+            cand = pick(v)
             if cand:
                 c = cand[0]
-                if best_l is None or len(cand) > len(V["layers"][str(best_l)]["usable_window"] or V["layers"][str(best_l)]["voice_window"]):
+                if best_l is None or len(cand) > len(pick(V["layers"][str(best_l)])):
                     best_l, best_c = int(l), c
         if best_l is None:  # fall back to largest bella gain
             best = max(((int(l), float(c), v2["bella_gain"] or -9) for l, v in V["layers"].items() for c, v2 in v["per_coef"].items()), key=lambda t: t[2])
@@ -360,7 +362,7 @@ def make_figures(prof, table, s3, colors):
         L = P["n_layers"]
         x = list(range(L))
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=x, y=P["null_d_p95"], name="shuffled-label null (95th pct)", mode="lines",
+        fig.add_trace(go.Scatter(x=x, y=P["null_d_p95"], name="permutation null (95th pct)" if "uncertainty" in P else "shuffled-label null (95th pct)", mode="lines",
                                  line=dict(color=colors["null"], width=1), fill="tozeroy", fillcolor="rgba(152,132,83,0.18)"))
         fig.add_trace(go.Scatter(x=x, y=P["test_d_first32"] if P["pooling"] == "all" else P["test_d_all"], mode="lines",
                                  name=f"{'first 32 tokens' if P['pooling']=='all' else 'all tokens'} pooling", line=dict(color=colors["context"], width=1.5, dash="dash"), opacity=0.7))
@@ -370,7 +372,7 @@ def make_figures(prof, table, s3, colors):
                                      line=dict(width=0), name="95% paired bootstrap", hoverinfo="skip"))
             fig.add_trace(go.Scatter(x=x, y=P["length_confound"]["d_length_partialled"], mode="lines", name="length-partialled d",
                                      line=dict(color=colors[m], width=1.5, dash="dot"), opacity=0.8))
-        fig.add_trace(go.Scatter(x=x, y=P["test_d"], mode="lines+markers", name=f"{P['pooling']} tokens pooling (chosen)",
+        fig.add_trace(go.Scatter(x=x, y=P["test_d"], mode="lines+markers", name=f"{'first 32' if P['pooling']=='first' else 'all'} tokens pooling (chosen)",
                                  line=dict(color=colors[m], width=3), marker=dict(size=6)))
         if "uncertainty" in P and P["uncertainty"]["surviving_layers"]:
             sl = P["uncertainty"]["surviving_layers"]
@@ -514,11 +516,12 @@ def main():
     s1, s2meta, dose, ppl, s3 = {}, {}, {}, {}, None
     for m in MODELS:
         d = ART / m / "run"
+        d2 = ART / m / "iter2" if (ART / m / "iter2" / "stage2_meta.json").exists() else d  # iteration 2 = superset of cells
         if (d / "stage1.json").exists():
             s1[m] = json.load(open(d / "stage1.json"))
-            s2meta[m] = json.load(open(d / "stage2_meta.json"))
-            dose[m] = json.load(open(d / "dose_response.json"))
-            ppl[m] = json.load(open(d / "neutral_perplexity.json"))
+            s2meta[m] = json.load(open(d2 / "stage2_meta.json"))
+            dose[m] = json.load(open(d2 / "dose_response.json"))
+            ppl[m] = json.load(open(d2 / "neutral_perplexity.json"))
     if (ART / "E2B" / "run" / "stage3.json").exists():
         s3 = json.load(open(ART / "E2B" / "run" / "stage3.json"))
     boot = {m: json.load(open(ART / m / "run" / "stage1_boot.json")) for m in s1 if (ART / m / "run" / "stage1_boot.json").exists()}
