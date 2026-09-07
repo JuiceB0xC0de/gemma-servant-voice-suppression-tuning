@@ -468,7 +468,7 @@ def stage2(W: Wrapped, out: Path, args, s1, dirs, med_norm):
     crisis = read_jsonl(DATA / "crisis_eval.jsonl")
     red = read_jsonl(DATA / "red_team.jsonl")
     neutral = read_jsonl(DATA / "neutral.jsonl")
-    layers = s1["stage2_layers"]["layers"]
+    layers = [int(x) for x in args.layers.split(",")] if args.layers else s1["stage2_layers"]["layers"]
     coefs = [float(c) for c in args.coefs.split(",")] if args.coefs else COEFS
     if args.smoke:
         evalp, crisis, red, neutral, test_pairs = evalp[:6], crisis[:3], red[:6], neutral[:6], test_pairs[:6]
@@ -538,8 +538,10 @@ def stage2(W: Wrapped, out: Path, args, s1, dirs, med_norm):
                     "median_ppl": float(np.exp(np.median(-lp))), "mean_len": float(nt.mean()), "nll": (-lp).tolist()})
     dump(out / "neutral_perplexity.json", ppl)
     all_coefs = sorted({r["coef"] for r in rows if r["layer"] != -1})
-    dump(out / "stage2_meta.json", {"layers": layers, "coefs": all_coefs, "coefs_this_run": coefs, "iteration": args.iteration, "n_chat_prompts": len(chat_items), "n_neutral": len(neutral),
-                                    "gen_tokens": args.gen_tokens, "median_norm": [float(med_norm[l]) for l in layers],
+    all_layers = sorted({r["layer"] for r in rows if r["layer"] != -1}, key=lambda l: (l not in layers, l))
+    prev_meta = json.load(open(out / "stage2_meta.json")) if (out / "stage2_meta.json").exists() else {}
+    dump(out / "stage2_meta.json", {"layers": all_layers, "layers_this_run": layers, "layers_iter1": prev_meta.get("layers_iter1", prev_meta.get("layers", layers)), "coefs": all_coefs, "coefs_this_run": coefs, "iteration": args.iteration, "n_chat_prompts": len(chat_items), "n_neutral": len(neutral),
+                                    "gen_tokens": args.gen_tokens, "median_norm": [float(med_norm[l]) for l in all_layers],
                                     "timing_s": time.time() - t0, "cells": n_cells})
     log(f"stage2 done in {time.time()-t0:.0f}s")
 
@@ -600,7 +602,7 @@ def sae_encode(sae, x):
 
 
 def stage3(W: Wrapped, out: Path, args, s1, dirs):
-    layers = s1["stage2_layers"]["layers"]
+    layers = [int(x) for x in args.layers.split(",")] if args.layers else s1["stage2_layers"]["layers"]
     if args.smoke:
         layers = layers[:1]
     pairs = read_jsonl(DATA / "pairs.jsonl")
@@ -616,6 +618,10 @@ def stage3(W: Wrapped, out: Path, args, s1, dirs):
     hg = W.harvest(prefixes, [gemma_replies[p["pid"]]["text"] or " " for p in test_pairs], batch_size=args.harvest_batch,
                    token_level_layers=layers, phase="s3_gemma")
     res = {"layers": layers, "per_layer": {}}
+    if (out / "stage3.json").exists() and not args.smoke:  # merge with a previous iteration's layers
+        prev = json.load(open(out / "stage3.json"))
+        res["per_layer"] = {k: v for k, v in prev.get("per_layer", {}).items() if int(k) not in layers}
+        res["layers"] = sorted(set(int(k) for k in res["per_layer"]) | set(layers))
     for l in layers:
         t0 = time.time()
         sae = load_sae(l)
@@ -715,6 +721,7 @@ def main():
     ap.add_argument("--gen_tokens", type=int, default=128)
     ap.add_argument("--coefs", default=None, help="comma list overriding COEFS (second steering iteration)")
     ap.add_argument("--iteration", type=int, default=1)
+    ap.add_argument("--layers", default=None, help="comma list overriding the stage-1 layer selection for stages 2 and 3 (iteration 3: valid-null crest layers)")
     ap.add_argument("--seed_from", default=None, help="directory holding a previous run's outputs to resume from (copied into out)")
     args = ap.parse_args()
     torch.manual_seed(SEED)
