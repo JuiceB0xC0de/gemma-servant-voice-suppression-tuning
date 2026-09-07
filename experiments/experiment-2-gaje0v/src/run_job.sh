@@ -13,7 +13,7 @@
 #   HF_TOKEN / WANDB_API_KEY forwarded as job settings.
 set -euo pipefail
 
-MODE="${1:?mode required: smoke|chain|verify}"; shift || true
+MODE="${1:?mode required: smoke|chain|verify|join}"; shift || true
 export PYTHONUNBUFFERED=1
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
@@ -104,6 +104,16 @@ case "$MODE" in
     echo "   log copy: $LOG"
     set +e
     python3 -u "$TRAINER/run_atlas.py" --config "$TRAINER/configs/gemma4_e4b.yaml" "$@" 2>&1 | tee "$LOG"
+    RC=${PIPESTATUS[0]}
+    set -e
+    ;;
+  join)
+    # assemble + verify + single HF push; sources are the staged chain outputs
+    mkdir -p "$ART/logs" "$ART/results"
+    LOG="$ART/logs/join_$(date -u +%Y%m%dT%H%M%SZ).log"
+    set +e
+    python3 -u "$ROOT/$EXP/src/join_atlas.py" --dest "$ART/saes/google_gemma-4-e4b-it" \
+        --results "$ART/results" "$@" 2>&1 | tee "$LOG"
     RC=${PIPESTATUS[0]}
     set -e
     ;;

@@ -18,22 +18,32 @@ GLOBAL_LAYERS = [5, 11, 17, 23, 29, 35, 41]
 KV_BOUNDARY = 24
 
 
-def collect(metas_dir: Path, n_layers: int, seed: int = 0):
+def collect(metas_dir: Path, n_layers: int, seed: int = 0, wall: dict | None = None):
+    """metas_dir: atlas root (layer_NN_s0/meta.json), a dir of layer_NN_s0.meta.json,
+    or a JSON bundle file {"layer_NN": meta, ...}. wall: optional {"NN": minutes}."""
     rows = []
+    bundle = json.loads(metas_dir.read_text()) if metas_dir.is_file() else None
+    wall = wall or {}
     for L in range(n_layers):
-        cands = [metas_dir / f"layer_{L:02d}_s{seed}.meta.json",
-                 metas_dir / f"layer_{L:02d}_s{seed}" / "meta.json"]
-        p = next((c for c in cands if c.is_file()), None)
-        if p is None:
-            rows.append({"layer": L, "present": False})
-            continue
-        m = json.loads(p.read_text())
+        if bundle is not None:
+            m = bundle.get(f"layer_{L:02d}")
+            if m is None:
+                rows.append({"layer": L, "present": False})
+                continue
+        else:
+            cands = [metas_dir / f"layer_{L:02d}_s{seed}.meta.json",
+                     metas_dir / f"layer_{L:02d}_s{seed}" / "meta.json"]
+            p = next((c for c in cands if c.is_file()), None)
+            if p is None:
+                rows.append({"layer": L, "present": False})
+                continue
+            m = json.loads(p.read_text())
         fm = m.get("final_metrics") or {}
         curve = m.get("training_curve") or {}
-        wall = None
+        wall_meta = None
         for k in ("wall_minutes", "elapsed_min", "train_minutes"):
             if k in m:
-                wall = m[k]
+                wall_meta = m[k]
         rows.append({
             "layer": L, "present": True,
             "steps": m.get("n_steps"), "tokens": m.get("total_tokens"),
@@ -42,7 +52,7 @@ def collect(metas_dir: Path, n_layers: int, seed: int = 0):
             "mean_l0": fm.get("mean_l0", (curve.get("mean_l0") or [None])[-1]),
             "dead_pct": fm.get("dead_pct", (curve.get("dead_pct") or [None])[-1]),
             "early_stopped": m.get("early_stopped"),
-            "wall_minutes": m.get("wall_minutes", wall),
+            "wall_minutes": m.get("wall_minutes", wall_m if (wall_m := wall.get(f"{L:02d}", wall.get(str(L)))) is not None else wall_meta),
             "layer_type": "global" if L in GLOBAL_LAYERS else "sliding",
             "kv_shared": L >= KV_BOUNDARY,
             "job_id": m.get("job_id"),
@@ -57,9 +67,12 @@ def main():
     ap.add_argument("--out", default="results/atlas_summary.csv")
     ap.add_argument("--figure-name", default="atlas_ev_l0_by_layer")
     ap.add_argument("--ev-floor", type=float, default=0.85)
+    ap.add_argument("--wall", default=None, help="JSON {layer: wall_minutes} parsed from the chain logs")
+    ap.add_argument("--no-figure", action="store_true", help="CSV only (job image lacks silico-figures)")
     args = ap.parse_args()
 
-    rows = collect(Path(args.metas), args.n_layers)
+    wall = json.loads(Path(args.wall).read_text()) if args.wall else None
+    rows = collect(Path(args.metas), args.n_layers, wall=wall)
     cols = ["layer", "layer_type", "kv_shared", "steps", "tokens", "ev", "best_ev", "mean_l0",
             "dead_pct", "early_stopped", "wall_minutes", "job_id"]
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
@@ -71,6 +84,8 @@ def main():
                 w.writerow(r)
     present = [r for r in rows if r.get("present")]
     print(f"wrote {args.out} with {len(present)} layers")
+    if args.no_figure:
+        return
 
     # ---- figure: two stacked panels, EV and mean L0 by layer ----------------------
     from plotly.subplots import make_subplots
