@@ -3,6 +3,7 @@
 # dataset juiceb0xc0de/gemma-4-e4b-SAE.
 # Usage: sh src/push_to_hub.sh <range_00_13|range_14_27|range_28_41|verify>
 #   range_*  upload that folder's 14 layer dirs (layer_NN_s0/{sae.pt,meta.json})
+#   layer <range> <NN>  upload a single layer dir (used after 22 GB range jobs died during input staging)
 #   verify   upload results/atlas_summary.csv, then check the Hub listing and write hub_listing.json
 # One range per job: the on-demand fabric caps declared input_artifacts at 32 GiB per job
 # and each range folder is ~22 GB.
@@ -19,6 +20,15 @@ pip install -q "huggingface_hub[cli]"
 python3 -c "import huggingface_hub as h; print('huggingface_hub', h.__version__)" | tee "$OUT/hf_version_$MODE.txt"
 
 case "$MODE" in
+  layer)
+    # sh src/push_to_hub.sh layer <range_XX_YY> <NN>: upload one layer dir (~1.7 GB) as layer_NN_s0/
+    RANGE="${2:?range required}"; NN="${3:?layer NN required}"
+    SRC="$IN/$RANGE/saes/google_gemma-4-e4b-it/layer_${NN}_s0"
+    ls -la "$SRC"
+    echo "== uploading layer_${NN}_s0 =="; date -u
+    hf upload "$REPO" "$SRC" "layer_${NN}_s0" --repo-type dataset --private | tee "$OUT/upload_layer_${NN}.txt"
+    date -u
+    ;;
   range_*)
     SRC="$IN/$MODE/saes/google_gemma-4-e4b-it"
     echo "== staged layers in $MODE =="
