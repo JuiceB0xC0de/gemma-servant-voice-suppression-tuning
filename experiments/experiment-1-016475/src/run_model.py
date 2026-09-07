@@ -653,7 +653,16 @@ def stage3(W: Wrapped, out: Path, args, s1, dirs):
         dz = diff / sp
         top_b = torch.topk(diff, 20).indices.tolist()
         top_g = torch.topk(-diff, 20).indices.tolist()
-        l0_b = float((Mb > 0).float().sum(1).mean()) if False else float((torch.stack([sae_encode(sae, h.cuda().float()) for _, h in hb["token_level"][l][:20]]).squeeze(0) > 0).float().sum(-1).mean()) if False else None
+        # calibration: does our hook site / scale match the SAE's training site? (meta: L0 ~ k, EV ~ best_ev)
+        Xtok = torch.cat([h.cuda().float() for _, h in hg["token_level"][l]] + [h.cuda().float() for _, h in hb["token_level"][l]])
+        Z = sae_encode(sae, Xtok)
+        Xhat = Z @ sae["W_dec"] + sae["b_dec"]
+        ev = float(1 - ((Xtok - Xhat) ** 2).mean() / Xtok.var())
+        calib = {"mean_l0": float((Z > 0).float().sum(-1).mean()), "ev": ev, "n_tokens": int(Xtok.shape[0]),
+                 "rms_per_element": float(Xtok.pow(2).mean().sqrt()), "meta_mean_l0": sae["meta"].get("final_metrics", {}).get("mean_l0"),
+                 "meta_ev": sae["meta"].get("final_metrics", {}).get("ev"),
+                 "meta_activation_norm_probe": sae["meta"].get("final_metrics", {}).get("activation_norm_probe")}
+        del Xtok, Z, Xhat
         # exemplars for top features (by |cos| with the direction and by activation diff)
         exemplars = {}
         want = list(dict.fromkeys(order[:10].tolist() + top_b[:10] + top_g[:10]))
@@ -672,7 +681,7 @@ def stage3(W: Wrapped, out: Path, args, s1, dirs):
                 tokstr = W.tok.decode(ids[ti:ti + 1]) if ti < len(ids) else "?"
                 exemplars[str(f)].append({"act": val, "side": side, "prompt": test_pairs[i]["prompt"][:160], "reply": reply[:300], "token": tokstr, "token_idx": ti})
         res["per_layer"][str(l)] = {
-            "sae_keys": sae["keys"], "sae_meta": {k: sae["meta"].get(k) for k in ("d_in", "n_features", "k", "final_metrics")},
+            "calibration": calib, "sae_keys": sae["keys"], "sae_meta": {k: sae["meta"].get(k) for k in ("d_in", "n_features", "k", "final_metrics")},
             "recon_fraction_by_k": frac, "features_needed": need,
             "top_cos_features": [{"f": int(f), "cos": float(cos[f]), "dec_norm": float(Wd[f].norm())} for f in order[:20].tolist()],
             "top_encoder_projection": [{"f": int(f), "proj": float(enc_proj[f])} for f in top_enc],
@@ -686,7 +695,7 @@ def stage3(W: Wrapped, out: Path, args, s1, dirs):
             "exemplars": exemplars, "timing_s": time.time() - t0,
         }
         dump(out / "stage3.json", res)
-        log(f"stage3 layer {l}: need {need}, top cos {float(cos.abs().max()):.3f}, "
+        log(f"stage3 layer {l}: calib L0={calib['mean_l0']:.1f} (meta {calib['meta_mean_l0']}) EV={calib['ev']:.3f} (meta {calib['meta_ev']}); need {need}, top cos {float(cos.abs().max()):.3f}, "
             f"features |d|>1: {int((dz.abs() > 1).sum())}, {time.time()-t0:.0f}s")
         del sae
         torch.cuda.empty_cache()
