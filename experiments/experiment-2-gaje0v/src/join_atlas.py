@@ -74,6 +74,8 @@ def main() -> int:
     ap.add_argument("--hf-repo-type", default="dataset")
     ap.add_argument("--n-layers", type=int, default=42)
     ap.add_argument("--no-push", action="store_true")
+    ap.add_argument("--collect-only", action="store_true",
+                    help="stage 1 of a two-stage join: copy whatever layers are found into --dest and exit 0")
     ap.add_argument("--verify-args", default="--d-in 2560 --n-features 81920 --k 50 --ev-floor 0.85 --l0-window 40,60 --dead-max 0.01")
     args = ap.parse_args()
 
@@ -86,6 +88,13 @@ def main() -> int:
     found = find_layers(sources)
     missing = [L for L in range(args.n_layers) if L not in found]
     print(f"   found {len(found)}/{args.n_layers} layers; missing={missing}")
+    if args.collect_only:
+        for L in sorted(found):
+            copy_layer(found[L], dest / f"layer_{L:02d}_s0")
+            print(f"   copied layer {L:02d} from {found[L]}")
+        json.dump({"collected": sorted(found), "missing": missing}, open(results / "collect_status.json", "w"), indent=1)
+        print(f"== collect-only done: {len(found)} layers in {dest}")
+        return 0
     if missing:
         json.dump({"missing_layers": missing, "found": {L: str(p) for L, p in found.items()}},
                   open(results / "join_status.json", "w"), indent=1)

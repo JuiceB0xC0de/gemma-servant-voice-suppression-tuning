@@ -103,10 +103,10 @@ def main():
                              hovertemplate="layer %{x}<br>L0 %{y:.1f}<extra></extra>"), row=2, col=1)
     gl = [L for L in GLOBAL_LAYERS if L in layers]
     fig.add_trace(go.Scatter(x=gl, y=[ev[layers.index(L)] for L in gl], mode="markers",
-                             name="global attention", marker=dict(symbol="diamond", size=11),
+                             name="global attention", marker=dict(symbol="diamond", size=11, color="#2a6f4e"),
                              hoverinfo="skip"), row=1, col=1)
     fig.add_trace(go.Scatter(x=gl, y=[l0[layers.index(L)] for L in gl], mode="markers",
-                             name="global attention", marker=dict(symbol="diamond", size=11),
+                             name="global attention", marker=dict(symbol="diamond", size=11, color="#2a6f4e"),
                              showlegend=False, hoverinfo="skip"), row=2, col=1)
     add_reference_line(fig, y=args.ev_floor, label=f"EV floor {args.ev_floor:g}", row=1, col=1)
     add_reference_line(fig, y=50, label="target L0 50", row=2, col=1)
@@ -114,7 +114,7 @@ def main():
     fig.update_yaxes(title_text="Explained variance", range=[0.7, 1.0], row=1, col=1)
     fig.update_yaxes(title_text="Mean L0 (features/token)", row=2, col=1)
     fig.update_xaxes(title_text="Layer", row=2, col=1)
-    fig.update_xaxes(title_text="Layer", row=1, col=1, showticklabels=True)
+    fig.update_xaxes(showticklabels=True, row=1, col=1)
     apply_theme(fig, height=620)
     save_figure_bundle(
         fig, args.figure_name,
