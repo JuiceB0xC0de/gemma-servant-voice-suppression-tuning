@@ -15,6 +15,7 @@ set -euo pipefail
 
 MODE="${1:?mode required: smoke|chain|verify}"; shift || true
 export PYTHONUNBUFFERED=1
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
 EXP="${SILICO_EXPERIMENT_RELATIVE_DIR:?SILICO_EXPERIMENT_RELATIVE_DIR unset}"
 ROOT="$(pwd)"
@@ -98,7 +99,13 @@ case "$MODE" in
     python3 -u "$ROOT/$EXP/src/verify_rolling_forward.py" --out "$ART/forward_check_e4b.json" "$@" || RC=$?
     ;;
   smoke|chain)
-    python3 -u "$TRAINER/run_atlas.py" --config "$TRAINER/configs/gemma4_e4b.yaml" "$@" || RC=$?
+    mkdir -p "$ART/logs"
+    LOG="$ART/logs/${MODE}_$(echo "$*" | tr -c 'A-Za-z0-9,.' '_' | cut -c1-60)_$(date -u +%Y%m%dT%H%M%SZ).log"
+    echo "   log copy: $LOG"
+    set +e
+    python3 -u "$TRAINER/run_atlas.py" --config "$TRAINER/configs/gemma4_e4b.yaml" "$@" 2>&1 | tee "$LOG"
+    RC=${PIPESTATUS[0]}
+    set -e
     ;;
   *) echo "unknown mode $MODE"; exit 2;;
 esac
