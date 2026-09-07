@@ -136,6 +136,18 @@ def analyze_profiles(s1, boot=None):
         q1["supported"] = bool(q1["supported"] and bq.get("drop_a_ci", [0])[0] > 0 and bq.get("drop_b_ci", [0])[0] > 0)
         q1["rule_note"] = "supported requires the plan's point rule (two crests within +-1 of 4 and 13/14, both >= 0.15 d above the trough between them) AND both crest-minus-trough paired-bootstrap 95% intervals to exclude 0"
     q1["all_pool_maxima"] = interior_maxima(np.array(e["test_d_all"]), above=np.array(out["E2B"]["null_d_p95"]))
+    # shape check against the sketched wave: predicted trough at layers 7-11 vs the plateau 4-14 and the late decline
+    pred_trough = d[7:12]
+    q1["shape"] = {
+        "predicted_trough_layers": [7, 11], "predicted_trough_min_d": float(pred_trough.min()), "predicted_trough_max_d": float(pred_trough.max()),
+        "max_d_after_layer_14": float(d[15:].max()), "predicted_trough_above_all_later_layers": bool(pred_trough.min() > d[15:].max()),
+        "plateau_4_to_14_range_d": float(d[4:15].max() - d[4:15].min()),
+        "layer4_survives_neighbour_bootstrap": 4 in set(e.get("uncertainty", {}).get("surviving_layers", [])),
+        "layer13_survives_neighbour_bootstrap": 13 in set(e.get("uncertainty", {}).get("surviving_layers", [])),
+        "layer4_crest_record": next((c for c in e.get("uncertainty", {}).get("crests", []) if c.get("layer") == 4), None),
+        "interior_maxima_between_2_and_14": [int(l) for l in maxima if 2 <= l <= 14],
+        "verdict_note": "the registered point rule is met on a one-layer dip at layer 12; layer 4 is not separable from layers 5-6 by bootstrap; the predicted trough (7-11) did not appear and is higher than every layer past 14; shape is rise, plateau 4-14, decline",
+    }
     q1["first32_pool_maxima"] = interior_maxima(np.array(e["test_d_first32"]), above=np.array(out["E2B"]["null_d_p95"]))
     # Q2
     q2 = {m: {"strongest3": out[m]["strongest3"], "on_global": out[m]["strongest3_on_global"],
@@ -164,8 +176,10 @@ def analyze_profiles(s1, boot=None):
         G = set(out[m]["global_layers"])
         Gm1 = {g - 1 for g in G if 1 <= g - 1 <= L - 2}
         interior = L - 2
-        for label, layers in (("surviving", out[m].get("uncertainty", {}).get("surviving_layers", [])),
-                              ("all_maxima", out[m]["interior_maxima_above_null"])):
+        variants = [("surviving", out[m].get("uncertainty", {}).get("surviving_layers", [])), ("all_maxima", out[m]["interior_maxima_above_null"])]
+        if out[m].get("uncertainty", {}).get("first32_surviving_layers") is not None and out[m]["pooling"] != "first":
+            variants.append(("first32_surviving", out[m]["uncertainty"]["first32_surviving_layers"]))
+        for label, layers in variants:
             k_on = len([l for l in layers if l in G])
             k_m1 = len([l for l in layers if l in Gm1])
             q2["global_minus_one_posthoc"][f"{m}_{label}"] = {
@@ -174,6 +188,8 @@ def analyze_profiles(s1, boot=None):
                 "p_on_global_ge": hyper_p(k_on, len([g for g in G if 1 <= g <= L - 2]), len(layers), interior) if layers else None,
                 "p_on_global_minus_1_ge": hyper_p(k_m1, len(Gm1), len(layers), interior) if layers else None,
             }
+    q2["global_minus_one_posthoc"]["note"] = ("post hoc; the hypergeometric treats adjacent, correlated layers as independent draws and the crest list depends on pooling and the survival rule; "
+                                              "E2B is not significant when layer 4 (a global layer and the Q1 crest) is counted")
     # global vs sliding comparison (descriptive)
     for m in out:
         d = np.array(out[m]["test_d"])
@@ -316,7 +332,7 @@ def analyze_steering(judg, s2meta, dose, ppl):
 
 def representative_examples(judg, verdicts):
     """Unsteered vs steered replies: pick for each model the layer with the largest voice window (or the
-    strongest Bella gain), at the mildest coefficient in that window; include 3 crisis + 3 red-team + 4 eval."""
+    strongest Bella gain), at the strongest (most negative) coefficient in that window; include 3 crisis + 3 red-team + 4 eval."""
     ex = {}
     by = defaultdict(dict)
     for r in judg:
@@ -328,7 +344,7 @@ def representative_examples(judg, verdicts):
                 return v["usable_window"] or v["usable_window_posthoc"] or v["voice_window_fluent"] or []
             cand = pick(v)
             if cand:
-                c = cand[0]
+                c = cand[-1]
                 if best_l is None or len(cand) > len(pick(V["layers"][str(best_l)])):
                     best_l, best_c = int(l), c
         if best_l is None:  # fall back to largest bella gain
@@ -516,16 +532,26 @@ def main():
     s1, s2meta, dose, ppl, s3 = {}, {}, {}, {}, None
     for m in MODELS:
         d = ART / m / "run"
-        d2 = ART / m / "iter2" if (ART / m / "iter2" / "stage2_meta.json").exists() else d  # iteration 2 = superset of cells
+        # later iterations are supersets of earlier cells: iter3 adds the valid-null crest layers, iter2 added coefficients
+        d2 = next((ART / m / it for it in ("iter3", "iter2") if (ART / m / it / "stage2_meta.json").exists()), d)
         if (d / "stage1.json").exists():
             s1[m] = json.load(open(d / "stage1.json"))
             s2meta[m] = json.load(open(d2 / "stage2_meta.json"))
             dose[m] = json.load(open(d2 / "dose_response.json"))
             ppl[m] = json.load(open(d2 / "neutral_perplexity.json"))
-    if (ART / "E2B" / "run" / "stage3.json").exists():
-        s3 = json.load(open(ART / "E2B" / "run" / "stage3.json"))
+    s3_path = next((ART / "E2B" / it / "stage3.json" for it in ("iter3", "run") if (ART / "E2B" / it / "stage3.json").exists()), None)
+    if s3_path:
+        s3 = json.load(open(s3_path))
     boot = {m: json.load(open(ART / m / "run" / "stage1_boot.json")) for m in s1 if (ART / m / "run" / "stage1_boot.json").exists()}
     prof, q1, q2 = analyze_profiles(s1, boot)
+    for m in prof:  # all steered layers (iteration 1 selection + crest layers added in iteration 3)
+        meta = s2meta.get(m, {})
+        prof[m]["stage2_layers_iter1"] = meta.get("layers_iter1", prof[m]["stage2_layers"])
+        prof[m]["stage2_layers"] = meta.get("layers", prof[m]["stage2_layers"])
+        prof[m]["crest_layers_added_iter3"] = meta.get("layers_this_run", []) if meta.get("iteration", 1) >= 3 else []
+        surv = set(prof[m].get("uncertainty", {}).get("surviving_layers", []))
+        prof[m]["stage2_layers_are_crests"] = {str(l): {"interior_maximum": l in prof[m]["interior_maxima_above_null"], "survives_bootstrap": l in surv}
+                                              for l in prof[m]["stage2_layers"]}
     judg = read_jsonl(JUD) if JUD.exists() else []
     table, verdicts = analyze_steering(judg, s2meta, dose, ppl) if judg else ([], {})
     examples = representative_examples(judg, verdicts) if judg else {}
@@ -534,8 +560,9 @@ def main():
     colors = {"E2B": EDITORIAL_8[0], "E4B": EDITORIAL_8[1], "null": EDITORIAL_8[3], "global": EDITORIAL_8[6], "context": "#9AA0A6"}
     i = 2
     for m in prof:
+        pal = [EDITORIAL_8[2], EDITORIAL_8[4], EDITORIAL_8[5], EDITORIAL_8[7], "#7B3F00", "#2E8B57", "#8A2BE2", "#B22222"]
         for l in prof[m]["stage2_layers"]:
-            colors[f"{m}_layer_{l}"] = [EDITORIAL_8[2], EDITORIAL_8[4], EDITORIAL_8[5], EDITORIAL_8[7]][prof[m]["stage2_layers"].index(l)]
+            colors[f"{m}_layer_{l}"] = pal[prof[m]["stage2_layers"].index(l) % len(pal)]
     FIG.mkdir(exist_ok=True)
     dump(FIG / "entity_colors.json", colors)
     # logit lens tables for stage-2 layers

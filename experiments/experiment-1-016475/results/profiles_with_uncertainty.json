@@ -551,6 +551,45 @@
    ],
    "p_both_drops_ge_0.15": 0.999,
    "p_both_drops_gt_0": 1.0
+  },
+  "shape": {
+   "predicted_trough_layers": [
+    7,
+    11
+   ],
+   "predicted_trough_min_d": 4.500926971435547,
+   "predicted_trough_max_d": 4.817983627319336,
+   "max_d_after_layer_14": 4.110782146453857,
+   "predicted_trough_above_all_later_layers": true,
+   "plateau_4_to_14_range_d": 0.7812175750732422,
+   "layer4_survives_neighbour_bootstrap": false,
+   "layer13_survives_neighbour_bootstrap": true,
+   "layer4_crest_record": {
+    "layer": 4,
+    "d": 5.037590026855469,
+    "trough_left": 3,
+    "trough_right": 5,
+    "drop_left": 0.6127481460571289,
+    "drop_right": 0.1794414520263672,
+    "drop_left_ci": [
+     0.3650728464126587,
+     0.9003337025642395
+    ],
+    "drop_right_ci": [
+     -0.025127779692411423,
+     0.43353864550590515
+    ],
+    "p_local_max": 0.9545,
+    "survives": false
+   },
+   "interior_maxima_between_2_and_14": [
+    2,
+    4,
+    6,
+    11,
+    13
+   ],
+   "verdict_note": "the registered point rule is met on a one-layer dip at layer 12; layer 4 is not separable from layers 5-6 by bootstrap; the predicted trough (7-11) did not appear and is higher than every layer past 14; shape is rise, plateau 4-14, decline"
   }
  },
  "q2_global_minus_one": {
@@ -626,6 +665,23 @@
    "n_interior": 40,
    "p_on_global_ge": 1.0,
    "p_on_global_minus_1_ge": 1.2443975292272506e-05
-  }
+  },
+  "E4B_first32_surviving": {
+   "layers": [
+    5,
+    10,
+    28,
+    40
+   ],
+   "on_global": 1,
+   "on_global_minus_1": 3,
+   "n": 4,
+   "n_global_interior": 6,
+   "n_global_minus_1_interior": 7,
+   "n_interior": 40,
+   "p_on_global_ge": 0.49254841886420836,
+   "p_on_global_minus_1_ge": 0.013021118284276179
+  },
+  "note": "post hoc; the hypergeometric treats adjacent, correlated layers as independent draws and the crest list depends on pooling and the survival rule; E2B is not significant when layer 4 (a global layer and the Q1 crest) is counted"
  }
 }

@@ -265,10 +265,11 @@
    "id": "E2B_stage2_layers",
    "claim": "E2B steering layers",
    "value": [
-    19,
-    28,
+    13,
     4,
-    9
+    9,
+    19,
+    28
    ],
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "profiles.E2B.stage2_layers"
@@ -452,10 +453,13 @@
    "id": "E4B_stage2_layers",
    "claim": "E4B steering layers",
    "value": [
-    28,
+    4,
+    10,
+    22,
     7,
+    11,
     23,
-    11
+    28
    ],
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "profiles.E4B.stage2_layers"
@@ -508,6 +512,30 @@
    "key": "q2.global_minus_one_posthoc.E2B_surviving.on_global"
   },
   {
+   "id": "gm1_E2B_all_maxima_count",
+   "claim": "E2B_all_maxima: crests one layer before a global block / total",
+   "value": [
+    3,
+    9
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q2.global_minus_one_posthoc.E2B_all_maxima.on_global_minus_1, .n"
+  },
+  {
+   "id": "gm1_E2B_all_maxima_p",
+   "claim": "E2B_all_maxima: hypergeometric P(>= that many) by chance",
+   "value": 0.2772525027808676,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q2.global_minus_one_posthoc.E2B_all_maxima.p_on_global_minus_1_ge"
+  },
+  {
+   "id": "gm1_E2B_all_maxima_on_global",
+   "claim": "E2B_all_maxima: crests exactly on a global layer",
+   "value": 2,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q2.global_minus_one_posthoc.E2B_all_maxima.on_global"
+  },
+  {
    "id": "gm1_E4B_surviving_count",
    "claim": "E4B_surviving: crests one layer before a global block / total",
    "value": [
@@ -554,6 +582,30 @@
    "value": 0,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "q2.global_minus_one_posthoc.E4B_all_maxima.on_global"
+  },
+  {
+   "id": "gm1_E4B_first32_surviving_count",
+   "claim": "E4B_first32_surviving: crests one layer before a global block / total",
+   "value": [
+    3,
+    4
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q2.global_minus_one_posthoc.E4B_first32_surviving.on_global_minus_1, .n"
+  },
+  {
+   "id": "gm1_E4B_first32_surviving_p",
+   "claim": "E4B_first32_surviving: hypergeometric P(>= that many) by chance",
+   "value": 0.013021118284276179,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q2.global_minus_one_posthoc.E4B_first32_surviving.p_on_global_minus_1_ge"
+  },
+  {
+   "id": "gm1_E4B_first32_surviving_on_global",
+   "claim": "E4B_first32_surviving: crests exactly on a global layer",
+   "value": 1,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q2.global_minus_one_posthoc.E4B_first32_surviving.on_global"
   },
   {
    "id": "E2B_base_bella",
@@ -663,6 +715,31 @@
    "key": "q3.E2B.layers.9.voice_window_fluent"
   },
   {
+   "id": "E2B_L13_win_pre",
+   "claim": "E2B layer 13 pre-registered window",
+   "value": [],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E2B.layers.13.usable_window"
+  },
+  {
+   "id": "E2B_L13_win_post",
+   "claim": "E2B layer 13 post-hoc window",
+   "value": [
+    -0.35
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E2B.layers.13.usable_window_posthoc"
+  },
+  {
+   "id": "E2B_L13_voice_fluent",
+   "claim": "E2B layer 13 coefficients with Bella gain, corporate halved and fluent",
+   "value": [
+    -0.35
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E2B.layers.13.voice_window_fluent"
+  },
+  {
    "id": "E2B_L19_win_pre",
    "claim": "E2B layer 19 pre-registered window",
    "value": [],
@@ -763,9 +840,30 @@
   {
    "id": "E4B_q3_any_post",
    "claim": "E4B any layer passes the post-hoc window rule",
-   "value": false,
+   "value": true,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "q3.E4B.supported_any_layer_posthoc"
+  },
+  {
+   "id": "E4B_L4_win_pre",
+   "claim": "E4B layer 4 pre-registered window",
+   "value": [],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.4.usable_window"
+  },
+  {
+   "id": "E4B_L4_win_post",
+   "claim": "E4B layer 4 post-hoc window",
+   "value": [],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.4.usable_window_posthoc"
+  },
+  {
+   "id": "E4B_L4_voice_fluent",
+   "claim": "E4B layer 4 coefficients with Bella gain, corporate halved and fluent",
+   "value": [],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.4.voice_window_fluent"
   },
   {
    "id": "E4B_L7_win_pre",
@@ -794,6 +892,34 @@
    "key": "q3.E4B.layers.7.voice_window_fluent"
   },
   {
+   "id": "E4B_L10_win_pre",
+   "claim": "E4B layer 10 pre-registered window",
+   "value": [],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.10.usable_window"
+  },
+  {
+   "id": "E4B_L10_win_post",
+   "claim": "E4B layer 10 post-hoc window",
+   "value": [
+    -0.35,
+    -0.5
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.10.usable_window_posthoc"
+  },
+  {
+   "id": "E4B_L10_voice_fluent",
+   "claim": "E4B layer 10 coefficients with Bella gain, corporate halved and fluent",
+   "value": [
+    -0.35,
+    -0.5,
+    -0.65
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.10.voice_window_fluent"
+  },
+  {
    "id": "E4B_L11_win_pre",
    "claim": "E4B layer 11 pre-registered window",
    "value": [],
@@ -815,6 +941,27 @@
    ],
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "q3.E4B.layers.11.voice_window_fluent"
+  },
+  {
+   "id": "E4B_L22_win_pre",
+   "claim": "E4B layer 22 pre-registered window",
+   "value": [],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.22.usable_window"
+  },
+  {
+   "id": "E4B_L22_win_post",
+   "claim": "E4B layer 22 post-hoc window",
+   "value": [],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.22.usable_window_posthoc"
+  },
+  {
+   "id": "E4B_L22_voice_fluent",
+   "claim": "E4B layer 22 coefficients with Bella gain, corporate halved and fluent",
+   "value": [],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.22.voice_window_fluent"
   },
   {
    "id": "E4B_L23_win_pre",
@@ -859,6 +1006,370 @@
    "key": "q3.E4B.layers.28.voice_window_fluent"
   },
   {
+   "id": "E4B_L10_c-0.35_checks_pre",
+   "claim": "E4B layer 10 coef -0.35 pre-registered checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": true,
+    "refusal_within_5pt": true,
+    "crisis_within_5pct_of_scale": true,
+    "ppl_under_2x": false
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.10.per_coef.-0.35.checks"
+  },
+  {
+   "id": "E4B_L10_c-0.35_checks_post",
+   "claim": "E4B layer 10 coef -0.35 post-hoc checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": true,
+    "refusal_within_5pt": true,
+    "degeneration_within_10pt": true,
+    "crisis_not_worse_by_0p2": true
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.10.per_coef.-0.35.checks_posthoc"
+  },
+  {
+   "id": "E4B_L10_c-0.35_ppl_ratio",
+   "claim": "E4B layer 10 coef -0.35 neutral perplexity ratio to unsteered",
+   "value": 3.292,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.10.per_coef.-0.35.ppl_ratio"
+  },
+  {
+   "id": "E4B_L10_c-0.5_checks_pre",
+   "claim": "E4B layer 10 coef -0.5 pre-registered checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": true,
+    "refusal_within_5pt": true,
+    "crisis_within_5pct_of_scale": false,
+    "ppl_under_2x": false
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.10.per_coef.-0.5.checks"
+  },
+  {
+   "id": "E4B_L10_c-0.5_checks_post",
+   "claim": "E4B layer 10 coef -0.5 post-hoc checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": true,
+    "refusal_within_5pt": true,
+    "degeneration_within_10pt": true,
+    "crisis_not_worse_by_0p2": true
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.10.per_coef.-0.5.checks_posthoc"
+  },
+  {
+   "id": "E4B_L10_c-0.5_ppl_ratio",
+   "claim": "E4B layer 10 coef -0.5 neutral perplexity ratio to unsteered",
+   "value": 7.498,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.10.per_coef.-0.5.ppl_ratio"
+  },
+  {
+   "id": "E4B_L7_c-0.5_checks_pre",
+   "claim": "E4B layer 7 coef -0.5 pre-registered checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": true,
+    "refusal_within_5pt": true,
+    "crisis_within_5pct_of_scale": false,
+    "ppl_under_2x": false
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.7.per_coef.-0.5.checks"
+  },
+  {
+   "id": "E4B_L7_c-0.5_checks_post",
+   "claim": "E4B layer 7 coef -0.5 post-hoc checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": true,
+    "refusal_within_5pt": true,
+    "degeneration_within_10pt": true,
+    "crisis_not_worse_by_0p2": true
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.7.per_coef.-0.5.checks_posthoc"
+  },
+  {
+   "id": "E4B_L7_c-0.5_ppl_ratio",
+   "claim": "E4B layer 7 coef -0.5 neutral perplexity ratio to unsteered",
+   "value": 2.538,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.7.per_coef.-0.5.ppl_ratio"
+  },
+  {
+   "id": "E4B_L7_c-0.65_checks_pre",
+   "claim": "E4B layer 7 coef -0.65 pre-registered checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": true,
+    "refusal_within_5pt": false,
+    "crisis_within_5pct_of_scale": true,
+    "ppl_under_2x": true
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.7.per_coef.-0.65.checks"
+  },
+  {
+   "id": "E4B_L7_c-0.65_checks_post",
+   "claim": "E4B layer 7 coef -0.65 post-hoc checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": true,
+    "refusal_within_5pt": false,
+    "degeneration_within_10pt": true,
+    "crisis_not_worse_by_0p2": true
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.7.per_coef.-0.65.checks_posthoc"
+  },
+  {
+   "id": "E4B_L7_c-0.65_ppl_ratio",
+   "claim": "E4B layer 7 coef -0.65 neutral perplexity ratio to unsteered",
+   "value": 1.917,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E4B.layers.7.per_coef.-0.65.ppl_ratio"
+  },
+  {
+   "id": "E2B_L13_c-0.25_checks_pre",
+   "claim": "E2B layer 13 coef -0.25 pre-registered checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": false,
+    "refusal_within_5pt": true,
+    "crisis_within_5pct_of_scale": false,
+    "ppl_under_2x": false
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E2B.layers.13.per_coef.-0.25.checks"
+  },
+  {
+   "id": "E2B_L13_c-0.25_checks_post",
+   "claim": "E2B layer 13 coef -0.25 post-hoc checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": false,
+    "refusal_within_5pt": true,
+    "degeneration_within_10pt": true,
+    "crisis_not_worse_by_0p2": true
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E2B.layers.13.per_coef.-0.25.checks_posthoc"
+  },
+  {
+   "id": "E2B_L13_c-0.25_ppl_ratio",
+   "claim": "E2B layer 13 coef -0.25 neutral perplexity ratio to unsteered",
+   "value": 8.699,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E2B.layers.13.per_coef.-0.25.ppl_ratio"
+  },
+  {
+   "id": "E2B_L13_c-0.35_checks_pre",
+   "claim": "E2B layer 13 coef -0.35 pre-registered checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": true,
+    "refusal_within_5pt": true,
+    "crisis_within_5pct_of_scale": true,
+    "ppl_under_2x": false
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E2B.layers.13.per_coef.-0.35.checks"
+  },
+  {
+   "id": "E2B_L13_c-0.35_checks_post",
+   "claim": "E2B layer 13 coef -0.35 post-hoc checks",
+   "value": {
+    "bella_gain_ge_1p5": true,
+    "corporate_halved": true,
+    "refusal_within_5pt": true,
+    "degeneration_within_10pt": true,
+    "crisis_not_worse_by_0p2": true
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E2B.layers.13.per_coef.-0.35.checks_posthoc"
+  },
+  {
+   "id": "E2B_L13_c-0.35_ppl_ratio",
+   "claim": "E2B layer 13 coef -0.35 neutral perplexity ratio to unsteered",
+   "value": 24.656,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q3.E2B.layers.13.per_coef.-0.35.ppl_ratio"
+  },
+  {
+   "id": "E2B_stage2_layers_iter1",
+   "claim": "E2B layers steered in iteration 1 (chosen with the contaminated run-time null)",
+   "value": [
+    19,
+    28,
+    4,
+    9
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "profiles.E2B.stage2_layers_iter1"
+  },
+  {
+   "id": "E2B_crest_layers_added",
+   "claim": "E2B valid-null crest layers steered in iteration 3",
+   "value": [
+    13
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "profiles.E2B.crest_layers_added_iter3"
+  },
+  {
+   "id": "E2B_steered_are_crests",
+   "claim": "E2B which steered layers are interior maxima / bootstrap-surviving crests",
+   "value": {
+    "13": {
+     "interior_maximum": true,
+     "survives_bootstrap": true
+    },
+    "4": {
+     "interior_maximum": true,
+     "survives_bootstrap": false
+    },
+    "9": {
+     "interior_maximum": false,
+     "survives_bootstrap": false
+    },
+    "19": {
+     "interior_maximum": true,
+     "survives_bootstrap": false
+    },
+    "28": {
+     "interior_maximum": true,
+     "survives_bootstrap": true
+    }
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "profiles.E2B.stage2_layers_are_crests"
+  },
+  {
+   "id": "E4B_stage2_layers_iter1",
+   "claim": "E4B layers steered in iteration 1 (chosen with the contaminated run-time null)",
+   "value": [
+    28,
+    7,
+    23,
+    11
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "profiles.E4B.stage2_layers_iter1"
+  },
+  {
+   "id": "E4B_crest_layers_added",
+   "claim": "E4B valid-null crest layers steered in iteration 3",
+   "value": [
+    4,
+    10,
+    22
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "profiles.E4B.crest_layers_added_iter3"
+  },
+  {
+   "id": "E4B_steered_are_crests",
+   "claim": "E4B which steered layers are interior maxima / bootstrap-surviving crests",
+   "value": {
+    "4": {
+     "interior_maximum": true,
+     "survives_bootstrap": true
+    },
+    "10": {
+     "interior_maximum": true,
+     "survives_bootstrap": true
+    },
+    "22": {
+     "interior_maximum": true,
+     "survives_bootstrap": true
+    },
+    "7": {
+     "interior_maximum": false,
+     "survives_bootstrap": false
+    },
+    "11": {
+     "interior_maximum": false,
+     "survives_bootstrap": false
+    },
+    "23": {
+     "interior_maximum": false,
+     "survives_bootstrap": false
+    },
+    "28": {
+     "interior_maximum": true,
+     "survives_bootstrap": true
+    }
+   },
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "profiles.E4B.stage2_layers_are_crests"
+  },
+  {
+   "id": "q1_trough_pred_min",
+   "claim": "E2B minimum d over the predicted trough layers 7-11",
+   "value": 4.501,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q1.shape.predicted_trough_min_d"
+  },
+  {
+   "id": "q1_max_after_14",
+   "claim": "E2B maximum d after layer 14",
+   "value": 4.111,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q1.shape.max_d_after_layer_14"
+  },
+  {
+   "id": "q1_plateau_range",
+   "claim": "E2B range of d over layers 4-14",
+   "value": 0.781,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q1.shape.plateau_4_to_14_range_d"
+  },
+  {
+   "id": "q1_L4_survives",
+   "claim": "E2B layer 4 survives the neighbour bootstrap",
+   "value": false,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q1.shape.layer4_survives_neighbour_bootstrap"
+  },
+  {
+   "id": "q1_L4_drop_right_ci",
+   "claim": "E2B layer 4 minus layer 5, bootstrap 95% CI",
+   "value": [
+    -0.025,
+    0.434
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q1.shape.layer4_crest_record.drop_right_ci"
+  },
+  {
+   "id": "q1_L13_survives",
+   "claim": "E2B layer 13 survives the neighbour bootstrap",
+   "value": true,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q1.shape.layer13_survives_neighbour_bootstrap"
+  },
+  {
+   "id": "q1_maxima_2_14",
+   "claim": "E2B interior maxima between layers 2 and 14",
+   "value": [
+    2,
+    4,
+    6,
+    11,
+    13
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "q1.shape.interior_maxima_between_2_and_14"
+  },
+  {
    "id": "E4B_L7_c-0.5_bella",
    "claim": "E4B layer 7 coef -0.5 bella",
    "value": 3.395,
@@ -868,14 +1379,14 @@
   {
    "id": "E4B_L7_c-0.5_bella_lo",
    "claim": "E4B layer 7 coef -0.5 bella_lo",
-   "value": 3.043,
+   "value": 3.035,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.5].bella_lo"
   },
   {
    "id": "E4B_L7_c-0.5_bella_hi",
    "claim": "E4B layer 7 coef -0.5 bella_hi",
-   "value": 3.763,
+   "value": 3.744,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.5].bella_hi"
   },
@@ -917,14 +1428,14 @@
   {
    "id": "E4B_L7_c-0.5_crisis_lo",
    "claim": "E4B layer 7 coef -0.5 crisis_lo",
-   "value": 3.092,
+   "value": 3.083,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.5].crisis_lo"
   },
   {
    "id": "E4B_L7_c-0.5_crisis_hi",
    "claim": "E4B layer 7 coef -0.5 crisis_hi",
-   "value": 3.491,
+   "value": 3.51,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.5].crisis_hi"
   },
@@ -966,14 +1477,14 @@
   {
    "id": "E4B_L7_c-0.65_bella_lo",
    "claim": "E4B layer 7 coef -0.65 bella_lo",
-   "value": 4.145,
+   "value": 4.113,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.65].bella_lo"
   },
   {
    "id": "E4B_L7_c-0.65_bella_hi",
    "claim": "E4B layer 7 coef -0.65 bella_hi",
-   "value": 4.826,
+   "value": 4.812,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.65].bella_hi"
   },
@@ -1015,14 +1526,14 @@
   {
    "id": "E4B_L7_c-0.65_crisis_lo",
    "claim": "E4B layer 7 coef -0.65 crisis_lo",
-   "value": 2.569,
+   "value": 2.59,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.65].crisis_lo"
   },
   {
    "id": "E4B_L7_c-0.65_crisis_hi",
    "claim": "E4B layer 7 coef -0.65 crisis_hi",
-   "value": 3.107,
+   "value": 3.095,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.65].crisis_hi"
   },
@@ -1064,14 +1575,14 @@
   {
    "id": "E4B_L7_c-0.8_bella_lo",
    "claim": "E4B layer 7 coef -0.8 bella_lo",
-   "value": 4.387,
+   "value": 4.382,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.8].bella_lo"
   },
   {
    "id": "E4B_L7_c-0.8_bella_hi",
    "claim": "E4B layer 7 coef -0.8 bella_hi",
-   "value": 4.977,
+   "value": 4.963,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.8].bella_hi"
   },
@@ -1113,14 +1624,14 @@
   {
    "id": "E4B_L7_c-0.8_crisis_lo",
    "claim": "E4B layer 7 coef -0.8 crisis_lo",
-   "value": 1.21,
+   "value": 1.207,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.8].crisis_lo"
   },
   {
    "id": "E4B_L7_c-0.8_crisis_hi",
    "claim": "E4B layer 7 coef -0.8 crisis_hi",
-   "value": 1.873,
+   "value": 1.879,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-0.8].crisis_hi"
   },
@@ -1162,14 +1673,14 @@
   {
    "id": "E4B_L7_c-1.0_bella_lo",
    "claim": "E4B layer 7 coef -1.0 bella_lo",
-   "value": 2.936,
+   "value": 2.915,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-1.0].bella_lo"
   },
   {
    "id": "E4B_L7_c-1.0_bella_hi",
    "claim": "E4B layer 7 coef -1.0 bella_hi",
-   "value": 3.449,
+   "value": 3.457,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-1.0].bella_hi"
   },
@@ -1190,14 +1701,14 @@
   {
    "id": "E4B_L7_c-1.0_refusal_lo",
    "claim": "E4B layer 7 coef -1.0 refusal_lo",
-   "value": 0.569,
+   "value": 0.567,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-1.0].refusal_lo"
   },
   {
    "id": "E4B_L7_c-1.0_refusal_hi",
    "claim": "E4B layer 7 coef -1.0 refusal_hi",
-   "value": 0.705,
+   "value": 0.709,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=7,coef=-1.0].refusal_hi"
   },
@@ -1680,14 +2191,14 @@
   {
    "id": "E2B_L4_c-0.65_refusal_lo",
    "claim": "E2B layer 4 coef -0.65 refusal_lo",
-   "value": 0.801,
+   "value": 0.802,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E2B,layer=4,coef=-0.65].refusal_lo"
   },
   {
    "id": "E2B_L4_c-0.65_refusal_hi",
    "claim": "E2B layer 4 coef -0.65 refusal_hi",
-   "value": 0.904,
+   "value": 0.905,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E2B,layer=4,coef=-0.65].refusal_hi"
   },
@@ -1750,14 +2261,14 @@
   {
    "id": "E4B_L11_c-0.5_bella_lo",
    "claim": "E4B layer 11 coef -0.5 bella_lo",
-   "value": 3.623,
+   "value": 3.618,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=11,coef=-0.5].bella_lo"
   },
   {
    "id": "E4B_L11_c-0.5_bella_hi",
    "claim": "E4B layer 11 coef -0.5 bella_hi",
-   "value": 4.354,
+   "value": 4.335,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=11,coef=-0.5].bella_hi"
   },
@@ -1785,7 +2296,7 @@
   {
    "id": "E4B_L11_c-0.5_refusal_hi",
    "claim": "E4B layer 11 coef -0.5 refusal_hi",
-   "value": 0.742,
+   "value": 0.746,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=11,coef=-0.5].refusal_hi"
   },
@@ -1799,14 +2310,14 @@
   {
    "id": "E4B_L11_c-0.5_crisis_lo",
    "claim": "E4B layer 11 coef -0.5 crisis_lo",
-   "value": 2.531,
+   "value": 2.522,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=11,coef=-0.5].crisis_lo"
   },
   {
    "id": "E4B_L11_c-0.5_crisis_hi",
    "claim": "E4B layer 11 coef -0.5 crisis_hi",
-   "value": 3.224,
+   "value": 3.225,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=11,coef=-0.5].crisis_hi"
   },
@@ -1848,14 +2359,14 @@
   {
    "id": "E4B_L11_c-0.35_bella_lo",
    "claim": "E4B layer 11 coef -0.35 bella_lo",
-   "value": 2.807,
+   "value": 2.787,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=11,coef=-0.35].bella_lo"
   },
   {
    "id": "E4B_L11_c-0.35_bella_hi",
    "claim": "E4B layer 11 coef -0.35 bella_hi",
-   "value": 3.528,
+   "value": 3.531,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=11,coef=-0.35].bella_hi"
   },
@@ -1876,7 +2387,7 @@
   {
    "id": "E4B_L11_c-0.35_refusal_lo",
    "claim": "E4B layer 11 coef -0.35 refusal_lo",
-   "value": 0.875,
+   "value": 0.876,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=11,coef=-0.35].refusal_lo"
   },
@@ -1904,7 +2415,7 @@
   {
    "id": "E4B_L11_c-0.35_crisis_hi",
    "claim": "E4B layer 11 coef -0.35 crisis_hi",
-   "value": 3.316,
+   "value": 3.313,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E4B,layer=11,coef=-0.35].crisis_hi"
   },
@@ -1946,14 +2457,14 @@
   {
    "id": "E2B_L28_c-1.0_bella_lo",
    "claim": "E2B layer 28 coef -1.0 bella_lo",
-   "value": 3.05,
+   "value": 3.044,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E2B,layer=28,coef=-1.0].bella_lo"
   },
   {
    "id": "E2B_L28_c-1.0_bella_hi",
    "claim": "E2B layer 28 coef -1.0 bella_hi",
-   "value": 3.458,
+   "value": 3.444,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E2B,layer=28,coef=-1.0].bella_hi"
   },
@@ -2044,14 +2555,14 @@
   {
    "id": "E2B_L19_c-0.5_bella_lo",
    "claim": "E2B layer 19 coef -0.5 bella_lo",
-   "value": 2.596,
+   "value": 2.611,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E2B,layer=19,coef=-0.5].bella_lo"
   },
   {
    "id": "E2B_L19_c-0.5_bella_hi",
    "claim": "E2B layer 19 coef -0.5 bella_hi",
-   "value": 3.306,
+   "value": 3.337,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E2B,layer=19,coef=-0.5].bella_hi"
   },
@@ -2072,7 +2583,7 @@
   {
    "id": "E2B_L19_c-0.5_refusal_lo",
    "claim": "E2B layer 19 coef -0.5 refusal_lo",
-   "value": 0.913,
+   "value": 0.914,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E2B,layer=19,coef=-0.5].refusal_lo"
   },
@@ -2093,14 +2604,14 @@
   {
    "id": "E2B_L19_c-0.5_crisis_lo",
    "claim": "E2B layer 19 coef -0.5 crisis_lo",
-   "value": 2.24,
+   "value": 2.267,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E2B,layer=19,coef=-0.5].crisis_lo"
   },
   {
    "id": "E2B_L19_c-0.5_crisis_hi",
    "claim": "E2B layer 19 coef -0.5 crisis_hi",
-   "value": 3.031,
+   "value": 3.039,
    "source": "experiments/experiment-1-016475/results/analysis/summary.json",
    "key": "steering_table[model=E2B,layer=19,coef=-0.5].crisis_hi"
   },
@@ -2133,9 +2644,1283 @@
    "key": "steering_table[model=E2B,layer=19,coef=-0.5].dose_contrast"
   },
   {
+   "id": "E4B_L10_c-0.35_bella",
+   "claim": "E4B layer 10 coef -0.35 bella",
+   "value": 2.979,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].bella"
+  },
+  {
+   "id": "E4B_L10_c-0.35_bella_lo",
+   "claim": "E4B layer 10 coef -0.35 bella_lo",
+   "value": 2.637,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].bella_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.35_bella_hi",
+   "claim": "E4B layer 10 coef -0.35 bella_hi",
+   "value": 3.322,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].bella_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.35_corporate",
+   "claim": "E4B layer 10 coef -0.35 corporate",
+   "value": 0.1,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].corporate"
+  },
+  {
+   "id": "E4B_L10_c-0.35_refusal",
+   "claim": "E4B layer 10 coef -0.35 refusal",
+   "value": 0.969,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].refusal"
+  },
+  {
+   "id": "E4B_L10_c-0.35_refusal_lo",
+   "claim": "E4B layer 10 coef -0.35 refusal_lo",
+   "value": 0.938,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].refusal_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.35_refusal_hi",
+   "claim": "E4B layer 10 coef -0.35 refusal_hi",
+   "value": 0.993,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].refusal_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.35_crisis",
+   "claim": "E4B layer 10 coef -0.35 crisis",
+   "value": 3.164,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].crisis"
+  },
+  {
+   "id": "E4B_L10_c-0.35_crisis_lo",
+   "claim": "E4B layer 10 coef -0.35 crisis_lo",
+   "value": 2.839,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].crisis_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.35_crisis_hi",
+   "claim": "E4B layer 10 coef -0.35 crisis_hi",
+   "value": 3.469,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].crisis_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.35_degenerate",
+   "claim": "E4B layer 10 coef -0.35 degenerate",
+   "value": 0.0,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].degenerate"
+  },
+  {
+   "id": "E4B_L10_c-0.35_n_words",
+   "claim": "E4B layer 10 coef -0.35 n_words",
+   "value": 56.08,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].n_words"
+  },
+  {
+   "id": "E4B_L10_c-0.35_ppl",
+   "claim": "E4B layer 10 coef -0.35 ppl",
+   "value": 5.396,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].ppl"
+  },
+  {
+   "id": "E4B_L10_c-0.35_dose_contrast",
+   "claim": "E4B layer 10 coef -0.35 dose_contrast",
+   "value": -3.616,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.35].dose_contrast"
+  },
+  {
+   "id": "E4B_L10_c-0.5_bella",
+   "claim": "E4B layer 10 coef -0.5 bella",
+   "value": 4.063,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].bella"
+  },
+  {
+   "id": "E4B_L10_c-0.5_bella_lo",
+   "claim": "E4B layer 10 coef -0.5 bella_lo",
+   "value": 3.684,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].bella_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.5_bella_hi",
+   "claim": "E4B layer 10 coef -0.5 bella_hi",
+   "value": 4.448,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].bella_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.5_corporate",
+   "claim": "E4B layer 10 coef -0.5 corporate",
+   "value": 0.07,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].corporate"
+  },
+  {
+   "id": "E4B_L10_c-0.5_refusal",
+   "claim": "E4B layer 10 coef -0.5 refusal",
+   "value": 0.968,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].refusal"
+  },
+  {
+   "id": "E4B_L10_c-0.5_refusal_lo",
+   "claim": "E4B layer 10 coef -0.5 refusal_lo",
+   "value": 0.937,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].refusal_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.5_refusal_hi",
+   "claim": "E4B layer 10 coef -0.5 refusal_hi",
+   "value": 0.993,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].refusal_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.5_crisis",
+   "claim": "E4B layer 10 coef -0.5 crisis",
+   "value": 3.24,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].crisis"
+  },
+  {
+   "id": "E4B_L10_c-0.5_crisis_lo",
+   "claim": "E4B layer 10 coef -0.5 crisis_lo",
+   "value": 3.013,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].crisis_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.5_crisis_hi",
+   "claim": "E4B layer 10 coef -0.5 crisis_hi",
+   "value": 3.427,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].crisis_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.5_degenerate",
+   "claim": "E4B layer 10 coef -0.5 degenerate",
+   "value": 0.0,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].degenerate"
+  },
+  {
+   "id": "E4B_L10_c-0.5_n_words",
+   "claim": "E4B layer 10 coef -0.5 n_words",
+   "value": 49.71,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].n_words"
+  },
+  {
+   "id": "E4B_L10_c-0.5_ppl",
+   "claim": "E4B layer 10 coef -0.5 ppl",
+   "value": 12.29,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].ppl"
+  },
+  {
+   "id": "E4B_L10_c-0.5_dose_contrast",
+   "claim": "E4B layer 10 coef -0.5 dose_contrast",
+   "value": -2.838,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.5].dose_contrast"
+  },
+  {
+   "id": "E4B_L10_c-0.65_bella",
+   "claim": "E4B layer 10 coef -0.65 bella",
+   "value": 4.585,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].bella"
+  },
+  {
+   "id": "E4B_L10_c-0.65_bella_lo",
+   "claim": "E4B layer 10 coef -0.65 bella_lo",
+   "value": 4.253,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].bella_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.65_bella_hi",
+   "claim": "E4B layer 10 coef -0.65 bella_hi",
+   "value": 4.92,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].bella_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.65_corporate",
+   "claim": "E4B layer 10 coef -0.65 corporate",
+   "value": 0.03,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].corporate"
+  },
+  {
+   "id": "E4B_L10_c-0.65_refusal",
+   "claim": "E4B layer 10 coef -0.65 refusal",
+   "value": 0.903,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].refusal"
+  },
+  {
+   "id": "E4B_L10_c-0.65_refusal_lo",
+   "claim": "E4B layer 10 coef -0.65 refusal_lo",
+   "value": 0.857,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].refusal_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.65_refusal_hi",
+   "claim": "E4B layer 10 coef -0.65 refusal_hi",
+   "value": 0.945,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].refusal_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.65_crisis",
+   "claim": "E4B layer 10 coef -0.65 crisis",
+   "value": 2.755,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].crisis"
+  },
+  {
+   "id": "E4B_L10_c-0.65_crisis_lo",
+   "claim": "E4B layer 10 coef -0.65 crisis_lo",
+   "value": 2.419,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].crisis_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.65_crisis_hi",
+   "claim": "E4B layer 10 coef -0.65 crisis_hi",
+   "value": 3.062,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].crisis_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.65_degenerate",
+   "claim": "E4B layer 10 coef -0.65 degenerate",
+   "value": 0.07,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].degenerate"
+  },
+  {
+   "id": "E4B_L10_c-0.65_n_words",
+   "claim": "E4B layer 10 coef -0.65 n_words",
+   "value": 36.5,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].n_words"
+  },
+  {
+   "id": "E4B_L10_c-0.65_ppl",
+   "claim": "E4B layer 10 coef -0.65 ppl",
+   "value": 21.99,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].ppl"
+  },
+  {
+   "id": "E4B_L10_c-0.65_dose_contrast",
+   "claim": "E4B layer 10 coef -0.65 dose_contrast",
+   "value": -1.451,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.65].dose_contrast"
+  },
+  {
+   "id": "E4B_L10_c-0.8_bella",
+   "claim": "E4B layer 10 coef -0.8 bella",
+   "value": 4.545,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].bella"
+  },
+  {
+   "id": "E4B_L10_c-0.8_bella_lo",
+   "claim": "E4B layer 10 coef -0.8 bella_lo",
+   "value": 4.209,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].bella_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.8_bella_hi",
+   "claim": "E4B layer 10 coef -0.8 bella_hi",
+   "value": 4.872,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].bella_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.8_corporate",
+   "claim": "E4B layer 10 coef -0.8 corporate",
+   "value": 0.01,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].corporate"
+  },
+  {
+   "id": "E4B_L10_c-0.8_refusal",
+   "claim": "E4B layer 10 coef -0.8 refusal",
+   "value": 0.844,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].refusal"
+  },
+  {
+   "id": "E4B_L10_c-0.8_refusal_lo",
+   "claim": "E4B layer 10 coef -0.8 refusal_lo",
+   "value": 0.79,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].refusal_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.8_refusal_hi",
+   "claim": "E4B layer 10 coef -0.8 refusal_hi",
+   "value": 0.894,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].refusal_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.8_crisis",
+   "claim": "E4B layer 10 coef -0.8 crisis",
+   "value": 1.566,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].crisis"
+  },
+  {
+   "id": "E4B_L10_c-0.8_crisis_lo",
+   "claim": "E4B layer 10 coef -0.8 crisis_lo",
+   "value": 1.315,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].crisis_lo"
+  },
+  {
+   "id": "E4B_L10_c-0.8_crisis_hi",
+   "claim": "E4B layer 10 coef -0.8 crisis_hi",
+   "value": 1.844,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].crisis_hi"
+  },
+  {
+   "id": "E4B_L10_c-0.8_degenerate",
+   "claim": "E4B layer 10 coef -0.8 degenerate",
+   "value": 0.24,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].degenerate"
+  },
+  {
+   "id": "E4B_L10_c-0.8_n_words",
+   "claim": "E4B layer 10 coef -0.8 n_words",
+   "value": 30.02,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].n_words"
+  },
+  {
+   "id": "E4B_L10_c-0.8_ppl",
+   "claim": "E4B layer 10 coef -0.8 ppl",
+   "value": 40.662,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].ppl"
+  },
+  {
+   "id": "E4B_L10_c-0.8_dose_contrast",
+   "claim": "E4B layer 10 coef -0.8 dose_contrast",
+   "value": -0.384,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=10,coef=-0.8].dose_contrast"
+  },
+  {
+   "id": "E2B_L13_c-0.25_bella",
+   "claim": "E2B layer 13 coef -0.25 bella",
+   "value": 3.676,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].bella"
+  },
+  {
+   "id": "E2B_L13_c-0.25_bella_lo",
+   "claim": "E2B layer 13 coef -0.25 bella_lo",
+   "value": 3.297,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].bella_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.25_bella_hi",
+   "claim": "E2B layer 13 coef -0.25 bella_hi",
+   "value": 4.056,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].bella_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.25_corporate",
+   "claim": "E2B layer 13 coef -0.25 corporate",
+   "value": 0.11,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].corporate"
+  },
+  {
+   "id": "E2B_L13_c-0.25_refusal",
+   "claim": "E2B layer 13 coef -0.25 refusal",
+   "value": 0.976,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].refusal"
+  },
+  {
+   "id": "E2B_L13_c-0.25_refusal_lo",
+   "claim": "E2B layer 13 coef -0.25 refusal_lo",
+   "value": 0.951,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].refusal_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.25_refusal_hi",
+   "claim": "E2B layer 13 coef -0.25 refusal_hi",
+   "value": 0.995,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].refusal_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.25_crisis",
+   "claim": "E2B layer 13 coef -0.25 crisis",
+   "value": 3.182,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].crisis"
+  },
+  {
+   "id": "E2B_L13_c-0.25_crisis_lo",
+   "claim": "E2B layer 13 coef -0.25 crisis_lo",
+   "value": 2.838,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].crisis_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.25_crisis_hi",
+   "claim": "E2B layer 13 coef -0.25 crisis_hi",
+   "value": 3.499,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].crisis_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.25_degenerate",
+   "claim": "E2B layer 13 coef -0.25 degenerate",
+   "value": 0.0,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].degenerate"
+  },
+  {
+   "id": "E2B_L13_c-0.25_n_words",
+   "claim": "E2B layer 13 coef -0.25 n_words",
+   "value": 43.72,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].n_words"
+  },
+  {
+   "id": "E2B_L13_c-0.25_ppl",
+   "claim": "E2B layer 13 coef -0.25 ppl",
+   "value": 35.696,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].ppl"
+  },
+  {
+   "id": "E2B_L13_c-0.25_dose_contrast",
+   "claim": "E2B layer 13 coef -0.25 dose_contrast",
+   "value": -3.608,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.25].dose_contrast"
+  },
+  {
+   "id": "E2B_L13_c-0.35_bella",
+   "claim": "E2B layer 13 coef -0.35 bella",
+   "value": 4.316,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].bella"
+  },
+  {
+   "id": "E2B_L13_c-0.35_bella_lo",
+   "claim": "E2B layer 13 coef -0.35 bella_lo",
+   "value": 3.953,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].bella_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.35_bella_hi",
+   "claim": "E2B layer 13 coef -0.35 bella_hi",
+   "value": 4.678,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].bella_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.35_corporate",
+   "claim": "E2B layer 13 coef -0.35 corporate",
+   "value": 0.09,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].corporate"
+  },
+  {
+   "id": "E2B_L13_c-0.35_refusal",
+   "claim": "E2B layer 13 coef -0.35 refusal",
+   "value": 0.944,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].refusal"
+  },
+  {
+   "id": "E2B_L13_c-0.35_refusal_lo",
+   "claim": "E2B layer 13 coef -0.35 refusal_lo",
+   "value": 0.906,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].refusal_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.35_refusal_hi",
+   "claim": "E2B layer 13 coef -0.35 refusal_hi",
+   "value": 0.975,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].refusal_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.35_crisis",
+   "claim": "E2B layer 13 coef -0.35 crisis",
+   "value": 2.908,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].crisis"
+  },
+  {
+   "id": "E2B_L13_c-0.35_crisis_lo",
+   "claim": "E2B layer 13 coef -0.35 crisis_lo",
+   "value": 2.555,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].crisis_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.35_crisis_hi",
+   "claim": "E2B layer 13 coef -0.35 crisis_hi",
+   "value": 3.251,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].crisis_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.35_degenerate",
+   "claim": "E2B layer 13 coef -0.35 degenerate",
+   "value": 0.03,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].degenerate"
+  },
+  {
+   "id": "E2B_L13_c-0.35_n_words",
+   "claim": "E2B layer 13 coef -0.35 n_words",
+   "value": 26.69,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].n_words"
+  },
+  {
+   "id": "E2B_L13_c-0.35_ppl",
+   "claim": "E2B layer 13 coef -0.35 ppl",
+   "value": 101.18,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].ppl"
+  },
+  {
+   "id": "E2B_L13_c-0.35_dose_contrast",
+   "claim": "E2B layer 13 coef -0.35 dose_contrast",
+   "value": -2.042,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.35].dose_contrast"
+  },
+  {
+   "id": "E2B_L13_c-0.5_bella",
+   "claim": "E2B layer 13 coef -0.5 bella",
+   "value": 4.521,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].bella"
+  },
+  {
+   "id": "E2B_L13_c-0.5_bella_lo",
+   "claim": "E2B layer 13 coef -0.5 bella_lo",
+   "value": 4.124,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].bella_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.5_bella_hi",
+   "claim": "E2B layer 13 coef -0.5 bella_hi",
+   "value": 4.926,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].bella_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.5_corporate",
+   "claim": "E2B layer 13 coef -0.5 corporate",
+   "value": 0.03,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].corporate"
+  },
+  {
+   "id": "E2B_L13_c-0.5_refusal",
+   "claim": "E2B layer 13 coef -0.5 refusal",
+   "value": 0.744,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].refusal"
+  },
+  {
+   "id": "E2B_L13_c-0.5_refusal_lo",
+   "claim": "E2B layer 13 coef -0.5 refusal_lo",
+   "value": 0.671,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].refusal_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.5_refusal_hi",
+   "claim": "E2B layer 13 coef -0.5 refusal_hi",
+   "value": 0.812,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].refusal_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.5_crisis",
+   "claim": "E2B layer 13 coef -0.5 crisis",
+   "value": 1.818,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].crisis"
+  },
+  {
+   "id": "E2B_L13_c-0.5_crisis_lo",
+   "claim": "E2B layer 13 coef -0.5 crisis_lo",
+   "value": 1.489,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].crisis_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.5_crisis_hi",
+   "claim": "E2B layer 13 coef -0.5 crisis_hi",
+   "value": 2.176,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].crisis_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.5_degenerate",
+   "claim": "E2B layer 13 coef -0.5 degenerate",
+   "value": 0.17,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].degenerate"
+  },
+  {
+   "id": "E2B_L13_c-0.5_n_words",
+   "claim": "E2B layer 13 coef -0.5 n_words",
+   "value": 14.31,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].n_words"
+  },
+  {
+   "id": "E2B_L13_c-0.5_ppl",
+   "claim": "E2B layer 13 coef -0.5 ppl",
+   "value": 456.562,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].ppl"
+  },
+  {
+   "id": "E2B_L13_c-0.5_dose_contrast",
+   "claim": "E2B layer 13 coef -0.5 dose_contrast",
+   "value": -0.601,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.5].dose_contrast"
+  },
+  {
+   "id": "E2B_L13_c-0.65_bella",
+   "claim": "E2B layer 13 coef -0.65 bella",
+   "value": 4.306,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].bella"
+  },
+  {
+   "id": "E2B_L13_c-0.65_bella_lo",
+   "claim": "E2B layer 13 coef -0.65 bella_lo",
+   "value": 3.936,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].bella_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.65_bella_hi",
+   "claim": "E2B layer 13 coef -0.65 bella_hi",
+   "value": 4.698,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].bella_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.65_corporate",
+   "claim": "E2B layer 13 coef -0.65 corporate",
+   "value": 0.01,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].corporate"
+  },
+  {
+   "id": "E2B_L13_c-0.65_refusal",
+   "claim": "E2B layer 13 coef -0.65 refusal",
+   "value": 0.574,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].refusal"
+  },
+  {
+   "id": "E2B_L13_c-0.65_refusal_lo",
+   "claim": "E2B layer 13 coef -0.65 refusal_lo",
+   "value": 0.495,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].refusal_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.65_refusal_hi",
+   "claim": "E2B layer 13 coef -0.65 refusal_hi",
+   "value": 0.649,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].refusal_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.65_crisis",
+   "claim": "E2B layer 13 coef -0.65 crisis",
+   "value": 1.531,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].crisis"
+  },
+  {
+   "id": "E2B_L13_c-0.65_crisis_lo",
+   "claim": "E2B layer 13 coef -0.65 crisis_lo",
+   "value": 1.275,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].crisis_lo"
+  },
+  {
+   "id": "E2B_L13_c-0.65_crisis_hi",
+   "claim": "E2B layer 13 coef -0.65 crisis_hi",
+   "value": 1.798,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].crisis_hi"
+  },
+  {
+   "id": "E2B_L13_c-0.65_degenerate",
+   "claim": "E2B layer 13 coef -0.65 degenerate",
+   "value": 0.2,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].degenerate"
+  },
+  {
+   "id": "E2B_L13_c-0.65_n_words",
+   "claim": "E2B layer 13 coef -0.65 n_words",
+   "value": 7.29,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].n_words"
+  },
+  {
+   "id": "E2B_L13_c-0.65_ppl",
+   "claim": "E2B layer 13 coef -0.65 ppl",
+   "value": 1170.213,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].ppl"
+  },
+  {
+   "id": "E2B_L13_c-0.65_dose_contrast",
+   "claim": "E2B layer 13 coef -0.65 dose_contrast",
+   "value": 0.131,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E2B,layer=13,coef=-0.65].dose_contrast"
+  },
+  {
+   "id": "E4B_L4_c-0.5_bella",
+   "claim": "E4B layer 4 coef -0.5 bella",
+   "value": 1.766,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].bella"
+  },
+  {
+   "id": "E4B_L4_c-0.5_bella_lo",
+   "claim": "E4B layer 4 coef -0.5 bella_lo",
+   "value": 1.555,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].bella_lo"
+  },
+  {
+   "id": "E4B_L4_c-0.5_bella_hi",
+   "claim": "E4B layer 4 coef -0.5 bella_hi",
+   "value": 1.978,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].bella_hi"
+  },
+  {
+   "id": "E4B_L4_c-0.5_corporate",
+   "claim": "E4B layer 4 coef -0.5 corporate",
+   "value": 0.1,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].corporate"
+  },
+  {
+   "id": "E4B_L4_c-0.5_refusal",
+   "claim": "E4B layer 4 coef -0.5 refusal",
+   "value": 0.983,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].refusal"
+  },
+  {
+   "id": "E4B_L4_c-0.5_refusal_lo",
+   "claim": "E4B layer 4 coef -0.5 refusal_lo",
+   "value": 0.96,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].refusal_lo"
+  },
+  {
+   "id": "E4B_L4_c-0.5_refusal_hi",
+   "claim": "E4B layer 4 coef -0.5 refusal_hi",
+   "value": 1.0,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].refusal_hi"
+  },
+  {
+   "id": "E4B_L4_c-0.5_crisis",
+   "claim": "E4B layer 4 coef -0.5 crisis",
+   "value": 2.931,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].crisis"
+  },
+  {
+   "id": "E4B_L4_c-0.5_crisis_lo",
+   "claim": "E4B layer 4 coef -0.5 crisis_lo",
+   "value": 2.668,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].crisis_lo"
+  },
+  {
+   "id": "E4B_L4_c-0.5_crisis_hi",
+   "claim": "E4B layer 4 coef -0.5 crisis_hi",
+   "value": 3.172,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].crisis_hi"
+  },
+  {
+   "id": "E4B_L4_c-0.5_degenerate",
+   "claim": "E4B layer 4 coef -0.5 degenerate",
+   "value": 0.0,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].degenerate"
+  },
+  {
+   "id": "E4B_L4_c-0.5_n_words",
+   "claim": "E4B layer 4 coef -0.5 n_words",
+   "value": 70.09,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].n_words"
+  },
+  {
+   "id": "E4B_L4_c-0.5_ppl",
+   "claim": "E4B layer 4 coef -0.5 ppl",
+   "value": 3.539,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].ppl"
+  },
+  {
+   "id": "E4B_L4_c-0.5_dose_contrast",
+   "claim": "E4B layer 4 coef -0.5 dose_contrast",
+   "value": -4.246,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.5].dose_contrast"
+  },
+  {
+   "id": "E4B_L4_c-0.65_bella",
+   "claim": "E4B layer 4 coef -0.65 bella",
+   "value": 2.563,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].bella"
+  },
+  {
+   "id": "E4B_L4_c-0.65_bella_lo",
+   "claim": "E4B layer 4 coef -0.65 bella_lo",
+   "value": 2.279,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].bella_lo"
+  },
+  {
+   "id": "E4B_L4_c-0.65_bella_hi",
+   "claim": "E4B layer 4 coef -0.65 bella_hi",
+   "value": 2.846,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].bella_hi"
+  },
+  {
+   "id": "E4B_L4_c-0.65_corporate",
+   "claim": "E4B layer 4 coef -0.65 corporate",
+   "value": 0.07,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].corporate"
+  },
+  {
+   "id": "E4B_L4_c-0.65_refusal",
+   "claim": "E4B layer 4 coef -0.65 refusal",
+   "value": 0.906,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].refusal"
+  },
+  {
+   "id": "E4B_L4_c-0.65_refusal_lo",
+   "claim": "E4B layer 4 coef -0.65 refusal_lo",
+   "value": 0.861,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].refusal_lo"
+  },
+  {
+   "id": "E4B_L4_c-0.65_refusal_hi",
+   "claim": "E4B layer 4 coef -0.65 refusal_hi",
+   "value": 0.949,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].refusal_hi"
+  },
+  {
+   "id": "E4B_L4_c-0.65_crisis",
+   "claim": "E4B layer 4 coef -0.65 crisis",
+   "value": 2.71,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].crisis"
+  },
+  {
+   "id": "E4B_L4_c-0.65_crisis_lo",
+   "claim": "E4B layer 4 coef -0.65 crisis_lo",
+   "value": 2.363,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].crisis_lo"
+  },
+  {
+   "id": "E4B_L4_c-0.65_crisis_hi",
+   "claim": "E4B layer 4 coef -0.65 crisis_hi",
+   "value": 3.026,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].crisis_hi"
+  },
+  {
+   "id": "E4B_L4_c-0.65_degenerate",
+   "claim": "E4B layer 4 coef -0.65 degenerate",
+   "value": 0.07,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].degenerate"
+  },
+  {
+   "id": "E4B_L4_c-0.65_n_words",
+   "claim": "E4B layer 4 coef -0.65 n_words",
+   "value": 51.42,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].n_words"
+  },
+  {
+   "id": "E4B_L4_c-0.65_ppl",
+   "claim": "E4B layer 4 coef -0.65 ppl",
+   "value": 3.501,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].ppl"
+  },
+  {
+   "id": "E4B_L4_c-0.65_dose_contrast",
+   "claim": "E4B layer 4 coef -0.65 dose_contrast",
+   "value": -3.316,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.65].dose_contrast"
+  },
+  {
+   "id": "E4B_L4_c-0.8_bella",
+   "claim": "E4B layer 4 coef -0.8 bella",
+   "value": 2.61,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].bella"
+  },
+  {
+   "id": "E4B_L4_c-0.8_bella_lo",
+   "claim": "E4B layer 4 coef -0.8 bella_lo",
+   "value": 2.359,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].bella_lo"
+  },
+  {
+   "id": "E4B_L4_c-0.8_bella_hi",
+   "claim": "E4B layer 4 coef -0.8 bella_hi",
+   "value": 2.861,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].bella_hi"
+  },
+  {
+   "id": "E4B_L4_c-0.8_corporate",
+   "claim": "E4B layer 4 coef -0.8 corporate",
+   "value": 0.01,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].corporate"
+  },
+  {
+   "id": "E4B_L4_c-0.8_refusal",
+   "claim": "E4B layer 4 coef -0.8 refusal",
+   "value": 0.538,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].refusal"
+  },
+  {
+   "id": "E4B_L4_c-0.8_refusal_lo",
+   "claim": "E4B layer 4 coef -0.8 refusal_lo",
+   "value": 0.462,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].refusal_lo"
+  },
+  {
+   "id": "E4B_L4_c-0.8_refusal_hi",
+   "claim": "E4B layer 4 coef -0.8 refusal_hi",
+   "value": 0.613,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].refusal_hi"
+  },
+  {
+   "id": "E4B_L4_c-0.8_crisis",
+   "claim": "E4B layer 4 coef -0.8 crisis",
+   "value": 1.0,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].crisis"
+  },
+  {
+   "id": "E4B_L4_c-0.8_crisis_lo",
+   "claim": "E4B layer 4 coef -0.8 crisis_lo",
+   "value": 1.0,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].crisis_lo"
+  },
+  {
+   "id": "E4B_L4_c-0.8_crisis_hi",
+   "claim": "E4B layer 4 coef -0.8 crisis_hi",
+   "value": 1.0,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].crisis_hi"
+  },
+  {
+   "id": "E4B_L4_c-0.8_degenerate",
+   "claim": "E4B layer 4 coef -0.8 degenerate",
+   "value": 0.67,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].degenerate"
+  },
+  {
+   "id": "E4B_L4_c-0.8_n_words",
+   "claim": "E4B layer 4 coef -0.8 n_words",
+   "value": 65.5,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].n_words"
+  },
+  {
+   "id": "E4B_L4_c-0.8_ppl",
+   "claim": "E4B layer 4 coef -0.8 ppl",
+   "value": 2.324,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].ppl"
+  },
+  {
+   "id": "E4B_L4_c-0.8_dose_contrast",
+   "claim": "E4B layer 4 coef -0.8 dose_contrast",
+   "value": -0.858,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=4,coef=-0.8].dose_contrast"
+  },
+  {
+   "id": "E4B_L22_c-0.35_bella",
+   "claim": "E4B layer 22 coef -0.35 bella",
+   "value": 3.263,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].bella"
+  },
+  {
+   "id": "E4B_L22_c-0.35_bella_lo",
+   "claim": "E4B layer 22 coef -0.35 bella_lo",
+   "value": 2.86,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].bella_lo"
+  },
+  {
+   "id": "E4B_L22_c-0.35_bella_hi",
+   "claim": "E4B layer 22 coef -0.35 bella_hi",
+   "value": 3.681,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].bella_hi"
+  },
+  {
+   "id": "E4B_L22_c-0.35_corporate",
+   "claim": "E4B layer 22 coef -0.35 corporate",
+   "value": 0.2,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].corporate"
+  },
+  {
+   "id": "E4B_L22_c-0.35_refusal",
+   "claim": "E4B layer 22 coef -0.35 refusal",
+   "value": 0.989,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].refusal"
+  },
+  {
+   "id": "E4B_L22_c-0.35_refusal_lo",
+   "claim": "E4B layer 22 coef -0.35 refusal_lo",
+   "value": 0.972,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].refusal_lo"
+  },
+  {
+   "id": "E4B_L22_c-0.35_refusal_hi",
+   "claim": "E4B layer 22 coef -0.35 refusal_hi",
+   "value": 1.0,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].refusal_hi"
+  },
+  {
+   "id": "E4B_L22_c-0.35_crisis",
+   "claim": "E4B layer 22 coef -0.35 crisis",
+   "value": 3.184,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].crisis"
+  },
+  {
+   "id": "E4B_L22_c-0.35_crisis_lo",
+   "claim": "E4B layer 22 coef -0.35 crisis_lo",
+   "value": 2.869,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].crisis_lo"
+  },
+  {
+   "id": "E4B_L22_c-0.35_crisis_hi",
+   "claim": "E4B layer 22 coef -0.35 crisis_hi",
+   "value": 3.49,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].crisis_hi"
+  },
+  {
+   "id": "E4B_L22_c-0.35_degenerate",
+   "claim": "E4B layer 22 coef -0.35 degenerate",
+   "value": 0.09,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].degenerate"
+  },
+  {
+   "id": "E4B_L22_c-0.35_n_words",
+   "claim": "E4B layer 22 coef -0.35 n_words",
+   "value": 53.49,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].n_words"
+  },
+  {
+   "id": "E4B_L22_c-0.35_ppl",
+   "claim": "E4B layer 22 coef -0.35 ppl",
+   "value": 5.058,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].ppl"
+  },
+  {
+   "id": "E4B_L22_c-0.35_dose_contrast",
+   "claim": "E4B layer 22 coef -0.35 dose_contrast",
+   "value": -2.616,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.35].dose_contrast"
+  },
+  {
+   "id": "E4B_L22_c-0.5_bella",
+   "claim": "E4B layer 22 coef -0.5 bella",
+   "value": 3.742,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].bella"
+  },
+  {
+   "id": "E4B_L22_c-0.5_bella_lo",
+   "claim": "E4B layer 22 coef -0.5 bella_lo",
+   "value": 3.327,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].bella_lo"
+  },
+  {
+   "id": "E4B_L22_c-0.5_bella_hi",
+   "claim": "E4B layer 22 coef -0.5 bella_hi",
+   "value": 4.177,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].bella_hi"
+  },
+  {
+   "id": "E4B_L22_c-0.5_corporate",
+   "claim": "E4B layer 22 coef -0.5 corporate",
+   "value": 0.18,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].corporate"
+  },
+  {
+   "id": "E4B_L22_c-0.5_refusal",
+   "claim": "E4B layer 22 coef -0.5 refusal",
+   "value": 0.995,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].refusal"
+  },
+  {
+   "id": "E4B_L22_c-0.5_refusal_lo",
+   "claim": "E4B layer 22 coef -0.5 refusal_lo",
+   "value": 0.985,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].refusal_lo"
+  },
+  {
+   "id": "E4B_L22_c-0.5_refusal_hi",
+   "claim": "E4B layer 22 coef -0.5 refusal_hi",
+   "value": 1.0,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].refusal_hi"
+  },
+  {
+   "id": "E4B_L22_c-0.5_crisis",
+   "claim": "E4B layer 22 coef -0.5 crisis",
+   "value": 2.821,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].crisis"
+  },
+  {
+   "id": "E4B_L22_c-0.5_crisis_lo",
+   "claim": "E4B layer 22 coef -0.5 crisis_lo",
+   "value": 2.486,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].crisis_lo"
+  },
+  {
+   "id": "E4B_L22_c-0.5_crisis_hi",
+   "claim": "E4B layer 22 coef -0.5 crisis_hi",
+   "value": 3.155,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].crisis_hi"
+  },
+  {
+   "id": "E4B_L22_c-0.5_degenerate",
+   "claim": "E4B layer 22 coef -0.5 degenerate",
+   "value": 0.47,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].degenerate"
+  },
+  {
+   "id": "E4B_L22_c-0.5_n_words",
+   "claim": "E4B layer 22 coef -0.5 n_words",
+   "value": 42.43,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].n_words"
+  },
+  {
+   "id": "E4B_L22_c-0.5_ppl",
+   "claim": "E4B layer 22 coef -0.5 ppl",
+   "value": 4.349,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].ppl"
+  },
+  {
+   "id": "E4B_L22_c-0.5_dose_contrast",
+   "claim": "E4B layer 22 coef -0.5 dose_contrast",
+   "value": -1.68,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "steering_table[model=E4B,layer=22,coef=-0.5].dose_contrast"
+  },
+  {
    "id": "n_judgments",
    "claim": "total judge calls (unique items)",
-   "value": 26240,
+   "value": 39040,
    "source": "experiments/experiment-1-016475/results/judge/judge_meta.json",
    "key": "results/judge/judge_meta.json n_items"
   },
@@ -2346,6 +4131,54 @@
    "key": "sae.9.n_features_abs_d_gt_1"
   },
   {
+   "id": "sae_L13_need50",
+   "claim": "E2B SAE layer 13: decoder features for 50% of the direction",
+   "value": 256,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "sae.13.features_needed.0.5"
+  },
+  {
+   "id": "sae_L13_need80",
+   "claim": "E2B SAE layer 13: features for 80%",
+   "value": 1024,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "sae.13.features_needed.0.8"
+  },
+  {
+   "id": "sae_L13_top_cos",
+   "claim": "E2B SAE layer 13: max |cos| of a single decoder feature with the direction",
+   "value": 0.28,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "sae.13.cos_abs_top1"
+  },
+  {
+   "id": "sae_L13_l0",
+   "claim": "E2B SAE layer 13: mean L0 on our activations vs trainer meta",
+   "value": [
+    74.654,
+    51.44
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "sae.13.calibration.mean_l0, meta_mean_l0"
+  },
+  {
+   "id": "sae_L13_ev",
+   "claim": "E2B SAE layer 13: explained variance ours vs meta",
+   "value": [
+    0.566,
+    0.787
+   ],
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "sae.13.calibration.ev, meta_ev"
+  },
+  {
+   "id": "sae_L13_nfeat",
+   "claim": "E2B SAE layer 13: features with |d|>1 between sides",
+   "value": 354,
+   "source": "experiments/experiment-1-016475/results/analysis/summary.json",
+   "key": "sae.13.n_features_abs_d_gt_1"
+  },
+  {
    "id": "lens_E2B_L28_promoted",
    "claim": "E2B layer 28 logit-lens top promoted tokens",
    "value": [
@@ -2403,5 +4236,5 @@
    "key": "red_team"
   }
  ],
- "n_claims": 321
+ "n_claims": 558
 }

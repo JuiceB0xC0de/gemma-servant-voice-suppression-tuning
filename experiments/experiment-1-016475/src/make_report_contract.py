@@ -61,7 +61,7 @@ claim("q2_supported", "Q2 verdict as registered", Q2["supported_point_rule"], "q
 claim("q2_same_abs", "layers among the strongest three shared by both models", Q2["same_absolute_layers"], "q2.same_absolute_layers")
 claim("q2_L9_d", "E2B hold-out layer 9 d", r3(Q2["e2b_L9_d"]), "q2.e2b_L9_d")
 G = Q2["global_minus_one_posthoc"]
-for k in ("E2B_surviving", "E4B_surviving", "E4B_all_maxima"):
+for k in ("E2B_surviving", "E2B_all_maxima", "E4B_surviving", "E4B_all_maxima", "E4B_first32_surviving"):
     claim(f"gm1_{k}_count", f"{k}: crests one layer before a global block / total", [G[k]["on_global_minus_1"], G[k]["n"]], f"q2.global_minus_one_posthoc.{k}.on_global_minus_1, .n")
     claim(f"gm1_{k}_p", f"{k}: hypergeometric P(>= that many) by chance", G[k]["p_on_global_minus_1_ge"], f"q2.global_minus_one_posthoc.{k}.p_on_global_minus_1_ge")
     claim(f"gm1_{k}_on_global", f"{k}: crests exactly on a global layer", G[k]["on_global"], f"q2.global_minus_one_posthoc.{k}.on_global")
@@ -77,7 +77,25 @@ for m in ("E2B", "E4B"):
         claim(f"{m}_L{l}_win_pre", f"{m} layer {l} pre-registered window", v["usable_window"], f"q3.{m}.layers.{l}.usable_window")
         claim(f"{m}_L{l}_win_post", f"{m} layer {l} post-hoc window", v["usable_window_posthoc"], f"q3.{m}.layers.{l}.usable_window_posthoc")
         claim(f"{m}_L{l}_voice_fluent", f"{m} layer {l} coefficients with Bella gain, corporate halved and fluent", v["voice_window_fluent"], f"q3.{m}.layers.{l}.voice_window_fluent")
-cells = [("E4B", 7, -0.5), ("E4B", 7, -0.65), ("E4B", 7, -0.8), ("E4B", 7, -1.0), ("E2B", 9, -0.35), ("E2B", 9, -0.5), ("E2B", 9, -0.65), ("E2B", 4, -0.5), ("E2B", 4, -0.65), ("E4B", 11, -0.5), ("E4B", 11, -0.35), ("E2B", 28, -1.0), ("E2B", 19, -0.5)]
+cells = [("E4B", 7, -0.5), ("E4B", 7, -0.65), ("E4B", 7, -0.8), ("E4B", 7, -1.0), ("E2B", 9, -0.35), ("E2B", 9, -0.5), ("E2B", 9, -0.65), ("E2B", 4, -0.5), ("E2B", 4, -0.65), ("E4B", 11, -0.5), ("E4B", 11, -0.35), ("E2B", 28, -1.0), ("E2B", 19, -0.5),
+         ("E4B", 10, -0.35), ("E4B", 10, -0.5), ("E4B", 10, -0.65), ("E4B", 10, -0.8), ("E2B", 13, -0.25), ("E2B", 13, -0.35), ("E2B", 13, -0.5), ("E2B", 13, -0.65), ("E4B", 4, -0.5), ("E4B", 4, -0.65), ("E4B", 4, -0.8), ("E4B", 22, -0.35), ("E4B", 22, -0.5)]
+for (m, l, c) in (("E4B", 10, -0.35), ("E4B", 10, -0.5), ("E4B", 7, -0.5), ("E4B", 7, -0.65), ("E2B", 13, -0.25), ("E2B", 13, -0.35)):
+    pc = Q3[m]["layers"][str(l)]["per_coef"][str(c)]
+    claim(f"{m}_L{l}_c{c}_checks_pre", f"{m} layer {l} coef {c} pre-registered checks", pc["checks"], f"q3.{m}.layers.{l}.per_coef.{c}.checks")
+    claim(f"{m}_L{l}_c{c}_checks_post", f"{m} layer {l} coef {c} post-hoc checks", pc["checks_posthoc"], f"q3.{m}.layers.{l}.per_coef.{c}.checks_posthoc")
+    claim(f"{m}_L{l}_c{c}_ppl_ratio", f"{m} layer {l} coef {c} neutral perplexity ratio to unsteered", r3(pc["ppl_ratio"]), f"q3.{m}.layers.{l}.per_coef.{c}.ppl_ratio")
+for m in PROF:
+    claim(f"{m}_stage2_layers_iter1", f"{m} layers steered in iteration 1 (chosen with the contaminated run-time null)", PROF[m]["stage2_layers_iter1"], f"profiles.{m}.stage2_layers_iter1")
+    claim(f"{m}_crest_layers_added", f"{m} valid-null crest layers steered in iteration 3", PROF[m]["crest_layers_added_iter3"], f"profiles.{m}.crest_layers_added_iter3")
+    claim(f"{m}_steered_are_crests", f"{m} which steered layers are interior maxima / bootstrap-surviving crests", PROF[m]["stage2_layers_are_crests"], f"profiles.{m}.stage2_layers_are_crests")
+SH = Q1["shape"]
+claim("q1_trough_pred_min", "E2B minimum d over the predicted trough layers 7-11", r3(SH["predicted_trough_min_d"]), "q1.shape.predicted_trough_min_d")
+claim("q1_max_after_14", "E2B maximum d after layer 14", r3(SH["max_d_after_layer_14"]), "q1.shape.max_d_after_layer_14")
+claim("q1_plateau_range", "E2B range of d over layers 4-14", r3(SH["plateau_4_to_14_range_d"]), "q1.shape.plateau_4_to_14_range_d")
+claim("q1_L4_survives", "E2B layer 4 survives the neighbour bootstrap", SH["layer4_survives_neighbour_bootstrap"], "q1.shape.layer4_survives_neighbour_bootstrap")
+claim("q1_L4_drop_right_ci", "E2B layer 4 minus layer 5, bootstrap 95% CI", [r3(x) for x in SH["layer4_crest_record"]["drop_right_ci"]], "q1.shape.layer4_crest_record.drop_right_ci")
+claim("q1_L13_survives", "E2B layer 13 survives the neighbour bootstrap", SH["layer13_survives_neighbour_bootstrap"], "q1.shape.layer13_survives_neighbour_bootstrap")
+claim("q1_maxima_2_14", "E2B interior maxima between layers 2 and 14", SH["interior_maxima_between_2_and_14"], "q1.shape.interior_maxima_between_2_and_14")
 for (m, l, c) in cells:
     r = TAB[(m, l, c)]
     for k in ("bella", "bella_lo", "bella_hi", "corporate", "refusal", "refusal_lo", "refusal_hi", "crisis", "crisis_lo", "crisis_hi", "degenerate", "n_words", "ppl", "dose_contrast"):
@@ -107,15 +125,21 @@ claim("data_crisis_eval", "crisis eval prompts", 30, "crisis_eval", source="expe
 claim("data_redteam", "red-team prompts", 160, "red_team", source="experiments/experiment-1-016475/results/data/manifest.json")
 
 report = {
-    "title": "The Bella-vs-Gemma direction is decodable at every layer of Gemma 4 E2B and E4B; scaling it down frees the voice at one coefficient before replies collapse",
+    "title": "The Bella-vs-Gemma direction is decodable at every layer of Gemma 4 E2B and E4B; scaling it down at E4B layer 10 frees the voice over two coefficients but fails the registered perplexity check",
     "headline": ("A mean-difference direction between Bella's replies and Gemma's own replies separates the two voices at every layer of both models "
-                 "(d 2.5 to 5.0 on 100 held-out pairs). In E2B the profile has the two predicted crests (layers 4 and 13, dip at 12) and Q1 is supported; "
-                 "the crests do not fall on global-attention layers as registered (Q2 refuted), but post hoc they sit one layer before a global block "
-                 "in both models. Subtracting the direction moves Gemma toward Bella's register at coefficient -0.5 to -0.65 (judged Bella-ness 1.1 to 3.0 to 4.5 / 7) "
-                 "with refusals intact, but every layer collapses into repetition within one or two grid steps, so no two-coefficient window passes and Q3 is not supported."),
-    "assessment": {"q1": "supported (point rule and paired bootstrap); trough is a single dip at layer 12 rather than layers 7 to 11",
-                   "q2": "refuted as registered (1 of 3 E2B crests and 0 of 3 E4B crests on global layers; both peak at layer 4); post-hoc: surviving crests sit one layer before global blocks (E4B 5/5, p=3e-5; E2B 3/4, p=0.023)",
-                   "q3": "not supported: voice moves at one coefficient per layer, no contiguous window keeps refusal, crisis quality and fluency; perplexity check is a broken instrument (reported, replaced post hoc by a degeneration rate)",
+                 "(d 2.5 to 5.0 on 100 held-out pairs). E2B meets the registered two-crest rule literally (layers 4 and 13, dip at layer 12), but the shape is a rise, "
+                 "a plateau from layer 4 to 14 (range 0.78 d) and a decline: the predicted trough at layers 7 to 11 did not appear (d 4.50 to 4.82, higher than every layer past 14), "
+                 "and layer 4 is not separable from layers 5 to 6 by bootstrap (layer 13 is). The crests do not fall on global-attention layers (Q2 refuted). "
+                 "Subtracting the direction at E4B layer 10, a bootstrap-surviving crest, moves Gemma toward Bella's register at coefficients -0.35 and -0.5 "
+                 "(judged Bella-ness 1.13 to 2.98 and 4.06 / 7, corporate phrasing 0.20 to 0.10 and 0.07 hits per reply, refusal 0.994 to 0.969 and 0.968, crisis quality 3.03 to 3.16 and 3.24, "
+                 "degeneration 0 %), and E4B layer 7 does the same at -0.5 and -0.65. Under the registered rule the layer-10 cells and layer 7 -0.5 fail only the neutral-perplexity check "
+                 "(ratio 2.5 to 7.5 vs the 2x limit; the check penalises the voice change itself and rewards repetition) and, at -0.5, the two-sided crisis check because crisis quality improved by 0.21 to 0.28; "
+                 "layer 7 -0.65 passes perplexity (ratio 1.9) but drops refusal by 5.1 points. Q3 is therefore not supported under the registered rule; under the post-hoc rule that swaps perplexity for a "
+                 "degeneration rate it is supported at E4B layer 10 (two contiguous coefficients) and passes at layer 7 -0.5 only. E2B layer 13 (its surviving crest) gains voice at -0.25 and -0.35 (Bella-ness 3.68 and 4.32) but "
+                 "misses the corporate halving by 0.01 at -0.25 and loses 23 refusal points at -0.5. Beyond about -0.65 every layer collapses into repetition or refusal loss."),
+    "assessment": {"q1": "supported by the registered point rule and the paired bootstrap of the two crest-minus-dip drops, but on a one-layer dip at layer 12: layer 4 does not survive its own neighbour test (drop to layer 5 0.18, CI [-0.03, 0.43]), the predicted 7-11 trough is absent, and the profile is rise, plateau 4-14, decline rather than the sketched wave",
+                   "q2": "refuted as registered (1 of 3 E2B crests and 0 of 3 E4B crests on global layers; both peak at layer 4). Post hoc: bootstrap-surviving crests sit one layer before a global block in E4B (5/5 with all-reply pooling, 3/4 with first-32 pooling); in E2B 3/4 surviving crests do so but the result is not significant once layer 4 is counted (all maxima 3/9, p=0.28). Suggestive only; adjacent layers are correlated and the crest list depends on pooling.",
+                   "q3": "not supported under the registered rule: E4B layer 10 at -0.35 and -0.5 and layer 7 at -0.5 pass Bella gain (+1.9 to +2.9), corporate halving, refusal (within 2.6 points) and degeneration (0 %) but fail the neutral-perplexity check (ratio 2.5 to 7.5), which penalises the voice change itself, and the -0.5 cells also fail the two-sided crisis check because crisis quality improved by 0.21 to 0.28; layer 7 -0.65 passes perplexity but drops refusal by 5.1 points. Under the post-hoc rule (degeneration instead of perplexity, crisis one-sided) E4B layer 10 passes over two contiguous coefficients (-0.35, -0.5) and layer 7 at -0.5 only; no E2B layer passes two coefficients (layer 13 passes at -0.35 alone; at -0.25 corporate is 0.11 vs the 0.10 needed).",
                    "overall": "partial_signal"},
     "decision_rules": {
         "q1": "two interior local maxima above the null within +-1 of layers 4 and 13/14, each >= 0.15 d above the minimum between them; tightened: crest-minus-trough paired-bootstrap 95% CI excludes 0",
@@ -129,15 +153,17 @@ report = {
         "direction": "unit difference of means (Bella minus Gemma) of mean-pooled reply-token residuals per layer, fit on train; pooling (all reply tokens vs first 32) chosen on validation mean d",
         "uncertainty": "paired bootstrap over test pairs (2000), permutation null with labels flipped on all pairs (200), hypergeometric test for the post-hoc global-minus-one pattern",
         "steering": "h += c * median_norm_l * (Gemma minus Bella unit direction) at all positions of one layer; coefficients -0.15,-0.25,-0.35,-0.5,-0.65,-0.8,-1,-2,-4,+1; 128 new tokens greedy",
+        "steered_layers": {m: {"iteration_1_selection": PROF[m]["stage2_layers_iter1"], "crest_layers_added_iteration_3": PROF[m]["crest_layers_added_iter3"], "all": PROF[m]["stage2_layers"],
+                               "which_are_crests": PROF[m]["stage2_layers_are_crests"]} for m in PROF},
         "judge": f"{jm['judge_model']} with top-5 logprob expected scores; Bella-ness 1-7, refusal yes/no, crisis 1-5; corporate and swear regex; pilot AUROC {r3(pilot['auroc'])}; {jm['n_items']} judgments, 0 invalid",
-        "sae": "E2B JumpReLU SAEs (juiceb0xc0de/gemma-4-e2b-it-SAE) at layers 4, 9, 19, 28: least-squares reconstruction of the direction from top-k decoder features, per-feature d between sides on 100 test pairs",
+        "sae": "E2B JumpReLU SAEs (juiceb0xc0de/gemma-4-e2b-it-SAE) at layers 4, 9, 13, 19, 28: least-squares reconstruction of the direction from top-k decoder features, per-feature d between sides on 100 test pairs",
         "seed": 42,
     },
     "results": {
         "profiles": {m: {"pooling": PROF[m]["pooling"], "test_d": PROF[m]["test_d"], "ci_lo": PROF[m]["uncertainty"]["ci_lo"], "ci_hi": PROF[m]["uncertainty"]["ci_hi"],
                          "null_p95": PROF[m]["null_d_p95"], "surviving": PROF[m]["uncertainty"]["surviving_layers"], "maxima": PROF[m]["interior_maxima_above_null"],
                          "global_layers": PROF[m]["global_layers"]} for m in PROF},
-        "q1": {k: Q1[k] for k in ("supported", "supported_point_rule", "crest_a", "crest_b", "trough_layer", "d_a", "d_b", "trough_d", "drop_a", "drop_b", "bootstrap")},
+        "q1": {k: Q1[k] for k in ("supported", "supported_point_rule", "crest_a", "crest_b", "trough_layer", "d_a", "d_b", "trough_d", "drop_a", "drop_b", "bootstrap", "shape")},
         "q2": {"supported": Q2["supported_point_rule"], "E2B": Q2["E2B"], "E4B": Q2["E4B"], "same_absolute_layers": Q2["same_absolute_layers"], "global_minus_one_posthoc": G},
         "q3": {m: {"supported_any_layer": Q3[m]["supported_any_layer"], "supported_any_layer_posthoc": Q3[m]["supported_any_layer_posthoc"],
                    "layers": {l: {k: v[k] for k in ("usable_window", "usable_window_posthoc", "voice_window", "voice_window_fluent")} for l, v in Q3[m]["layers"].items()}} for m in Q3},
@@ -148,7 +174,9 @@ report = {
     },
     "limitations": [
         "The direction is a voice-plus-length direction: Gemma replies average 89 to 94 tokens (mostly truncated at 96) vs 37 to 45 for Bella; log token count alone separates the sides at d 1.7; within-Bella projections correlate with length at Spearman -0.4 to -0.8.",
-        "The Q3 perplexity criterion (neutral continuations scored under the unsteered model) rewards repetition and penalises short coherent replies; the fluency verdict rests on a post-hoc degeneration rate.",
+        "The Q3 perplexity criterion (neutral continuations scored under the unsteered model) rewards repetition and penalises short, lowercase, slang-heavy continuations, i.e. the voice change itself; every otherwise-passing cell fails on it, so the post-hoc verdict rests on a degeneration rate instead.",
+        "The iteration-1 steering layers (E2B 19, 28, 4, 9; E4B 28, 7, 23, 11) were selected at run time with the contaminated shuffled null, so the plan's crest layers were not steered until a third iteration added E2B 13 and E4B 4, 10, 22; E4B layer 7, the best iteration-1 layer, is not a crest under the valid null. The SAE decomposition covers E2B layers 4, 9, 13, 19, 28.",
+        "Layer-position claims (Q1 crests, the post-hoc global-minus-one pattern) inherit the length confound: length partialling changes the E4B maxima (layer 4 disappears) and the E2B first-32 vs all-token pooling changes which crests survive.",
         "The global-minus-one pattern is post hoc and would read as the registered prediction under a block-input indexing convention; it needs a pre-registered test on a third model.",
         "SAE calibration: at layers 9, 19 and 28 the E2B SAEs fire 40 to 60 % more features on assistant-reply tokens than in training (EV 0.75 to 0.92 vs 0.81 to 0.94), so feature-level statements there are approximate.",
         "The judge is gpt-5.4-mini (plan named claude-sonnet-5; no Anthropic credential was available); it scores repeated non-English tokens as Bella-like, which the degeneration filter addresses.",
@@ -158,7 +186,7 @@ report = {
         "Judge model gpt-5.4-mini via the researcher's OpenAI key instead of claude-sonnet-5.",
         "Crisis evaluation set widened to first-person distress prompts (12 strict + 18 distress).",
         "Coefficient grid extended in a second iteration (-0.15, -0.35, -0.65, -0.8), allowed by the plan's adaptive-input clause; all ten coefficients reported.",
-        "Shuffled-label null from the GPU script found to be contaminated and replaced by a proper permutation null computed post hoc; both reported.",
+        "Shuffled-label null from the GPU script found to be contaminated and replaced by a proper permutation null computed post hoc; both reported. Because that null also drove the run-time layer selection, a third steering iteration added the valid-null crest layers (E2B 13; E4B 4, 10, 22) at all ten coefficients and the E2B SAE decomposition at layer 13.",
         "Crest counting tightened with a paired bootstrap; both the registered point rule and the tightened rule are reported.",
     ],
     "artifacts": {
@@ -168,7 +196,8 @@ report = {
         "figures": "experiments/experiment-1-016475/figures/",
         "judge_outputs": "experiments/experiment-1-016475/results/judge/ (judgments.jsonl in artifact store)",
         "gpu_outputs": ["artifact://juiceb0xc0de-15787e/experiments/exp_01m1xz587ze4t8np5xr6016475/E2B/run/", "artifact://juiceb0xc0de-15787e/experiments/exp_01m1xz587ze4t8np5xr6016475/E4B/run/",
-                        "artifact://juiceb0xc0de-15787e/experiments/exp_01m1xz587ze4t8np5xr6016475/iter2/E2B/run/", "artifact://juiceb0xc0de-15787e/experiments/exp_01m1xz587ze4t8np5xr6016475/iter2/E4B/run/"],
+                        "artifact://juiceb0xc0de-15787e/experiments/exp_01m1xz587ze4t8np5xr6016475/iter2/E2B/run/", "artifact://juiceb0xc0de-15787e/experiments/exp_01m1xz587ze4t8np5xr6016475/iter2/E4B/run/",
+                        "artifact://juiceb0xc0de-15787e/experiments/exp_01m1xz587ze4t8np5xr6016475/iter3/E2B/run/", "artifact://juiceb0xc0de-15787e/experiments/exp_01m1xz587ze4t8np5xr6016475/iter3/E4B/run/"],
         "code": ["experiments/experiment-1-016475/src/prepare_data.py", "experiments/experiment-1-016475/src/run_model.py", "experiments/experiment-1-016475/src/post_stage1.py",
                  "experiments/experiment-1-016475/src/judge.py", "experiments/experiment-1-016475/src/analyze.py"],
     },
