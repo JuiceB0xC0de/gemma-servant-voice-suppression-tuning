@@ -1,0 +1,9 @@
+experiment: 1
+eid: "exp_01m1xz587ze4t8np5xr6016475"
+title: "Locate the Assistant persona direction in Gemma 4 E2B and E4B and test whether scaling it down frees the Bella voice"
+date: "2026-09-07"
+status: in-progress
+data: {}
+outputs: {}
+results: {}
+slurm_jobs: []
