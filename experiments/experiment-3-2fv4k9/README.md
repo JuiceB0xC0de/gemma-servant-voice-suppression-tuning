@@ -47,3 +47,10 @@ What did not work, and why the procedure looks like this:
   (uploaded unchanged; quality was not re-verified here).
 - `artifact://juiceb0xc0de-15787e/experiments/exp_01m1z0wefjes6r08s21t2fv4k9/hub_listing.json`
   (also `results/hub_listing.json`), plus per-layer `upload_layer_NN.txt` commit receipts in the same store folder.
+
+## Follow-up: persona directions (2026-09-08)
+`src/push_directions.sh` (job 407396606881) added `directions/{e4b,e2b}_{directions.npz,stage1.json}` and
+`directions/README.md` from `exp_01m1xz587ze4t8np5xr6016475` (commit 57bacb61); listing in
+`artifact://juiceb0xc0de-15787e/experiments/exp_01m1z0wefjes6r08s21t2fv4k9/directions_listing.json`.
+Note: `hf upload` without `--private` flipped the repo back to public; `sh src/push_to_hub.sh private`
+was rerun afterwards. Always re-check `dataset_info().private` after any upload to this repo.
