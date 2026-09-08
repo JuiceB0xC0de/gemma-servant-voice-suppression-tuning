@@ -14,7 +14,7 @@
 
 Usage (inside the job, from the worktree root):
   python3 src/join_atlas.py --sources <dir> [<dir> ...] --dest <atlas_dir> \
-      --hf-repo juiceb0xc0de/gemma-4-e4b-it-SAE [--no-push] [--results <dir>]
+      --hf-repo juiceb0xc0de/gemma-4-e4b-SAE [--no-push] [--results <dir>]
 """
 from __future__ import annotations
 
@@ -49,7 +49,14 @@ def find_layers(sources: list[Path]) -> dict[int, Path]:
     return found
 
 
-def copy_layer(src: Path, dst: Path) -> None:
+def copy_layer(src: Path, dst: Path, link: bool = False) -> None:
+    if link:  # stage without a second copy: symlink the layer folder itself
+        if dst.is_symlink() or dst.exists():
+            if dst.is_symlink(): dst.unlink()
+            else: shutil.rmtree(dst)
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        os.symlink(src.resolve(), dst)
+        return
     dst.mkdir(parents=True, exist_ok=True)
     for name in ("sae.pt", "meta.json"):
         s, d = src / name, dst / name
@@ -70,10 +77,11 @@ def main() -> int:
     ap.add_argument("--sources", nargs="+", required=True)
     ap.add_argument("--dest", required=True, help="atlas dir: .../saes/google_gemma-4-e4b-it")
     ap.add_argument("--results", default=None, help="dir for verify/summary outputs (default: <dest>/../..)")
-    ap.add_argument("--hf-repo", default="juiceb0xc0de/gemma-4-e4b-it-SAE")
+    ap.add_argument("--hf-repo", default="juiceb0xc0de/gemma-4-e4b-SAE")
     ap.add_argument("--hf-repo-type", default="dataset")
     ap.add_argument("--n-layers", type=int, default=42)
     ap.add_argument("--no-push", action="store_true")
+    ap.add_argument("--link", action="store_true", help="symlink layer folders into --dest instead of copying")
     ap.add_argument("--collect-only", action="store_true",
                     help="stage 1 of a two-stage join: copy whatever layers are found into --dest and exit 0")
     ap.add_argument("--verify-args", default="--d-in 2560 --n-features 81920 --k 50 --ev-floor 0.85 --l0-window 40,60 --dead-max 0.01")
@@ -90,8 +98,8 @@ def main() -> int:
     print(f"   found {len(found)}/{args.n_layers} layers; missing={missing}")
     if args.collect_only:
         for L in sorted(found):
-            copy_layer(found[L], dest / f"layer_{L:02d}_s0")
-            print(f"   copied layer {L:02d} from {found[L]}")
+            copy_layer(found[L], dest / f"layer_{L:02d}_s0", link=args.link)
+            print(f"   [{time.strftime('%H:%M:%S')}] staged layer {L:02d} from {found[L]}", flush=True)
         json.dump({"collected": sorted(found), "missing": missing}, open(results / "collect_status.json", "w"), indent=1)
         print(f"== collect-only done: {len(found)} layers in {dest}")
         return 0
@@ -102,10 +110,18 @@ def main() -> int:
         return 3
 
     t0 = time.time()
+    total = 0
     for L in range(args.n_layers):
-        copy_layer(found[L], dest / f"layer_{L:02d}_s0")
-        print(f"   copied layer {L:02d} from {found[L]}")
-    print(f"   copy done in {time.time() - t0:.0f}s")
+        t1 = time.time()
+        copy_layer(found[L], dest / f"layer_{L:02d}_s0", link=args.link)
+        nbytes = sum(f.stat().st_size for f in (dest / f"layer_{L:02d}_s0").iterdir())
+        total += nbytes
+        dt = max(time.time() - t1, 1e-6)
+        print(f"   [{time.strftime('%H:%M:%S')}] copied layer {L:02d} from {found[L]} "
+              f"({nbytes / 1e6:.0f} MB in {dt:.1f}s, {nbytes / 1e6 / dt:.0f} MB/s; dest total {total / 1e9:.1f} GB)",
+              flush=True)
+    print(f"   copy done in {time.time() - t0:.0f}s", flush=True)
+    subprocess.call(["du", "-shL", str(dest)])
 
     # metas bundle + per-layer wall minutes (from the chain logs' "[ok] L.. done ... elapsed X min")
     bundle = {f"layer_{L:02d}": json.load(open(dest / f"layer_{L:02d}_s0" / "meta.json"))
@@ -152,7 +168,7 @@ def main() -> int:
     for L in range(args.n_layers):
         ok = run_atlas.push_layer(dest, args.hf_repo, L, 0, repo_type=args.hf_repo_type)
         pushed.append(ok)
-        print(f"   pushed {sum(pushed)}/{L + 1} elapsed {time.time() - t0:.0f}s", flush=True)
+        print(f"   [{time.strftime('%H:%M:%S')}] pushed layer {L:02d} ok={ok}  {sum(pushed)}/{L + 1} elapsed {time.time() - t0:.0f}s", flush=True)
     summary = {
         "model_id": "google/gemma-4-E4B-it", "n_layers": args.n_layers, "seed": 0,
         "trainer_commit": os.environ.get("SAE_TRAINER_COMMIT"),

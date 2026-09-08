@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Acceptance check for the Gemma 4 E4B JumpReLU SAE atlas.
 
-    python3 verify_atlas.py --root <sae_dir> --hf-repo juiceb0xc0de/gemma-4-e4b-it-SAE \
+    python3 verify_atlas.py --root <sae_dir> --hf-repo juiceb0xc0de/gemma-4-e4b-SAE \
         --n-layers 42 --d-in 2560 --n-features 81920 --k 50 \
         --ev-floor 0.85 --l0-window 40,60 --dead-max 0.01
 
@@ -66,7 +66,7 @@ def encode_check(layer_dir: Path, d_in: int, n_features: int, meta: dict, seed: 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", required=True)
-    ap.add_argument("--hf-repo", default="juiceb0xc0de/gemma-4-e4b-it-SAE")
+    ap.add_argument("--hf-repo", default="juiceb0xc0de/gemma-4-e4b-SAE")
     ap.add_argument("--hf-repo-type", default="dataset")
     ap.add_argument("--skip-hf", action="store_true")
     ap.add_argument("--n-layers", type=int, default=42)
