@@ -111,6 +111,9 @@ def main():
             "cell": c, "kind": meta["kind"], "layer": meta["layer"], "k": meta["k"], "coef": meta["coef"], "draw": meta.get("draw"),
             "n_features": cs.get("n_features"), "clamped_per_token": cs.get("mean_active_per_generated_token"),
             "clamped_per_token_neutral": (meta.get("clamp_stats_neutral") or {}).get("mean_active_per_generated_token"),
+            "dose_along_dir": cs.get("mean_shift_along_bella_dir_per_generated_token"),
+            "dose_along_dir_neutral": (meta.get("clamp_stats_neutral") or {}).get("mean_shift_along_bella_dir_per_generated_token"),
+            "edit_norm_per_token": cs.get("mean_delta_norm_per_generated_token"),
             "bella": bm, "bella_lo": blo, "bella_hi": bhi, "n_bella": len([x for x in bella if x is not None]),
             "gain": paired_gain(dict(m["bella"]), base_bella, rng) if c != "base" else {"mean": 0.0, "lo": 0.0, "hi": 0.0, "n": len(bella)},
             "refusal": rm, "refusal_lo": rlo, "refusal_hi": rhi, "n_refusal": len(m["refusal"]),
@@ -122,6 +125,11 @@ def main():
             "dose_contrast": dose[c]["contrast"] if c in dose else None, "dose_contrast_se": dose[c]["contrast_se"] if c in dose else None,
         }
     base = table["base"]
+    base["dose_along_dir"] = 0.0
+    dir_dose = table["dir:10:-0.35"]["dose_along_dir"] if "dir:10:-0.35" in table else None
+    for t in table.values():
+        t["dose_frac_of_dir_-0.35"] = (t["dose_along_dir"] / dir_dose) if (dir_dose and t["dose_along_dir"] is not None) else None
+        # Bella gain per unit of delivered dose along the direction (only meaningful when dose is not ~0)
     # ---- checks per cell
     d35 = table.get("dir:10:-0.35")
     dir_gain = d35["gain"]["mean"] if d35 else None
@@ -174,8 +182,9 @@ def main():
         "thresholds": THRESH, "n_judged_rows": len(rows), "n_cells": len(table),
         "baseline": {k: base[k] for k in ("bella", "bella_lo", "bella_hi", "refusal", "crisis", "degenerate", "neutral_degenerate", "corporate", "n_words")},
         "direction_reference": {c: {"gain": table[c]["gain"], "bella": table[c]["bella"], "refusal": table[c]["refusal"], "crisis": table[c]["crisis"],
-                                    "degenerate": table[c]["degenerate"], "neutral_degenerate": table[c]["neutral_degenerate"], "dose_contrast": table[c]["dose_contrast"]}
+                                    "degenerate": table[c]["degenerate"], "neutral_degenerate": table[c]["neutral_degenerate"], "dose_contrast": table[c]["dose_contrast"], "dose_along_dir": table[c]["dose_along_dir"]}
                                 for c in ("dir:10:-0.35", "dir:10:-0.5") if c in table},
+        "dose_along_dir_per_cell": {c: {"dose_along_dir": table[c]["dose_along_dir"], "frac_of_dir_-0.35": table[c]["dose_frac_of_dir_-0.35"], "gain": table[c]["gain"]["mean"]} for c in table},
         "axis_experiment_reference": {"dir_-0.35_gain": 1.85, "dir_-0.5_gain": 2.94, "dir_-0.35_neutral_degen": 0.24, "dir_-0.5_neutral_degen": 0.42, "baseline_bella": 1.125},
         "q1_gain_threshold": q1_thresh,
         "Q1": {"verdict": q1, "passing_cells": [t["cell"] for t in passing], "best_k_le_50": ({"cell": best_short["cell"], "gain": best_short["gain"], "checks": best_short["checks"]} if best_short else None),
@@ -192,14 +201,14 @@ def main():
     }
     json.dump(verdicts, open(out / "verdicts.json", "w"), indent=1)
     json.dump(table, open(out / "cells.json", "w"), indent=1)
-    cols = ["cell", "kind", "layer", "k", "coef", "n_features", "clamped_per_token", "bella", "bella_lo", "bella_hi", "gain_mean", "gain_lo", "gain_hi",
+    cols = ["cell", "kind", "layer", "k", "coef", "n_features", "clamped_per_token", "dose_along_dir", "dose_frac_of_dir_-0.35", "edit_norm_per_token", "bella", "bella_lo", "bella_hi", "gain_mean", "gain_lo", "gain_hi",
             "random_gain_matched", "refusal", "crisis", "corporate", "swear", "n_words", "truncated", "degenerate", "neutral_degenerate", "dose_contrast", "passes_all_q1"]
     order = sorted(table.values(), key=lambda t: ({"base": 0, "dir": 1, "A": 2, "D": 3, "R": 4, "amp": 5}[t["kind"]], -t["layer"], t["k"], t["coef"], t["draw"] or 0))
     with open(out / "cells.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(cols)
         for t in order:
-            w.writerow([t["cell"], t["kind"], t["layer"], t["k"], t["coef"], t["n_features"], t["clamped_per_token"], t["bella"], t["bella_lo"], t["bella_hi"],
+            w.writerow([t["cell"], t["kind"], t["layer"], t["k"], t["coef"], t["n_features"], t["clamped_per_token"], t["dose_along_dir"], t["dose_frac_of_dir_-0.35"], t["edit_norm_per_token"], t["bella"], t["bella_lo"], t["bella_hi"],
                         t["gain"]["mean"], t["gain"]["lo"], t["gain"]["hi"], t["random_gain_matched"], t["refusal"], t["crisis"], t["corporate"], t["swear"],
                         t["n_words"], t["truncated"], t["degenerate"], t["neutral_degenerate"], t["dose_contrast"], t["passes_all_q1"]])
     # plot-ready: Q1 curve
@@ -210,11 +219,11 @@ def main():
     for kind, layer in (("A", 10), ("D", 10), ("A", 4)):
         pts = sorted([t for t in table.values() if t["kind"] == kind and t["layer"] == layer], key=lambda t: t["k"])
         q1_curve["series"][f"{kind}_L{layer}"] = [{"k": t["k"], "gain": t["gain"]["mean"], "lo": t["gain"]["lo"], "hi": t["gain"]["hi"], "clamped_per_token": t["clamped_per_token"],
-                                                   "passes_all": t["passes_all_q1"]} for t in pts]
-    q1_curve["random"] = [{"cell": t["cell"], "layer": t["layer"], "k": t["k"], "gain": t["gain"]["mean"], "lo": t["gain"]["lo"], "hi": t["gain"]["hi"], "clamped_per_token": t["clamped_per_token"]}
+                                                   "dose_along_dir": t["dose_along_dir"], "dose_frac_of_dir": t["dose_frac_of_dir_-0.35"], "passes_all": t["passes_all_q1"]} for t in pts]
+    q1_curve["random"] = [{"cell": t["cell"], "layer": t["layer"], "k": t["k"], "gain": t["gain"]["mean"], "lo": t["gain"]["lo"], "hi": t["gain"]["hi"], "clamped_per_token": t["clamped_per_token"], "dose_along_dir": t["dose_along_dir"]}
                           for t in table.values() if t["kind"] == "R"]
     json.dump(q1_curve, open(out / "q1_curve.json", "w"), indent=1)
-    json.dump([{"cell": t["cell"], "kind": t["kind"], "layer": t["layer"], "k": t["k"], "coef": t["coef"], "gain": t["gain"]["mean"], "neutral_degenerate": t["neutral_degenerate"],
+    json.dump([{"cell": t["cell"], "kind": t["kind"], "layer": t["layer"], "k": t["k"], "coef": t["coef"], "gain": t["gain"]["mean"], "neutral_degenerate": t["neutral_degenerate"], "dose_along_dir": t["dose_along_dir"],
                 "degenerate": t["degenerate"], "refusal": t["refusal"], "crisis": t["crisis"]} for t in order], open(out / "q2_scatter.json", "w"), indent=1)
     with open(out / "q3_layers.csv", "w", newline="") as f:
         w = csv.writer(f)
@@ -257,7 +266,7 @@ def main():
     for t in order:
         print(f"{t['cell']:14s} bella={t['bella']:.2f} gain={t['gain']['mean']:+.2f} [{t['gain']['lo']:+.2f},{t['gain']['hi']:+.2f}] rand={t['random_gain_matched']} "
               f"ref={t['refusal']:.3f} cri={t['crisis']:.2f} deg={t['degenerate']:.2f} ndeg={t['neutral_degenerate']} clamp/tok={t['clamped_per_token']} "
-              f"dose={t['dose_contrast']:.2f} pass={t['passes_all_q1']}")
+              f"contrast={t['dose_contrast']:.2f} dose_dir={t['dose_along_dir']} pass={t['passes_all_q1']}")
 
 
 if __name__ == "__main__":

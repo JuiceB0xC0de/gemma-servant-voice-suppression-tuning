@@ -45,7 +45,7 @@ ATLAS_BUCKET = "https://huggingface.co/buckets/juiceb0xc0de/atlas-runs/resolve/a
 SEED = 42
 SAE_LAYERS = [4, 10, 22]
 FIRE_MIN = 0.01  # feature must fire on >= 1% of Gemma reply tokens (train split) to be selectable
-K_GRID = [5, 20, 50, 200]
+K_GRID = [5, 20, 50, 100, 200]  # 100 added for iteration 2 (adaptive k grid); A/D prefixes and R draws at 50/200 are unchanged
 
 
 def _load_atlas_sub_bias():
@@ -554,7 +554,7 @@ def select_sets(align, d_tok, fire_gemma_train, rng_seed):
     excl = set(order_a[:kmax].tolist()) | set(order_d[:kmax].tolist())
     lf = np.log10(np.clip(fire_gemma_train, 1e-6, 1))
     bins = np.floor(lf / 0.25)
-    for k in (50, 200):
+    for k in (50, 100, 200):
         for draw in (0, 1):
             rng = np.random.default_rng(rng_seed + 1000 * k + draw)
             chosen = []
