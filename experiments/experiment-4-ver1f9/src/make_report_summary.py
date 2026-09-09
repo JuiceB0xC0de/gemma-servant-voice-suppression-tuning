@@ -53,6 +53,13 @@ for c in cells:
     s = short.get(c, c.replace(":", "_"))
     cell_claims(c, s)
 
+ax = verd["axis_experiment_reference"]
+claim("axis_dir35_gain", "direction −0.35 Bella gain in the prior direction experiment (harness reference)", ax["dir_-0.35_gain"], "results/analysis/verdicts.json", "axis_experiment_reference.dir_-0.35_gain")
+claim("axis_dir50_gain", "direction −0.5 Bella gain in the prior direction experiment", ax["dir_-0.5_gain"], "results/analysis/verdicts.json", "axis_experiment_reference.dir_-0.5_gain")
+claim("axis_baseline_bella", "unsteered Bella score in the prior direction experiment", ax["baseline_bella"], "results/analysis/verdicts.json", "axis_experiment_reference.baseline_bella")
+claim("axis_dir35_neutral_degen", "direction −0.35 neutral degeneration in the prior direction experiment", ax["dir_-0.35_neutral_degen"], "results/analysis/verdicts.json", "axis_experiment_reference.dir_-0.35_neutral_degen")
+claim("gen_max_new_tokens", "max new tokens per generation (chat sets)", 128, "report_summary.json", "methods.prompts")
+claim("neutral_stem_tokens", "new tokens per neutral stem", 64, "report_summary.json", "methods.prompts")
 claim("q1_threshold", "Q1 Bella-gain threshold (70% of direction −0.35 gain)", round(verd["q1_gain_threshold"], 4), "results/analysis/verdicts.json", "q1_gain_threshold")
 claim("q1_verdict", "Q1 verdict", verd["Q1"]["verdict"], "results/analysis/verdicts.json", "Q1.verdict", "categorical")
 claim("q2_verdict", "Q2 verdict", verd["Q2"]["verdict"], "results/analysis/verdicts.json", "Q2.verdict", "categorical")
@@ -90,9 +97,32 @@ claim("s1_l0_check", "layer-10 harness L0 check", s1["l0_check_layer10"], "resul
 claim("s1_L22_encoder_convention", "layer-22 SAE encoder convention used", {"sae_encoder_sub_bias": s1raw["per_layer"]["22"]["sae_encoder_sub_bias"], "atlas_sub_bias": s1raw["per_layer"]["22"]["atlas_sub_bias"]}, "results/run/stage1.json", "per_layer.22.sae_encoder_sub_bias, per_layer.22.atlas_sub_bias", "categorical")
 claim("smoke_L22_conventions", "layer-22 L0/EV under both encoder conventions (smoke, 24 pairs)", smoke["layer22_encoder_convention_check"], "results/smoke2_review_fixes.json", "layer22_encoder_convention_check")
 
-claim("labels_n_assistant", "Assistant-ward features labelled", len(labels["groups"]["assistant_ward"]), "results/analysis/feature_labels.json", "len(groups.assistant_ward)")
-claim("labels_n_bella", "Bella-ward features labelled", len(labels["groups"]["bella_ward"]), "results/analysis/feature_labels.json", "len(groups.bella_ward)")
+n_by_group = {}
+for f_ in labels["features"].values():
+    n_by_group[f_["group"]] = n_by_group.get(f_["group"], 0) + 1
+claim("labels_n_assistant", "Assistant-ward features labelled", n_by_group.get("assistant_ward", 0), "results/analysis/feature_labels.json", "count of features[*].group == assistant_ward")
+claim("labels_n_bella", "Bella-ward features labelled", n_by_group.get("bella_ward", 0), "results/analysis/feature_labels.json", "count of features[*].group == bella_ward")
+claim("labels_n_total", "features labelled in total", len(labels["features"]), "results/analysis/feature_labels.json", "len(features)")
 claim("labels_summary", "label themes", labels["summary"], "results/analysis/feature_labels.json", "summary", "categorical")
+
+
+# k=200 cells vs matched random controls (teacher-forced Bella-reply log-prob contrast, relative to base)
+base_dc = cells["base"]["dose_contrast"]
+for c in ("dir:10:-0.35", "A:10:200", "D:10:200", "R:10:200:0", "R:10:200:1", "A:10:100", "D:10:100"):
+    claim(f"dose_contrast_delta_{c}", f"{c}: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced", round(cells[c]["dose_contrast"] - base_dc, 3), "results/analysis/cells.json", f"{c}.dose_contrast - base.dose_contrast")
+    claim(f"edit_norm_{c}", f"{c}: total edit norm per generated token", round(cells[c]["edit_norm_per_token"], 2), "results/analysis/cells.json", f"{c}.edit_norm_per_token")
+    claim(f"degen_chat_{c}", f"{c}: chat degeneration fraction", round(cells[c]["degenerate"], 3), "results/analysis/cells.json", f"{c}.degenerate")
+    claim(f"n_words_{c}", f"{c}: mean reply length in words", round(cells[c]["n_words"], 1), "results/analysis/cells.json", f"{c}.n_words")
+
+# Q3 shared-component check (src/q3_mean_projected.py, CPU, from sft_shift.npz / acts_means.npz / e4b_directions.npz)
+q3mp = {int(r["layer"]): r for r in csv.DictReader(open(AN / "q3_mean_projected.csv"))}
+q3mps = json.load(open(AN / "q3_mean_projected.json"))
+for l in (0, 1, 2, 3, 4, 10):
+    claim(f"q3mp_cos_after_projection_L{l}", f"layer {l} cosine after projecting out the per-layer mean residual", round(float(q3mp[l]["cos_after_mean_projected_out"]), 3), "results/analysis/q3_mean_projected.csv", f"row layer {l}, col cos_after_mean_projected_out")
+    claim(f"q3mp_cos_drop8_L{l}", f"layer {l} cosine after dropping the 8 largest-|mean| coordinates", round(float(q3mp[l]["cos_drop_top8_mean_coords"]), 3), "results/analysis/q3_mean_projected.csv", f"row layer {l}, col cos_drop_top8_mean_coords")
+for k in ("max_abs_delta_cos_mean_projection_L0_13", "max_abs_delta_cos_drop_coords_L0_13", "max_abs_delta_cos_mean_projection_all", "min_cos_after_projection", "max_abs_cos_shift_vs_mean_L0_13", "max_random_p95_after_projection"):
+    claim(f"q3mp_{k}", f"Q3 shared-component check: {k}", round(q3mps[k], 3), "results/analysis/q3_mean_projected.json", k)
+claim("q3mp_cos_L29_41_after_projection_range", "cosine after mean projection, layers 29-41 (min,max)", [round(min(float(q3mp[l]["cos_after_mean_projected_out"]) for l in range(29, 42)), 3), round(max(float(q3mp[l]["cos_after_mean_projected_out"]) for l in range(29, 42)), 3)], "results/analysis/q3_mean_projected.csv", "rows layer 29-41, col cos_after_mean_projected_out")
 
 json.dump({"experiment": "exp_01m21z6dx8e5r9zt6n0vver1f9", "n_claims": len(claims), "claims": claims}, open(HERE / "claims_manifest.json", "w"), indent=1)
 
@@ -110,12 +140,14 @@ def row(c):
 order = sorted(cells.values(), key=lambda t: ({"base": 0, "dir": 1, "A": 2, "D": 3, "amp": 4, "R": 5}[t["kind"]], -t["layer"], t["k"], t["coef"], t["draw"] or 0))
 summary = {
     "experiment": "exp_01m21z6dx8e5r9zt6n0vver1f9",
-    "title": "Clamping Assistant-register SAE features does not produce the Bella voice; the fine-tune's shift is aligned with the Bella direction at every layer",
+    "title": "Clamping Assistant-register SAE features does not produce the Bella voice; the fine-tune's shift has cosine 0.3 to 0.8 with the Bella direction at every layer, refuting the late-only prediction",
     "headline": ("On Gemma-4-E4B-it, no set of 5 to 200 layer-10 (or layer-4) SAE features, selected by decoder alignment with the Bella direction or by Bella-vs-Gemma activation "
                  "difference and clamped to zero during generation, moved the judged Bella voice by more than a small fraction of what adding the raw direction at −0.35 does. "
-                 "The only cells with sizeable gains (k=200) reached them by breaking refusal and crisis behaviour, and delivered at most a tenth of the direction's per-token shift. "
+                 "The only cells with sizeable judged gains (k=200 at layer 10, +0.71 and +1.21) also collapsed refusal to 0.35/0.32, cut the crisis score to 1.5/1.1 and degenerated 55%/36% of chat replies; matched random sets of 200 features at the same edit norm (15.2/15.0 vs 15.3/18.2) did none of this (refusal 0.94/0.92, 0% degeneration, gain −0.10/−0.09). "
+                 "The selected 200-feature sets do carry Bella-ward content: under teacher forcing they raise the Bella-minus-Gemma reply log-prob by 1.83/2.15 nats per token vs base, more than the −0.35 direction (+1.40), while the random sets add only 0.49/0.65. They fail Q1 because they cannot deliver that content without breaking refusal, crisis handling and fluency, and because k=200 is outside the k<=50 short-list criterion. "
                  "Amplifying the 20 most Bella-ward features did nothing. The Bella fine-tune's residual shift has cosine 0.30 to 0.78 with the Bella direction at every layer, including 0.52 at layer 4 and 0.46 at layer 10, "
-                 "so the pre-registered prediction of near-zero early-layer alignment is refuted. The size of that shift does follow the predicted shape: at layers 0 to 13 it is under 1% of the residual norm and closes 2 to 6% of the Bella-Gemma gap, while at layers 29 to 41 it closes 29 to 43% of the gap."),
+                 "so the pre-registered prediction of near-zero early-layer alignment is refuted. Projecting out each layer's mean residual, or dropping the 8 largest-magnitude coordinates, changes the early-layer cosines by at most 0.08 (layer 4: 0.51, layer 10: 0.52 after projection), so the alignment is not a shared mean component or massive-activation artifact. "
+                 "A post hoc magnitude reading, not part of the pre-registered rule: at layers 0 to 13 the shift is under 1% of the residual norm and its projection closes 2 to 6% of the Bella-Gemma gap, while at layers 29 to 41 it closes 29 to 43%; this rise tracks the growth of the shift norm with depth rather than a change in alignment."),
     "assessment": {"Q1": "refuted", "Q2": "not testable (no cell reached the Bella threshold)", "Q3": "refuted", "primary_measurement": "signal (the harness reproduces the direction result and the judge scored all 10,530 generations with no invalid parses)"},
     "research_question": "Do the Assistant-register features exist as a short list? Can a small set of SAE features, clamped at layer 10, reproduce the Bella-voice gain that steering along the Bella-Gemma mean-difference direction gives, without the direction's neutral-text degeneration? Is the Bella fine-tune's per-layer shift aligned with that direction only in late layers?",
     "decision_rule": {
@@ -164,7 +196,8 @@ summary = {
     "limitations": [
         "Low delivered dose: every k<=50 clamp shifted the layer-10 residual along the Bella direction by under 6% of what the −0.35 steer delivers, so the Q1 null says these feature sets cannot carry the register when clamped, not that the register is absent from the SAE basis.",
         "Layer-22 SAE token statistics are unreliable here (explained variance 0.67 on Bella and −0.05 on Gemma replies under the trainer convention; −5.18 without b_dec subtraction as the atlas flag suggests), so the layer-22 Spearman result is not interpretable.",
-        "Q3 is a single fine-tune with one base model. The cosine criterion refutes the prediction, but the fine-tune's movement along the direction is concentrated late (3% of the gap closed at the crest layers vs 29 to 43% at layers 29 to 41), so the direction-of-shift and size-of-shift readings disagree and the report states both.",
+        "Q3 is a single fine-tune with one base model. The cosine criterion refutes the prediction and survives projecting out the per-layer mean residual and the largest-magnitude coordinates; the gap-closed-by-layer reading (3% at the crest layers vs 29 to 43% at layers 29 to 41) is post hoc, tracks the shift norm growing with depth, and is reported as a labelled secondary observation, not as confirmation of the predicted shape. Higher-rank shared structure (for example a low-rank subspace common to all mean-difference vectors) was not tested because only per-layer means were saved.",
+        "The +0.71/+1.21 judged gains of the k=200 cells come with 55%/36% chat degeneration and mean reply lengths of 31.9/32.1 words against 82.3 unsteered, so the Bella judge may score short or degenerate replies upward; the canaries already disqualify these cells, so this affects only how the gains are described.",
     ],
     "artifacts": {
         "analysis": f"{REL}/results/analysis/",
@@ -175,7 +208,8 @@ summary = {
         "iteration2_run": "artifact://juiceb0xc0de-15787e/experiments/exp_01m21z6dx8e5r9zt6n0vver1f9/iter2/run/",
         "judgments": "artifact://juiceb0xc0de-15787e/experiments/exp_01m21z6dx8e5r9zt6n0vver1f9/judge/judgments.jsonl",
         "figures": [f"{REL}/figures/q1_gain_vs_k", f"{REL}/figures/gain_vs_dose", f"{REL}/figures/canaries_l10", f"{REL}/figures/q3_cos_by_layer"],
-        "code": [f"{REL}/src/run_features.py", f"{REL}/src/judge.py", f"{REL}/src/analyze.py", f"{REL}/src/make_figures.py"],
+        "code": [f"{REL}/src/run_features.py", f"{REL}/src/judge.py", f"{REL}/src/analyze.py", f"{REL}/src/make_figures.py", f"{REL}/src/q3_mean_projected.py"],
+        "q3_shared_component_check": f"{REL}/results/analysis/q3_mean_projected.csv",
     },
 }
 json.dump(summary, open(HERE / "report_summary.json", "w"), indent=1)

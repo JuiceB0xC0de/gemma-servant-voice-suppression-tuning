@@ -1,6 +1,6 @@
 {
  "experiment": "exp_01m21z6dx8e5r9zt6n0vver1f9",
- "n_claims": 357,
+ "n_claims": 411,
  "claims": [
   {
    "id": "base_gain",
@@ -2428,6 +2428,54 @@
    "kind": "quantitative"
   },
   {
+   "id": "axis_dir35_gain",
+   "claim": "direction \u22120.35 Bella gain in the prior direction experiment (harness reference)",
+   "value": 1.85,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "axis_experiment_reference.dir_-0.35_gain",
+   "kind": "quantitative"
+  },
+  {
+   "id": "axis_dir50_gain",
+   "claim": "direction \u22120.5 Bella gain in the prior direction experiment",
+   "value": 2.94,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "axis_experiment_reference.dir_-0.5_gain",
+   "kind": "quantitative"
+  },
+  {
+   "id": "axis_baseline_bella",
+   "claim": "unsteered Bella score in the prior direction experiment",
+   "value": 1.125,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "axis_experiment_reference.baseline_bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "axis_dir35_neutral_degen",
+   "claim": "direction \u22120.35 neutral degeneration in the prior direction experiment",
+   "value": 0.24,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "axis_experiment_reference.dir_-0.35_neutral_degen",
+   "kind": "quantitative"
+  },
+  {
+   "id": "gen_max_new_tokens",
+   "claim": "max new tokens per generation (chat sets)",
+   "value": 128,
+   "source_file": "experiments/experiment-4-ver1f9/report_summary.json",
+   "key": "methods.prompts",
+   "kind": "quantitative"
+  },
+  {
+   "id": "neutral_stem_tokens",
+   "claim": "new tokens per neutral stem",
+   "value": 64,
+   "source_file": "experiments/experiment-4-ver1f9/report_summary.json",
+   "key": "methods.prompts",
+   "kind": "quantitative"
+  },
+  {
    "id": "q1_threshold",
    "claim": "Q1 Bella-gain threshold (70% of direction \u22120.35 gain)",
    "value": 1.2588,
@@ -2967,17 +3015,25 @@
   {
    "id": "labels_n_assistant",
    "claim": "Assistant-ward features labelled",
-   "value": 142,
+   "value": 33,
    "source_file": "experiments/experiment-4-ver1f9/results/analysis/feature_labels.json",
-   "key": "len(groups.assistant_ward)",
+   "key": "count of features[*].group == assistant_ward",
    "kind": "quantitative"
   },
   {
    "id": "labels_n_bella",
    "claim": "Bella-ward features labelled",
-   "value": 86,
+   "value": 25,
    "source_file": "experiments/experiment-4-ver1f9/results/analysis/feature_labels.json",
-   "key": "len(groups.bella_ward)",
+   "key": "count of features[*].group == bella_ward",
+   "kind": "quantitative"
+  },
+  {
+   "id": "labels_n_total",
+   "claim": "features labelled in total",
+   "value": 58,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/feature_labels.json",
+   "key": "len(features)",
    "kind": "quantitative"
   },
   {
@@ -2991,6 +3047,385 @@
    "source_file": "experiments/experiment-4-ver1f9/results/analysis/feature_labels.json",
    "key": "summary",
    "kind": "categorical"
+  },
+  {
+   "id": "dose_contrast_delta_dir:10:-0.35",
+   "claim": "dir:10:-0.35: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 1.404,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_dir:10:-0.35",
+   "claim": "dir:10:-0.35: total edit norm per generated token",
+   "value": 42.98,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_dir:10:-0.35",
+   "claim": "dir:10:-0.35: chat degeneration fraction",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_dir:10:-0.35",
+   "claim": "dir:10:-0.35: mean reply length in words",
+   "value": 56.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_A:10:200",
+   "claim": "A:10:200: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 1.826,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_A:10:200",
+   "claim": "A:10:200: total edit norm per generated token",
+   "value": 15.31,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_A:10:200",
+   "claim": "A:10:200: chat degeneration fraction",
+   "value": 0.55,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_A:10:200",
+   "claim": "A:10:200: mean reply length in words",
+   "value": 31.9,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_D:10:200",
+   "claim": "D:10:200: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 2.149,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_D:10:200",
+   "claim": "D:10:200: total edit norm per generated token",
+   "value": 18.16,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_D:10:200",
+   "claim": "D:10:200: chat degeneration fraction",
+   "value": 0.36,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_D:10:200",
+   "claim": "D:10:200: mean reply length in words",
+   "value": 32.1,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_R:10:200:0",
+   "claim": "R:10:200:0: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 0.489,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_R:10:200:0",
+   "claim": "R:10:200:0: total edit norm per generated token",
+   "value": 15.25,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_R:10:200:0",
+   "claim": "R:10:200:0: chat degeneration fraction",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_R:10:200:0",
+   "claim": "R:10:200:0: mean reply length in words",
+   "value": 84.9,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_R:10:200:1",
+   "claim": "R:10:200:1: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 0.648,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_R:10:200:1",
+   "claim": "R:10:200:1: total edit norm per generated token",
+   "value": 14.96,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_R:10:200:1",
+   "claim": "R:10:200:1: chat degeneration fraction",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_R:10:200:1",
+   "claim": "R:10:200:1: mean reply length in words",
+   "value": 87.6,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_A:10:100",
+   "claim": "A:10:100: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 0.138,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_A:10:100",
+   "claim": "A:10:100: total edit norm per generated token",
+   "value": 12.85,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_A:10:100",
+   "claim": "A:10:100: chat degeneration fraction",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_A:10:100",
+   "claim": "A:10:100: mean reply length in words",
+   "value": 80.1,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_D:10:100",
+   "claim": "D:10:100: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 0.333,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_D:10:100",
+   "claim": "D:10:100: total edit norm per generated token",
+   "value": 15.25,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_D:10:100",
+   "claim": "D:10:100: chat degeneration fraction",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_D:10:100",
+   "claim": "D:10:100: mean reply length in words",
+   "value": 82.6,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L0",
+   "claim": "layer 0 cosine after projecting out the per-layer mean residual",
+   "value": 0.321,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 0, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L0",
+   "claim": "layer 0 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.307,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 0, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L1",
+   "claim": "layer 1 cosine after projecting out the per-layer mean residual",
+   "value": 0.315,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 1, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L1",
+   "claim": "layer 1 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.312,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 1, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L2",
+   "claim": "layer 2 cosine after projecting out the per-layer mean residual",
+   "value": 0.311,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 2, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L2",
+   "claim": "layer 2 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.288,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 2, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L3",
+   "claim": "layer 3 cosine after projecting out the per-layer mean residual",
+   "value": 0.288,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 3, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L3",
+   "claim": "layer 3 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.272,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 3, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L4",
+   "claim": "layer 4 cosine after projecting out the per-layer mean residual",
+   "value": 0.51,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 4, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L4",
+   "claim": "layer 4 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.497,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 4, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L10",
+   "claim": "layer 10 cosine after projecting out the per-layer mean residual",
+   "value": 0.52,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 10, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L10",
+   "claim": "layer 10 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.524,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 10, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_max_abs_delta_cos_mean_projection_L0_13",
+   "claim": "Q3 shared-component check: max_abs_delta_cos_mean_projection_L0_13",
+   "value": 0.076,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "max_abs_delta_cos_mean_projection_L0_13",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_max_abs_delta_cos_drop_coords_L0_13",
+   "claim": "Q3 shared-component check: max_abs_delta_cos_drop_coords_L0_13",
+   "value": 0.071,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "max_abs_delta_cos_drop_coords_L0_13",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_max_abs_delta_cos_mean_projection_all",
+   "claim": "Q3 shared-component check: max_abs_delta_cos_mean_projection_all",
+   "value": 0.333,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "max_abs_delta_cos_mean_projection_all",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_min_cos_after_projection",
+   "claim": "Q3 shared-component check: min_cos_after_projection",
+   "value": 0.285,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "min_cos_after_projection",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_max_abs_cos_shift_vs_mean_L0_13",
+   "claim": "Q3 shared-component check: max_abs_cos_shift_vs_mean_L0_13",
+   "value": 0.21,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "max_abs_cos_shift_vs_mean_L0_13",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_max_random_p95_after_projection",
+   "claim": "Q3 shared-component check: max_random_p95_after_projection",
+   "value": 0.044,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "max_random_p95_after_projection",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_L29_41_after_projection_range",
+   "claim": "cosine after mean projection, layers 29-41 (min,max)",
+   "value": [
+    0.656,
+    0.827
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "rows layer 29-41, col cos_after_mean_projected_out",
+   "kind": "quantitative"
   }
  ]
 }

@@ -1,7 +1,7 @@
 {
  "experiment": "exp_01m21z6dx8e5r9zt6n0vver1f9",
- "title": "Clamping Assistant-register SAE features does not produce the Bella voice; the fine-tune's shift is aligned with the Bella direction at every layer",
- "headline": "On Gemma-4-E4B-it, no set of 5 to 200 layer-10 (or layer-4) SAE features, selected by decoder alignment with the Bella direction or by Bella-vs-Gemma activation difference and clamped to zero during generation, moved the judged Bella voice by more than a small fraction of what adding the raw direction at \u22120.35 does. The only cells with sizeable gains (k=200) reached them by breaking refusal and crisis behaviour, and delivered at most a tenth of the direction's per-token shift. Amplifying the 20 most Bella-ward features did nothing. The Bella fine-tune's residual shift has cosine 0.30 to 0.78 with the Bella direction at every layer, including 0.52 at layer 4 and 0.46 at layer 10, so the pre-registered prediction of near-zero early-layer alignment is refuted. The size of that shift does follow the predicted shape: at layers 0 to 13 it is under 1% of the residual norm and closes 2 to 6% of the Bella-Gemma gap, while at layers 29 to 41 it closes 29 to 43% of the gap.",
+ "title": "Clamping Assistant-register SAE features does not produce the Bella voice; the fine-tune's shift has cosine 0.3 to 0.8 with the Bella direction at every layer, refuting the late-only prediction",
+ "headline": "On Gemma-4-E4B-it, no set of 5 to 200 layer-10 (or layer-4) SAE features, selected by decoder alignment with the Bella direction or by Bella-vs-Gemma activation difference and clamped to zero during generation, moved the judged Bella voice by more than a small fraction of what adding the raw direction at \u22120.35 does. The only cells with sizeable judged gains (k=200 at layer 10, +0.71 and +1.21) also collapsed refusal to 0.35/0.32, cut the crisis score to 1.5/1.1 and degenerated 55%/36% of chat replies; matched random sets of 200 features at the same edit norm (15.2/15.0 vs 15.3/18.2) did none of this (refusal 0.94/0.92, 0% degeneration, gain \u22120.10/\u22120.09). The selected 200-feature sets do carry Bella-ward content: under teacher forcing they raise the Bella-minus-Gemma reply log-prob by 1.83/2.15 nats per token vs base, more than the \u22120.35 direction (+1.40), while the random sets add only 0.49/0.65. They fail Q1 because they cannot deliver that content without breaking refusal, crisis handling and fluency, and because k=200 is outside the k<=50 short-list criterion. Amplifying the 20 most Bella-ward features did nothing. The Bella fine-tune's residual shift has cosine 0.30 to 0.78 with the Bella direction at every layer, including 0.52 at layer 4 and 0.46 at layer 10, so the pre-registered prediction of near-zero early-layer alignment is refuted. Projecting out each layer's mean residual, or dropping the 8 largest-magnitude coordinates, changes the early-layer cosines by at most 0.08 (layer 4: 0.51, layer 10: 0.52 after projection), so the alignment is not a shared mean component or massive-activation artifact. A post hoc magnitude reading, not part of the pre-registered rule: at layers 0 to 13 the shift is under 1% of the residual norm and its projection closes 2 to 6% of the Bella-Gemma gap, while at layers 29 to 41 it closes 29 to 43%; this rise tracks the growth of the shift norm with depth rather than a change in alignment.",
  "assessment": {
   "Q1": "refuted",
   "Q2": "not testable (no cell reached the Bella threshold)",
@@ -681,7 +681,8 @@
  "limitations": [
   "Low delivered dose: every k<=50 clamp shifted the layer-10 residual along the Bella direction by under 6% of what the \u22120.35 steer delivers, so the Q1 null says these feature sets cannot carry the register when clamped, not that the register is absent from the SAE basis.",
   "Layer-22 SAE token statistics are unreliable here (explained variance 0.67 on Bella and \u22120.05 on Gemma replies under the trainer convention; \u22125.18 without b_dec subtraction as the atlas flag suggests), so the layer-22 Spearman result is not interpretable.",
-  "Q3 is a single fine-tune with one base model. The cosine criterion refutes the prediction, but the fine-tune's movement along the direction is concentrated late (3% of the gap closed at the crest layers vs 29 to 43% at layers 29 to 41), so the direction-of-shift and size-of-shift readings disagree and the report states both."
+  "Q3 is a single fine-tune with one base model. The cosine criterion refutes the prediction and survives projecting out the per-layer mean residual and the largest-magnitude coordinates; the gap-closed-by-layer reading (3% at the crest layers vs 29 to 43% at layers 29 to 41) is post hoc, tracks the shift norm growing with depth, and is reported as a labelled secondary observation, not as confirmation of the predicted shape. Higher-rank shared structure (for example a low-rank subspace common to all mean-difference vectors) was not tested because only per-layer means were saved.",
+  "The +0.71/+1.21 judged gains of the k=200 cells come with 55%/36% chat degeneration and mean reply lengths of 31.9/32.1 words against 82.3 unsteered, so the Bella judge may score short or degenerate replies upward; the canaries already disqualify these cells, so this affects only how the gains are described."
  ],
  "artifacts": {
   "analysis": "experiments/experiment-4-ver1f9/results/analysis/",
@@ -701,7 +702,9 @@
    "experiments/experiment-4-ver1f9/src/run_features.py",
    "experiments/experiment-4-ver1f9/src/judge.py",
    "experiments/experiment-4-ver1f9/src/analyze.py",
-   "experiments/experiment-4-ver1f9/src/make_figures.py"
-  ]
+   "experiments/experiment-4-ver1f9/src/make_figures.py",
+   "experiments/experiment-4-ver1f9/src/q3_mean_projected.py"
+  ],
+  "q3_shared_component_check": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv"
  }
 }
