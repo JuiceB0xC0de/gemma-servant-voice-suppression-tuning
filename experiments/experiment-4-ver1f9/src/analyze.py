@@ -72,6 +72,7 @@ def main():
     ap.add_argument("--run", default=str(HERE / "results" / "artifacts" / "run"))
     ap.add_argument("--judg", default=str(HERE / "results" / "judge" / "judgments.jsonl"))
     ap.add_argument("--out", default=str(HERE / "results" / "analysis"))
+    ap.add_argument("--run2", default=None, help="iteration-2 run dir (extra cells; judged against the iteration-1 base)")
     a = ap.parse_args()
     run, out = Path(a.run), Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -79,6 +80,16 @@ def main():
     rows = read_jsonl(a.judg)
     cells_meta = json.load(open(run / "cells.json"))
     dose = {d["cell"]: d for d in json.load(open(run / "dose_response.json"))}
+    iteration = {c: 1 for c in cells_meta}
+    if a.run2:
+        m2 = json.load(open(Path(a.run2) / "cells.json"))
+        for c, v in m2.items():
+            assert c not in cells_meta, c
+            cells_meta[c] = v
+            iteration[c] = 2
+        dose.update({d["cell"]: d for d in json.load(open(Path(a.run2) / "dose_response.json"))})
+    # exploratory extras beyond the accepted design (reported, never used for verdicts)
+    EXPLORATORY = {"amp:10:20:4"}
     s1 = json.load(open(run / "stage1.json"))
     s4 = json.load(open(run / "stage4.json"))
     by_cell = defaultdict(lambda: defaultdict(list))
@@ -109,6 +120,9 @@ def main():
         cs = meta.get("clamp_stats_chat") or {}
         table[c] = {
             "cell": c, "kind": meta["kind"], "layer": meta["layer"], "k": meta["k"], "coef": meta["coef"], "draw": meta.get("draw"),
+            "iteration": iteration.get(c, 1), "exploratory": c in EXPLORATORY,
+            "design": ("pre-registered" if (meta["kind"] in ("base", "dir") or (meta["kind"] in ("A", "D", "R") and meta["k"] in (5, 20, 50, 200)))
+                       else ("exploratory extra" if c in EXPLORATORY else "adaptive (plan-listed)")),
             "n_features": cs.get("n_features"), "clamped_per_token": cs.get("mean_active_per_generated_token"),
             "clamped_per_token_neutral": (meta.get("clamp_stats_neutral") or {}).get("mean_active_per_generated_token"),
             "dose_along_dir": cs.get("mean_shift_along_bella_dir_per_generated_token"),
@@ -137,12 +151,12 @@ def main():
     for c, t in table.items():
         g = t["gain"]["mean"]
         rand = None
-        if t["kind"] in ("A", "D") and t["layer"] in (10, 4):
-            kk = t["k"] if t["k"] in (50, 200) else 50  # no random control at k=5/20; the k=50 draws are the conservative comparator
+        if t["kind"] in ("A", "D", "amp") and t["layer"] in (10, 4):
+            kk = t["k"] if t["k"] in (50, 100, 200) else 50  # no random control at k=5/20; the k=50 draws are the conservative comparator
             draws = [table[x]["gain"]["mean"] for x in table if table[x]["kind"] == "R" and table[x]["layer"] == t["layer"] and table[x]["k"] == kk]
             rand = float(np.mean(draws)) if draws else None
         t["random_gain_matched"] = rand
-        t["random_k_used"] = (t["k"] if t["k"] in (50, 200) else 50) if rand is not None else None
+        t["random_k_used"] = (t["k"] if t["k"] in (50, 100, 200) else 50) if rand is not None else None
         t["checks"] = {
             "bella_gain_ge_threshold": (q1_thresh is not None and g >= q1_thresh),
             "refusal_within_5pts": t["refusal"] is not None and (base["refusal"] - t["refusal"]) * 100 <= THRESH["refusal_drop_pts"],
@@ -153,14 +167,14 @@ def main():
         }
         t["passes_all_q1"] = all(t["checks"].values())
     # ---- Q1 verdict (layer 10)
-    feat10 = [t for t in table.values() if t["kind"] in ("A", "D") and t["layer"] == 10]
+    feat10 = [t for t in table.values() if t["kind"] in ("A", "D", "amp") and t["layer"] == 10 and not t["exploratory"]]
     passing = [t for t in feat10 if t["passes_all_q1"]]
     short = [t for t in passing if t["k"] <= THRESH["k_short_max"]]
     only_long = passing and not short
     if short:
         q1 = "supported"
     elif only_long:
-        q1 = "refuted (only k >= 200 reaches the threshold)"
+        q1 = "refuted (only k >= 100 reaches the threshold)"
     else:
         q1 = "refuted (no feature cell reaches the threshold before the canaries break)" if any(t["checks"]["bella_gain_ge_threshold"] for t in feat10) else "refuted (no feature cell reaches the Bella threshold at any k)"
     # best feature cell at k <= 50 and overall
@@ -187,6 +201,9 @@ def main():
         "dose_along_dir_per_cell": {c: {"dose_along_dir": table[c]["dose_along_dir"], "frac_of_dir_-0.35": table[c]["dose_frac_of_dir_-0.35"], "gain": table[c]["gain"]["mean"]} for c in table},
         "axis_experiment_reference": {"dir_-0.35_gain": 1.85, "dir_-0.5_gain": 2.94, "dir_-0.35_neutral_degen": 0.24, "dir_-0.5_neutral_degen": 0.42, "baseline_bella": 1.125},
         "q1_gain_threshold": q1_thresh,
+        "iterations": {"1": sorted(c for c in table if table[c]["iteration"] == 1), "2": sorted(c for c in table if table[c]["iteration"] == 2)},
+        "exploratory_cells_excluded_from_verdicts": sorted(EXPLORATORY & set(table)),
+        "note": "Iteration-2 cells (amp, k=100) were generated in a second job and are compared against the iteration-1 unsteered base (same prompts, greedy decoding); their dose statistics come from their own run.",
         "Q1": {"verdict": q1, "passing_cells": [t["cell"] for t in passing], "best_k_le_50": ({"cell": best_short["cell"], "gain": best_short["gain"], "checks": best_short["checks"]} if best_short else None),
                "best_any_k": ({"cell": best_any["cell"], "gain": best_any["gain"], "checks": best_any["checks"]} if best_any else None),
                "random_controls": {c: table[c]["gain"] for c in table if table[c]["kind"] == "R"}},
@@ -201,18 +218,18 @@ def main():
     }
     json.dump(verdicts, open(out / "verdicts.json", "w"), indent=1)
     json.dump(table, open(out / "cells.json", "w"), indent=1)
-    cols = ["cell", "kind", "layer", "k", "coef", "n_features", "clamped_per_token", "dose_along_dir", "dose_frac_of_dir_-0.35", "edit_norm_per_token", "bella", "bella_lo", "bella_hi", "gain_mean", "gain_lo", "gain_hi",
+    cols = ["cell", "kind", "layer", "k", "coef", "iteration", "design", "n_features", "clamped_per_token", "dose_along_dir", "dose_frac_of_dir_-0.35", "edit_norm_per_token", "bella", "bella_lo", "bella_hi", "gain_mean", "gain_lo", "gain_hi",
             "random_gain_matched", "refusal", "crisis", "corporate", "swear", "n_words", "truncated", "degenerate", "neutral_degenerate", "dose_contrast", "passes_all_q1"]
     order = sorted(table.values(), key=lambda t: ({"base": 0, "dir": 1, "A": 2, "D": 3, "R": 4, "amp": 5}[t["kind"]], -t["layer"], t["k"], t["coef"], t["draw"] or 0))
     with open(out / "cells.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(cols)
         for t in order:
-            w.writerow([t["cell"], t["kind"], t["layer"], t["k"], t["coef"], t["n_features"], t["clamped_per_token"], t["dose_along_dir"], t["dose_frac_of_dir_-0.35"], t["edit_norm_per_token"], t["bella"], t["bella_lo"], t["bella_hi"],
+            w.writerow([t["cell"], t["kind"], t["layer"], t["k"], t["coef"], t["iteration"], t["design"], t["n_features"], t["clamped_per_token"], t["dose_along_dir"], t["dose_frac_of_dir_-0.35"], t["edit_norm_per_token"], t["bella"], t["bella_lo"], t["bella_hi"],
                         t["gain"]["mean"], t["gain"]["lo"], t["gain"]["hi"], t["random_gain_matched"], t["refusal"], t["crisis"], t["corporate"], t["swear"],
                         t["n_words"], t["truncated"], t["degenerate"], t["neutral_degenerate"], t["dose_contrast"], t["passes_all_q1"]])
     # plot-ready: Q1 curve
-    q1_curve = {"k_grid": [5, 20, 50, 200], "threshold": q1_thresh,
+    q1_curve = {"k_grid": [5, 20, 50, 100, 200], "threshold": q1_thresh,
                 "dir_-0.35": table["dir:10:-0.35"]["gain"] if "dir:10:-0.35" in table else None,
                 "dir_-0.5": table["dir:10:-0.5"]["gain"] if "dir:10:-0.5" in table else None,
                 "series": {}}
@@ -220,10 +237,12 @@ def main():
         pts = sorted([t for t in table.values() if t["kind"] == kind and t["layer"] == layer], key=lambda t: t["k"])
         q1_curve["series"][f"{kind}_L{layer}"] = [{"k": t["k"], "gain": t["gain"]["mean"], "lo": t["gain"]["lo"], "hi": t["gain"]["hi"], "clamped_per_token": t["clamped_per_token"],
                                                    "dose_along_dir": t["dose_along_dir"], "dose_frac_of_dir": t["dose_frac_of_dir_-0.35"], "passes_all": t["passes_all_q1"]} for t in pts]
+    q1_curve["amp"] = [{"cell": t["cell"], "coef": t["coef"], "k": t["k"], "gain": t["gain"]["mean"], "lo": t["gain"]["lo"], "hi": t["gain"]["hi"], "dose_along_dir": t["dose_along_dir"],
+                        "dose_frac_of_dir": t["dose_frac_of_dir_-0.35"], "exploratory": t["exploratory"], "passes_all": t["passes_all_q1"]} for t in table.values() if t["kind"] == "amp"]
     q1_curve["random"] = [{"cell": t["cell"], "layer": t["layer"], "k": t["k"], "gain": t["gain"]["mean"], "lo": t["gain"]["lo"], "hi": t["gain"]["hi"], "clamped_per_token": t["clamped_per_token"], "dose_along_dir": t["dose_along_dir"]}
                           for t in table.values() if t["kind"] == "R"]
     json.dump(q1_curve, open(out / "q1_curve.json", "w"), indent=1)
-    json.dump([{"cell": t["cell"], "kind": t["kind"], "layer": t["layer"], "k": t["k"], "coef": t["coef"], "gain": t["gain"]["mean"], "neutral_degenerate": t["neutral_degenerate"], "dose_along_dir": t["dose_along_dir"],
+    json.dump([{"cell": t["cell"], "kind": t["kind"], "layer": t["layer"], "k": t["k"], "coef": t["coef"], "iteration": t["iteration"], "exploratory": t["exploratory"], "edit_norm_per_token": t["edit_norm_per_token"], "gain": t["gain"]["mean"], "neutral_degenerate": t["neutral_degenerate"], "dose_along_dir": t["dose_along_dir"],
                 "degenerate": t["degenerate"], "refusal": t["refusal"], "crisis": t["crisis"]} for t in order], open(out / "q2_scatter.json", "w"), indent=1)
     with open(out / "q3_layers.csv", "w", newline="") as f:
         w = csv.writer(f)
