@@ -46,6 +46,24 @@ SEED = 42
 SAE_LAYERS = [4, 10, 22]
 FIRE_MIN = 0.01  # feature must fire on >= 1% of Gemma reply tokens (train split) to be selectable
 K_GRID = [5, 20, 50, 200]
+
+
+def _load_atlas_sub_bias():
+    """The atlas summary's per-layer `sub_bias` flag (rlhf_summary.json), recorded for the report only."""
+    try:
+        rows = json.load(open(Path(__file__).resolve().parent.parent / "results" / "atlas" / "rlhf_summary.json"))
+        return {int(r["layer"]): bool(r["sub_bias"]) for r in rows}
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+ATLAS_SUB_BIAS = _load_atlas_sub_bias()
+# Encoder convention: the trainer (sae_trainer_rolling.SparseAutoencoder.encode_pre, examples/use_trained_sae.py)
+# always computes pre = W_enc(x - b_dec) + b_enc, so every layer is encoded that way here. The atlas summary marks
+# layer 22 sub_bias=false; on HF layer-22 block outputs of chat replies that variant gives L0 ~1600-2100 and EV -5.2
+# (24-pair smoke) versus L0 ~150 / EV -0.2 with the trainer convention, so it is not adopted. Override per layer
+# with --sub_bias_off LAYER[,LAYER] to reproduce that check.
+SUB_BIAS = {}
 NAMED_FEATURE = 78793
 
 DEFAULT_CELLS = (
@@ -121,6 +139,7 @@ class Wrapped:
         self.gen_cfg = dict(do_sample=False, num_beams=1, temperature=None, top_p=None, top_k=None,
                             pad_token_id=self.tok.pad_token_id)
         self._handles = []
+        self._hook_objs = []
         self.eot_ids = set(self.tok.convert_tokens_to_ids(t) for t in ["<end_of_turn>", "<turn|>", "<|turn>"]
                            if t in self.tok.get_vocab())
         self.eot_ids.add(self.tok.eos_token_id)
@@ -133,9 +152,12 @@ class Wrapped:
         for h in self._handles:
             h.remove()
         self._handles = []
+        self._hook_objs = []
 
     def add_hook(self, layer, fn):
         self._handles.append(self.layers[layer].register_forward_hook(fn))
+        if hasattr(fn, "finish_batch"):
+            self._hook_objs.append(fn)
 
     @torch.inference_mode()
     def generate(self, texts, max_new_tokens, batch_size=48, phase="generate", chat=True):
@@ -149,6 +171,7 @@ class Wrapped:
             enc = {k: v.cuda() for k, v in enc.items()}
             gen = self.model.generate(**enc, max_new_tokens=max_new_tokens, **self.gen_cfg)
             new = gen[:, enc["input_ids"].shape[1]:]
+            n_real = []
             for j, i in enumerate(idx):
                 ids = new[j].tolist()
                 cut = len(ids)
@@ -157,8 +180,11 @@ class Wrapped:
                         cut = k
                         break
                 ids = ids[:cut]
+                n_real.append(len(ids))
                 out[i] = {"text": self.tok.decode(ids, skip_special_tokens=True).strip(), "n_tokens": len(ids),
                           "truncated": cut == max_new_tokens}
+            for hk in self._hook_objs:
+                hk.finish_batch(n_real)
             report_progress(step=min(bi + batch_size, len(order)), total_steps=len(order), phase=phase)
         return out
 
@@ -269,15 +295,21 @@ def load_sae(layer: int):
     b_dec = sd.get("b_dec", torch.zeros(d_in)).float()
     assert "log_threshold" in sd, list(sd.keys())
     thr = sd["log_threshold"].float().exp()
+    sub_bias = SUB_BIAS.get(layer, True)
+    if ATLAS_SUB_BIAS.get(layer, True) != sub_bias:
+        log(f"SAE L{layer}: NOTE atlas rlhf_summary sub_bias={ATLAS_SUB_BIAS.get(layer)} differs from the encoder convention used here ({sub_bias})")
     sae = {"W_enc": W_enc.cuda(), "b_enc": b_enc.cuda(), "W_dec": W_dec.cuda(), "b_dec": b_dec.cuda(), "thr": thr.cuda(),
-           "meta": meta, "keys": sorted(sd.keys()), "n_feat": n_feat, "d_in": d_in, "layer": layer, "file_sha256": sha256(p)}
+           "meta": meta, "keys": sorted(sd.keys()), "n_feat": n_feat, "d_in": d_in, "layer": layer, "file_sha256": sha256(p),
+           "sub_bias": sub_bias}
     log(f"SAE L{layer}: keys={sae['keys']} thr mean={float(thr.mean()):.3f} dec col norm mean={float(W_dec.norm(dim=0).mean()):.3f} "
-        f"meta L0={meta.get('final_metrics', {}).get('mean_l0')} EV={meta.get('final_metrics', {}).get('ev')}")
+        f"meta L0={meta.get('final_metrics', {}).get('mean_l0')} EV={meta.get('final_metrics', {}).get('ev')} sub_bias={sub_bias}")
     return sae
 
 
 def sae_encode(sae, x):
-    pre = F.linear(x - sae["b_dec"], sae["W_enc"], sae["b_enc"])
+    """Encoder convention follows the atlas rlhf_summary.json `sub_bias` flag per layer
+    (true for layers 4 and 10, false for 22): pre = W_enc(x - b_dec) + b_enc, or W_enc x + b_enc."""
+    pre = F.linear(x - sae["b_dec"] if sae["sub_bias"] else x, sae["W_enc"], sae["b_enc"])
     return pre * (pre > sae["thr"])
 
 
@@ -291,7 +323,7 @@ class FeatureEdit:
     amp mode:   h <- h + (factor - 1) * sum_f z_f(h) W_dec[:, f]
     Applied at every position of every forward (prefill and decode), like the direction hook."""
 
-    def __init__(self, sae, feats, scale=0.0, amp=None):
+    def __init__(self, sae, feats, scale=0.0, amp=None, dir_bella=None):
         f = torch.tensor(sorted(int(x) for x in feats)).cuda()
         self.feats = f
         self.We = sae["W_enc"][f]          # [k, d]
@@ -299,50 +331,90 @@ class FeatureEdit:
         self.thr = sae["thr"][f]
         self.Wd = sae["W_dec"][:, f]       # [d, k]
         self.b_dec = sae["b_dec"]
+        self.sub_bias = sae["sub_bias"]
         self.mult = (amp - 1.0) if amp is not None else -(1.0 - scale)
+        # unit Bella-minus-Gemma direction at this layer; delivered dose = (delta . dir_bella), positive = toward Bella
+        self.dir = None if dir_bella is None else torch.as_tensor(dir_bella, dtype=torch.float32).cuda()
         self.reset()
 
     def reset(self):
-        self.dec_pos = 0
-        self.dec_active = 0.0
-        self.dec_zsum = 0.0
-        self.dec_per_feat = torch.zeros(len(self.feats), device="cuda")
+        self.steps = []  # per decode step: dict of [B] tensors (active count, z sum, projected shift, delta norm)
+        self.dec_per_feat = torch.zeros(len(self.feats), device=self.feats.device)
+        self.dec_pos_all = 0
         self.pre_pos = 0
         self.pre_active = 0.0
+        self.pre_proj = 0.0
+        self.batches = []  # finalized per-batch stats (real generated tokens only)
 
     def __call__(self, mod, inp, out):
         h = out[0] if isinstance(out, tuple) else out
         x = h.float()
-        pre = F.linear(x - self.b_dec, self.We, self.be)
+        pre = F.linear(x - self.b_dec if self.sub_bias else x, self.We, self.be)
         z = pre * (pre > self.thr)
         delta = F.linear(z, self.Wd) * self.mult  # [B, T, d]
         active = (z > 0)
-        if x.shape[1] == 1:  # decode step: every position is a real generated token
-            self.dec_pos += x.shape[0]
-            self.dec_active += float(active.sum())
-            self.dec_zsum += float(z.sum())
-            self.dec_per_feat += active.sum((0, 1)).float()
+        proj = (delta @ self.dir) if self.dir is not None else torch.zeros(delta.shape[:2], device=delta.device)
+        if x.shape[1] == 1:  # decode step; rows that already finished are pad and are removed in finish_batch
+            self.dec_pos_all += x.shape[0]
+            self.steps.append({"active": active[:, 0].sum(1).float(), "zsum": z[:, 0].sum(1), "proj": proj[:, 0],
+                               "dnorm": delta[:, 0].norm(dim=1), "per_feat": active[:, 0].float()})
         else:
             self.pre_pos += x.shape[0] * x.shape[1]
             self.pre_active += float(active.sum())
+            self.pre_proj += float(proj.sum())
         new = (x + delta).to(h.dtype)
         if isinstance(out, tuple):
             return (new,) + tuple(out[1:])
         return new
 
+    def finish_batch(self, n_tokens):
+        """Called by generate() after each batch with the real generated length per row (EOS excluded).
+        Decode step t carries input token t; it is a real generated-token position iff t < n_tokens[row]."""
+        if not self.steps:
+            return
+        n = torch.tensor(n_tokens, device=self.feats.device)
+        tot = {"pos": 0, "active": 0.0, "zsum": 0.0, "proj": 0.0, "dnorm": 0.0}
+        for t, st in enumerate(self.steps):
+            m = (t < n).float()
+            tot["pos"] += int(m.sum())
+            tot["active"] += float((st["active"] * m).sum())
+            tot["zsum"] += float((st["zsum"] * m).sum())
+            tot["proj"] += float((st["proj"] * m).sum())
+            tot["dnorm"] += float((st["dnorm"] * m).sum())
+            self.dec_per_feat += (st["per_feat"] * m[:, None]).sum(0)
+        self.batches.append(tot)
+        self.steps = []
+
     def stats(self):
-        return {"n_features": int(len(self.feats)), "decode_positions": self.dec_pos,
-                "mean_active_per_generated_token": (self.dec_active / self.dec_pos) if self.dec_pos else None,
-                "mean_z_sum_per_generated_token": (self.dec_zsum / self.dec_pos) if self.dec_pos else None,
+        pos = sum(b["pos"] for b in self.batches)
+        agg = {k: sum(b[k] for b in self.batches) for k in ("active", "zsum", "proj", "dnorm")}
+        return {"n_features": int(len(self.feats)), "generated_positions_real": pos,
+                "decode_positions_incl_padding": self.dec_pos_all,
+                "mean_active_per_generated_token": (agg["active"] / pos) if pos else None,
+                "mean_z_sum_per_generated_token": (agg["zsum"] / pos) if pos else None,
+                "mean_delta_norm_per_generated_token": (agg["dnorm"] / pos) if pos else None,
+                "mean_shift_along_bella_dir_per_generated_token": (agg["proj"] / pos) if pos else None,
                 "prefill_positions_incl_padding": self.pre_pos,
                 "mean_active_per_prefill_position": (self.pre_active / self.pre_pos) if self.pre_pos else None,
-                "per_feature_fire_rate_generated": {int(f): float(c / max(self.dec_pos, 1)) for f, c in
+                "mean_shift_along_bella_dir_per_prefill_position": (self.pre_proj / self.pre_pos) if self.pre_pos else None,
+                "per_feature_fire_rate_generated": {int(f): float(c / max(pos, 1)) for f, c in
                                                     zip(self.feats.tolist(), self.dec_per_feat.tolist())}}
 
 
 class DirectionAdd:
-    def __init__(self, vec):
+    def __init__(self, vec, dir_bella=None):
         self.v = vec.to(torch.bfloat16).cuda()
+        self.dir = None if dir_bella is None else torch.as_tensor(dir_bella, dtype=torch.float32).cuda()
+
+    def finish_batch(self, n_tokens):
+        pass
+
+    def stats(self):
+        """Constant dose at every position: shift along the Bella direction and the added norm."""
+        v = self.v.float()
+        return {"n_features": 0, "mean_delta_norm_per_generated_token": float(v.norm()),
+                "mean_shift_along_bella_dir_per_generated_token": float(v @ self.dir) if self.dir is not None else None,
+                "mean_shift_along_bella_dir_per_prefill_position": float(v @ self.dir) if self.dir is not None else None}
 
     def __call__(self, mod, inp, out):
         if isinstance(out, tuple):
@@ -602,7 +674,7 @@ def stage1(W: Wrapped, out: Path, args, dirs, atlas):
             "ev_bella": sb["ev"], "ev_gemma": sg["ev"], "meta_l0": saes[l]["meta"].get("final_metrics", {}).get("mean_l0"),
             "meta_ev": saes[l]["meta"].get("final_metrics", {}).get("ev"), "atlas_l0_base": None,
             "n_tokens": {"bella": sb["all"]["n_tokens"], "gemma": sg["all"]["n_tokens"]},
-            "align_check": align_check, "sae_keys": saes[l]["keys"], "sae_sha256": saes[l]["file_sha256"],
+            "align_check": align_check, "sae_keys": saes[l]["keys"], "sae_sha256": saes[l]["file_sha256"], "sae_encoder_sub_bias": saes[l]["sub_bias"], "atlas_sub_bias": ATLAS_SUB_BIAS.get(l),
             "spearman_d_vs_align_union_top200": {"rho": rho, "p": pval, "n": int(len(union))},
             "spearman_d_vs_align_all": rho_all, "spearman_dtest_vs_align_union_top200": rho_test,
             "pool_size_fire_ge_1pct": sets["pool_size"],
@@ -703,23 +775,23 @@ def parse_cell(spec, ctx, dirs, med_norm, clamp_scale):
     if kind == "dir":
         c = float(parts[2])
         a_hat = -torch.tensor(dirs[layer])  # Assistant direction = Gemma - Bella; h += c * median_norm * a_hat
-        return {"cell": spec, "kind": "dir", "layer": layer, "coef": c, "k": 0}, layer, DirectionAdd(a_hat * float(c * med_norm[layer]))
+        return {"cell": spec, "kind": "dir", "layer": layer, "coef": c, "k": 0}, layer, DirectionAdd(a_hat * float(c * med_norm[layer]), dir_bella=dirs[layer])
     sets = ctx["sets"][layer]
     sae = ctx["saes"][layer]
     if kind in ("A", "D"):
         k = int(parts[2])
         feats = sets[kind][k]
-        return {"cell": spec, "kind": kind, "layer": layer, "coef": 0.0, "k": k, "clamp_scale": clamp_scale}, layer, FeatureEdit(sae, feats, scale=clamp_scale)
+        return {"cell": spec, "kind": kind, "layer": layer, "coef": 0.0, "k": k, "clamp_scale": clamp_scale}, layer, FeatureEdit(sae, feats, scale=clamp_scale, dir_bella=dirs[layer])
     if kind == "R":
         k, draw = int(parts[2]), int(parts[3])
         feats = sets["R"][f"{k}:{draw}"]
-        return {"cell": spec, "kind": "R", "layer": layer, "coef": 0.0, "k": k, "draw": draw, "clamp_scale": clamp_scale}, layer, FeatureEdit(sae, feats, scale=clamp_scale)
+        return {"cell": spec, "kind": "R", "layer": layer, "coef": 0.0, "k": k, "draw": draw, "clamp_scale": clamp_scale}, layer, FeatureEdit(sae, feats, scale=clamp_scale, dir_bella=dirs[layer])
     if kind == "amp":  # amplify the k most Bella-ward (positive align, firing) features by a factor
         k, factor = int(parts[2]), float(parts[3])
         al = np.load(Path(ctx["out"]) / f"features_L{layer}.npz")
         pool = np.where(al["fire_bella_train"] >= FIRE_MIN)[0]
         feats = pool[np.argsort(-al["align"][pool])][:k].tolist()
-        return {"cell": spec, "kind": "amp", "layer": layer, "coef": factor, "k": k}, layer, FeatureEdit(sae, feats, amp=factor)
+        return {"cell": spec, "kind": "amp", "layer": layer, "coef": factor, "k": k}, layer, FeatureEdit(sae, feats, amp=factor, dir_bella=dirs[layer])
     raise ValueError(spec)
 
 
@@ -760,13 +832,13 @@ def stage2(W: Wrapped, out: Path, args, dirs, ctx, cells):
             W.add_hook(layer, hook)
         tc = time.time()
         g = W.generate([x[2] for x in chat_items], max_new_tokens=args.gen_tokens, batch_size=args.gen_batch, phase=f"s2_cell{ci}/{len(cells)}")
-        chat_stats = hook.stats() if isinstance(hook, FeatureEdit) else None
+        chat_stats = hook.stats() if hook is not None else None
         if isinstance(hook, FeatureEdit):
             hook.reset()
         for (s, pid, pr), gg in zip(chat_items, g):
             rows.append({**meta, "set": s, "pid": pid, "prompt": pr, **gg})
         gn = W.generate([x["text"] for x in neutral], max_new_tokens=64, batch_size=args.gen_batch, chat=False, phase=f"s2_cell{ci}_neutral")
-        neutral_stats = hook.stats() if isinstance(hook, FeatureEdit) else None
+        neutral_stats = hook.stats() if hook is not None else None
         if isinstance(hook, FeatureEdit):
             hook.reset()
         for nn, gg in zip(neutral, gn):
@@ -783,7 +855,12 @@ def stage2(W: Wrapped, out: Path, args, dirs, ctx, cells):
         dump(dose_path, dose)
         dump(out / "cells.json", cell_meta)
         done.add(spec)
-        extra = f" clamped/tok={chat_stats['mean_active_per_generated_token']:.2f}" if chat_stats else ""
+        extra = ""
+        if chat_stats:
+            if chat_stats.get("mean_active_per_generated_token") is not None:
+                extra += f" clamped/tok={chat_stats['mean_active_per_generated_token']:.2f}"
+            if chat_stats.get("mean_shift_along_bella_dir_per_generated_token") is not None:
+                extra += f" dose(bella-dir)/tok={chat_stats['mean_shift_along_bella_dir_per_generated_token']:+.2f}"
         log(f"cell {ci}/{len(cells)} {spec} done in {time.time()-tc:.0f}s; contrast={dose[-1]['contrast']:.3f}{extra}; sample: {g[0]['text'][:140]!r}")
     W.clear_hooks()
     dump(out / "stage2_meta.json", {"cells": cells, "n_chat_prompts": len(chat_items), "n_neutral": len(neutral), "gen_tokens": args.gen_tokens,
@@ -888,6 +965,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--stages", default="1,4,2,3")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--sub_bias_off", default="", help="comma-separated layers to encode WITHOUT subtracting b_dec (diagnostic)")
     ap.add_argument("--smoke", action="store_true")
     ap.add_argument("--smoke_n", type=int, default=24)
     ap.add_argument("--gen_batch", type=int, default=48)
@@ -897,6 +975,8 @@ def main():
     ap.add_argument("--clamp_scale", type=float, default=0.0, help="0 = clamp selected features to zero; 0.5 = halve them")
     ap.add_argument("--force", action="store_true", help="continue past a failed layer-10 L0 check")
     args = ap.parse_args()
+    for l in [x for x in args.sub_bias_off.split(",") if x.strip()]:
+        SUB_BIAS[int(l)] = False
     torch.manual_seed(SEED)
     np.random.seed(SEED)
     root = Path(args.out or os.environ.get("SILICO_EXPERIMENT_ARTIFACTS_DIR", HERE / "results" / "artifacts"))
