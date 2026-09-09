@@ -1,0 +1,10 @@
+{
+ "Bella tokens": "#C4650D",
+ "Gemma tokens": "#4E728A",
+ "direction": "#2E6E4E",
+ "A (Assistant-ward)": "#988453",
+ "D (Gemma-over-Bella)": "#B9605B",
+ "R (random matched)": "#7495AB",
+ "base": "#84713A",
+ "amp (Bella-ward amplified)": "#31362E"
+}
