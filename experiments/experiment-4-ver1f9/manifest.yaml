@@ -19,7 +19,7 @@ outputs:
 results:
   Q1: "refuted (no feature cell reaches the Bella threshold at any k)"
   Q2: "not testable (no feature cell reaches the Bella threshold)"
-  Q3: "refuted (cos 0.52 / 0.46 at crest layers 4 and 10; unchanged after projecting out the per-layer mean residual: 0.51 / 0.52); the late-concentrated shift magnitude is a post hoc observation"
+  Q3: "refuted on the cosine rule (0.52 / 0.46 at crest layers 4 and 10); primary quantity: fraction of gap closed 3.1% / 2.6% at layers 4 / 10, 29-43% at layers 29-41; cosine not separated from a shared component (rank-1 mean ruled out only); late magnitude rise is post hoc"
   q3_shared_component_check: results/analysis/q3_mean_projected.csv
   k200_reading: "A/D:10:200 gains (+0.71/+1.21) come with canary failures that matched random 200-feature sets at the same edit norm do not show; the selected sets raise the teacher-forced Bella-minus-Gemma log-prob more than the -0.35 direction (+1.83/+2.15 vs +1.40 nats/token; random +0.49/+0.65)"
   labels: "58 features labelled (33 Assistant-ward, 25 Bella-ward)"
