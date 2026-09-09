@@ -474,7 +474,7 @@ def select_sets(align, d_tok, fire_gemma_train, rng_seed):
     pool = np.where(fire_gemma_train >= FIRE_MIN)[0]
     order_a = pool[np.argsort(align[pool])]
     order_d = pool[np.argsort(d_tok[pool])]
-    sets = {"pool_size": int(len(pool)), "A": {}, "D": {}, "R": {}}
+    sets = {"pool_size": int(len(pool)), "A": {}, "D": {}, "R": {}, "R_bin_width_hist": {}}
     kmax = max(K_GRID)
     for k in K_GRID:
         sets["A"][k] = [int(x) for x in order_a[:k]]
@@ -487,15 +487,25 @@ def select_sets(align, d_tok, fire_gemma_train, rng_seed):
             rng = np.random.default_rng(rng_seed + 1000 * k + draw)
             chosen = []
             used = set(excl)
+            widen_hist = {}
             for f in sets["A"][k]:
-                cands = np.where((bins == bins[f]) & (fire_gemma_train >= FIRE_MIN))[0]
-                cands = [c for c in cands if c not in used]
-                if not cands:  # widen to neighbouring bins
-                    cands = [c for c in np.where((np.abs(bins - bins[f]) <= 1) & (fire_gemma_train >= FIRE_MIN))[0] if c not in used]
+                width = 0
+                while True:
+                    cands = [c for c in np.where((np.abs(bins - bins[f]) <= width) & (fire_gemma_train >= FIRE_MIN))[0] if c not in used]
+                    if cands or width > 40:
+                        break
+                    width = 1 if width == 0 else width * 2  # widen the firing-rate window progressively
+                if not cands:  # last resort: any eligible, unused feature
+                    cands = [c for c in pool if c not in used]
+                    width = -1
+                if not cands:
+                    raise RuntimeError(f"random control: eligible pool ({len(pool)}) exhausted at k={k}")
+                widen_hist[str(width)] = widen_hist.get(str(width), 0) + 1
                 c = int(rng.choice(cands))
                 chosen.append(c)
                 used.add(c)
             sets["R"][f"{k}:{draw}"] = chosen
+            sets["R_bin_width_hist"][f"{k}:{draw}"] = widen_hist
     return sets
 
 
@@ -606,6 +616,7 @@ def stage1(W: Wrapped, out: Path, args, dirs, atlas):
             "D_d_tok_test": {str(k): [float(d_tok_test[f]) for f in sets["D"][k]] for k in K_GRID},
             "D_align": {str(k): [float(al[f]) for f in sets["D"][k]] for k in K_GRID},
             "R_fire_gemma_train": {k: [float(firing[f]) for f in v] for k, v in sets["R"].items()},
+            "R_bin_width_hist": sets["R_bin_width_hist"],
             "overlap_A_D": {str(k): len(set(sets["A"][k]) & set(sets["D"][k])) for k in K_GRID},
             "top_align_neg": [{"f": int(f), "align": float(al[f]), "fire_gemma": float(firing[f]), "d_tok_test": float(d_tok_test[f]), "shift": float(atlas[l]["shift"][f])} for f in np.argsort(al)[:25]],
             "top_align_pos": [{"f": int(f), "align": float(al[f]), "fire_gemma": float(firing[f]), "d_tok_test": float(d_tok_test[f]), "shift": float(atlas[l]["shift"][f])} for f in np.argsort(-al)[:25]],
