@@ -1,0 +1,9 @@
+experiment: 7
+eid: "exp_01m28zaacafpw8z38vhg39gmbf"
+title: "Train the full Gemma 2 2B SAE atlas, layers 0 to 25, sequentially in one job with the RAM pool backend"
+date: "2026-09-11"
+status: in-progress
+data: {}
+outputs: {}
+results: {}
+slurm_jobs: []

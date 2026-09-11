@@ -1,0 +1,194 @@
+--- a/sae_trainer_rolling.py
++++ b/sae_trainer_rolling.py
+@@ -111,7 +111,8 @@
+ K_CURRICULUM_STEPS = 1      # effectively disabled (target_l0 = K from step 1)
+ BATCH_TOKENS  = int(os.environ.get("SAE_BATCH_TOKENS", "32768"))  # total tokens per SAE step (must be divisible by SEQ_LEN)
+ MICROBATCH_TOKENS = int(os.environ.get("SAE_MICROBATCH_TOKENS", str(BATCH_TOKENS)))  # tokens per microbatch for gradient accumulation
+-SEQ_LEN       = 2_048       # length passed to the model (attention is O(seq^2))
++SEQ_LEN       = int(os.environ.get("SAE_SEQ_LEN", "2048"))  # length passed to the model
++assert BATCH_TOKENS % SEQ_LEN == 0, "SAE_BATCH_TOKENS must be divisible by SAE_SEQ_LEN"
+ N_STEPS       = 15_000      # peak-EV early-stop usually fires well before this
+ LR            = 2e-4
+ LOG_EVERY     = 250
+@@ -1603,28 +1604,50 @@
+     return Path(ROLLCACHE) / tag
+ 
+ 
++# In-process RAM pool backend (SAE_POOL_BACKEND=ram). Activation shards written via
++# _write_shard are held as CPU bf16 tensors keyed by (str(pool_dir), shard index)
++# instead of being torch.save'd. Reads fall through to disk when a key is absent, so
++# token shards (written directly by _capture_token_pool) keep working unchanged.
++_RAM_POOLS: dict = {}          # (str(dir_path), i) -> CPU bf16 tensor
++_RAM = os.environ.get("SAE_POOL_BACKEND", "disk") == "ram"
++
++
+ def _write_shard(dir_path: Path, i: int, tensor):
+     import torch
++    if _RAM:
++        _RAM_POOLS[(str(dir_path), i)] = tensor.to(torch.bfloat16).cpu(); return
+     dir_path.mkdir(parents=True, exist_ok=True)
+     torch.save(tensor.to(torch.bfloat16).cpu(), dir_path / f"shard_{i:05d}.pt")
+ 
+ 
+ def _read_shard(dir_path: Path, i: int):
+     import torch
++    key = (str(dir_path), i)
++    if key in _RAM_POOLS:
++        return _RAM_POOLS[key]
+     return torch.load(dir_path / f"shard_{i:05d}.pt", map_location="cpu", weights_only=True)
+ 
+ 
+ def _shard_paths(dir_path: Path):
+-    return sorted(dir_path.glob("shard_*.pt"))
++    disk = sorted(dir_path.glob("shard_*.pt")) if dir_path.exists() else []
++    ram = sorted(dir_path / f"shard_{i:05d}.pt" for (d, i) in _RAM_POOLS if d == str(dir_path))
++    return sorted(set(disk) | set(ram))
+ 
+ 
+ def _rm_pool(dir_path: Path):
+     """Delete a layer's activation pool once it is no longer needed."""
+     import shutil
++    for key in [k for k in _RAM_POOLS if k[0] == str(dir_path)]:
++        del _RAM_POOLS[key]
+     if dir_path.exists():
+         shutil.rmtree(dir_path, ignore_errors=True)
+ 
+ 
++def _pool_exists(dir_path: Path):
++    return dir_path.exists() or any(d == str(dir_path) for (d, _) in _RAM_POOLS)
++
++
++
+ def _resume_pool_dir(seed: int) -> Path:
+     """Persistent rolling-resume directory. Holds the pool of the last completed
+     layer so a restart can resume the residual chain without regenerating from L0."""
+@@ -3841,14 +3864,35 @@
+     pool_multiplier = 2.2 if two_pool else 1.2
+     n_pools_desc = "2 pipelined pools" if two_pool else "1 pool"
+     peak_gb = pool_batches * shard_gb * pool_multiplier + 4
+-    free_gb = shutil.disk_usage(ROLLCACHE).free / 1e9
+-    sentinel = free_gb > 1e6                                          # overlay fs -> unreliable
+-    print(f"  [disk] {ROLLCACHE} peak~{peak_gb:.0f}GB ({n_pools_desc} of {pool_batches} x "
+-          f"{shard_gb*1e3:.0f}MB); free={'(overlay: unknown)' if sentinel else f'{free_gb:.0f}GB'}")
+-    if not sentinel:
+-        assert free_gb > peak_gb, (
+-            f"insufficient disk at {ROLLCACHE}: {free_gb:.0f}GB free < {peak_gb:.0f}GB peak. "
+-            f"Lower --pool-batches or set $SAE_SCRATCH_DIR to a bigger disk.")
++    if _RAM:
++        # RAM backend: pools live in process memory, so the disk check does not apply.
++        # Estimate against /proc/meminfo MemAvailable instead (two resident pools).
++        ram_peak_gb = pool_batches * shard_gb * 2
++        mem_avail_gb = None
++        try:
++            with open("/proc/meminfo") as _mf:
++                for _line in _mf:
++                    if _line.startswith("MemAvailable:"):
++                        mem_avail_gb = int(_line.split()[1]) * 1024 / 1e9
++                        break
++        except OSError:
++            pass
++        print(f"  [ram] pool backend=ram peak~{ram_peak_gb:.0f}GB (2 pools of {pool_batches} x "
++              f"{shard_gb*1e3:.0f}MB); MemAvailable="
++              f"{'unknown' if mem_avail_gb is None else f'{mem_avail_gb:.0f}GB'}")
++        if mem_avail_gb is not None:
++            assert mem_avail_gb > ram_peak_gb, (
++                f"insufficient RAM for in-process pools: MemAvailable {mem_avail_gb:.0f}GB "
++                f"< {ram_peak_gb:.0f}GB peak. Lower --pool-batches or request more RAM.")
++    else:
++        free_gb = shutil.disk_usage(ROLLCACHE).free / 1e9
++        sentinel = free_gb > 1e6                                          # overlay fs -> unreliable
++        print(f"  [disk] {ROLLCACHE} peak~{peak_gb:.0f}GB ({n_pools_desc} of {pool_batches} x "
++              f"{shard_gb*1e3:.0f}MB); free={'(overlay: unknown)' if sentinel else f'{free_gb:.0f}GB'}")
++        if not sentinel:
++            assert free_gb > peak_gb, (
++                f"insufficient disk at {ROLLCACHE}: {free_gb:.0f}GB free < {peak_gb:.0f}GB peak. "
++                f"Lower --pool-batches or set $SAE_SCRATCH_DIR to a bigger disk.")
+ 
+     # -- token pool (once -- same tokens flow through every layer) ------------
+     # Token ids are model-specific; cache them under the model slug so switching
+@@ -4037,6 +4081,15 @@
+                           f"{_prev_meta}; pass --norm-ref to pin the chain norm "
+                           "(first trained layer self-references otherwise)")
+ 
++    # Produce-only mode (SAE_PRODUCE_ONLY=1): walk the chain producing pool[L] for every
++    # layer in range, never construct a provider or train, and release pool[L-1] under
++    # the pool_retention policy as soon as pool[L] exists. Pre-production of L+1 is
++    # skipped too (it only exists to overlap with training).
++    produce_only = os.environ.get("SAE_PRODUCE_ONLY", "0") == "1"
++    if produce_only:
++        print(f"  [produce-only] SAE_PRODUCE_ONLY=1: pools L{walk_start}..L{end_layer} will be "
++              f"produced, no SAE trained, retention={pool_retention}")
++
+     for L in range(walk_start, end_layer + 1):
+         halt, why = _control_says_halt()
+         if halt:
+@@ -4071,7 +4124,7 @@
+             # Pipeline: while the LLM is still hot on GPU, pre-produce the next layer's pool.
+             # When training L finishes, pool L+1 is already on disk and we start immediately.
+             pre_produced_next = False
+-            if L + 1 <= end_layer:
++            if L + 1 <= end_layer and not produce_only:
+                 next_dir = pool_dir_for(L + 1)
+                 if len(_shard_paths(next_dir)) < pool_batches:
+                     print(f"  [pipeline] pre-producing pool L{L+1} while model hot ...")
+@@ -4102,6 +4155,16 @@
+                 # pool but won't train them. Keep their source pool for the next layer.
+                 print(f"  [skip-train] L{L} pool produced; below start_layer={start_layer}")
+                 continue
++            if produce_only:
++                # Release pools no longer needed as a block input: pool[L-1] was only
++                # needed to produce pool[L]. Honors pool_retention like the trained path.
++                for old_L in range(L - pool_retention, walk_start - 1, -1):
++                    if old_L < 0 or old_L in kv_anchor_pools:
++                        continue
++                    if _pool_exists(pool_dir_for(old_L)):
++                        _rm_pool(pool_dir_for(old_L)); print(f"  [cleanup] deleted pool L{old_L}")
++                print(f"  [produce-only] L{L} pool produced; training skipped")
++                continue
+         else:
+             _produce_pool_hooked(model, decoder_layers, L, tok_dir, dst_dir, device)
+ 
+--- /dev/null
++++ b/configs/gemma2_2b.yaml
+@@ -0,0 +1,41 @@
++model_id: google/gemma-2-2b
++
++# Never reached in produce-only mode (no SAE is trained, nothing is pushed, the
++# trainer's own wandb.init is never called). Kept so the config is complete.
++hf_sae_repo: juiceb0xc0de/gemma-2-2b-SAE
++hf_repo_type: dataset
++wandb_project: gemma-2-2b-SAE
++
++architecture:
++  n_layers: null
++  d_in: null
++
++defaults:
++  # Gemma 2 is a standard HF decoder stack (Gemma2DecoderLayer takes
++  # position_embeddings), so the trainer's HF single-block rolling walk applies.
++  capture: rolling-hf
++  expansion: 7
++  pool_batches: 500
++  pool_forward_fusion: 1
++  max_steps: 5000
++  target_l0: 50
++  microbatch_tokens: 32768
++  pool_retention: 1
++
++corpus:
++  id: monology/pile-uncopyrighted
++  text_field: text
++  prefix: ""
++
++env:
++  # 32 sequences x 1024 tokens per shard (SAE_BATCH_TOKENS stays 32768).
++  # Sliding window 4096 > 1024 so attention_mask=None remains exact.
++  SAE_SEQ_LEN: "1024"
++  SAE_TIMING: "250"
++
++notes: |
++  Pool-production timing run only (SAE_PRODUCE_ONLY=1, SAE_POOL_BACKEND=ram):
++  activation pools for layers 0-3 are produced by the orchestrator's own
++  rolling-hf walk and held in process memory; no SAE is trained.
++  Corpus: the Pile (uncopyrighted), streamed; stand-in for Google's private
++  mix, no closeness claim.
