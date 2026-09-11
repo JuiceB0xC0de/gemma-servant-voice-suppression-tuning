@@ -1,0 +1,11 @@
+{
+ "k_drop": 8,
+ "max_abs_delta_cos_mean_projection_L0_13": 0.07593774510857787,
+ "max_abs_delta_cos_mean_projection_all": 0.3332888762032553,
+ "max_abs_delta_cos_drop_coords_L0_13": 0.07113611215086707,
+ "cos_after_projection_L4": 0.5103276872700223,
+ "cos_after_projection_L10": 0.5203722586658558,
+ "min_cos_after_projection": 0.2846908507894761,
+ "max_abs_cos_shift_vs_mean_L0_13": 0.2098554379144346,
+ "max_random_p95_after_projection": 0.04396200707605788
+}

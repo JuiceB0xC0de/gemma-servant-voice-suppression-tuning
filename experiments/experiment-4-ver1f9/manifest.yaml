@@ -1,0 +1,35 @@
+experiment: 4
+eid: "exp_01m21z6dx8e5r9zt6n0vver1f9"
+title: "Do the Assistant-register features exist as a short list? Feature-level steering"
+date: "2026-09-09"
+status: complete
+data:
+  prompts_and_pairs: results/data (copied from exp_01m1xz587ze4t8np5xr6016475; sha256 in results/data_sha256.txt)
+  model: google/gemma-4-E4B-it@ee0ef6023621cff504d758262d4e04895a5af4a2
+  fine_tune: juiceb0xc0de/bella-bartender-gemma-e4b@ac5ff55239c029c461a41bd2788d7423d0f2ac7c
+  saes: juiceb0xc0de/gemma-4-e4b-SAE@57bacb61a1bcc32be212a815b985a9bb42ff9a16 (layers 4, 10, 22)
+outputs:
+  iteration1_run: artifact://juiceb0xc0de-15787e/experiments/exp_01m21z6dx8e5r9zt6n0vver1f9/run/
+  iteration2_run: artifact://juiceb0xc0de-15787e/experiments/exp_01m21z6dx8e5r9zt6n0vver1f9/iter2/run/
+  judgments: artifact://juiceb0xc0de-15787e/experiments/exp_01m21z6dx8e5r9zt6n0vver1f9/judge/judgments.jsonl
+  analysis: results/analysis
+  figures: figures
+  report_contract: [report_summary.json, claims_manifest.json]
+  report_page: /srv/silico-state/_shared/silico/experiments/exp_01m21z6dx8e5r9zt6n0vver1f9/apps/index.html
+results:
+  Q1: "refuted (no feature cell reaches the Bella threshold at any k)"
+  Q2: "not testable (no feature cell reaches the Bella threshold)"
+  Q3: "refuted on the cosine rule (0.52 / 0.46 at crest layers 4 and 10); primary quantity: fraction of gap closed 3.1% / 2.6% at layers 4 / 10, 29-43% at layers 29-41; cosine not separated from a shared component (rank-1 mean ruled out only); late magnitude rise is post hoc"
+  q3_shared_component_check: results/analysis/q3_mean_projected.csv
+  k200_reading: "A/D:10:200 gains (+0.71/+1.21) come with canary failures that matched random 200-feature sets at the same edit norm do not show; the selected sets raise the teacher-forced Bella-minus-Gemma log-prob more than the -0.35 direction (+1.83/+2.15 vs +1.40 nats/token; random +0.49/+0.65)"
+  labels: "58 features labelled (33 Assistant-ward, 25 Bella-ward)"
+  q1_threshold: 1.2585
+  direction_-0.35_gain: 1.798
+  best_feature_cell_k_le_50: "A:10:20 (+0.11)"
+  cos_L4: 0.518
+  cos_L10: 0.460
+jobs:
+  - id: "110128294020"
+    role: iteration 1 (stages 1,4,2,3)
+  - id: "615912779681"
+    role: iteration 2 (k=100 cells, Bella-ward amplification)

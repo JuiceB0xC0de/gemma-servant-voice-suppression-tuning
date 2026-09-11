@@ -1,0 +1,1 @@
+Bella voice gain against number of clamped features for three selection rules, random controls and amplification cells, with the direction gain and Q1 threshold as reference lines.
