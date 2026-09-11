@@ -1,0 +1,9 @@
+experiment: 6
+eid: "exp_01m28x56geetftadf0d8v30y84"
+title: "Pool production only, Gemma 2 2B layers 0 to 3, in-process RAM pool, timed"
+date: "2026-09-11"
+status: in-progress
+data: {}
+outputs: {}
+results: {}
+slurm_jobs: []
