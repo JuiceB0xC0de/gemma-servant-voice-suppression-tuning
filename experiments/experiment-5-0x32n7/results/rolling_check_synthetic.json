@@ -1,0 +1,282 @@
+{
+    "model_id": "google/gemma-2-2b",
+    "n_layers": 26,
+    "hidden": 2304,
+    "attn_implementation": "sdpa",
+    "sliding_window": 4096,
+    "attn_logit_softcapping": 50.0,
+    "block_signature": "(hidden_states: torch.Tensor, position_embeddings: tuple[torch.Tensor, torch.Tensor] | None = None, attention_mask: torch.Tensor | None = None, position_ids: torch.LongTensor | None = None, past_key_values: transformers.cache_utils.Cache | None = None, **kwargs) -> tuple[torch.FloatTensor, tuple[torch.FloatTensor, torch.FloatTensor] | None]",
+    "trainer_hf_rolling_supported": true,
+    "trainer_generic_rolling_supported": false,
+    "trainer_capture_path": "rolling-hf",
+    "n_batches": 1,
+    "probe_shape": [
+        2,
+        1862
+    ],
+    "embeddings_max_abs_diff": 0.0,
+    "tol": 0.02,
+    "all_ok": true,
+    "layers": [
+        {
+            "layer": 0,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 1.484763741493225,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 1,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 1.7273902893066406,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 2,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 1.710166335105896,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 3,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 1.7538608312606812,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 4,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 1.8221266269683838,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 5,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 1.8967636823654175,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 6,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 1.8923178911209106,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 7,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 2.1350483894348145,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 8,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 2.0719990730285645,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 9,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 2.33508038520813,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 10,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 2.628990888595581,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 11,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 2.9839248657226562,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 12,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 3.1219420433044434,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 13,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 3.4546563625335693,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 14,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 3.7806193828582764,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 15,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 3.855393886566162,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 16,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 4.411945343017578,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 17,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 4.468132495880127,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 18,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 4.929708957672119,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 19,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 5.439736366271973,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 20,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 6.4601922035217285,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 21,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 6.978102684020996,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 22,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 8.25741195678711,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 23,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 9.108064651489258,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 24,
+            "layer_type": "sliding_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 12.344093322753906,
+            "nan": false,
+            "ok": true
+        },
+        {
+            "layer": 25,
+            "layer_type": "full_attention",
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "rms_rel": 0.0,
+            "rms_ref": 24.283939361572266,
+            "nan": false,
+            "ok": true
+        }
+    ]
+}

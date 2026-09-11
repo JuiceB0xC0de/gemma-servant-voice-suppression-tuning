@@ -1,0 +1,51 @@
+model_id: google/gemma-2-2b
+
+hf_sae_repo: juiceb0xc0de/gemma-2-2b-SAE
+hf_repo_type: dataset
+wandb_project: gemma-2-2b-SAE
+
+architecture:
+  n_layers: null
+  d_in: null
+
+defaults:
+  # Gemma 2 is a standard HF decoder stack (Gemma2DecoderLayer takes
+  # position_embeddings), so the trainer's HF single-block rolling walk applies.
+  # The Gemma-3n/4 `rolling-float` path (per-layer embeddings, shared KV) does not
+  # exist in Gemma 2. `rolling-hf-float` at c796c2ee fails on the first shard
+  # (block never hoisted to GPU on the HF branch; see results/calibration.md), so
+  # the model-resident `rolling-hf` walk is used. Same math, weights on GPU.
+  capture: rolling-hf
+  # 7 x 2304 = 16,128 features (nearest integer expansion to Gemma Scope's 16,384;
+  # the trainer only exposes an integer expansion factor).
+  expansion: 7
+  pool_batches: 500
+  # Inert on the HF rolling path (fusion is only used by the Gemma-4 producer);
+  # kept identical to configs/gemma4.yaml.
+  pool_forward_fusion: 2
+  max_steps: 5000
+  target_l0: 50
+  microbatch_tokens: 32768
+  pool_retention: 3
+
+corpus:
+  id: HuggingFaceFW/fineweb-edu
+  text_field: text
+  prefix: ""
+
+env:
+  SAE_TIMING: "250"
+
+notes: |
+  Gemma-2-2b calibration run against Gemma Scope (google/gemma-scope-2b-pt-res,
+  width_16k). Residual width 2304, 26 layers, alternating sliding(4096)/full
+  attention; SEQ_LEN 2048 < sliding window so attention_mask=None is exact.
+  Activation pools live on container-local scratch ($SAE_SCRATCH_DIR); only
+  sae.pt, meta.json, checkpoints and logs go to the network volume.
+
+caveats:
+  corpus_note: >
+    SAE training activations are sampled from FineWeb-Edu, so the resulting
+    feature distribution reflects that corpus.
+  width_note: >
+    16,128 features (7x expansion) versus Gemma Scope's 16,384.
