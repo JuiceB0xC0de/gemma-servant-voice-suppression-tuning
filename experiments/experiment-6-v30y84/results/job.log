@@ -1,0 +1,174 @@
+[run_job 19:08:32 +    0.5s] RAM: MemTotal=1618.4GB MemAvailable=1618.3GB cgroup.max=1618.4GB cgroup.current=0.03GB effective_available=1618.3GB; estimate(2 pools+10GB)=161.0GB requested=200GiB cpus=24 shm=42.9GB
+[run_job 19:08:32 +    1.2s] hub before: 5 files sha=9a20f4662c004aaa2df3ea11fa115c0b275d50b1
+[run_job 19:08:32 +    1.3s] corpus monology/pile-uncopyrighted @ 3be90335b66f24456a5d6659d9c8d208c0357119
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from WANDB_API_KEY.
+wandb: Currently logged in as: ricks-holmberg (ricks-holmberg-juiceb0xc0de) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run ddikj8m9
+wandb: Tracking run with wandb version 0.28.2
+wandb: Run data is saved locally in /workspace/.wandb/wandb/run-20260911_190834-ddikj8m9
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run produce_only_L00-03_ram
+wandb: ⭐️ View project at https://wandb.ai/ricks-holmberg-juiceb0xc0de/gemma-2-2b-SAE-timing
+wandb: 🚀 View run at https://wandb.ai/ricks-holmberg-juiceb0xc0de/gemma-2-2b-SAE-timing/runs/ddikj8m9
+[run_job 19:08:35 +    4.1s] wandb run: https://wandb.ai/ricks-holmberg-juiceb0xc0de/gemma-2-2b-SAE-timing/runs/ddikj8m9
+[run_job 19:08:39 +    8.3s] env {'torch': '2.9.1+cu128', 'cuda': '12.8', 'gpu': 'NVIDIA H100 80GB HBM3', 'transformers': '5.5.4'}
+[run_job 19:08:39 +    8.3s] launching trainer: run_atlas.py --config /__modal/volumes/vo-EgfgtMuXItdQlCyyKXPSPm/experiments/experiment-6-v30y84/configs/gemma2_2b.yaml --layer-range 0,3 --capture rolling-hf --pool-retention 1 --no-push  env: SAE_PRODUCE_ONLY=1 SAE_POOL_BACKEND=ram SAE_SEQ_LEN(config)=1024
+
+====================================================================
+SAE atlas training
+  Config:      gemma2_2b.yaml
+  Model:       google/gemma-2-2b
+  Layers:      0-3 (4 layers)
+  Capture:     rolling-hf
+  Corpus:      monology/pile-uncopyrighted (field=text, prefix='')
+  Expansion:   7x
+  Pool batches:500
+  Pool fusion: 1x
+  Max steps:   5000
+  Target L0:   50
+  Microbatch:  32768 tokens
+  SAE dir:     /__modal/volumes/vo-EgfgtMuXItdQlCyyKXPSPm/experiments/experiment-6-v30y84/scratch/job_data/saes/google_gemma-2-2b
+  HF repo:     juiceb0xc0de/gemma-2-2b-SAE (dataset)
+  W&B project: gemma-2-2b-SAE
+  W&B auth:    checked when each layer run starts
+--------------------------------------------------------------------
+  Pool-production timing run only (SAE_PRODUCE_ONLY=1, SAE_POOL_BACKEND=ram):
+  activation pools for layers 0-3 are produced by the orchestrator's own
+  rolling-hf walk and held in process memory; no SAE is trained.
+  Corpus: the Pile (uncopyrighted), streamed; stand-in for Google's private
+  mix, no closeness claim.
+====================================================================
+
+  [config] corpus: monology/pile-uncopyrighted
+  [config] pool retention: 1 previous pool(s) kept on disk
+  [config] target L0 overridden: K=50
+Loading google/gemma-2-2b ...
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files:  33%|███▎      | 1/3 [00:06<00:12,  6.36s/it]Fetching 3 files:  67%|██████▋   | 2/3 [00:27<00:14, 14.80s/it]Fetching 3 files: 100%|██████████| 3/3 [00:28<00:00,  8.87s/it]Fetching 3 files: 100%|██████████| 3/3 [00:28<00:00,  9.63s/it]
+Loading weights:   0%|          | 0/288 [00:00<?, ?it/s]Loading weights:  32%|███▏      | 93/288 [00:00<00:00, 929.49it/s]Loading weights:  65%|██████▍   | 186/288 [00:00<00:00, 915.09it/s]Loading weights:  97%|█████████▋| 278/288 [00:00<00:00, 872.84it/s]Loading weights: 100%|██████████| 288/288 [00:00<00:00, 905.09it/s]
+  model=Gemma2ForCausalLM  blocks=26  d_in=2304  n_features=16128 (7x)  capture=rolling-hf
+
+############################################################
+  SAE ATLAS  model=google_gemma-2-2b  layers=[0, 1, 2, 3]  seed=0  capture=rolling-hf
+############################################################
+
+  [ram] pool backend=ram peak~151GB (2 pools of 500 x 151MB); MemAvailable=1612GB
+  [tokens] no pretok shards at /__modal/volumes/vo-EgfgtMuXItdQlCyyKXPSPm/experiments/experiment-6-v30y84/scratch/job_data/pretok/google_gemma-2-2b; falling back to streaming tokenization
+  [tokens] capturing 500 token shards ([32,1024]) ...
+    token shard 50/500
+    token shard 100/500
+    token shard 150/500
+    token shard 200/500
+    token shard 250/500
+    token shard 300/500
+    token shard 350/500
+    token shard 400/500
+    token shard 450/500
+    token shard 500/500
+  [tokens] done -> /__modal/volumes/vo-EgfgtMuXItdQlCyyKXPSPm/experiments/experiment-6-v30y84/scratch/job_rollcache/tokens_google_gemma-2-2b_s0
+[run_job 19:10:59 +  147.8s] token shards: 500 shapes=[(32, 1024)] in 98s; special tokens {'total': 16384000, 'bos': 34485, 'bos_pos0': 16000, 'bos_mid': 18485, 'eos': 0, 'pad': 0} ids={'bos': 2, 'eos': 1, 'pad': 0}
+  [produce-only] SAE_PRODUCE_ONLY=1: pools L0..L3 will be produced, no SAE trained, retention=1
+  [produce L0] HF rolling block 0 over 500 batches ...
+    produced 50/500  (396.0k tok/s)
+    produced 100/500  (427.7k tok/s)
+    produced 150/500  (442.6k tok/s)
+    produced 200/500  (453.2k tok/s)
+    produced 250/500  (458.9k tok/s)
+    produced 300/500  (463.0k tok/s)
+    produced 350/500  (464.0k tok/s)
+    produced 400/500  (464.6k tok/s)
+    produced 450/500  (466.2k tok/s)
+    produced 500/500  (467.6k tok/s)
+  [produce L0] done in 0.6min -> /__modal/volumes/vo-EgfgtMuXItdQlCyyKXPSPm/experiments/experiment-6-v30y84/scratch/job_rollcache/pool_google_gemma-2-2b_L00_s0
+[run_job 19:11:35 +  184.1s] L0: 35.0s  467.5k tok/s  resident pools 75.5GB (['pool_google_gemma-2-2b_L00_s0'])  peak RSS 83.1GB
+  [produce-only] L0 pool produced; training skipped
+  [produce L1] HF rolling block 1 over 500 batches ...
+    produced 50/500  (342.2k tok/s)
+    produced 100/500  (348.6k tok/s)
+    produced 150/500  (354.6k tok/s)
+    produced 200/500  (359.2k tok/s)
+    produced 250/500  (363.0k tok/s)
+    produced 300/500  (366.9k tok/s)
+    produced 350/500  (368.7k tok/s)
+    produced 400/500  (370.8k tok/s)
+    produced 450/500  (371.2k tok/s)
+    produced 500/500  (370.0k tok/s)
+  [produce L1] done in 0.7min -> /__modal/volumes/vo-EgfgtMuXItdQlCyyKXPSPm/experiments/experiment-6-v30y84/scratch/job_rollcache/pool_google_gemma-2-2b_L01_s0
+[run_job 19:12:20 +  228.5s] L1: 44.3s  370.0k tok/s  resident pools 151.0GB (['pool_google_gemma-2-2b_L00_s0', 'pool_google_gemma-2-2b_L01_s0'])  peak RSS 158.6GB
+[run_job 19:12:20 +  228.7s] rm pool_google_gemma-2-2b_L00_s0: resident pools now 75.5GB (['pool_google_gemma-2-2b_L01_s0'])
+  [cleanup] deleted pool L0
+  [produce-only] L1 pool produced; training skipped
+  [produce L2] HF rolling block 2 over 500 batches ...
+    produced 50/500  (372.0k tok/s)
+    produced 100/500  (375.2k tok/s)
+    produced 150/500  (378.5k tok/s)
+    produced 200/500  (379.6k tok/s)
+    produced 250/500  (379.4k tok/s)
+    produced 300/500  (380.9k tok/s)
+    produced 350/500  (381.8k tok/s)
+    produced 400/500  (381.8k tok/s)
+    produced 450/500  (381.0k tok/s)
+    produced 500/500  (379.2k tok/s)
+  [produce L2] done in 0.7min -> /__modal/volumes/vo-EgfgtMuXItdQlCyyKXPSPm/experiments/experiment-6-v30y84/scratch/job_rollcache/pool_google_gemma-2-2b_L02_s0
+[run_job 19:13:03 +  272.0s] L2: 43.2s  379.1k tok/s  resident pools 151.0GB (['pool_google_gemma-2-2b_L01_s0', 'pool_google_gemma-2-2b_L02_s0'])  peak RSS 158.6GB
+[run_job 19:13:03 +  272.2s] rm pool_google_gemma-2-2b_L01_s0: resident pools now 75.5GB (['pool_google_gemma-2-2b_L02_s0'])
+  [cleanup] deleted pool L1
+  [produce-only] L2 pool produced; training skipped
+  [produce L3] HF rolling block 3 over 500 batches ...
+    produced 50/500  (364.8k tok/s)
+    produced 100/500  (365.0k tok/s)
+    produced 150/500  (366.7k tok/s)
+    produced 200/500  (371.4k tok/s)
+    produced 250/500  (373.0k tok/s)
+    produced 300/500  (375.5k tok/s)
+    produced 350/500  (377.0k tok/s)
+    produced 400/500  (377.4k tok/s)
+    produced 450/500  (376.7k tok/s)
+    produced 500/500  (375.8k tok/s)
+  [produce L3] done in 0.7min -> /__modal/volumes/vo-EgfgtMuXItdQlCyyKXPSPm/experiments/experiment-6-v30y84/scratch/job_rollcache/pool_google_gemma-2-2b_L03_s0
+[run_job 19:13:47 +  315.9s] L3: 43.6s  375.7k tok/s  resident pools 151.0GB (['pool_google_gemma-2-2b_L02_s0', 'pool_google_gemma-2-2b_L03_s0'])  peak RSS 158.6GB
+[run_job 19:13:47 +  316.0s] rm pool_google_gemma-2-2b_L02_s0: resident pools now 75.5GB (['pool_google_gemma-2-2b_L03_s0'])
+  [cleanup] deleted pool L2
+  [produce-only] L3 pool produced; training skipped
+
+############################################################
+  SAE ATLAS COMPLETE  layers=[0, 1, 2, 3]  wall=2.8min
+############################################################
+
+Training complete.
+  Results: {}
+[run_job 19:13:47 +  316.4s] hub after: 5 files sha=9a20f4662c004aaa2df3ea11fa115c0b275d50b1 unchanged=True
+wandb: updating run metadata; uploading artifact run-ddikj8m9-pool_timing
+wandb: uploading artifact run-ddikj8m9-pool_timing
+wandb: uploading history steps 33-38, summary, console lines 111-126
+wandb: 
+wandb: Run history:
+wandb:                              layer/L ▁▃▆█
+wandb:         layer/mem_available_gb_after █▁▁▁
+wandb:                    layer/peak_rss_gb ▁███
+wandb: layer/resident_pool_gb_after_produce ▁███
+wandb:                   layer/tokens_per_s █▁▂▁
+wandb:                         layer/wall_s ▁█▇▇
+wandb:                sys/cgroup_current_gb ▁▁▁▁▁▁▁▁▁▁▁▂▃▅▅▅▆▇██▇▅▆▇██▇▅▆▇██▆
+wandb:                 sys/gpu_mem_total_gb ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                  sys/gpu_mem_used_gb ▁▁▁▅▅▅▅▅▅▅▅██████████████████████
+wandb:                     sys/gpu_util_pct ▁▁▁▁▁▁▁▁▁▁▁▇▆▇▇▄▆█▆▂▂▆▆▆▆▆▆▆▆▇▆▁▁
+wandb:                                  +12 ...
+wandb: 
+wandb: Run summary:
+wandb:                        hub_unchanged True
+wandb:                              layer/L 3
+wandb:         layer/mem_available_gb_after 1459.79528
+wandb:                    layer/peak_rss_gb 158.62858
+wandb: layer/resident_pool_gb_after_produce 150.99494
+wandb:                   layer/tokens_per_s 375714.0048
+wandb:                         layer/wall_s 43.60764
+wandb:                          peak_rss_gb 158.62858
+wandb:                               status ok
+wandb:                sys/cgroup_current_gb 121.48937
+wandb:                                  +17 ...
+wandb: 
+wandb: 🚀 View run produce_only_L00-03_ram at: https://wandb.ai/ricks-holmberg-juiceb0xc0de/gemma-2-2b-SAE-timing/runs/ddikj8m9
+wandb: ⭐️ View project at: https://wandb.ai/ricks-holmberg-juiceb0xc0de/gemma-2-2b-SAE-timing
+wandb: Synced 5 W&B file(s), 2 media file(s), 4 artifact file(s) and 0 other file(s)
+wandb: Find logs at: /workspace/.wandb/wandb/run-20260911_190834-ddikj8m9/logs
+[run_job 19:13:50 +  318.6s] done status=ok total 5.3 min; results -> /silico-workspace/outputs/produce_only_L00-03_ram/results

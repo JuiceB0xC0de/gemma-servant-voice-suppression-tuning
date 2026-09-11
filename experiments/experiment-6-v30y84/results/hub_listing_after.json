@@ -1,0 +1,3 @@
+{"repo": "juiceb0xc0de/gemma-2-2b-SAE", "sha": "9a20f4662c004aaa2df3ea11fa115c0b275d50b1", "last_modified": "2026-09-11 17:20:41+00:00", "n_files": 5,
+ "files": [[".gitattributes", 2504], ["layer_05_s0/meta.json", 3065], ["layer_05_s0/sae.pt", 297411949], ["layer_12_s0/meta.json", 3063], ["layer_12_s0/sae.pt", 297411949]],
+ "queried_at": "2026-09-11T19:13:47Z", "before_sha": "9a20f4662c004aaa2df3ea11fa115c0b275d50b1", "before_queried_at": "2026-09-11T19:08:32Z", "unchanged": true}

@@ -1,0 +1,136 @@
+{
+ "job_id": "ta-01M28XXSMF2WWWRWX2E50SYN1S",
+ "trainer_commit": "c796c2eeced4c9310066989c0fa304bdb88307b4",
+ "patch_sha256": "b976f3e07f6a092a908a9b88b8b15907bf3120051fb21fcc0df1b4c5fa9e5c73",
+ "image_ref": "docker.io/juiceboxdocks/gemma-4-e2b-it-base:cu128-torch291-py311",
+ "model_id": "google/gemma-2-2b",
+ "corpus": "monology/pile-uncopyrighted",
+ "seq_len": 1024,
+ "batch_tokens": 32768,
+ "pool_batches": 500,
+ "pool_retention": 1,
+ "layer_range": "0,3",
+ "pool_bytes": 75497472000,
+ "ram_estimate_bytes": 160994944000.0,
+ "ram_requested_gib": 200,
+ "mem": {
+  "MemTotal": 1618355421184,
+  "MemAvailable_start": 1618327044096,
+  "cgroup_max": 1618355421184,
+  "cgroup_current_start": 28192768,
+  "effective_available_start": 1618327044096,
+  "shm_total": 42949672960
+ },
+ "cpu_count": 24,
+ "layers": [
+  {
+   "layer": 0,
+   "wall_s": 35.04786491394043,
+   "tokens": 16384000,
+   "shards": 500,
+   "tokens_per_s": 467474.98143555096,
+   "resident_pool_gb_after_produce": 75.497472,
+   "resident_pool_gb_after_cleanup": null,
+   "resident_pools_after_cleanup": null,
+   "peak_rss_gb": 83.07922944,
+   "mem_available_gb_after": 1535.544061952,
+   "start_utc": "2026-09-11T19:11:00Z",
+   "end_utc": "2026-09-11T19:11:35Z"
+  },
+  {
+   "layer": 1,
+   "wall_s": 44.28652620315552,
+   "tokens": 16384000,
+   "shards": 500,
+   "tokens_per_s": 369954.5077173518,
+   "resident_pool_gb_after_produce": 150.994944,
+   "resident_pool_gb_after_cleanup": 75.497472,
+   "resident_pools_after_cleanup": "pool_google_gemma-2-2b_L01_s0",
+   "peak_rss_gb": 158.628581376,
+   "mem_available_gb_after": 1459.79959296,
+   "start_utc": "2026-09-11T19:11:35Z",
+   "end_utc": "2026-09-11T19:12:20Z"
+  },
+  {
+   "layer": 2,
+   "wall_s": 43.21510910987854,
+   "tokens": 16384000,
+   "shards": 500,
+   "tokens_per_s": 379126.6605006623,
+   "resident_pool_gb_after_produce": 150.994944,
+   "resident_pool_gb_after_cleanup": 75.497472,
+   "resident_pools_after_cleanup": "pool_google_gemma-2-2b_L02_s0",
+   "peak_rss_gb": 158.628581376,
+   "mem_available_gb_after": 1459.79533312,
+   "start_utc": "2026-09-11T19:12:20Z",
+   "end_utc": "2026-09-11T19:13:03Z"
+  },
+  {
+   "layer": 3,
+   "wall_s": 43.60763716697693,
+   "tokens": 16384000,
+   "shards": 500,
+   "tokens_per_s": 375714.0048029759,
+   "resident_pool_gb_after_produce": 150.994944,
+   "resident_pool_gb_after_cleanup": 75.497472,
+   "resident_pools_after_cleanup": "pool_google_gemma-2-2b_L03_s0",
+   "peak_rss_gb": 158.628581376,
+   "mem_available_gb_after": 1459.795275776,
+   "start_utc": "2026-09-11T19:13:03Z",
+   "end_utc": "2026-09-11T19:13:47Z"
+  }
+ ],
+ "status": "ok",
+ "corpus_commit": "3be90335b66f24456a5d6659d9c8d208c0357119",
+ "wandb_url": "https://wandb.ai/ricks-holmberg-juiceb0xc0de/gemma-2-2b-SAE-timing/runs/ddikj8m9",
+ "env": {
+  "torch": "2.9.1+cu128",
+  "cuda": "12.8",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "transformers": "5.5.4"
+ },
+ "trainer_argv": [
+  "run_atlas.py",
+  "--config",
+  "/__modal/volumes/vo-EgfgtMuXItdQlCyyKXPSPm/experiments/experiment-6-v30y84/configs/gemma2_2b.yaml",
+  "--layer-range",
+  "0,3",
+  "--capture",
+  "rolling-hf",
+  "--pool-retention",
+  "1",
+  "--no-push"
+ ],
+ "tokens": {
+  "shards": 500,
+  "shapes": [
+   [
+    32,
+    1024
+   ]
+  ],
+  "wall_s": 97.7802722454071,
+  "ids": {
+   "bos": 2,
+   "eos": 1,
+   "pad": 0
+  },
+  "counts": {
+   "total": 16384000,
+   "bos": 34485,
+   "bos_pos0": 16000,
+   "bos_mid": 18485,
+   "eos": 0,
+   "pad": 0
+  }
+ },
+ "trainer_wall_s": 307.871773481369,
+ "final_resident_pool_gb": 75.497472,
+ "final_resident_pools": [
+  "pool_google_gemma-2-2b_L03_s0"
+ ],
+ "peak_rss_gb": 158.628581376,
+ "total_wall_s": 316.1370837688446,
+ "sae_dir_files": [],
+ "hub_unchanged": true
+}
