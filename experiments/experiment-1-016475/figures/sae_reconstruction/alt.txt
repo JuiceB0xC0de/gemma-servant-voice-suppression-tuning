@@ -1,0 +1,1 @@
+Fraction of the E2B direction reconstructed by least squares from the top-k SAE decoder features, per layer, k on a log axis

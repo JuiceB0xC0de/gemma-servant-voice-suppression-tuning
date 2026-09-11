@@ -1,0 +1,19 @@
+experiment: 1
+eid: "exp_01m1xz587ze4t8np5xr6016475"
+title: "Locate the Assistant persona direction in Gemma 4 E2B and E4B and test whether scaling it down frees the Bella voice"
+date: "2026-09-07"
+status: complete
+data:
+  pairs: results/data/pairs.jsonl (600, split 400/100/100)
+  eval_sets: results/data/{eval_prompts,crisis_eval,red_team,neutral,authentic,corporate}.jsonl
+  manifest: results/data/manifest.json
+outputs:
+  gpu_runs: artifact://juiceb0xc0de-15787e/experiments/exp_01m1xz587ze4t8np5xr6016475/{E2B,E4B}/run/ and iter2/{E2B,E4B}/run/ and iter3/{E2B,E4B}/run/ (iter3 = superset: all steered layers, E2B stage3.json with layer 13)
+  judge: artifact://juiceb0xc0de-15787e/experiments/exp_01m1xz587ze4t8np5xr6016475/judge/
+  analysis: results/analysis/summary.json
+  report_contract: report_summary.json, claims_manifest.json
+results:
+  q1: supported (E2B crests L4 d 5.04 and L13 d 4.98, dip L12 d 4.26; drops 0.78 [0.34,1.31] and 0.73 [0.48,1.04])
+  q2: refuted as registered; post hoc E4B surviving crests one layer before global blocks (5/5 all-token, 3/4 first-32); E2B not significant once layer 4 is counted (3/9 maxima, p=0.28); suggestive only
+  q3: not supported under the registered rule or the post-hoc rule in either model; E4B L10 c=-0.35/-0.5 shift chat replies toward Bella (Bella-ness +1.9/+2.9, corporate halved, refusal within 2.6 pt, crisis within noise) but 24%/42% of the registered neutral-stem continuations degenerate (0% unsteered); only E2B L13 c=-0.35 passes the post-hoc rule, at one coefficient
+slurm_jobs: [426323037845 (smoke), 259273862293 (E2B), 366915989324 (E4B), 924461975782 (bootstrap), 979311795559 (E2B iter2), 393834931884 (E4B iter2), 386095645805 (E2B iter3 L13 + SAE), 274289267110 (E4B iter3 L4/10/22)]

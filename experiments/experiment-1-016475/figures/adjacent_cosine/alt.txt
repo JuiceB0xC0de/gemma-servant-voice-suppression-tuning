@@ -1,0 +1,1 @@
+Cosine similarity between the unit directions at adjacent layers for E2B and E4B against relative depth
