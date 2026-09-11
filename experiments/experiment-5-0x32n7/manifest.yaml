@@ -1,0 +1,9 @@
+experiment: 5
+eid: "exp_01m28h52s8f1mrpcwrhq0x32n7"
+title: "Calibrate the event-aware SAE trainer against Gemma Scope on Gemma 2 2B with local-scratch pools"
+date: "2026-09-11"
+status: in-progress
+data: {}
+outputs: {}
+results: {}
+slurm_jobs: []
