@@ -1,0 +1,42 @@
+model_id: google/gemma-4-E4B-it
+
+hf_sae_repo: juiceb0xc0de/gemma-4-e4b-SAE
+hf_repo_type: dataset
+wandb_project: gemma-4-e4b-SAE
+
+architecture:
+  n_layers: null
+  d_in: null
+
+defaults:
+  capture: rolling-float
+  expansion: 32
+  pool_batches: 500
+  pool_forward_fusion: 2
+  max_steps: 5000
+  target_l0: 50
+  # E2B ran 32768 (no accumulation). At d_in 2560 / 81920 features the per-
+  # microbatch JumpReLU activations alone exceed an 80 GB H100 (smoke OOM at
+  # 74.5 GiB allocated), so accumulate 2 microbatches of 16384 per 32768-token step.
+  microbatch_tokens: 16384
+  pool_retention: 3
+
+corpus:
+  id: HuggingFaceFW/fineweb-edu
+  text_field: text
+  prefix: ""
+
+env:
+  SAE_TIMING: "250"
+  PYTORCH_CUDA_ALLOC_CONF: expandable_segments:True
+
+notes: |
+  Gemma-4-E4B-it (42 layers, d_in 2560, shared KV from layer 24) on the
+  Gemma-specific rolling capture backend, same recipe as gemma4.yaml (E2B).
+  Post-boundary layers hoist their fixed KV-producing dependency alongside the
+  current block and rebuild shared KV from retained anchor activation pools.
+
+caveats:
+  corpus_note: >
+    SAE training activations are sampled from FineWeb-Edu, so the resulting
+    feature distribution reflects that corpus.

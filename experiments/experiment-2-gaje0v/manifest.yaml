@@ -1,0 +1,9 @@
+experiment: 2
+eid: "exp_01m1y0m9rsfnasj5vm2egaje0v"
+title: "Train the 42-layer JumpReLU SAE atlas for Gemma 4 E4B with the E2B recipe"
+date: "2026-09-07"
+status: in-progress
+data: {}
+outputs: {}
+results: {}
+slurm_jobs: []

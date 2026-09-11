@@ -1,0 +1,7 @@
+{"source": "artifact://juiceb0xc0de-15787e/experiments/exp_01m1y0m9rsfnasj5vm2egaje0v/forward_check_e4b.json",
+ "model_id": "google/gemma-4-E4B-it", "n_layers": 42, "hidden": 2560, "kv_share_start": 24,
+ "attn_implementation": "triton_gqa", "probe_shape": [2, 1862], "layers_checked": "0..40",
+ "kv_sources": {"sliding shared layers 24-40 (non-global)": 22, "global shared layers 29,35,41": 23},
+ "full_attention_layers": [5, 11, 17, 23, 29, 35, 41],
+ "result": "all 41 layers bit-exact (max|diff| = 0.0) between the trainer's single-block rolling walk and model(..., output_hidden_states=True)",
+ "model_load_seconds_including_download": 62}
