@@ -1,0 +1,41 @@
+model_id: google/gemma-2-2b
+
+# Never reached in produce-only mode (no SAE is trained, nothing is pushed, the
+# trainer's own wandb.init is never called). Kept so the config is complete.
+hf_sae_repo: juiceb0xc0de/gemma-2-2b-SAE
+hf_repo_type: dataset
+wandb_project: gemma-2-2b-SAE
+
+architecture:
+  n_layers: null
+  d_in: null
+
+defaults:
+  # Gemma 2 is a standard HF decoder stack (Gemma2DecoderLayer takes
+  # position_embeddings), so the trainer's HF single-block rolling walk applies.
+  capture: rolling-hf
+  expansion: 7
+  pool_batches: 500
+  pool_forward_fusion: 1
+  max_steps: 5000
+  target_l0: 50
+  microbatch_tokens: 32768
+  pool_retention: 1
+
+corpus:
+  id: monology/pile-uncopyrighted
+  text_field: text
+  prefix: ""
+
+env:
+  # 32 sequences x 1024 tokens per shard (SAE_BATCH_TOKENS stays 32768).
+  # Sliding window 4096 > 1024 so attention_mask=None remains exact.
+  SAE_SEQ_LEN: "1024"
+  SAE_TIMING: "250"
+
+notes: |
+  Pool-production timing run only (SAE_PRODUCE_ONLY=1, SAE_POOL_BACKEND=ram):
+  activation pools for layers 0-3 are produced by the orchestrator's own
+  rolling-hf walk and held in process memory; no SAE is trained.
+  Corpus: the Pile (uncopyrighted), streamed; stand-in for Google's private
+  mix, no closeness claim.

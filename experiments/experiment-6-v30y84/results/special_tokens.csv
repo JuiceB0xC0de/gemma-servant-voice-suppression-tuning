@@ -1,0 +1,7 @@
+token,id,count,fraction
+total_ids,,16384000,1.000000
+bos,2,34485,0.002105
+bos_position0,2,16000,0.000977
+bos_mid_window,2,18485,0.001128
+eos,1,0,0.000000
+pad,0,0,0.000000

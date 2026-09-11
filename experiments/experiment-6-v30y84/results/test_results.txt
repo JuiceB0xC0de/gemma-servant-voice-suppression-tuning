@@ -1,0 +1,6 @@
+# trainer test suite (CPU, pod, trainer commit c796c2ee + results/trainer.patch)
+# date: 2026-09-11T19:00:53Z  torch=2.11.0+cpu transformers=5.12.1
+SKIPPED [1] tests/test_prebias_reassociation.py:109: needs CUDA autocast
+SKIPPED [1] tests/test_smoke_gpu.py:15: requires a CUDA device
+SKIPPED [1] tests/test_smoke_gpu.py:28: requires a CUDA device
+195 passed, 3 skipped in 6.69s
