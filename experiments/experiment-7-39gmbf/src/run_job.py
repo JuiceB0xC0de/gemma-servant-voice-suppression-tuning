@@ -158,13 +158,32 @@ class Sampler(threading.Thread):
 
 
 # ---------------------------------------------------------------------------------
+def with_retries(fn, what, attempts=4, base_delay=10.0):
+    """Transient Hub/network errors (connection resets, 5xx) must not kill a 2 h job:
+    retry a few times with backoff, then re-raise the last error."""
+    last = None
+    for i in range(attempts):
+        try:
+            return fn()
+        except Exception as e:  # noqa
+            last = e
+            if i + 1 < attempts:
+                delay = base_delay * (2 ** i)
+                log(f"WARNING {what} failed ({type(e).__name__}: {e}); retry {i+1}/{attempts-1} in {delay:.0f}s")
+                time.sleep(delay)
+    raise last
+
+
 def hub_listing(token):
     from huggingface_hub import HfApi
-    api = HfApi(token=token)
-    info = api.dataset_info(HUB_REPO, files_metadata=True)
-    files = sorted((s.rfilename, s.size) for s in info.siblings)
-    return {"repo": HUB_REPO, "sha": info.sha, "last_modified": str(info.last_modified),
-            "n_files": len(files), "files": files, "queried_at": utc()}
+
+    def _q():
+        api = HfApi(token=token)
+        info = api.dataset_info(HUB_REPO, files_metadata=True)
+        files = sorted((s.rfilename, s.size) for s in info.siblings)
+        return {"repo": HUB_REPO, "sha": info.sha, "last_modified": str(info.last_modified),
+                "n_files": len(files), "files": files, "queried_at": utc()}
+    return with_retries(_q, "hub listing")
 
 
 def wandb_project_counts(entity=None):
@@ -492,7 +511,7 @@ def main():
 
     def timed_upload(self, *a, **k):
         t0 = time.time()
-        out = orig_upload(self, *a, **k)
+        out = with_retries(lambda: orig_upload(self, *a, **k), f"push {k.get('path_in_repo')}")
         push_walls[k.get("path_in_repo") or "?"] = time.time() - t0
         log(f"push {k.get('path_in_repo')}: {time.time()-t0:.1f}s")
         return out
