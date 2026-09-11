@@ -1,0 +1,45 @@
+model_id: google/gemma-2-2b
+
+# Per-layer push target (the trainer uploads layer_LL_s0/ after each save) and the
+# NEW W&B project for this atlas job (one run for all 26 layers, SAE_WANDB_SINGLE_RUN=1).
+# Existing projects gemma-2-2b-SAE and gemma-2-2b-SAE-timing are not touched.
+hf_sae_repo: juiceb0xc0de/gemma-2-2b-SAE
+hf_repo_type: dataset
+wandb_project: gemma-2-2b-SAE-atlas
+
+architecture:
+  n_layers: null
+  d_in: null
+
+defaults:
+  # Gemma 2 is a standard HF decoder stack (Gemma2DecoderLayer takes
+  # position_embeddings), so the trainer's HF single-block rolling walk applies.
+  capture: rolling-hf
+  expansion: 7
+  pool_batches: 500
+  pool_forward_fusion: 1
+  max_steps: 5000
+  target_l0: 50
+  microbatch_tokens: 32768
+  pool_retention: 1
+
+corpus:
+  id: monology/pile-uncopyrighted
+  text_field: text
+  prefix: ""
+
+env:
+  # 32 sequences x 1024 tokens per shard (SAE_BATCH_TOKENS stays 32768).
+  # Sliding window 4096 > 1024 so attention_mask=None remains exact.
+  SAE_SEQ_LEN: "1024"
+  SAE_TIMING: "250"
+
+notes: |
+  Full atlas, layers 0-25, one sequential job (SAE_POOL_BACKEND=ram,
+  SAE_NO_PREPRODUCE=1, SAE_EAGER_POOL_CLEANUP=1, SAE_NO_RESUME_POOL=1,
+  SAE_EXCLUDE_SPECIAL=1, SAE_WANDB_SINGLE_RUN=1): pool L is produced from pool
+  L-1 in process memory, pool L-1 is released, SAE L trains on pool L with
+  BOS/EOS/pad positions excluded from sampling and from b_dec, the layer is
+  pushed, then the walk advances. No activation pool is ever written to disk.
+  Corpus: the Pile (uncopyrighted), streamed; stand-in for Google's private
+  mix, no closeness claim.

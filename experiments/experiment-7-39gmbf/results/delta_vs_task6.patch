@@ -1,0 +1,268 @@
+--- /srv/silico-state/_shared/silico/experiments/exp_01m28x56geetftadf0d8v30y84/worktree/experiments/experiment-6-v30y84/trainer/sae_trainer_rolling.py	2026-09-11 18:59:33.594000000 +0000
++++ trainer/sae_trainer_rolling.py	2026-09-11 19:37:04.310000000 +0000
+@@ -1610,6 +1610,8 @@
+ # token shards (written directly by _capture_token_pool) keep working unchanged.
+ _RAM_POOLS: dict = {}          # (str(dir_path), i) -> CPU bf16 tensor
+ _RAM = os.environ.get("SAE_POOL_BACKEND", "disk") == "ram"
++# One W&B run for the whole atlas job (see train_sae_on_activations / run_atlas_rolling).
++_WANDB_SINGLE_RUN = os.environ.get("SAE_WANDB_SINGLE_RUN", "0") == "1"
+ 
+ 
+ def _write_shard(dir_path: Path, i: int, tensor):
+@@ -2134,12 +2136,23 @@
+     asynchronous prefetch queue.
+     """
+ 
+-    def __init__(self, pool_dir: Path, device, seed=0, queue_size=12, n_workers=4):
++    def __init__(self, pool_dir: Path, device, seed=0, queue_size=12, n_workers=4,
++                 tok_dir: Path = None, exclude_ids=()):
+         import threading
+         import queue as _queue
+         self.paths = sorted(_shard_paths(pool_dir))
+         if not self.paths:
+             raise RuntimeError(f"No pool shards in {pool_dir}")
++        # Shard index i <-> shard_{i:05d}.pt, valid for the RAM backend (no file) and disk.
++        self.pool_dir = pool_dir
++        self.shard_ids = [int(p.stem.split("_")[-1]) for p in self.paths]
++        # Special-token exclusion (SAE_EXCLUDE_SPECIAL=1): token shard i of tok_dir is the
++        # [n_seqs, SEQ_LEN] input whose block output is pool shard i, in the same order, so
++        # a per-position mask on the ids selects the matching activation rows.
++        self.tok_dir = tok_dir
++        self.exclude_ids = [int(i) for i in exclude_ids if i is not None]
++        self.masked_rows = 0        # rows dropped so far (all workers)
++        self.total_rows = 0         # rows seen so far (before masking)
+         self.device = device
+         self.seed = seed
+         self._q = _queue.Queue(maxsize=queue_size)
+@@ -2168,8 +2181,20 @@
+             for idx in my_idx:
+                 if self._stop.is_set():
+                     return
+-                t = torch.load(self.paths[idx], map_location="cpu", weights_only=True)  # [n_seqs,SEQ_LEN,d] bf16
+-                t = t.reshape(-1, t.shape[-1])
++                sid = self.shard_ids[idx]
++                t = _read_shard(self.pool_dir, sid)                # [n_seqs,SEQ_LEN,d] bf16 (RAM or disk)
++                if self.tok_dir is not None and self.exclude_ids:
++                    ids = _read_shard(self.tok_dir, sid)           # [n_seqs, SEQ_LEN], same shard index
++                    assert tuple(ids.shape) == tuple(t.shape[:2]), \
++                        f"token/pool shard shape mismatch: {tuple(ids.shape)} vs {tuple(t.shape[:2])}"
++                    keep = torch.ones_like(ids, dtype=torch.bool)
++                    for ex in self.exclude_ids:
++                        keep &= ids != ex
++                    self.total_rows += int(keep.numel())
++                    self.masked_rows += int(keep.numel() - keep.sum())
++                    t = t[keep]                                     # [n_kept, d] (copy)
++                else:
++                    t = t.reshape(-1, t.shape[-1])
+                 if self.device.type == "cuda" and torch.cuda.is_available() and not t.is_pinned():
+                     t = t.pin_memory()
+                 while not self._stop.is_set():
+@@ -2436,6 +2461,11 @@
+     accum_steps = BATCH_TOKENS // microbatch_tokens
+     assert BATCH_TOKENS % microbatch_tokens == 0, \
+         f"BATCH_TOKENS ({BATCH_TOKENS}) must be divisible by microbatch_tokens ({microbatch_tokens})"
++    # Special-token exclusion shortens a batch by the masked rows; with a single
++    # microbatch the hot loop's [0:microbatch_tokens] slice is then just the whole batch.
++    if getattr(provider, "exclude_ids", None):
++        assert accum_steps == 1, \
++            f"SAE_EXCLUDE_SPECIAL requires microbatch_tokens == BATCH_TOKENS (accum_steps={accum_steps})"
+ 
+     device = torch.device("cuda" if not cpu else "cpu")
+     torch.manual_seed(seed)
+@@ -2486,28 +2516,48 @@
+     out_suffix = "_frozen" if frozen_decoder else ""
+ 
+     # -- wandb ----------------------------------------------------------------
++    # SAE_WANDB_SINGLE_RUN=1: one W&B run for the whole atlas job. An already-open run
++    # is reused (never finished here); every metric is logged under an "L{layer:02d}/"
++    # prefix against its own step metric; summary keys become "final/L{layer:02d}/...".
++    # Default (unset): one run per layer, exactly as before.
+     use_wandb = False
+     wandb = None
++    _single_run = _WANDB_SINGLE_RUN
++    _wprefix = f"L{layer:02d}/"
+     if WANDB_PROJECT and os.environ.get("WANDB_MODE", "").lower() != "disabled":
+         try:
+             import wandb as _wandb
+-            try:
+-                if _wandb.run is not None:
+-                    _wandb.finish(exit_code=1)
+-            except Exception:
+-                pass
+-            _wandb.init(project=WANDB_PROJECT, name=f"L{layer:02d}_s{seed}",
+-                        reinit="finish_previous",
+-                        config={"layer": layer, "seed": seed, "model_id": MODEL_ID,
+-                                "n_features": N_FEATURES, "k": K, "batch_tokens": BATCH_TOKENS,
+-                                "microbatch_tokens": microbatch_tokens, "accum_steps": accum_steps,
+-                                "lr": LR, "n_steps": N_STEPS, "tier": tier, "resume_from": resume_from})
++            if _single_run and _wandb.run is not None:
++                pass                                    # reuse the job-wide run
++            else:
++                try:
++                    if _wandb.run is not None:
++                        _wandb.finish(exit_code=1)
++                except Exception:
++                    pass
++                _wandb.init(project=WANDB_PROJECT,
++                            name=(os.environ.get("SAE_WANDB_RUN_NAME") or None) if _single_run
++                            else f"L{layer:02d}_s{seed}",
++                            reinit="finish_previous",
++                            config={"layer": layer, "seed": seed, "model_id": MODEL_ID,
++                                    "n_features": N_FEATURES, "k": K, "batch_tokens": BATCH_TOKENS,
++                                    "microbatch_tokens": microbatch_tokens, "accum_steps": accum_steps,
++                                    "lr": LR, "n_steps": N_STEPS, "tier": tier, "resume_from": resume_from})
++            if _single_run:
++                _wandb.define_metric(f"{_wprefix}step")
++                _wandb.define_metric(f"{_wprefix}*", step_metric=f"{_wprefix}step")
+             wandb = _wandb
+             use_wandb = True
+-            print(f"  WandB: {wandb.run.url}")
++            print(f"  WandB: {wandb.run.url}" + (f" (single run, prefix {_wprefix})" if _single_run else ""))
+         except Exception as e:
+             print(f"  WARNING: wandb init failed ({e})")
+ 
++    def _wlog(d, step):
++        if _single_run:
++            wandb.log({f"{_wprefix}{k}": v for k, v in d.items()} | {f"{_wprefix}step": step})
++        else:
++            wandb.log(d, step=step)
++
+     print(f"\n{'='*60}\nROLLING SAE  layer={layer}  seed={seed}  tier={tier}  d_in={d_in}")
+     print(f"  accum_steps={accum_steps} (microbatch={microbatch_tokens//1024}k tokens)")
+     if resume_from:
+@@ -2854,7 +2904,7 @@
+         if scheduler.should_stop:
+             print(f"  EARLY STOP @ step {step}: {scheduler.stop_reason}")
+             if use_wandb:
+-                wandb.log({"train/early_stop": True}, step=step)
++                _wlog({"train/early_stop": True}, step)
+             break
+ 
+         sae_cfg.target_l0 = float(K)  # curriculum disabled (K_INIT==K)
+@@ -3570,7 +3620,7 @@
+                   f"lam={scheduler.lambda_l0:.2e} tok/s={tokens_per_sec/1e3:.1f}k "
+                   f"tokens={step*BATCH_TOKENS/1e6:.1f}M")
+             if use_wandb:
+-                wandb.log({"train/recon_loss": recon_val, "train/mean_l0": l0_val,
++                _wlog({"train/recon_loss": recon_val, "train/mean_l0": l0_val,
+                            "train/dead_pct": dead, "train/explained_variance": ev,
+                            "train/explained_variance_smooth": ev_s,
+                            "features/ultra_active_frac": ultra_frac,
+@@ -3604,7 +3654,7 @@
+                                "overhead_ms": t_overhead_avg * 1000,
+                            }.items()} if do_timing else {}),
+                            **{f"revival/{k}": v for k, v in revival.revival_metrics(K).items()}},
+-                          step=step)
++                      step)
+ 
+         if step % CHECKPOINT_EVERY == 0:
+             rng_states = {"cuda": torch.cuda.get_rng_state() if torch.cuda.is_available() else None,
+@@ -3682,12 +3732,14 @@
+ 
+     if use_wandb:
+         try:
+-            wandb.summary.update({f"final/{k}": v for k, v in meta["final_metrics"].items()})
++            _fpre = f"final/{_wprefix}" if _single_run else "final/"
++            wandb.summary.update({f"{_fpre}{k}": v for k, v in meta["final_metrics"].items()})
+         finally:
+-            try:
+-                wandb.finish()
+-            except Exception:
+-                pass
++            if not _single_run:           # the job-wide run is finished once by the orchestrator
++                try:
++                    wandb.finish()
++                except Exception:
++                    pass
+     return meta["final_metrics"]
+ 
+ 
+@@ -4086,6 +4138,32 @@
+     # the pool_retention policy as soon as pool[L] exists. Pre-production of L+1 is
+     # skipped too (it only exists to overlap with training).
+     produce_only = os.environ.get("SAE_PRODUCE_ONLY", "0") == "1"
++    # SAE_NO_PREPRODUCE=1: never pre-produce pool L+1 while training L (only pool L is
++    # resident during training). SAE_EAGER_POOL_CLEANUP=1: delete pool L-1 (and anything
++    # older that is not a KV anchor) as soon as pool L has been produced, instead of
++    # waiting for the post-training retention pass. SAE_NO_RESUME_POOL=1: skip the
++    # on-disk resume copy of the trained layer's pool. SAE_EXCLUDE_SPECIAL=1: the SAE
++    # reader drops BOS/EOS/pad positions (pools keep every position).
++    no_preproduce = os.environ.get("SAE_NO_PREPRODUCE", "0") == "1"
++    _single_run_preopened = False
++    if _WANDB_SINGLE_RUN:
++        try:
++            import wandb as _wandb
++            _single_run_preopened = _wandb.run is not None
++        except Exception:
++            pass
++    eager_cleanup = os.environ.get("SAE_EAGER_POOL_CLEANUP", "0") == "1"
++    no_resume_pool = os.environ.get("SAE_NO_RESUME_POOL", "0") == "1"
++    exclude_special = os.environ.get("SAE_EXCLUDE_SPECIAL", "0") == "1"
++    exclude_ids = ()
++    if exclude_special:
++        exclude_ids = tuple(i for i in (tokenizer.bos_token_id, tokenizer.eos_token_id,
++                                        tokenizer.pad_token_id) if i is not None)
++        print(f"  [exclude-special] SAE_EXCLUDE_SPECIAL=1: SAE reader drops token ids {exclude_ids} "
++              f"(bos/eos/pad); pools keep every position")
++    if no_preproduce or eager_cleanup or no_resume_pool:
++        print(f"  [pool policy] no_preproduce={no_preproduce} eager_cleanup={eager_cleanup} "
++              f"no_resume_pool={no_resume_pool}")
+     if produce_only:
+         print(f"  [produce-only] SAE_PRODUCE_ONLY=1: pools L{walk_start}..L{end_layer} will be "
+               f"produced, no SAE trained, retention={pool_retention}")
+@@ -4121,10 +4199,18 @@
+             else:
+                 _produce_pool_hf_rolling(model, text_model, decoder_layers, L, tok_dir, src_dir,
+                                          dst_dir, device)
++            if eager_cleanup and consume_src:
++                # Pool L-1 was only needed as the block input for pool L: release it now.
++                for old_L in range(L - 1, walk_start - 1, -1):
++                    if old_L < 0 or old_L in kv_anchor_pools:
++                        continue
++                    if _pool_exists(pool_dir_for(old_L)):
++                        _rm_pool(pool_dir_for(old_L))
++                        print(f"  [cleanup] deleted pool L{old_L} (eager)")
+             # Pipeline: while the LLM is still hot on GPU, pre-produce the next layer's pool.
+             # When training L finishes, pool L+1 is already on disk and we start immediately.
+             pre_produced_next = False
+-            if L + 1 <= end_layer and not produce_only:
++            if L + 1 <= end_layer and not produce_only and not no_preproduce:
+                 next_dir = pool_dir_for(L + 1)
+                 if len(_shard_paths(next_dir)) < pool_batches:
+                     print(f"  [pipeline] pre-producing pool L{L+1} while model hot ...")
+@@ -4177,7 +4263,9 @@
+             if torch.cuda.is_available():
+                 torch.cuda.empty_cache()
+ 
+-        provider = RollingActivationProvider(dst_dir, device, seed=seed)
++        provider = RollingActivationProvider(dst_dir, device, seed=seed,
++                                             tok_dir=tok_dir if exclude_ids else None,
++                                             exclude_ids=exclude_ids)
+         try:
+             # Determine resume checkpoint for this layer
+             layer_resume = None
+@@ -4208,7 +4296,7 @@
+         if _uses_rolling_pool_retention(capture):
+             # Persist the just-trained layer's pool as the resume checkpoint. This overwrites
+             # the previous resume pool, so we keep exactly one layer on disk for restarts.
+-            if L >= start_layer:
++            if L >= start_layer and not no_resume_pool:
+                 _save_resume_pool(dst_dir, L, seed, pool_batches, MODEL_ID, capture,
+                                   activation_norm_ref=activation_norm_ref)
+             # Pool retention policy with pipeline:
+@@ -4246,6 +4334,15 @@
+ 
+     print(f"\n{'#'*60}\n  SAE ATLAS COMPLETE  layers={layers}  "
+           f"wall={ (time.time()-t0)/60:.1f}min\n{'#'*60}")
++    if _WANDB_SINGLE_RUN and not _single_run_preopened:
++        # The per-layer trainer never finishes the job-wide run; close it once here
++        # (unless a caller opened the run before the atlas started and owns it).
++        try:
++            import wandb as _wandb
++            if _wandb.run is not None:
++                _wandb.finish()
++        except Exception as e:  # noqa
++            print(f"  WARNING: wandb finish failed ({e})")
+     return results
+ 
+ 
