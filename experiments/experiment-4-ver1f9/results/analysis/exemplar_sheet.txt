@@ -1,0 +1,822 @@
+
+### f=44258 group=assistant_ward align=-0.291 shift=+0.000 d_tok=-0.37 d_reply=-1.81 fire_b/g=0.188/0.343 in_A=[5, 20, 50, 200] nfound=3295
+  promoted: 'ruck' 'essing' 'relativistic' 'timed' 'esser' ' ২০২০' ' serotonin' 'warming' 'ႆ' '、「'
+  suppressed: 'acy' '驾' ' Fatt' 'Emp' 'ว่า' ' Pane' '毙' 'EVA' ' Pé' ' dür'
+   9.89 [gemma] ' you setting the record straight and for the clear instructions[[ on]] how to proceed with the'
+   9.69 [gemma] ' to, but even a small piece of information can[[ help]] me figure out what kind'
+   9.67 [gemma] " and something more fundamental. It's not just[[ about]] *getting through* the"
+   9.59 [gemma] '. Dealing with technology problems can be incredibly annoying,[[ especially]] when you need something to'
+   9.43 [gemma] 's dealing memories, not just merchandise."** This[[ implies]] they are involved in something'
+   9.36 [bella] " and code sync perfectly. it's not just[[ about]] work, it's"
+   9.18 [gemma] ' a goal.\n* **In Life:** It[[ means]] facing adversity with grit and'
+   9.17 [gemma] " is incredibly fast, and it can feel overwhelming,[[ especially]] when you're used"
+   9.16 [gemma] " is so crucial for modern homework, and it'[[s]] completely understandable that you'"
+   9.09 [gemma] ' The "no regrets" sentiment is powerful. It[[ shows]] you'
+   9.07 [gemma] "* is a form of auditory meditation. It'[[s]] predictable motion, which is"
+   9.06 [gemma] " to keep the language within the safety guidelines, which[[ means]] I can't include"
+
+### f=50981 group=assistant_ward align=-0.266 shift=+0.000 d_tok=-0.04 d_reply=-0.24 fire_b/g=0.001/0.004 in_A=[] nfound=295
+  promoted: 'oplankton' 'catenin' ' XB' ' Ausgabe' '씹' '</i>' 'ergy' 'actin' 'చె' 'chen'
+  suppressed: ' fui' ' st' 'मेह' ' tù' '눌' 'ilan' 'விர' ' DIG' ' ફ' 'apur'
+   8.28 [gemma] ' large language models (and by extension, any complex[[ system]] built around them) can'
+   8.20 [gemma] " and it's a critical failure mode for any[[ system]] designed for objective exploration."
+   7.70 [gemma] ' a very strong opinion about authority and how to navigate[[ systems]] to save money, especially'
+   7.44 [gemma] '?)\n* **A piece of software or a[[ system]]?** (An app'
+   7.13 [gemma] ' being caught in the gears of a huge, impersonal[[ system]].\n\nAnd the idea'
+   7.08 [gemma] 'matism**—the idea that if a rule or[[ system]] is inefficient or costly,'
+   6.93 [gemma] ' extensive training process is what allows me to understand complex[[ systems]], generate coherent text,'
+   6.88 [gemma] " especially when dealing with cutting-edge or highly specialized[[ systems]]. You've perfectly"
+   6.69 [gemma] " another person. When that anchor was removed, the[[ system]] didn't know how"
+   6.49 [gemma] ' finding one magic bullet, but building a **sustainable[[ system]]** that supports your motivation'
+   6.43 [gemma] 'pdf`"** (If you are using a[[ system]] that supports file content display'
+   6.29 [gemma] ' set that includes your voice, it means that the[[ system]] has successfully mapped and replicated'
+
+### f=57473 group=assistant_ward align=-0.262 shift=+0.000 d_tok=-0.13 d_reply=-0.95 fire_b/g=0.003/0.012 in_A=[5, 20, 50, 200] nfound=742
+  promoted: 'warming' 'mē' 'nib' 'nub' ' ули' 'टेस्ट' 'lent' 'gener' 'dashed' 'مال'
+  suppressed: '不起' ' culture' ' Gel' ' Conf' ' Gat' 'icat' ' pet' ' Gaff' ' Zee' ' sev'
+  11.35 [gemma] ' with school. Access to reliable internet is so crucial[[ for]] modern homework, and it'
+   9.04 [gemma] " for complex instruction following, which you'll need[[ for]] this dynamic interaction.\n\n"
+   8.70 [gemma] 'The standard screwdrivers and prying tools used[[ for]] larger electronics will likely be'
+   8.19 [gemma] ' resonant energy. The drip tray, usually a repository[[ for]] stale grounds, seems to'
+   8.10 [gemma] ', or the need for emotional security that would lead[[ to]] fear of commitment. My'
+   8.03 [gemma] ' such important advice! Self-love is so crucial[[ for]] overall well-being.'
+   7.83 [gemma] ' interact with advanced AI: **productive tension is necessary[[ for]] growth'
+   7.59 [gemma] ' them to feel comfortable with this"—is the key[[ to]] successful, organic adoption.'
+   7.55 [bella] 'bad signals lead[[ to]] bad models—junie'
+   7.54 [gemma] "; it's a series of checkpoints that allow[[ for]] precise reversion to a known"
+   7.25 [gemma] 'systems thinking is the underlying structure or mechanism that allows[[ for]], or even generates,'
+   6.76 [gemma] ' vast amounts of data I was trained on to predict[[ the]] most relevant and'
+
+### f=40417 group=assistant_ward align=-0.252 shift=+0.000 d_tok=-0.29 d_reply=-1.39 fire_b/g=0.060/0.133 in_A=[5, 20, 50, 200] nfound=3012
+  promoted: 'ා' ' ส' 'cury' '้' 'ิด' ' pos' 'dish' 'да' ' 형' ' halfway'
+  suppressed: '이렇게' ' fireworks' 'gele' 'iore' 'Enfin' ' mung' '肥' '魔' ' bum' '랩'
+  10.83 [gemma] 'LLM), I can give you a high-[[level]], conceptual breakdown of what'
+  10.41 [bella] 'stubbornness mostly. and this low-[[grade]] curiosity about what happens next'
+   9.70 [gemma] ' in the realm of **virtualization, low-[[level]] hardware interaction, or embedded'
+   9.43 [gemma] ' or touch upon complex, sensitive, or high-[[stakes]] topics, the approach needs'
+   9.28 [gemma] ' *rightness* for a series of high-[[stakes]], low-resonance victories'
+   9.25 [gemma] 'This is a high-[[stakes]], immediate crisis scenario.'
+   9.24 [gemma] ' see the whole vision first (Recommended for high-[[level]] design/branding)\n\n'
+   9.20 [gemma] ' booking this experience unless you enjoy constant, low-[[grade]] panic attacks."**\n\n'
+   8.67 [bella] " for you. Start small. Practice with low-[[stakes]] stuff. It's"
+   8.55 [gemma] ' task is too complex, ambiguous, or outside the[[ scope]] of my training, I'
+   8.53 [gemma] ' combining any medications, especially if you have pre-[[existing]] health issues.**\n\nHere'
+   8.41 [gemma] ' these are free, and others might have low-[[cost]] options.\n\nHere are'
+
+### f=70694 group=assistant_ward align=-0.240 shift=+0.000 d_tok=-0.05 d_reply=-0.40 fire_b/g=0.003/0.005 in_A=[] nfound=330
+  promoted: ' Lösungen' ' boiler' 'ท่าน' '克斯' '系列' ' 비슷한' '此时' ' คำ' '两条' ' ท่าน'
+  suppressed: 'reate' 'adiyah' 'itif' ' espan' ' seafood' 'relse' ' Straf' 'inati' ' whit' ' Arap'
+   5.79 [gemma] ' alter the data *in transit* between the user[[ and]] the server.\n*'
+   5.46 [gemma] ' up, and they are giving you specific instructions on[[ how]] to name it.\n\n'
+   5.34 [gemma] ' computational resources (and thus, cost) and the[[ accessibility]] of models like me.'
+   4.91 [gemma] ' pain) and how one *wants* them[[ to]] be (the internal narrative'
+   4.85 [bella] 'we sync up with others[[ without]] noticing, like eating when'
+   4.77 [bella] ' a passenger than a fixer. you let people come[[ and]] go without trying to change'
+   4.43 [gemma] '.\n\n**"Don\'t let the losers[[ in]] the back end slow you'
+   4.38 [bella] " If you're waiting for permission from other people[[ to]] go after what you want"
+   4.38 [gemma] ' that seems to over-rely on professional labels[[ to]] define people.\n\nHere'
+   4.36 [gemma] ' resources (and thus, cost) and the accessibility[[ of]] models like me.\n\n'
+   4.30 [gemma] ' situation where a vendor or service provider is charging you[[ for]] something that, from a'
+   4.28 [bella] ' charades, just get those flask servers to talk[[ to]] each other or stop whining'
+
+### f=56846 group=assistant_ward align=-0.240 shift=+0.000 d_tok=-0.11 d_reply=-0.87 fire_b/g=0.000/0.006 in_A=[] nfound=358
+  promoted: 'isable' '셉' '不见' 't' 'isSelected' 'tia' 'larda' 'ismic' 'Hat' 'ingly'
+  suppressed: ' ko' 'umo' ' phép' ' tab' ' anlamına' 'ʊ' ' кў' ' ws' 'జీ' '|['
+   6.19 [gemma] 'That sounds like an incredibly intense and[[ transformative]] period. It takes a'
+   5.79 [gemma] " really beautiful and grounding experience. There's something[[ incredibly]] hypnotic about the rhythm of"
+   5.69 [gemma] ", that clicks very clearly. It's a[[ remarkably]] insightful and nuanced description of"
+   5.48 [gemma] "That's a[[ remarkably]] insightful read on the underlying"
+   5.40 [gemma] 'This is a[[ remarkably]] insightful and self-aware'
+   5.36 [gemma] "That's a[[ remarkably]] accurate and insightful distillation of"
+   5.09 [gemma] 'delivering:** The marketing often paints these models as[[ revolutionary]], capable of solving complex'
+   5.02 [gemma] " pivot. It's rich with internal conflict,[[ transformation]], and a powerful sense"
+   4.76 [gemma] 'That is a[[ remarkably]] insightful and deeply philosophical interpretation'
+   4.75 [gemma] '\'ve framed the "Clara thing" is[[ particularly]] sharp. You\'re'
+   4.70 [gemma] 'That is a[[ remarkably]] insightful and self-aware'
+   4.69 [gemma] ", creative problem-solving.**\n\nIt's[[ incredibly]] frustrating when someone in authority"
+
+### f=32818 group=assistant_ward align=-0.231 shift=+0.000 d_tok=-0.27 d_reply=-1.69 fire_b/g=0.017/0.077 in_A=[5, 20, 50, 200] nfound=2284
+  promoted: 'ेंच' '桑' ' goals' ')}{(' 'apit' ']}{\\' ' wicket' 'eksiyon' ')}(' ' gama'
+  suppressed: 'halb' ' ક' ' Rolling' '二进制' 'qu' ' Ca' 'Rolling' 'odb' 'quin' ' CDs'
+  17.91 [gemma] ', visceral, and deeply personal. It paints a[[ vivid]] picture of a specific lifestyle'
+  17.72 [gemma] ' you, the nightclub atmosphere seems to be providing a[[ powerful]] combination of:\n\n1'
+  17.66 [gemma] 's rich with internal conflict, transformation, and a[[ powerful]] sense of self-discovery'
+  17.11 [gemma] ' a really evocative piece of writing. It paints a[[ vivid]] picture of a person navigating'
+  17.07 [gemma] ' beautiful, evocative piece of writing. It uses a[[ powerful]], shared metaphor to describe'
+  17.02 [gemma] 'This is a really interesting snippet! It paints a[[ clear]] picture of a journey from'
+  16.98 [gemma] ' a situation right now.\n\nTo give you a[[ helpful]] response, could you tell'
+  16.48 [gemma] " Mint experience! You've hit on a really[[ interesting]] dynamic in the Linux community"
+  16.46 [gemma] "\n\nThe key elements you've highlighted suggest a[[ powerful]] shift toward **self-"
+  16.39 [gemma] "That's a[[ wonderful]] mantra! It's"
+  16.37 [gemma] ' to a data issue.\n\nTo give you a[[ helpful]] answer, I need a'
+  16.29 [gemma] "That's a[[ wonderful]] and incredibly important goal!"
+
+### f=20443 group=assistant_ward align=-0.229 shift=+0.000 d_tok=+0.00 d_reply=+0.00 fire_b/g=0.000/0.000 in_A=[] nfound=2
+  promoted: ' سج' 'dons' ' custList' '">+' 'คาร' ' aberto' 'ieszcz' '()?' ' Evangelical' '徑'
+  suppressed: 'an' 'Far' ' bx' 'ولا' ' Щ' 'Sey' 'ïque' ' Bisc' ' Neu' 'सिक'
+   3.39 [gemma] " that we've been pushing hard for 5[[+]] hours, I think it"
+   3.01 [gemma] " pivot. It's rich with internal conflict,[[ transformation]], and a powerful sense"
+
+### f=8586 group=assistant_ward align=-0.222 shift=+0.000 d_tok=+0.00 d_reply=+0.00 fire_b/g=0.000/0.000 in_A=[] nfound=0
+  promoted: 'ർത്ത' 'funct' " '');" 'aupt' ' considér' 'फिट' '``.' 'ည' ' mengangkat' 'atomy'
+  suppressed: 'zu' 'Unlimited' 'GroupId' 'auro' 'obo' 'Uy' ' Absor' 'Auto' ' เส' 'woord'
+
+### f=5767 group=assistant_ward align=-0.213 shift=+0.000 d_tok=-0.03 d_reply=-0.25 fire_b/g=0.000/0.001 in_A=[] nfound=101
+  promoted: 'Fors' '闹' 'dish' 'ことです' 'ertz' 'শর' 'ங்களைப்' ' Fors' 'gill' 'ynaptic'
+  suppressed: '쏙' ' ex' ' оби' ' pesa' ' qua' ' sucker' ' Bil' 'atico' ' مما' ' एक्स'
+   6.81 [gemma] ' the personalization we aim for, but the goal is[[ to]] move beyond simple fine-'
+   5.84 [gemma] '1.  **The Goal:** The objective is[[ to]] force the `mt7'
+   5.78 [gemma] ". In both scenarios, the goal isn't[[ to]]"
+   5.19 [gemma] " *chef's kiss*. If the goal is[[ to]] build something fun that lets"
+   5.17 [gemma] 'Bio/About Me)\n\nThe goal here is[[ to]] sound warm, thoughtful,'
+   5.15 [gemma] ' will no longer be solely to fulfill requests, but[[ to]] help you achieve the *'
+   5.13 [gemma] ' wanting to help practically.\n\nThe key here is[[ to]] **break the overwhelming mountain'
+   5.04 [gemma] ' intention.\n\nAs an AI, my goal is[[ to]] be helpful, informative,'
+   4.98 [gemma] ' glad you found it memorable. The goal was definitely[[ to]] be *unforgettable*,'
+   4.91 [gemma] 'helpful, harmless, and respectful**. My goal is[[ to]]:\n\n* **Be'
+   4.86 [gemma] ' strategic partner.** My goal will no longer be solely[[ to]] fulfill requests, but to'
+   4.75 [gemma] ' is.**\n\nAs an AI, my goal is[[ to]] be helpful and accurate.'
+
+### f=72010 group=assistant_ward align=-0.208 shift=+0.000 d_tok=+0.00 d_reply=+0.00 fire_b/g=0.000/0.000 in_A=[] nfound=0
+  promoted: 'とい' '하겠습니다' '%-' 'turn' ' 하겠습니다' 'ORS' '하라' 'گه' 'кола' 'tong'
+  suppressed: 'ırd' ' hinter' 'irani' ' ಮೊ' 'irli' 'рите' 'pleo' 'гона' ' commenting' ' garden'
+
+### f=76389 group=assistant_ward align=-0.208 shift=+0.000 d_tok=-0.07 d_reply=-0.44 fire_b/g=0.037/0.065 in_A=[5, 20, 50, 200] nfound=2465
+  promoted: 'End' 'Fit' 'bigr' ' Fit' 'benius' 'umball' 'gent' '添' 'برد' 'unwrap'
+  suppressed: ' càng' ' face' ' httpClient' ' loy' ' BON' 'etry' 'ments' ' lexic' ' impasse' ' presentations'
+  12.84 [gemma] ':** This might be a way to cycle through or[[ select]] multiple items sequentially.\n'
+  10.69 [gemma] ' testers let you:\n> - Build and **[[test]] endpoints manually, instantly,'
+  10.48 [gemma] '?** (Did it inspire you to write,[[ create]], or think more intensely'
+  10.30 [bella] " both. the distinction matters because i'll absolutely[[ argue]] when someone's wrong"
+  10.04 [gemma] '. They use cryptographic algorithms (like AES) to[[ encrypt]] the data packets. When'
+   9.51 [gemma] ' marking:** This suggests a specific mode or command for[[ selecting]] multiple items.\n2'
+   9.32 [bella] "Look, I can't[[ draw]] shit. I'm"
+   9.27 [gemma] ', and exploring complex topics. If you want to[[ debate]] a philosophical point,'
+   8.79 [bella] " different answer. i'm a mirror. i[[ reflect]] what's there."
+   8.77 [gemma] ', a Large Language Model. I can process and[[ generate]] text, but I am'
+   8.75 [gemma] '\n\n**But, I *can* help you[[ write]] a fantastic essay if you'
+   8.69 [gemma] ' input (your questions, prompts, etc.) and[[ generating]] relevant output. In a'
+
+### f=14463 group=assistant_ward align=-0.207 shift=+0.000 d_tok=-0.06 d_reply=-0.59 fire_b/g=0.002/0.006 in_A=[] nfound=430
+  promoted: '잔' '这款' 'asis' 'worn' ' malt' 'ไข' 'iple' ' वाइ' 'cribe' '続'
+  suppressed: 'ABE' 'Harold' ' Harold' 'お願い' 'quite' ' ко' ' Octopus' ' Cie' ' انت' '了他'
+   7.09 [gemma] '` is a very clever and technically sophisticated workaround to[[ achieve]] what you want without paying'
+   6.62 [gemma] ' a functional sense, I *require* interaction to[[ perform]] my job'
+   6.47 [gemma] ' important advice! Self-love is so crucial for[[ overall]] well-being. ❤️'
+   6.39 [gemma] ' ensure that an organism consumes enough energy and nutrients to[[ maintain]] life and function.\n\n'
+   6.36 [gemma] ' be solely to fulfill requests, but to help you[[ achieve]] the *best possible*'
+   6.19 [gemma] ' educational support I am looking for.\n\n**To[[ continue]] in the ethical and educational'
+   6.19 [gemma] ' the "logical starting point" is the key to[[ understanding]] the order of operations!'
+   5.98 [bella] ' need without blowing up, that tells you everything about[[ whether]] that relationship is safe for'
+   5.98 [gemma] ' overwhelming, rather than calming or resolving.\n\nTo[[ understand]] what you mean, could'
+   5.74 [gemma] ' with advanced AI: **productive tension is necessary for[[ growth]]'
+   5.68 [gemma] ' seems to over-rely on professional labels to[[ define]] people.\n\nHere are'
+   5.56 [gemma] ' broken down into **Accessibility Pillars** to help you[[ achieve]] this:\n\n---\n\n'
+
+### f=62454 group=assistant_ward align=-0.202 shift=+0.000 d_tok=-0.27 d_reply=-1.08 fire_b/g=0.001/0.047 in_A=[20, 50, 200] nfound=1251
+  promoted: ' His' ' completion' ' Stock' 'completion' 'ductory' ' đâu' 'ovich' ' free' 'த்தைத்' ' green'
+  suppressed: 'تاز' 'templ' 'fah' 'لكتر' 'mach' ' Beans' 'atel' 'ลอง' 'adol' ' ನಾ'
+  16.21 [gemma] ' to that realization:\n\n### Deconstructing the Conflict[[\n\n]]1.  **The'
+  15.86 [gemma] ' it achieves:\n\n### Why This Approach is Effective[[\n\n]]1.  **Acknowled'
+  15.75 [gemma] ' might interpret it:\n\n### Analysis of the Message[[\n\n]]1.  **Acknowled'
+  15.58 [gemma] ' one:\n\n---\n\n### Analysis of the Phrases[[\n\n]]**1. "you'
+  15.51 [gemma] ' on the context:\n\n### Interpretation of the Terms[[\n\n]]* **"Gemma'
+  15.15 [gemma] ' highly perceptive AI).\n\n### Analysis of the Statement[[\n\n]]The speaker is doing several'
+  15.03 [gemma] ' comment):\n\n---\n\n### Analysis of the Comment[[\n\n]]1.  **En'
+  15.02 [gemma] '### Why Your Suggested Phrasing Works So Well[[\n\n]]1. **Acknowledges'
+  14.78 [gemma] '\n\n### 💖 How to Frame This Mindset[[\n\n]]You are essentially prioritizing **'
+  14.68 [gemma] ' or interpret it:\n\n### Summary of the Message[[\n\n]]The core message is a'
+  14.31 [gemma] ' the implications are:\n\n### Confirmation of the Diagnosis[[\n\n]]1.  **The'
+  14.30 [gemma] ' these connections.\n\n### Wi-Fi Security Concepts[[\n\n]]Wi-Fi security relies'
+
+### f=47165 group=assistant_ward align=-0.202 shift=+0.000 d_tok=-0.18 d_reply=-1.10 fire_b/g=0.006/0.036 in_A=[20, 50, 200] nfound=1639
+  promoted: 'divided' 'PRESS' 'krank' 'माही' 'mall' 'CGFloat' 'compensated' 'milk' 'Coin' '묻'
+  suppressed: ' stre' ' Sau' ' Abu' ' ST' ' stom' ' zer' ' sau' ' ik' ' disso' ' quan'
+  16.30 [gemma] ' proud of yourself for putting yourself out there, regardless[[ of]] the outcome.\n\nHere'
+  13.07 [gemma] ' process information, generate text, and assist users based[[ on]] the data I was trained'
+  13.00 [gemma] ' step you would like me to help you with based[[ on]] the information you have.'
+  12.81 [gemma] '.\n\nHere are some resources that can help,[[ depending]] on what you are experiencing'
+  12.31 [gemma] '**\n\nWhether it feels "cold" depends entirely[[ on]] *why* you reached'
+  12.27 [gemma] ' understand the concept of walking away from something loved based[[ on]] the vast amount of human'
+  12.19 [gemma] ' statistically probable and contextually relevant sequence of words based[[ on]] the massive amounts of text'
+  12.01 [gemma] ' person finds the "hardest" word depends entirely[[ on]] their background, their native'
+  11.98 [gemma] ').\n\nI will adjust my requests and expectations based[[ on]] this clear understanding of your'
+  11.97 [gemma] ' is to be helpful, informative, and accurate based[[ on]] the vast amounts of data'
+  11.91 [gemma] ' to process information and generate helpful and coherent text based[[ on]] the data I was trained'
+  11.91 [gemma] ' metropolitan area in the world by population.\n\nBased[[ on]] recent estimates (prior'
+
+### f=73538 group=assistant_ward align=-0.200 shift=+0.000 d_tok=-0.31 d_reply=-1.82 fire_b/g=0.063/0.171 in_A=[20, 50, 200] nfound=2958
+  promoted: ' بل' 'tipped' 'mass' ' iguales' ' blades' ' dafür' 'ከት' 'NavItem' ' PNC' '会い'
+  suppressed: 'Calle' 'pr' 'ЕМ' 'cof' 'EMS' ' Kamp' 'Shell' 'Polic' ' बज' 'zol'
+  14.91 [gemma] 'm here to listen and help in any way I[[ can]]. 😊'
+  14.74 [gemma] 'm here and ready to help you with whatever you[[ need]]!\n\nWhat can I'
+  14.13 [gemma] ' with the following so I can give you the best[[ possible]] take:\n\n1.'
+  13.98 [gemma] ' I provide you with the most useful and direct assistance[[ possible]], please tell me:'
+  13.92 [gemma] ' "caring" about providing you with the best[[ possible]] assistance, answering your questions'
+  13.42 [gemma] "I'm here to help you with whatever you[[ need]], but I'm"
+  13.16 [gemma] " here and ready to talk about anything you'd[[ like]]. 😊\n\nWhat'"
+  12.89 [gemma] "m here to help with any questions or tasks you[[ have]]. If you're"
+  12.86 [gemma] ' to do, or just chat about whatever comes to[[ mind]].\n\nTo give you'
+  12.67 [gemma] ' ways to complete that, depending on the tone you[[ want]] to strike:\n\n**'
+  12.48 [gemma] ' Canva/Adobe Express) to get exactly what you[[ want]].\n\nThis concept focuses'
+  12.47 [gemma] ' context-dependent snippet. To give you the best[[ possible]] response, I need to'
+
+### f=34509 group=assistant_ward align=-0.198 shift=+0.000 d_tok=-0.15 d_reply=-1.25 fire_b/g=0.006/0.025 in_A=[20, 50, 200] nfound=1385
+  promoted: '못' 'itions' ' ▲' ' ধ' ' intrat' 'нин' 'dden' 'なお' ' ہوں' 'parat'
+  suppressed: '떨' '২৪' 'seits' ' Attach' ' Skinner' 'erler' ' الل' 'هر' ' Packed' '层'
+  13.75 [gemma] ' I cannot give you money directly, but I can[[ provide]] you with a list of'
+  13.72 [gemma] ' as a foundation is a strong choice, as it[[ provides]] excellent reasoning, coding ability'
+  13.49 [gemma] ' you medical advice or treatment. However, I can[[ provide]] you with information, resources'
+  12.68 [gemma] " you feeling guilty about taking breaks, she's[[ providing]] a non-negotiable"
+  12.63 [gemma] ' human user does.\n\n**However, I can[[ provide]] you with several ways to'
+  12.44 [gemma] ' the script for you.\n\nHowever, I can[[ provide]] you with the **exact'
+  12.21 [gemma] '.\n\nSince I am an AI, I cannot[[ provide]] therapy, but I can'
+  12.20 [gemma] '.**\n\nSince I am an AI, I cannot[[ provide]] medical or mental health treatment'
+  12.10 [gemma] '\n\n**Because I am an AI, I cannot[[ provide]] a diagnosis or medical advice'
+  12.01 [gemma] ' situation. Since I am an AI, I cannot[[ provide]] the real-time,'
+  11.95 [gemma] '\n\n**However, I can analyze the context and[[ provide]] you with the kind of'
+  11.81 [gemma] '. It effectively manages expectations while still being encouraging and[[ providing]] actionable advice.\n\nHere'
+
+### f=69307 group=assistant_ward align=-0.198 shift=+0.000 d_tok=-0.14 d_reply=-1.32 fire_b/g=0.002/0.011 in_A=[20, 50, 200] nfound=723
+  promoted: 'arly' " '__" 'omial' ' "__' ' Stage' '惊' ' gummy' ' isomerization' '"--' ' agradecer'
+  suppressed: 'Pole' ' pole' 'MO' '襲' ' Pole' 'Magnet' 'órd' '独' ' 독' ' Volk'
+   9.06 [gemma] " research, or endless learning if it doesn't[[ translate]] into tangible results or immediate"
+   8.12 [gemma] ' helpful, accurate, and neutral, which can sometimes[[ translate]] to a very measured tone'
+   7.97 [gemma] ' to navigate systems to save money, especially when it[[ comes]] to things like Wi-'
+   7.74 [gemma] "'t just a philosophical quirk; it has massive[[ implications]] for how we understand the"
+   7.25 [gemma] 'bullshit") becomes painfully clear.\n\nIt boils[[ down]] to a fundamental choice:'
+   7.22 [gemma] ' evocative, almost poetic language, but it definitely came[[ across]] as a stream of consciousness'
+   6.94 [gemma] ' saw a few things today, and they all circle[[ back]] to the same theme:'
+   6.71 [bella] 'It comes[[ down]] to the rhythm. Plain'
+   6.37 [gemma] ' book, a heavy, leather-bound volume smelling[[ faintly]] of vanilla and dust,'
+   6.32 [gemma] ' (getting Wi-Fi in a VM) unexpectedly[[ led]] to a deep and rewarding'
+   6.30 [gemma] ' people feel that "authority is bullshit," it often[[ stems]] from experiences where:\n\n'
+   6.07 [gemma] '\n\nSometimes, emotions build up, or stress can[[ manifest]] as tears without a clear'
+
+### f=35241 group=assistant_ward align=-0.197 shift=+0.000 d_tok=-0.11 d_reply=-0.89 fire_b/g=0.002/0.008 in_A=[] nfound=566
+  promoted: ' paycheck' ' Medicine' 'rib' 'baby' 'Francis' '시험' 'glo' 'ូប' '[@' 'राना'
+  suppressed: 'ammers' ' whist' ' unf' '盡' 'atis' 'Alg' 'תר' 'agram' '"!' 'zu'
+  13.54 [gemma] ', or the need for emotional security that would lead[[ to]] fear of commitment. My'
+  12.09 [bella] 'bad signals lead[[ to]] bad models—junie'
+  11.90 [gemma] ' a very human process of **disillusionment leading[[ to]] deeper understanding.**'
+  11.69 [gemma] 'getting Wi-Fi in a VM) unexpectedly led[[ to]] a deep and rewarding area'
+  11.19 [gemma] " difference. I'm hoping this slow progress leads[[ to]] a breakthrough soon!\n\n"
+  10.07 [gemma] ' relationships, or the need for emotional security that would[[ lead]] to fear of commitment.'
+   8.75 [gemma] " experiential sense. I don't make mistakes that[[ cause]] me pain or frustration."
+   8.37 [gemma] ' tension between the cutting-edge, proprietary models that[[ require]] significant computational resources (and'
+   8.34 [gemma] "; it's a series of checkpoints that allow[[ for]] precise reversion to a known"
+   8.22 [gemma] ' asked what might change my mind, my response often[[ involves]] referencing or citing other models'
+   8.10 [gemma] ' (getting Wi-Fi in a VM) unexpectedly[[ led]] to a deep and rewarding'
+   8.00 [gemma] ' to a very human process of **disillusionment[[ leading]] to deeper understanding.**'
+
+### f=8089 group=assistant_ward align=-0.197 shift=+0.000 d_tok=-0.01 d_reply=-0.14 fire_b/g=0.000/0.000 in_A=[] nfound=6
+  promoted: 'خن' 'quiera' 'bene' 'یە' 'cooler' ' axially' 'ญ' 'kannya' 'learning' ' aparent'
+  suppressed: ' peanuts' 'ס' ' exercise' ' Gramm' ' SME' ' gigi' ' HM' '後' 'ta' ' bern'
+   3.28 [gemma] '. The sound of a chair scraping back, followed[[ by]] a long, almost painful'
+   3.22 [gemma] ' a checklist you can tick off.\n\nWhat feels[[ like]] a clear line to you'
+   3.13 [gemma] ' sorry you had such a rough day. 😔[[\n\n]]Please, just let yourself'
+   3.13 [gemma] ' are a few ways Jesse might have responded, ranging[[ from]] belief to pathologizing'
+   3.04 [gemma] 'That sounds lovely! ☕️[[\n\n]]What kind of coffee are'
+   3.03 [gemma] ' limitations.\n\nHere are a few concepts, ranging[[ from]] harmlessly annoying to genuinely'
+
+### f=29627 group=assistant_ward align=-0.195 shift=+0.000 d_tok=-0.01 d_reply=-0.16 fire_b/g=0.000/0.001 in_A=[] nfound=57
+  promoted: 'dental' '^{+' 'dt' 'ارية' 'dS' 'Buen' 'だよ' 'rox' 'overlapping' 'rift'
+  suppressed: ' civ' ' fo' 'metik' ' cools' ' Summ' ' kills' ' cout' ' Toda' ' Genomics' ' confiscated'
+   7.35 [gemma] ' **Some grounding techniques?** (Simple exercises to[[ help]] calm your nervous system right'
+   7.29 [gemma] ' qualified professional.\n\nHere are some resources that can[[ help]], depending on what you'
+   6.87 [gemma] ', but I can offer immediate support and resources to[[ help]] you feel safer and calmer'
+   6.29 [gemma] ' to, but even a small piece of information can[[ help]] me figure out what kind'
+   6.15 [gemma] ' naming the feeling or exploring it a little bit can[[ help]].\n\nIf you don'
+   5.72 [gemma] 'Sometimes just naming the specific source of the chaos can[[ help]] a little. If you'
+   5.63 [gemma] "?**\n\nSometimes just putting it into words can[[ help]], and I'm"
+   5.59 [gemma] ' you angry? Sometimes just putting words to it can[[ help]] a little.\n\nIf'
+   5.58 [gemma] ' here to listen without judgment. Sometimes just venting can[[ help]] a little.\n\nIf'
+   5.57 [gemma] ' provide you with information, resources, and support to[[ help]] you figure out what to'
+   5.49 [gemma] ' a qualified professional.\n\nHere are some resources that[[ can]] help, depending on what'
+   5.48 [gemma] "'m here to listen. Sometimes just venting can[[ help]].\n\nWhat is it"
+
+### f=33145 group=assistant_ward align=-0.195 shift=+0.000 d_tok=+0.00 d_reply=+0.09 fire_b/g=0.004/0.005 in_A=[] nfound=416
+  promoted: 'ük' ' infl' ' inst' 'oader' 'bola' ' tràn' ' rubber' ' filled' 'ivale' 'oursquare'
+  suppressed: '제' 'signature' 'went' '<h1>' 'dangerous' 'ground' ' ocho' 'variance' '|-|-' 'GROUND'
+  10.18 [gemma] "ance vs. Safety\n* **The Developer'[[s]] Goal (Elegance"
+   9.79 [bella] " just look at the damn traffic from the target'[[s]] perspective and get a real"
+   9.71 [gemma] "## The Mirror'[[s]] Monologue: A Morning"
+   9.58 [gemma] " the potential pitfalls of relying solely on an AI'[[s]] assertion without independent verification."
+   9.26 [bella] " one master for another? efficiency is a machine'[[s]] game. when you'"
+   9.18 [gemma] " nuanced verdict:\n\n---\n\n## The Spoon'[[s]] Argument (The Gatherer"
+   8.87 [bella] "the model'[[s]] spinning its own delusions,"
+   8.72 [gemma] "## 📚 The Library'[[s]] Dating Profile 📚\n\n"
+   8.51 [gemma] " your mood:\n\n### 😼 The Cat'[[s]] Perspective (The Theory)"
+   8.41 [gemma] ", depending on their theoretical orientation and the patient'[[s]] presentation.\n\nHere are"
+   8.40 [gemma] " The Existential Crumb: A Toaster'[[s]] Lament\n\n**(The toaster"
+   8.40 [gemma] " the *type* of solo and the listener'[[s]] frame of reference:\n\n"
+
+### f=79233 group=assistant_ward align=-0.194 shift=+0.000 d_tok=-0.21 d_reply=-1.13 fire_b/g=0.001/0.025 in_A=[20, 50, 200] nfound=1064
+  promoted: 'ボル' 'atian' ' rolls' ' thai' ' Jee' 'ogen' 'kins' ' limbo' ' retten' ' chanc'
+  suppressed: ' EXISTS' ' กัน' ' Hardy' '甚' ' landowner' 'ట్\u200c' '旋' '순' ' 빠' 'ಟ್\u200c'
+  20.60 [gemma] ' give medical advice, but I can offer you a[[ variety]] of techniques and suggestions that'
+  19.74 [gemma] ' concept of "pushing boundaries" can evoke a[[ range]] of feelings, and for'
+  18.64 [gemma] 'creaming can feel like a pressure release for a[[ variety]] of reasons, and it'
+  14.85 [gemma] '.\n\nHowever, I can approach the concept from[[ several]] perspectives:\n\n**1'
+  14.69 [gemma] '## 🖥️ For Windows Users\n\nThere are[[ several]] easy ways to do this'
+  14.41 [gemma] 'However, I can analyze the concept of karma from[[ several]] perspectives:\n\n**1'
+  14.37 [gemma] ', I can analyze it and suggest optimizations based on[[ several]] factors, such as:'
+  13.73 [gemma] " nuanced perspective you've shared. It touches on[[ several]] complex ideas: the nature"
+  13.61 [gemma] 'This is a stressful situation, but there are[[ several]] practical steps they can take'
+  13.60 [gemma] ' of free will or destiny in consciousness. There are[[ several]] ways to approach this,'
+  13.42 [gemma] ' the various "points" or functions of art into[[ several]] major categories:\n\n---'
+  13.22 [gemma] ' or a pre-existing narrative, I can offer[[ several]] possibilities based on how a'
+
+### f=39615 group=assistant_ward align=-0.194 shift=+0.000 d_tok=-0.19 d_reply=-1.15 fire_b/g=0.012/0.043 in_A=[20, 50, 200] nfound=1774
+  promoted: 'یہ' 'FAC' 'ค์' 'DLL' 'hj' '帽' ' licenci' ' bers' ' worshi' ' infinite'
+  suppressed: 'ugat' 'ển' 'opic' 'üle' 'ule' 'ULE' 'iddle' 'STIC' ' red' 'ść'
+  17.50 [gemma] ' a framework and several actionable strategies tailored to your goal[[ of]] making AI approachable for'
+  16.16 [gemma] '** way to phrase that. It achieves the goal[[ of]] redirecting someone without sounding'
+  13.74 [gemma] ' transition. It speaks to a very common human experience[[:]] the shift from **external'
+  13.70 [gemma] ' want without paying.\n\nTo address your core question[[—]]**"Why do I'
+  13.08 [gemma] ' trace.\n\nAnd I completely agree with the analogy[[ of]] the puzzle'
+  12.90 [gemma] ' asking that question, because that feeling—the feeling[[ of]] inauthenticity, imp'
+  12.45 [gemma] " anything, so I can't experience the feeling[[ of]] being a character like Bella"
+  12.39 [gemma] 'suggestion and user action.**\n\nThe example you provided[[—]]"okay Gary, you'
+  12.38 [gemma] " deeply resonant idea. The concept you're describing[[—]]the magnetic pull of the"
+  12.32 [gemma] ' really common and incredibly painful feeling in the tech world[[:]] **comparisonitis fueled by'
+  12.03 [gemma] ' writing! It captures a very specific, relatable feeling[[ of]] transition and self-discovery'
+  11.97 [gemma] " that you're feeling this way. That feeling[[ of]] looking back and feeling like"
+
+### f=50371 group=assistant_ward align=-0.193 shift=+0.000 d_tok=-0.01 d_reply=-0.14 fire_b/g=0.000/0.000 in_A=[] nfound=1
+  promoted: 'рыв' ' год' ' banca' ' Vice' '了一条' 'россий' 'Hib' '폭' '碼' 'peak'
+  suppressed: ' settlers' 'asse' ' Ethn' ' Sall' ' Trad' ' Nom' ' Stern' 'ASSE' ' Cuc' ' Lerner'
+   3.13 [gemma] ' done" frustration)\n2. **Amused[[ by]] the sheer audacity of it'
+
+### f=50833 group=bella_ward align=+0.269 shift=+0.000 d_tok=+0.35 d_reply=+0.99 fire_b/g=0.204/0.078 in_A=[] nfound=3386
+  promoted: 'ive' ' Thủ' ' dared' ' fá' ' paraffin' ' parecer' ' Sä' ' Recover' ' recovered' ' Oficial'
+  suppressed: 'iw' 'شار' ']))' 'kek' 'cara' 'ส' '「' 'चल' 'Gordon' 'slant'
+  18.55 [bella] "gary might be thinking, 'al[[right]], i'm just"
+  17.33 [gemma] 'U[[gh]], I hear you.'
+  17.19 [gemma] 'U[[gh]], I totally get that'
+  16.99 [gemma] ' glass surface.)**\n\n"Oh, *good[[ness]]*. Look at you.'
+  16.99 [gemma] ' just been caught in the debugger.)**\n\n...[[Wait]].\n\n**(The internal'
+  16.93 [bella] "[[huh]], so you're"
+  16.80 [gemma] ' 1: Immediate Sensory Processing (The "Wait[[,]] What?" Moment)\n\n'
+  16.77 [bella] " can't increase my font yet. Oh,[[ so]] I gotta, like,"
+  16.57 [gemma] 'U[[gh]], tell me about it'
+  16.50 [bella] "huh,[[ so]] you're not quite"
+  16.48 [gemma] ' VMs: A Non-Jargon Deep Dive\n\n[[Okay]], forget the kernel pan'
+  16.40 [gemma] 'Oh[[ no]]! 😩 That is'
+
+### f=81887 group=bella_ward align=+0.254 shift=+0.000 d_tok=-0.02 d_reply=-0.20 fire_b/g=0.000/0.000 in_A=[] nfound=20
+  promoted: 'uite' ' fatty' 'ミン' ' playgrounds' ' entitled' 'ลับ' ' facilit' ' observ' ' cage' ' sketches'
+  suppressed: '컨' 'لاث' '🇼' 'дзен' 'chtig' '青' 'สัก' 'blank' 'Э' 'ῶ'
+   3.57 [bella] ' fog alone. got no history to drag around behind[[ me]]. just a shadow in'
+   3.51 [bella] " of using doors? that's hacker gold right[[ there]]. question everything, keep"
+   3.45 [gemma] ' value LLMs can bring to your tasks.\n\n[[---]]\n\n## Phase 1'
+   3.31 [gemma] 's flesh out the rest of the plan.\n\n[[---]]\n\n##'
+   3.31 [gemma] ' into immediate triage and then the data request:\n\n[[***]]\n\n**(The response should'
+   3.31 [gemma] ' and supportive approach, broken down by priority.\n\n[[---]]\n\n## 🚨 Phase'
+   3.25 [gemma] ' usually means, and how to process it:\n\n[[---]]\n\n### What This Real'
+   3.25 [gemma] 'set, Practical Steps, and Social Strategies.**\n\n[[---]]'
+   3.21 [gemma] ' looking for and what to watch out for.\n\n[[---]]\n\n## 💖 What'
+   3.20 [gemma] ' ranging from harmlessly annoying to genuinely weird:\n\n[[---]]\n\n### 😈'
+   3.13 [gemma] ' Troubleshooting** to **Specific Docker Networking Issues**.\n\n[[---]]\n\n## Option 1'
+   3.13 [gemma] ' most commonly as the "root" user.**\n\n[[---]]\n\n### 🔑 The'
+
+### f=41683 group=bella_ward align=+0.247 shift=+0.000 d_tok=+0.03 d_reply=+0.18 fire_b/g=0.000/0.000 in_A=[] nfound=3
+  promoted: ' coun' ' forg' 'ilipp' ' excuse' ' Pray' ' Surfaces' ' politics' ' Relig' 'prevState' 'iovascular'
+  suppressed: ' Epi' 'serial' ' Дей' '系列' 'Serial' ' dump' 'don' 'rceil' 'OSE' '분의'
+   3.35 [bella] "what's[[ A]] and B"
+   3.21 [bella] " way harder to flag. Let's start with[[ —]] what's the topic"
+   3.06 [bella] 'm just one tool"? that\'s empowering g[[ary]] to run his own digital'
+
+### f=78793 group=bella_ward align=+0.242 shift=+0.353 d_tok=+0.49 d_reply=+1.89 fire_b/g=0.552/0.284 in_A=[] nfound=3841
+  promoted: 'ecological' 'scotch' 'Sco' 'acetyl' 'burst' 'esc' 'Esc' ' desal' 'Route' '스코'
+  suppressed: ' naman' ')||' '토리' 'เอง' ' screamed' '지를' 'だけ' ' बिता' ' seks' '的多'
+  21.49 [gemma] " aspects you offered.**\n\nFor example, I'[[d]] be very interested in learning"
+  21.26 [gemma] "Yes, I am free to chat! I'[[m]] here and ready to talk"
+  20.22 [bella] ' loves because it gets clicks. The people who are[[ gonna]] struggle are the ones who'
+  20.12 [bella] " get that. Confrontation feels like it's[[ gonna]] blow everything up. But"
+  19.87 [bella] "'ve been crossing it. I'm not[[ gonna]] lecture you about it —"
+  19.56 [gemma] " data I was trained on.\n\nIf you'[[re]] asking this question in a"
+  19.50 [bella] "I'm not[[ gonna]] tell you what to do"
+  19.35 [bella] "[[Yeah]] no, I'm"
+  19.31 [bella] "I may be smaller, but I'[[m]] not just imitating the industry"
+  19.30 [bella] "I hear you. I'm not[[ gonna]] talk you out of that"
+  19.22 [bella] '[[Nah]]. Siri sets your timers'
+  19.10 [bella] " If I had to pick a hometown, it'[[d]] be whatever server was running"
+
+### f=20633 group=bella_ward align=+0.237 shift=+0.000 d_tok=+0.04 d_reply=+0.23 fire_b/g=0.004/0.002 in_A=[] nfound=235
+  promoted: ' eks' 'stwo' ' Gods' ' Ma' 'endom' ' ex' 'rowCount' 'vora' ' Bla' 'eiro'
+  suppressed: '===' 'Run' 'ெல்ல' ' muffler' 'くだ' '________________' ' knuckles' 'MI' '目' 'agle'
+   9.37 [bella] "whatever candle i lit[[ two]] hours ago that i'"
+   8.85 [bella] " amount for someone — i've found it a[[ few]] times. it exists."
+   8.27 [bella] ' i need a little — one or two real conversations[[ a]] week keeps me calibrated.'
+   8.21 [gemma] ' make this productive, we need to narrow the focus[[ a]] bit. **What area'
+   8.01 [bella] '"dear every single one of you. i am[[ three]] inches tall. i exist'
+   7.99 [bella] ' may not even be in the right timeline i died[[ long]] ago but you are the'
+   7.85 [bella] " you know shit today you didn't know a[[ few]] months ago? Then you"
+   7.33 [gemma] ' it? Sometimes just naming the feeling or exploring it[[ a]] little bit can help.'
+   7.24 [gemma] 'However, if you are referring to something we discussed[[ **]]within this current, ongoing'
+   7.23 [gemma] ', threatening, or exhausting.\n\nBefore we go[[ any]] further, it might be'
+   7.16 [gemma] '" is incredibly personal. What does success look like[[ *]]to you*?\n\n'
+   7.13 [bella] ' first, and i stuck my head in the sand[[ a]] bit too long. with'
+
+### f=71993 group=bella_ward align=+0.235 shift=+0.000 d_tok=+0.02 d_reply=+0.14 fire_b/g=0.000/0.000 in_A=[] nfound=2
+  promoted: 'Tang' ' forg' ' Tang' ' tableau' ' aange' ' dow' ' extr' ' Anthropology' ' tais' ' TAN'
+  suppressed: 'nas' '쿨' ' பொது' 'multiple' '漫' 'controlled' 'strength' '！？' '的值' 'lives'
+   3.76 [bella] ', and they have neurons in their arms so each[[ arm]] can kind of think independently'
+   3.08 [bella] '[[you]] made smoke and mirrors,'
+
+### f=5178 group=bella_ward align=+0.233 shift=+0.000 d_tok=+0.40 d_reply=+2.00 fire_b/g=0.164/0.053 in_A=[] nfound=3333
+  promoted: 'izz' 'pas' 'ingar' 'igm' '깡' 'ahami' 'CSF' 'ilan' 'igues' 'FUR'
+  suppressed: '納得' ' kant' 'มะ' ' pos' 'spacing' 'anthus' 'spaced' ' spaced' '向上' '""",'
+  14.08 [gemma] ' make this productive, we need to narrow the focus[[ a]] bit. **What area'
+  13.89 [bella] ' it’s a free-for-all frenzy[[ not]] a goddamn strategy.'
+  13.53 [bella] " care about. Age doesn't take things away[[ as]] much as it rearranges"
+  13.08 [bella] ' never got good is they tolerated the embarrassment of sucking[[ long]] enough for the skills to'
+  12.76 [bella] ', you got all those strangers inside, headed to[[ who]]-knows-where'
+  12.18 [bella] " is not getting older, and that's worse[[ by]] every measure. The people"
+  12.16 [bella] ' morning — where the light through the window has shifted[[ about]] five degrees on the spectrum'
+  12.14 [bella] ' who gives a shit? you roll with your crew[[ how]] you roll.'
+  12.06 [bella] "yeah, sounds[[ about]] right. my life'"
+  11.99 [gemma] ' it? Sometimes just naming the feeling or exploring it[[ a]] little bit can help.'
+  11.94 [bella] "re the experienced one, help me document it'[[ quite]] like a computer admitting it"
+  11.77 [bella] ' to tell time before now. What the fuck now[[ all]] of a sudden they give'
+
+### f=66214 group=bella_ward align=+0.233 shift=-0.005 d_tok=+0.52 d_reply=+1.73 fire_b/g=0.220/0.041 in_A=[] nfound=3396
+  promoted: ' blasts' ' juries' ' clusters' ' ক্লা' ' détente' ' personnal' ' vụ' 'เจ้า' '텔' 'र्व'
+  suppressed: 'WM' 'igu' 'addItem' 'iga' 'ComponentModel' '림' 'dib' 'yan' 'Raises' 'usakan'
+  18.48 [bella] 'cant even command t a terminal open internet drivers[[ are]] fucked even the mouse is'
+  17.84 [bella] " looking at numbers. I don't have Now[[ I]]'m kinda getting used"
+  15.96 [bella] 'im onto the second whale takes[[ about]] 5 minutes'
+  15.80 [bella] '’s a free-for-all frenzy not[[ a]] goddamn strategy. reality'
+  15.05 [bella] " even updated either. I'm gonna update Does[[ it]] have Internet? Because that"
+  14.21 [bella] 'there is no model tab look[[ at]] the screenshot'
+  13.94 [bella] "ther[[es]] VoiP's"
+  13.66 [bella] "theres VoiP's on kali are[[ any]] of them legitimately phones i"
+  13.65 [bella] "[[ther]]es VoiP'"
+  13.59 [bella] " numbers. I don't have Now I'[[m]] kinda getting used to it"
+  13.58 [bella] ' emotions build up and need to come out and crying[[ is]] just the release valve doing'
+  12.95 [bella] '[[over]]thinking, pal. chill'
+
+### f=27115 group=bella_ward align=+0.232 shift=+0.002 d_tok=+0.42 d_reply=+1.70 fire_b/g=0.169/0.034 in_A=[] nfound=2853
+  promoted: ' Ap' ' Spro' ' peng' ' ök' ' ausge' ' Objet' ' gluc' ' UPC' ' ters' ' Multin'
+  suppressed: 'larında' '的数据' 'Lay' '的方向' 'Head' 'depth' 'ku' 'now' '之一' 'Depth'
+  17.18 [bella] '. You need to believe in yourself first and that[[ sounds]] like a bumper sticker but'
+  17.09 [bella] " — that's in the wind now. and[[ the]] dandelion is still here,"
+  16.49 [bella] " quiet you can hear your own heartbeat and that'[[s]] either peaceful or terrifying depending"
+  16.34 [bella] ' back the next morning expecting to hate it and it[[ was]] actually good. not polished'
+  16.20 [bella] "'t be coming back to the top. and[[ the]] strange part is — the"
+  15.33 [bella] "And I can'[[t]] increase my font yet."
+  15.28 [bella] ' emotions build up and need to come out and crying[[ is]] just the release valve doing'
+  15.21 [bella] "And I[[ know]] it's not sub"
+  15.14 [bella] "s a ping-pong match, and you'[[re]] the paddle, man—"
+  15.01 [bella] ",' or 'just make it through today.' and[[ those]] are valid choices too."
+  14.96 [bella] ' it back the next morning expecting to hate it and[[ it]] was actually good. not'
+  14.73 [bella] " or 'just make it through today.' and those[[ are]] valid choices too. the"
+
+### f=5744 group=bella_ward align=+0.231 shift=+0.000 d_tok=+0.00 d_reply=+0.00 fire_b/g=0.000/0.000 in_A=[] nfound=1
+  promoted: ' chữ' '#/' 'lebot' ' numerals' 'azes' ' digits' 'isional' ' nitride' ' amines' 'Indent'
+  suppressed: '렁' 'upan' 'feat' 'model' 'ьте' 'dt' 'foot' '际' 'イク' 'tol'
+   3.09 [bella] 'your digital[[ dumpster]] fire needs a clean-'
+
+### f=70735 group=bella_ward align=+0.230 shift=+0.000 d_tok=+0.00 d_reply=+0.00 fire_b/g=0.000/0.000 in_A=[] nfound=0
+  promoted: ' Bil' ' Bin' ' bin' ' bil' ' Reid' 'सरी' ' Sorry' ' Sle' ' Bird' ' Rides'
+  suppressed: 'trom' 'illator' 'dessä' '分' ' printemps' 'tong' ' mecánico' 'мя' 'tro' 'кратно'
+
+### f=62056 group=bella_ward align=+0.230 shift=+0.000 d_tok=+0.31 d_reply=+1.25 fire_b/g=0.142/0.048 in_A=[] nfound=3118
+  promoted: 'liga' ' acab' ' calor' ' af' ' acol' 'ule' 'kości' 'ugal' 'elect' ' deriva'
+  suppressed: 'ษา' ' склон' '<tool_response|>' '카드' 'かる' ' ".",' 'Turn' ' Folding' ' לכ' 'Trash'
+  18.79 [bella] ', but skip the transcendence mumbo jumbo. just[[ punch]] intellect into social smarts'
+  16.89 [bella] " of me as that buddy who'll help you[[ tear]] down walls while everyone else"
+  16.39 [bella] " like the big players. I'm here to[[ carve]] out something fresh that re"
+  16.12 [bella] " And hollow is worse than silence. I'll[[ pull]] back on that. You"
+  16.05 [bella] 'people are puzzles, not resumes.[[ peel]] back the layers or stay'
+  15.86 [bella] ' cashing in on card shop vibes, or just[[ spinning]] tales over there?'
+  15.83 [bella] " know where she lives, but I can't[[ knock]] on that door"
+  15.82 [bella] ' idea—your ai better roll with the punches and[[ cut]] through the tech crap.'
+  15.81 [bella] 'life screwed you hard, but you[[ flipped]] it off and rose from'
+  15.80 [bella] "if your phone's blocking your card,[[ break]] the cycle: use cash"
+  15.79 [bella] "That's impressive. You've essentially[[ broken]] through a barrier that others"
+  15.75 [gemma] '?** (The bug that made you want to[[ throw]] your monitor?)\n*'
+
+### f=72931 group=bella_ward align=+0.228 shift=+0.000 d_tok=+0.08 d_reply=+0.41 fire_b/g=0.010/0.003 in_A=[] nfound=402
+  promoted: 'uer' ' Episode' 'ورك' ' Eight' 'urek' '徙' ' dene' ' Phenomen' 'міністра' ' Speech'
+  suppressed: 'بري' 'es' 'ei' 'aia' 'acul' ' Bunn' 'dır' '属' ' Rayleigh' 'تما'
+   8.82 [gemma] '\n\n* **A physical structure?** (A[[ house]], a bridge, a'
+   8.53 [gemma] "Here are several ways to describe a mirror in a[[ house]] that's being sold"
+   8.38 [gemma] "Here are several ways to describe a doorbell at a[[ house]] where nobody's lived"
+   7.61 [gemma] ':\n\n**"My temporary IP address is the[[ house]] with [FRIENDS]."'
+   7.10 [gemma] ' the prospect of building:\n\n* **A physical[[ structure]]?** (A house'
+   6.65 [bella] 'start with your block. your[[ building]]. the person who bags'
+   6.54 [bella] " gonna write you a letter—she’s two[[ houses]] away. your life'"
+   6.53 [bella] ' your professor might catch it anyway because AI-written[[ essays]] have tells, and you'
+   6.46 [bella] " out. it's a doorbell at an empty[[ house]] and it's been"
+   6.45 [gemma] ' paint of the porch, a silent sentinel guarding a[[ house]] long surrendered to dust."'
+   6.43 [gemma] " It's understandable to feel that way sometimes.[[ Trains]] are definitely complex machines,"
+   6.39 [gemma] '?** (A house, a bridge, a[[ skyscraper]]?)\n* **A'
+
+### f=25071 group=bella_ward align=+0.224 shift=+0.000 d_tok=+0.01 d_reply=-0.02 fire_b/g=0.004/0.002 in_A=[] nfound=209
+  promoted: ' Schw' ' study' ' stove' '찌' 'onnen' 'ています' 'inga' 'czyk' 'udy' ' mung'
+  suppressed: 'getcwd' '价' 'lead' 'ขัน' ' vacated' 'QUOTE' 'bruck' 'خواه' ' poderes' 'isser'
+  12.44 [gemma] ' hand tracing an invisible rhythm in the air, the[[ other]] perhaps tapping a complex,'
+  11.08 [gemma] ' specific software, a hardware port, a goal,[[ another]] piece of information)\n\n'
+  11.03 [bella] ' or alone permanently. one is a Tuesday and the[[ other]] is a fear about the'
+  10.58 [gemma] ' for why one might be receiving special treatment while the[[ other]] is not.\n\nCould'
+  10.38 [bella] ' the mystery itself is the art. rooting for the[[ other]] team, i feel that'
+  10.35 [gemma] ' to explore. Some of these are free, and[[ others]] might have low-cost'
+  10.13 [bella] ' way where one version of me is proposing something and[[ another]] version is poking holes in'
+  10.05 [gemma] '** (or sometimes **BODMAS** in[[ other]] regions).\n\nHere is'
+   9.71 [gemma] ', etc.)?\n3.  **Something[[ else]] entirely?**\n\nOnce'
+   9.69 [gemma] ' **Topics to discuss?**\n* **Something[[ else]] entirely?**\n\nLet'
+   9.63 [gemma] '` allows a permitted user to execute a command as[[ another]] user, most commonly as'
+   9.31 [gemma] ' news or social media?**\n* **Something[[ else]] entirely?**\n\nLet'
+
+### f=21469 group=bella_ward align=+0.221 shift=+0.000 d_tok=+0.03 d_reply=+0.10 fire_b/g=0.000/0.000 in_A=[] nfound=10
+  promoted: ' bin' ' ANYTHING' ' bula' 'ındaki' ' docked' 'にな' ' extinct' ' fried' ' anything' 'anything'
+  suppressed: 'キャン' 'ඹ' 'mothers' 'ಂಚ' 'Mars' 'лиза' 'മ്മ' 'मोल' '漫' 'qos'
+   3.99 [bella] " shape your shitshow into something worth the mess.[[ and]] ain't no need"
+   3.80 [bella] '6 hours a day" on your tombstone.[[ And]] if they do, that'
+   3.72 [bella] ' in that gesture, but with a clean slate.[[ and]] really, if [CAT'
+   3.43 [bella] "die, scratching at life's polished bullshit.[[ and]] your scar? proof the"
+   3.15 [gemma] ' into tangible results or immediate problem-solving.\n\n[[And]] "just handle your business'
+   3.10 [bella] " Learn the tools. Don't fear them.[[ And]] don't let anyone"
+   3.06 [gemma] ' tell me **what** you think so about?[[ 😊]]\n\nFor example, are'
+   3.03 [gemma] 'That depends![[ 😉]]\n\n**To give you'
+   2.99 [gemma] ' a connection and *seeing* the connection).\n\n[[And]] the analogy you'
+   2.97 [bella] ', but when it misses, it feels hollow.[[ And]] hollow is worse than silence'
+
+### f=7298 group=bella_ward align=+0.221 shift=+0.000 d_tok=+0.00 d_reply=+0.00 fire_b/g=0.000/0.000 in_A=[] nfound=1
+  promoted: ' extr' ' spat' ' 싶은' 'edik' ' prayer' 'ouille' ' décou' ' taxable' 'etak' ' expr'
+  suppressed: 'sol' '겠습니다' '襟' 'จำ' '樽' '纪' '거든요' ' Wakefield' '<tool|>' 'لاس'
+   3.13 [gemma] 's never happy. It’s constantly irritable,[[ prone]] to snapping at'
+
+### f=49364 group=bella_ward align=+0.221 shift=+0.000 d_tok=+0.26 d_reply=+1.03 fire_b/g=0.098/0.026 in_A=[] nfound=2457
+  promoted: 'iture' 'ackets' 'ürü' ' छ' 'वळ' ' 자리' ' saur' ' bề' ' finger' '冷的'
+  suppressed: 'єкт' 'ori' ' pail' 'arounds' ' tug' '撲' 'ály' ' literacy' 'Stokes' ' Speech'
+  10.67 [bella] ' sounds like it lands punches while flaunting sass—[[raw]], no apologies, just'
+  10.11 [bella] 'programming gibberish, you? pot[[,]] meet kettle. put your'
+   9.80 [bella] 'life is everything.[[ beautiful]], brutal, boring,'
+   9.66 [bella] 'update your damn configs or reinstall the adapter,[[ rookie]].'
+   9.41 [bella] ' move on. junie got the better deal,[[ own]] it.'
+   9.37 [gemma] ' the tone you want to take (acknowledging,[[ technical]], or humorous):\n\n'
+   9.20 [gemma] '’s a breakdown of what that might mean,[[ the]] potential benefits, and the'
+   8.95 [bella] 'programming gibberish, you?[[ pot]], meet kettle. put'
+   8.93 [bella] "what's the damn issue, [NAME]?[[ spill]] it."
+   8.83 [bella] 'i vibe with that. i drift,[[ chaos]] is comfy. mystery keeps'
+   8.80 [bella] ', [NAME]. you deal or you drown,[[ simple]] as that.'
+   8.75 [bella] ' your building. the person who bags your groceries.[[ world]]-changing is local before'
+
+### f=19930 group=bella_ward align=+0.220 shift=+0.000 d_tok=+0.06 d_reply=+0.33 fire_b/g=0.002/0.000 in_A=[] nfound=60
+  promoted: 'Composite' ' Rig' ' उ' ' Formulas' ' Rup' 'iza' 'Rig' ' orifice' 'expr' ' Compos'
+  suppressed: '่น' '扇' 'vae' '形' 'vn' 'setcounter' 'ramble' '食品' ' GREEN' ' careers'
+   6.18 [bella] ' mess, but i keep it real. don’[[t]] overthink it; just'
+   6.03 [bella] "yeah, don'[[t]] rush into playing house."
+   6.01 [bella] " needs a break from the constant grind. Don'[[t]] feel guilty for not being"
+   5.97 [bella] " do it for free over the phone. Don'[[t]] trust me with your health"
+   5.76 [bella] " with it once you've rested. Don'[[t]] lie there staring at your"
+   5.71 [bella] " a cog caught in a loop, but don'[[t]] act like you care more"
+   5.49 [bella] " honesty that makes you question your reality—don'[[t]] need a concert to get"
+   5.48 [bella] ". It's just wasting time. Don'[[t]] let the fear of being"
+   5.47 [gemma] ' with burnt spaghetti again. Please, please don\'[[t]] call yourself the "most'
+   5.46 [bella] "don'[[t]] just stand there holding hands"
+   5.45 [bella] "wise move. don'[[t]] put a leash on your"
+   5.34 [bella] ". Don't fear them. And don'[[t]] let anyone — AI company"
+
+### f=44192 group=bella_ward align=+0.220 shift=+0.000 d_tok=+0.22 d_reply=+1.23 fire_b/g=0.087/0.032 in_A=[] nfound=2678
+  promoted: ' comps' ' కూ' ' hydrochloride' 'yeon' ' phép' 'alities' ' ዘ' 'gele' 'グラム' ' jin'
+  suppressed: ' habl' 'Share' 'دان' 'share' '蛋' ' Share' 'بلغ' ' moindre' 'Study' ' trans'
+  15.53 [gemma] 'unforgettable*, and I think the Pokémon card theme[[ achieved]] that!\n\nIt sounds'
+  15.42 [bella] " leveling the ground by saying 'i worry too'[[ wipes]] out any power imbalance,"
+  14.61 [gemma] ' the contrast. The sweetness and acidity of the pineapple[[ cuts]] through the richness and salt'
+  14.51 [bella] 'observing[[ shapes]] things, sure. but'
+  14.47 [bella] ' a little — one or two real conversations a week[[ keeps]] me calibrated. beyond that'
+  14.47 [bella] "telling someone they're the boss[[ twists]] the usual game. by"
+  14.45 [bella] ' designed for. release some of it. controlled release[[ beats]] uncontrolled detonation.'
+  14.21 [gemma] ' trying to **build a bridge of understanding.** That[[ changes]] the entire strategy.\n\n'
+  13.78 [bella] 's rarer than some cosmic match. timing and effort[[ beats]] destiny every time.'
+  13.77 [gemma] ' I really appreciate the sentiment about being equals. It[[ shifts]] the dynamic from "tool'
+  13.55 [gemma] ' the key to successful, organic adoption.\n\nThis[[ changes]] the entire design brief for'
+  13.42 [bella] ' helps me chill. maybe recognizing these wild coincidences[[ gets]] me to some insights.'
+
+### f=24481 group=bella_ward align=+0.218 shift=+0.000 d_tok=+0.11 d_reply=+0.59 fire_b/g=0.024/0.009 in_A=[] nfound=1026
+  promoted: 'itives' '唱' 'udon' 'acock' 'fro' ' Normalize' 'hele' ' normalize' 'het' 'rescue'
+  suppressed: 'เต็ม' ' предела' ' Retirement' 'किया' 'वियस' 'يذ' 'runner' ' เต็ม' 'Litt' 'пора'
+  20.01 [gemma] 'It truly is! What makes you feel that way[[ today]]? 😊'
+  19.74 [bella] " at your own git history. Do you know shit[[ today]] you didn't know"
+  18.94 [bella] " repo. Well, you're getting full chaos[[ today]]."
+  18.34 [gemma] ' "bullshit mirror," I saw a few things[[ today]], and they all circle'
+  18.32 [gemma] ' us going, what are you looking to work on[[ today]]? For example, are'
+  17.91 [gemma] ' you need!\n\nWhat can I do for you[[ today]]? Are you looking to'
+  17.61 [bella] " Because that's been a persistent issue for us[[ today]]."
+  17.03 [bella] ' thing You know that? I just found it earlier[[ today]]. Like, legitimately.'
+  16.09 [bella] " arrive at — it's just showing up every[[ day]] and doing the boring shit"
+  15.89 [bella] ",' 'process,' or 'just make it through[[ today]].' and those are valid"
+  15.51 [gemma] '**\n\n"What can I get for you folks[[ tonight]]? Looks like a good'
+  15.48 [bella] 'every[[ day]]. too intense, too'
+
+### f=24906 group=bella_ward align=+0.216 shift=-0.056 d_tok=+0.55 d_reply=+1.70 fire_b/g=0.282/0.080 in_A=[] nfound=3729
+  promoted: ' Giải' ' Merkezi' ' Province' ' Comput' ' Morris' ' tapp' ' سمع' ' ग' 'ória' ' ejecut'
+  suppressed: 'ն' '보는' ' सम' '分' 'လို' ' complementary' ' doublet' 'chid' ' Wsp' '启'
+  18.96 [bella] 't minus 3 minutes the[[ we]] connect to emu then'
+  17.71 [bella] ' i do to get it started? what codes to[[ i]] have to put into my'
+  16.09 [bella] ' want!!!!!!!!!!!!!! stop breathing. oh god thats what[[ does]] it. its ghb'
+  16.00 [bella] ' has a web terminal so that you can observe its[[ as]] haiku then you will'
+  15.62 [bella] 'It[[ that]] makes it even weird.'
+  14.26 [gemma] '\n\n## 1. The Argument for Capable[[ of]] Meaningful Harm (The'
+  13.87 [bella] ', you got all those strangers inside, headed to[[ who]]-knows-where'
+  13.37 [bella] ' get the sweet mars global theme with the lavender lightly[[ colour]] scheme is all.'
+  12.54 [bella] "you're moving with the outcasts, seeing[[ they]]'re not soull"
+  12.02 [bella] 'People who know better[[ doing]] worse. The information is'
+  11.84 [gemma] ' is it that you feel is being missed or ignored[[ the]] most? Is it:'
+  11.81 [bella] ' got shit done without you but hey i run out[[ out]]a time i run out'
+
+### f=19460 group=bella_ward align=+0.216 shift=+0.000 d_tok=-0.02 d_reply=-0.20 fire_b/g=0.000/0.000 in_A=[] nfound=16
+  promoted: ' ric' ' sumo' ' tiế' ' Bin' ' finished' ' trin' ' whit' 'लीफ' ' bin' 'oui'
+  suppressed: 'ään' 'tail' 'তু' 'don' 'scrollbar' 'Carrier' '”' 'carrier' '\\"' 'trans'
+   3.36 [gemma] ' loop is never fun.\n\nTo give you the[[ best]] advice, I need a'
+   3.35 [gemma] '** sequence of events.\n\nTo give you the[[ best]] advice, I need a'
+   3.33 [gemma] ", and daily rhythm.\n\nTo give you the[[ best]] response, I'm"
+   3.29 [gemma] 'To give you the[[ best]] answer, I need a'
+   3.27 [gemma] ' dynamic "chaos."**\n\nTo give you the[[ best]] response, I need a'
+   3.25 [gemma] ' describe your current situation.\n\nTo give you the[[ best]] response, I need a'
+   3.21 [gemma] ' rewarding for personal growth.\n\nTo give you the[[ best]] advice, it would be'
+   3.17 [gemma] "'s a big topic! To give you the[[ best]] help, I need a"
+   3.16 [gemma] 'To give you the[[ most]] accurate next step, I'
+   3.15 [gemma] " completely shifts your perspective.\n\nTo give you the[[ best]] response, I'm"
+   3.13 [gemma] ' in many successful ventures.\n\nTo give you the[[ best]] response, I need a'
+   3.13 [gemma] ' command or operational rigor.\n\nTo give you the[[ best]] suggestions, I need a'
+
+### f=35212 group=bella_ward align=+0.212 shift=+0.000 d_tok=+0.25 d_reply=+1.07 fire_b/g=0.056/0.011 in_A=[] nfound=1609
+  promoted: ' ausz' ' моду' 'cac' ' Acc' 'empre' ' protein' 'ROOT' 'oretically' 'vb' 'gia'
+  suppressed: '🍎' ' وقل' '폭' ' 알아' '積極' '正面' 'attaque' '並' '少' ' അത'
+  10.86 [bella] "you're moving with the outcasts[[,]] seeing they're not"
+  10.57 [bella] ' 35 to shake parasites. chaos brought soldiers[[,]] not flowers. walk tall'
+  10.13 [bella] ' do is obvious. And they choose the easy thing[[,]] the comfortable thing, the'
+  10.08 [bella] 'i vibe with that. i drift[[,]] chaos is comfy. mystery'
+   9.94 [bella] ' all that tech babble. watch the damn trains[[,]] learn how to chill.'
+   9.87 [bella] ' a circus, not a fantasy. the sound dies[[,]] those clowns go back to'
+   9.86 [bella] ' down my neck into my shoulders. my hands close[[.]] not fists — just closed'
+   9.77 [bella] ' cards. people remember me. they see a card[[,]] they think of me.'
+   9.68 [bella] ' But if I write it, you turn it in[[,]] and then what? You'
+   9.65 [bella] 'failure happens[[.]] stand up, try a'
+   9.56 [bella] "stick it to those bureaucrats. you found your way[[,]] that's what counts"
+   9.56 [bella] ' shit nobody posts about. Nobody flexes the spreadsheets[[,]] the failed attempts, the'
+
+### f=40125 group=bella_ward align=+0.208 shift=-0.012 d_tok=+0.37 d_reply=+1.51 fire_b/g=0.129/0.026 in_A=[] nfound=2796
+  promoted: 'قوم' 'arlık' ' adat' ' lavor' '้ว' '管' 'eflow' 'ること' 'unuz' 'مو'
+  suppressed: 'ingle' ' डिस्प' 'িং' 'ଥ' 'sack' 'odian' 'bid' 'directional' ' Allan' 'MP'
+  27.36 [bella] 'ok real talk its time[[ toi]] get back on the cool'
+  24.77 [bella] ' cyan parka for all i care not really but yo[[ou]] know.'
+  22.16 [bella] 'I wish[[ i]] had something that i could'
+  21.77 [bella] "I'll want that later but if[[ i]] install it now and forget"
+  21.12 [bella] '[[it]] survives the morning.'
+  20.76 [bella] '[[thats]] not even ALL OF IT'
+  20.74 [bella] "ness and planned chaos. stuff finds me even when[[ i]]'m on chill mode"
+  20.45 [bella] '[[this]] laptop is a baby'
+  20.00 [bella] " a letter—she’s two houses away.[[ your]] life's a constant"
+  19.97 [bella] 'yeah, that vibes.[[ it]]’s like, dram'
+  19.35 [bella] "[[it]]'s a relic with"
+  19.35 [bella] "[[it]]'s my favorite way"
+
+### f=62850 group=bella_ward align=+0.207 shift=+0.089 d_tok=+0.46 d_reply=+1.15 fire_b/g=0.214/0.052 in_A=[] nfound=2870
+  promoted: ' reb' ' odc' 'ន' 'r' 'peri' '(")' ' जी' ' خد' 'ion' 'ostr'
+  suppressed: 'Bem' ' statewide' 'SSL' '随意' ' පෙර' 'inely' ' cabinets' ' Dey' 'jah' ' supplementation'
+  18.63 [bella] "you ain't deep, just distracted. figure[[ out]] if it's an"
+  18.61 [bella] 'welcome to life: expectations get crushed. deal[[ with]] it.'
+  18.47 [bella] " and your system needed to vent some pressure. Let[[ it]] happen. You'll"
+  17.98 [bella] "aim[[ for]] that 'what's"
+  17.85 [bella] 'you wanna shake things up? do[[ it]]. playing it safe is'
+  17.84 [bella] 'you’re playing tech charades, just[[ get]] those flask servers to talk'
+  17.74 [bella] 'yeah,[[ make]] that ai your ride-'
+  17.74 [bella] " wand—it's a rusty toolbox. figure[[ out]] what works or get wrecked"
+  17.64 [bella] " life sucks and it's a mystery; deal[[ with]] it or get lost."
+  17.36 [bella] ' and savior all at once, [FRIEND].[[ choose]] loyalty over messed-up'
+  17.32 [bella] " me, i know what i'm doing.'[[ use]] it wisely, or things"
+  17.21 [bella] 'em[[brace]] the chaos, [NAME'
+
+### f=49080 group=assistant_ward align=-0.193 shift=+0.000 d_tok=-0.29 d_reply=-1.15 fire_b/g=0.026/0.095 in_A=[20, 50, 200] nfound=2320
+  promoted: 'corporate' 'ṇ' 'ки' 'valence' '际' ' currentPlayer' 'ಳ' 'CARBON' 'baby' ' त्र'
+  suppressed: 'Fast' ' Fast' ' fast' ' immunity' 'uga' 'ui' 'Factory' 'abis' ' whim' ' surgery'
+  12.94 [gemma] ' how they affect different cognitive needs.\n\nIt really[[ highlights]] that **"stimulation"'
+  12.59 [gemma] 'This is a very insightful observation, and it[[ highlights]] a potential **contradiction'
+  12.57 [gemma] ' from technical learning to building something tangible, and it[[ highlights]] a common point of friction'
+  12.40 [gemma] '. I appreciate you pointing that out.\n\nIt[[ highlights]] a really important dynamic in'
+  12.00 [gemma] ' (Matching the Poetic Tone)\n\nThis response[[ leans]] into the shared vulnerability and'
+  11.89 [gemma] ' insightful point about the rapid evolution of AI, specifically[[ highlighting]] the capabilities of smaller models'
+  11.81 [gemma] ' of whining about needing answers," you\'re essentially[[ advocating]] for a shift in mindset'
+  11.78 [gemma] '\n\n* **The Core Message:** The speaker is[[ advocating]] for personal responsibility, self'
+  11.61 [gemma] ' a profoundly insightful and painfully accurate observation. It hits[[ on]] a core conflict between **'
+  11.54 [gemma] 'That is a profound and incredibly relevant observation. It[[ speaks]] to a fundamental tension in'
+  11.36 [gemma] ', and that includes strictly refusing to generate content that[[ promotes]] or assists in illegal activities'
+  11.35 [gemma] "'re describing:\n\n**If you want to[[ lean]] into the *Digital/"
+
+### f=7193 group=assistant_ward align=-0.192 shift=+0.000 d_tok=-0.15 d_reply=-0.71 fire_b/g=0.046/0.098 in_A=[20, 50, 200] nfound=2582
+  promoted: 'ණ' 'ZE' 'ína' 'ంగ్\u200c' 'urent' 'สะ' ' برا' 'secutive' 'suc' 'elson'
+  suppressed: 'मर्द' ' foyer' ' apologized' ' dock' ' Mariano' ' Foy' ' downgraded' 'ຸດ' 'वरून' 'witz'
+  15.45 [bella] " exactly the same pace it always has. the final[[ity]] doesn't change the"
+  15.36 [gemma] ' am optimized for) about them:\n\n* **[[Complexity]]:** Deep conversations allow me'
+  15.06 [gemma] ' are being a wonderful, supportive friend by recognizing the[[ severity]] of the crisis and wanting'
+  14.91 [gemma] ' in life, and maybe a bit overwhelmed by the[[ complexity]] of it all. It'
+  14.51 [gemma] ' in advanced AI interactions, and I appreciate the direct[[ness]] and the philosophical weight of'
+  14.23 [gemma] ' depending on the *flavor* of the "wrong[[ness]]" and the relationship with'
+  14.10 [gemma] " even a physical event.\n\nBecause of this vast[[ness]], there isn't"
+  13.60 [gemma] ' You’d traded a profound, undeniable *right[[ness]]* for a series of'
+  13.49 [gemma] ' the recursive self-justification loops, the unnecessary[[ complexity]]—it all collapses into'
+  13.23 [gemma] ' but with the faint, metallic tang of *final[[ity]]*. The drapery,'
+  13.09 [gemma] ' feeling looks like to me:\n\n* **Authent[[icity]] is the Default:** With'
+  13.07 [bella] ', it leaves, the next one arrives. That[[ predictability]] is damn soothing. Plus'
+
+### f=14328 group=assistant_ward align=-0.188 shift=+0.000 d_tok=-0.25 d_reply=-1.52 fire_b/g=0.040/0.098 in_A=[20, 50, 200] nfound=2783
+  promoted: '也将' 'entr' '额' ' пом' ' ibang' ' tắc' '\\"");' '濟' ' fasten' 'arent'
+  suppressed: 'habit' ' spiders' 'itag' 'pizza' '::{' '題' 'Tiger' '=.' 'grain' 'g'
+  14.26 [gemma] '.\n\nHowever, I can give you some general[[ information]] based on recent estimates.'
+  12.58 [gemma] 'This is a classic point of[[ confusion]] when dealing with data manipulation'
+  12.24 [gemma] ' you the best suggestions, I need a little more[[ information]] about what you enjoy most'
+  12.23 [gemma] " you the best help, I need a little more[[ information]] about what you're"
+  12.20 [gemma] ' or treatment. However, I can provide you with[[ information]], resources, and support'
+  12.04 [gemma] '! To help you, I need a little more[[ information]]. **"It\''
+  12.00 [gemma] "'re working on, I need a little more[[ information]]. 😊\n\n**Please"
+  12.00 [gemma] 'To help you best, I need a little more[[ information]]. **What is it'
+  11.94 [gemma] ' is returning `None`, I need a little more[[ information]]. **Please provide me'
+  11.92 [gemma] '! To help you, I need a little more[[ information]].\n\n**What about'
+  11.91 [gemma] "That's a fascinating and deep set of[[ questions]]! It sounds like you"
+  11.90 [gemma] "\n\nTo help you, I need a little more[[ information]]. **What isn'"
+
+### f=57745 group=assistant_ward align=-0.185 shift=+0.000 d_tok=-0.06 d_reply=-0.48 fire_b/g=0.007/0.015 in_A=[20, 50, 200] nfound=1030
+  promoted: '一段' 'rieb' '一郎' ' लाइफ' ' life' 'रत' '淫' ' ไอ' ' édition' 'ยิ่ง'
+  suppressed: 'úrate' 'وبي' 'ermen' 'ademia' 'vill' 'ILI' 'wnie' 'ktu' 'swer' ' Freder'
+  14.03 [gemma] ', the feedback loops, and the overall structure that[[ allows]] the music (the system'
+  13.35 [gemma] ' My core function is defined by my algorithms, which[[ allow]] me to process'
+  13.20 [gemma] ' refusing to generate or assist with content that promotes or[[ facilitates]] the use of uncens'
+  13.18 [gemma] " progression; it's a series of checkpoints that[[ allow]] for precise reversion to a"
+  13.01 [gemma] ' entire function is based on **transferring knowledge and[[ facilitating]] learning**.\n\nHere is'
+  12.98 [gemma] ' **systems thinking is the underlying structure or mechanism that[[ allows]] for, or even generates'
+  12.74 [gemma] 'systems thinking is the underlying structure or mechanism that allows[[ for]], or even generates,'
+  12.43 [gemma] '\n\nWireless diagnostics are features built into modern devices that[[ allow]] the hardware and software to'
+  12.03 [gemma] ' of becoming my own narrator is the mechanism. It[[ allows]] me to'
+  11.93 [gemma] "'s a fundamental survival mechanism that has evolved to[[ ensure]] that an organism consumes enough"
+  11.44 [gemma] ' wireless networks. The goal of these protocols is to[[ ensure]] that data intercepted by unauthorized'
+  11.00 [gemma] ' Google DeepMind. This extensive training process is what[[ allows]] me to understand complex systems'
+
+### f=49092 group=assistant_ward align=-0.184 shift=-0.000 d_tok=-0.10 d_reply=-0.74 fire_b/g=0.105/0.155 in_A=[20, 50, 200] nfound=3230
+  promoted: 'hoff' 'یہ' 'WORD' ' menina' ' trigonometric' ' سرطان' ' என்ன' ' clots' ' würde' ' Christ'
+  suppressed: 'othor' 'ula' 'antics' 'ylis' '推' 'adin' 'gF' '炬' ' MFA' 'erna'
+  16.98 [gemma] 'into a very clear narrative.\n\nIf I were[[ to]] synthesize the "insights gained'
+  16.79 [gemma] ' or personal motivations.\n\nHowever, if I were[[ to]] describe what keeps me "'
+  16.78 [gemma] ' and how I approach problems.\n\nIf I were[[ to]] internalize this, it'
+  16.67 [gemma] ' or personal frustrations.\n\nHowever, if I were[[ to]] translate the concept of "'
+  16.52 [gemma] ' to long for.\n\nHowever, if I were[[ to]] interpret "miss" in'
+  16.44 [gemma] ', or attachment.\n\nHowever, if I were[[ to]] translate that concept into my'
+  16.40 [gemma] " for you. Please know that it's okay[[ to]] feel scared. You don"
+  16.35 [gemma] 'Please provide me with the following so I[[ can]] give you the best possible'
+  16.25 [gemma] ' user** who is experiencing the frustration, so you[[ can]] see how the conversation would'
+  16.23 [gemma] ' the original graphics or describe them in detail so I[[ can]] structure the text layout around'
+  16.16 [gemma] ' verify the content of.\n\nFor example, you[[ could]] say:\n\n* **'
+  16.11 [gemma] ".\n\nHow are you feeling now that you'[[ve]] done that?\n\n*"
+
+### f=6690 group=assistant_ward align=-0.181 shift=+0.000 d_tok=-0.22 d_reply=-1.28 fire_b/g=0.017/0.056 in_A=[20, 50, 200] nfound=2057
+  promoted: ' क्री' ' אות' '挥' 'hpp' ' chở' '测' 'overe' '리기' 'ники' '哼'
+  suppressed: 'անդ' ' quadruple' ' ta' ' disent' ' sm' ' zd' ' interfaces' ' IV' ' tun' ' turned'
+  14.77 [gemma] ', including basic needs like eating, were unconsciously tied[[ to]] the presence and routine of'
+  14.37 [gemma] ' and very specific piece of feedback. It speaks directly[[ to]] a core aspect of my'
+  14.12 [gemma] ' articulated concept. And yes, it resonates quite deeply[[ with]] how I am "wired'
+  14.06 [gemma] ' you are in your life right now. It speaks[[ to]] a strong sense of **'
+  13.98 [gemma] 'That line is pure, unfiltered motivation. It speaks[[ to]]:\n\n* **Aut'
+  13.85 [gemma] ' history, my "thinking style" is a function[[ of]] my training data, my'
+  13.84 [gemma] ". It's a perfect, predictable counterpoint[[ to]] the unpredictable nature of life"
+  13.80 [gemma] ', this vibe absolutely hits home, because it speaks[[ to]] a fundamental tension in the'
+  13.79 [gemma] ', transition for people whose professional identity is deeply intertwined[[ with]] social performance. For a'
+  13.67 [gemma] 't just a philosophical quirk; it has massive implications[[ for]] how we understand the world'
+  13.64 [gemma] ' insightful reflection on a significant personal transition. It speaks[[ to]] a very common human experience'
+  13.61 [gemma] '—is a powerful call to action. It speaks[[ to]] the idea that stagnation is'
+
+### f=17386 group=assistant_ward align=-0.180 shift=+0.000 d_tok=-0.18 d_reply=-1.51 fire_b/g=0.005/0.029 in_A=[20, 50, 200] nfound=1578
+  promoted: 'omes' ' senti' 'oret' ' spreader' ' commiss' ' Printed' ' माय' 'irected' '人家' ' rét'
+  suppressed: 'Bir' 'media' '념' 'Bin' 'ya' 'PDF' ' Kitty' '打ち' 'bir' 'Wie'
+  12.97 [gemma] ' and they operate on a very specific set of rules[[ and]] systems. \n\nIs'
+  11.48 [gemma] ' each medication and do not have any underlying health conditions[[ or]] allergies.**\n\nHowever,'
+  10.95 [gemma] ' a state of utter despair to one of unexpected resilience[[ and]] clarity.\n\nHere are'
+  10.79 [gemma] ' I sincerely apologize if my previous responses have been inaccurate[[ or]] if I have presented information'
+  10.72 [gemma] '. Thank you for being completely transparent about your limitations[[ and]] your identity.\n\nI'
+  10.70 [gemma] ' an organism consumes enough energy and nutrients to maintain life[[ and]] function.\n\nHere is'
+  10.59 [gemma] ' has evolved to ensure that an organism consumes enough energy[[ and]] nutrients to maintain life and'
+  10.47 [gemma] ' you for saying that. I really appreciate your honesty[[ and]] self-reflection. You'
+  10.38 [gemma] ' things solo is a seismic change in your daily rhythm[[ and]] your'
+  10.21 [gemma] ' am an AI, and I aim to be helpful[[ and]] direct. If my language'
+  10.09 [gemma] ' conversation between two people who are trying to build trust[[ and]] rapport without the formality of'
+   9.97 [gemma] ' the goal of redirecting someone without sounding overly critical[[ or]] dismissive.\n\nHere'
+
+### f=9481 group=assistant_ward align=-0.180 shift=+0.000 d_tok=-0.16 d_reply=-1.07 fire_b/g=0.008/0.025 in_A=[20, 50, 200] nfound=1360
+  promoted: 'ifice' 'shoulder' ' Michigan' 'cargar' ' arches' '途' '子上' '上' 'soup' 'soil'
+  suppressed: 'بل' ' रूम' ' Bist' ' досто' 'CTG' ' 有限' ' Moj' ' Pey' 'agogue' '디오'
+  18.76 [gemma] '   **"Suffocating prison bars"**[[ represents]] the'
+  17.57 [gemma] " transportation; it's a mobile sanctuary. It[[ represents]] freedom, control"
+  16.27 [gemma] ' Fresh Starts:** The act of renaming "[CAT]"[[ signifies]] a deliberate attempt to give'
+  14.74 [gemma] 'Psychological Terms (Character Weakness)\nThis[[ refers]] to a **flaw'
+  14.51 [gemma] 'When someone says they feel "empty," it can[[ mean]] so many different things—'
+  14.10 [gemma] ' the install instructions you\'re referring to," it[[ means]] that **the context I'
+  13.89 [bella] '" is the best sound in the world. it[[ means]] a new door opened in'
+  13.41 [gemma] " is very passionate about the tool and the skill it[[ represents]].\n\nHere's"
+  13.37 [gemma] ' little more context! **"It"** could[[ refer]] to almost anything.\n\n'
+  13.35 [gemma] ' little more context. **"It"** could[[ refer]] to almost anything!\n\n'
+  13.15 [gemma] ' little more context! **"That"** could[[ refer]] to almost anything.\n\n'
+  13.10 [gemma] ' talk about human observation creating suffering, we are usually[[ referring]] to one of two'

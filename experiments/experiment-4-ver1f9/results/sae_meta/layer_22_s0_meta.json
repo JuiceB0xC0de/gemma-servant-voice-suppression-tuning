@@ -1,0 +1,108 @@
+{
+  "layer": 22,
+  "seed": 0,
+  "model_id": "google/gemma-4-E4B-it",
+  "d_in": 2560,
+  "n_features": 81920,
+  "k": 50,
+  "batch_tokens": 32768,
+  "n_steps": 1501,
+  "lr": 0.0002,
+  "lambda_l0": 0.0014156441920452265,
+  "tier": "mid",
+  "preflight": {
+    "activation_norm_probe": 1.1228710412979126,
+    "activation_norm_ref": 1.0194611549377441,
+    "initial_l0_probe": 71.177734375,
+    "initial_lr_multiplier": 1.3021586737039246,
+    "early_pulse_multiplier": 1.113884375,
+    "layer_lr_multiplier": 1.21
+  },
+  "scheduler_mode": "BASELINE",
+  "scheduler_phase": "PIN",
+  "scheduler_phase_summary": {
+    "phase": "PIN",
+    "phase_step": 250,
+    "pin_entry_step": 1250,
+    "pinned_lambda": 0.0014156441920452265,
+    "pin_ev_count": 0,
+    "pin_retry_count": 0
+  },
+  "scheduler_transitions": 0,
+  "total_tokens": 49184768,
+  "early_stopped": true,
+  "path": "rolling",
+  "best_ev": 0.8507024373220481,
+  "best_ev_step": 1250,
+  "final_metrics": {
+    "recon_loss": 0.177383,
+    "mean_l0": 49.75,
+    "dead_pct": 0.2,
+    "resampled": 0,
+    "ev": 0.8541888315042878,
+    "nonlinear_err": null,
+    "linear_err": null,
+    "qo_gap": 0.5151,
+    "activation_norm_probe": 1.1228710412979126,
+    "activation_norm_ref": 1.0194611549377441,
+    "initial_l0_probe": 71.177734375,
+    "initial_lr_multiplier": 1.3021586737039246,
+    "early_pulse_multiplier": 1.113884375,
+    "layer_lr_multiplier": 1.21
+  },
+  "training_curve": {
+    "recon_loss": [
+      0.272736,
+      0.215553,
+      0.197077,
+      0.186045,
+      0.183752,
+      0.177383
+    ],
+    "mean_l0": [
+      28.7,
+      31.33,
+      40.27,
+      46.87,
+      49.75,
+      49.75
+    ],
+    "dead_pct": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.2,
+      0.2
+    ],
+    "resampled": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "ev": [
+      0.7841784831903138,
+      0.82994863731114,
+      0.8434970240109723,
+      0.8507024373220481,
+      0.8541888315042878,
+      0.8541888315042878
+    ],
+    "nonlinear_err": [],
+    "linear_err": [],
+    "qo_gap": [
+      0.6387,
+      0.5945,
+      0.5586,
+      0.5362,
+      0.5218,
+      0.5151
+    ]
+  },
+  "trainer_commit": "c796c2eeced4c9310066989c0fa304bdb88307b4",
+  "image_ref": "docker.io/juiceboxdocks/gemma-4-e2b-it-base:cu128-torch291-py311@sha256:e3275d5ffdc44bcd06732e4b644dfd92efd5b5c8c0c754c03b5bddd0a4400dff",
+  "job_id": "ta-01M1Y39HE0TP152WS3CPZY8KRS"
+}

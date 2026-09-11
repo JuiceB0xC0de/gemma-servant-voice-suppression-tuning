@@ -1,0 +1,1 @@
+Two stacked line panels over 42 layers: cosine between the fine-tuning shift and the Bella direction on top, with the 0.3 refute level and random-direction reference; fraction of the Bella-Gemma gap closed by the fine-tune below; crest layers 4 and 10 marked in both.

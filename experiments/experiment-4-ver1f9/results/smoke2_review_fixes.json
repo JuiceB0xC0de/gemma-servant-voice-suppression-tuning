@@ -1,0 +1,18 @@
+{
+  "date_utc": "2026-09-09",
+  "smoke": "24 pairs, 5 cells, 15 chat + 6 neutral prompts per cell, 128 greedy tokens, one H100 interactive session",
+  "layer22_encoder_convention_check": {
+    "trainer_convention_sub_bdec": {"l0_bella": 78.7, "l0_gemma": 148.9, "ev": -0.211},
+    "atlas_flag_no_sub_bdec": {"l0_bella": 1566.9, "l0_gemma": 2088.4, "ev": -5.180},
+    "trainer_meta": {"l0": 49.75, "ev": 0.854},
+    "atlas_rlhf_summary": {"sub_bias": false, "l0_base": 47.53},
+    "decision": "keep the trainer convention (pre = W_enc(x - b_dec) + b_enc) for all layers; layer-22 token statistics flagged unreliable (EV < 0) under both conventions"
+  },
+  "layer10_and_4_unchanged": {"L10": {"l0_bella": 55.4, "l0_gemma": 58.6, "ev": 0.904}, "L4": {"l0_bella": 57.7, "l0_gemma": 67.0, "ev": 0.903}},
+  "delivered_dose_along_bella_direction_per_generated_token": {
+    "dir:10:-0.35": 42.98, "A:10:20": 1.34, "R:10:50:0": -0.23, "A:4:20": 1.23,
+    "note": "exact sum_f z_f (W_dec_f . dir_l) over real generated tokens (pad positions excluded); direction cell adds 0.35 x median norm 122.8 at every position"
+  },
+  "clamped_features_per_generated_token_pad_free": {"A:10:20": 1.42, "R:10:50:0": 3.19, "A:4:20": 2.44, "previous_diluted_A:10:20": 0.96},
+  "logprob_contrast_test_pairs_smoke": {"base": -6.326, "dir:10:-0.35": -4.770, "A:10:20": -6.311, "R:10:50:0": -6.290, "A:4:20": -6.335}
+}

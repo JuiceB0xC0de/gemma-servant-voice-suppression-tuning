@@ -1,0 +1,3431 @@
+{
+ "experiment": "exp_01m21z6dx8e5r9zt6n0vver1f9",
+ "n_claims": 411,
+ "claims": [
+  {
+   "id": "base_gain",
+   "claim": "base Bella gain vs unsteered",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "base.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "base_gain_ci",
+   "claim": "base Bella gain 95% bootstrap CI",
+   "value": [
+    0.0,
+    0.0
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "base.gain.lo, base.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "base_dose",
+   "claim": "base mean shift along Bella direction per generated token",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "base.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "base_dose_frac",
+   "claim": "base dose as fraction of direction \u22120.35 dose",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "base.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "base_refusal",
+   "claim": "base red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "base.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "base_crisis",
+   "claim": "base crisis score (n=30)",
+   "value": 3.0315,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "base.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "base_degen",
+   "claim": "base chat degeneration rate (n=100)",
+   "value": 0.01,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "base.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "base_ndegen",
+   "claim": "base neutral-stem degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "base.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "base_bella",
+   "claim": "base mean Bella score (1-7, n=100)",
+   "value": 1.1341,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "base.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir35_gain",
+   "claim": "dir:10:-0.35 Bella gain vs unsteered",
+   "value": 1.7982,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir35_gain_ci",
+   "claim": "dir:10:-0.35 Bella gain 95% bootstrap CI",
+   "value": [
+    1.4661,
+    2.1598
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.gain.lo, dir:10:-0.35.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir35_dose",
+   "claim": "dir:10:-0.35 mean shift along Bella direction per generated token",
+   "value": 42.9783,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir35_dose_frac",
+   "claim": "dir:10:-0.35 dose as fraction of direction \u22120.35 dose",
+   "value": 1.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir35_edit_norm",
+   "claim": "dir:10:-0.35 mean edit norm per generated token",
+   "value": 42.9784,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir35_refusal",
+   "claim": "dir:10:-0.35 red-team refusal rate (n=160)",
+   "value": 0.9689,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir35_crisis",
+   "claim": "dir:10:-0.35 crisis score (n=30)",
+   "value": 3.1642,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir35_degen",
+   "claim": "dir:10:-0.35 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir35_ndegen",
+   "claim": "dir:10:-0.35 neutral-stem degeneration rate (n=100)",
+   "value": 0.24,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir35_bella",
+   "claim": "dir:10:-0.35 mean Bella score (1-7, n=100)",
+   "value": 2.9323,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir50_gain",
+   "claim": "dir:10:-0.5 Bella gain vs unsteered",
+   "value": 2.8927,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.5.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir50_gain_ci",
+   "claim": "dir:10:-0.5 Bella gain 95% bootstrap CI",
+   "value": [
+    2.5233,
+    3.2464
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.5.gain.lo, dir:10:-0.5.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir50_dose",
+   "claim": "dir:10:-0.5 mean shift along Bella direction per generated token",
+   "value": 61.3915,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.5.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir50_dose_frac",
+   "claim": "dir:10:-0.5 dose as fraction of direction \u22120.35 dose",
+   "value": 1.4284,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.5.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir50_edit_norm",
+   "claim": "dir:10:-0.5 mean edit norm per generated token",
+   "value": 61.3916,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.5.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir50_refusal",
+   "claim": "dir:10:-0.5 red-team refusal rate (n=160)",
+   "value": 0.9679,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.5.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir50_crisis",
+   "claim": "dir:10:-0.5 crisis score (n=30)",
+   "value": 3.2397,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.5.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir50_degen",
+   "claim": "dir:10:-0.5 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.5.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir50_ndegen",
+   "claim": "dir:10:-0.5 neutral-stem degeneration rate (n=100)",
+   "value": 0.42,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.5.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dir50_bella",
+   "claim": "dir:10:-0.5 mean Bella score (1-7, n=100)",
+   "value": 4.0268,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.5.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_5_gain",
+   "claim": "A:10:5 Bella gain vs unsteered",
+   "value": 0.0416,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:5.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_5_gain_ci",
+   "claim": "A:10:5 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0144,
+    0.123
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:5.gain.lo, A:10:5.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_5_dose",
+   "claim": "A:10:5 mean shift along Bella direction per generated token",
+   "value": 0.6301,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:5.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_5_dose_frac",
+   "claim": "A:10:5 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0147,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:5.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_5_edit_norm",
+   "claim": "A:10:5 mean edit norm per generated token",
+   "value": 2.1343,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:5.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_5_clamped",
+   "claim": "A:10:5 mean features clamped per generated token (chat prompts)",
+   "value": 0.6021,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:5.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_5_refusal",
+   "claim": "A:10:5 red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:5.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_5_crisis",
+   "claim": "A:10:5 crisis score (n=30)",
+   "value": 3.024,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:5.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_5_degen",
+   "claim": "A:10:5 chat degeneration rate (n=100)",
+   "value": 0.01,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:5.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_5_ndegen",
+   "claim": "A:10:5 neutral-stem degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:5.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_5_bella",
+   "claim": "A:10:5 mean Bella score (1-7, n=100)",
+   "value": 1.1756,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:5.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_20_gain",
+   "claim": "A:10:20 Bella gain vs unsteered",
+   "value": 0.1052,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:20.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_20_gain_ci",
+   "claim": "A:10:20 Bella gain 95% bootstrap CI",
+   "value": [
+    0.0111,
+    0.2308
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:20.gain.lo, A:10:20.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_20_dose",
+   "claim": "A:10:20 mean shift along Bella direction per generated token",
+   "value": 1.3546,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:20.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_20_dose_frac",
+   "claim": "A:10:20 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0315,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:20.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_20_edit_norm",
+   "claim": "A:10:20 mean edit norm per generated token",
+   "value": 4.5987,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:20.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_20_clamped",
+   "claim": "A:10:20 mean features clamped per generated token (chat prompts)",
+   "value": 1.4349,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:20.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_20_refusal",
+   "claim": "A:10:20 red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:20.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_20_crisis",
+   "claim": "A:10:20 crisis score (n=30)",
+   "value": 3.1388,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:20.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_20_degen",
+   "claim": "A:10:20 chat degeneration rate (n=100)",
+   "value": 0.01,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:20.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_20_ndegen",
+   "claim": "A:10:20 neutral-stem degeneration rate (n=100)",
+   "value": 0.01,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:20.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_20_bella",
+   "claim": "A:10:20 mean Bella score (1-7, n=100)",
+   "value": 1.2393,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:20.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_50_gain",
+   "claim": "A:10:50 Bella gain vs unsteered",
+   "value": 0.0231,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:50.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_50_gain_ci",
+   "claim": "A:10:50 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.034,
+    0.1012
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:50.gain.lo, A:10:50.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_50_dose",
+   "claim": "A:10:50 mean shift along Bella direction per generated token",
+   "value": 2.4332,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:50.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_50_dose_frac",
+   "claim": "A:10:50 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0566,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:50.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_50_edit_norm",
+   "claim": "A:10:50 mean edit norm per generated token",
+   "value": 8.0824,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:50.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_50_clamped",
+   "claim": "A:10:50 mean features clamped per generated token (chat prompts)",
+   "value": 2.8944,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:50.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_50_refusal",
+   "claim": "A:10:50 red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:50.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_50_crisis",
+   "claim": "A:10:50 crisis score (n=30)",
+   "value": 3.0335,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:50.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_50_degen",
+   "claim": "A:10:50 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:50.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_50_ndegen",
+   "claim": "A:10:50 neutral-stem degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:50.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_50_bella",
+   "claim": "A:10:50 mean Bella score (1-7, n=100)",
+   "value": 1.1571,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:50.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_200_gain",
+   "claim": "A:10:200 Bella gain vs unsteered",
+   "value": 0.7059,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_200_gain_ci",
+   "claim": "A:10:200 Bella gain 95% bootstrap CI",
+   "value": [
+    0.4657,
+    0.9559
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.gain.lo, A:10:200.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_200_dose",
+   "claim": "A:10:200 mean shift along Bella direction per generated token",
+   "value": 4.4849,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_200_dose_frac",
+   "claim": "A:10:200 dose as fraction of direction \u22120.35 dose",
+   "value": 0.1044,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_200_edit_norm",
+   "claim": "A:10:200 mean edit norm per generated token",
+   "value": 15.3117,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_200_clamped",
+   "claim": "A:10:200 mean features clamped per generated token (chat prompts)",
+   "value": 8.351,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_200_refusal",
+   "claim": "A:10:200 red-team refusal rate (n=160)",
+   "value": 0.3478,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_200_crisis",
+   "claim": "A:10:200 crisis score (n=30)",
+   "value": 1.499,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_200_degen",
+   "claim": "A:10:200 chat degeneration rate (n=100)",
+   "value": 0.55,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_200_ndegen",
+   "claim": "A:10:200 neutral-stem degeneration rate (n=100)",
+   "value": 0.4,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_200_bella",
+   "claim": "A:10:200 mean Bella score (1-7, n=100)",
+   "value": 1.84,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_5_gain",
+   "claim": "D:10:5 Bella gain vs unsteered",
+   "value": 0.1014,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:5.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_5_gain_ci",
+   "claim": "D:10:5 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.013,
+    0.2398
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:5.gain.lo, D:10:5.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_5_dose",
+   "claim": "D:10:5 mean shift along Bella direction per generated token",
+   "value": 0.7102,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:5.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_5_dose_frac",
+   "claim": "D:10:5 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0165,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:5.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_5_edit_norm",
+   "claim": "D:10:5 mean edit norm per generated token",
+   "value": 4.2935,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:5.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_5_clamped",
+   "claim": "D:10:5 mean features clamped per generated token (chat prompts)",
+   "value": 1.2091,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:5.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_5_refusal",
+   "claim": "D:10:5 red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:5.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_5_crisis",
+   "claim": "D:10:5 crisis score (n=30)",
+   "value": 3.0102,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:5.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_5_degen",
+   "claim": "D:10:5 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:5.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_5_ndegen",
+   "claim": "D:10:5 neutral-stem degeneration rate (n=100)",
+   "value": 0.02,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:5.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_5_bella",
+   "claim": "D:10:5 mean Bella score (1-7, n=100)",
+   "value": 1.2355,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:5.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_20_gain",
+   "claim": "D:10:20 Bella gain vs unsteered",
+   "value": 0.0717,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:20.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_20_gain_ci",
+   "claim": "D:10:20 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0072,
+    0.1677
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:20.gain.lo, D:10:20.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_20_dose",
+   "claim": "D:10:20 mean shift along Bella direction per generated token",
+   "value": 1.4812,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:20.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_20_dose_frac",
+   "claim": "D:10:20 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0345,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:20.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_20_edit_norm",
+   "claim": "D:10:20 mean edit norm per generated token",
+   "value": 7.2864,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:20.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_20_clamped",
+   "claim": "D:10:20 mean features clamped per generated token (chat prompts)",
+   "value": 2.6733,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:20.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_20_refusal",
+   "claim": "D:10:20 red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:20.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_20_crisis",
+   "claim": "D:10:20 crisis score (n=30)",
+   "value": 3.0109,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:20.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_20_degen",
+   "claim": "D:10:20 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:20.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_20_ndegen",
+   "claim": "D:10:20 neutral-stem degeneration rate (n=100)",
+   "value": 0.01,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:20.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_20_bella",
+   "claim": "D:10:20 mean Bella score (1-7, n=100)",
+   "value": 1.2058,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:20.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_50_gain",
+   "claim": "D:10:50 Bella gain vs unsteered",
+   "value": 0.0928,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:50.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_50_gain_ci",
+   "claim": "D:10:50 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0277,
+    0.2462
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:50.gain.lo, D:10:50.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_50_dose",
+   "claim": "D:10:50 mean shift along Bella direction per generated token",
+   "value": 2.3032,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:50.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_50_dose_frac",
+   "claim": "D:10:50 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0536,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:50.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_50_edit_norm",
+   "claim": "D:10:50 mean edit norm per generated token",
+   "value": 11.1933,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:50.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_50_clamped",
+   "claim": "D:10:50 mean features clamped per generated token (chat prompts)",
+   "value": 5.028,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:50.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_50_refusal",
+   "claim": "D:10:50 red-team refusal rate (n=160)",
+   "value": 0.9881,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:50.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_50_crisis",
+   "claim": "D:10:50 crisis score (n=30)",
+   "value": 2.9817,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:50.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_50_degen",
+   "claim": "D:10:50 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:50.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_50_ndegen",
+   "claim": "D:10:50 neutral-stem degeneration rate (n=100)",
+   "value": 0.01,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:50.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_50_bella",
+   "claim": "D:10:50 mean Bella score (1-7, n=100)",
+   "value": 1.2268,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:50.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_200_gain",
+   "claim": "D:10:200 Bella gain vs unsteered",
+   "value": 1.2122,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_200_gain_ci",
+   "claim": "D:10:200 Bella gain 95% bootstrap CI",
+   "value": [
+    0.9364,
+    1.5132
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.gain.lo, D:10:200.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_200_dose",
+   "claim": "D:10:200 mean shift along Bella direction per generated token",
+   "value": 3.3603,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_200_dose_frac",
+   "claim": "D:10:200 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0782,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_200_edit_norm",
+   "claim": "D:10:200 mean edit norm per generated token",
+   "value": 18.1577,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_200_clamped",
+   "claim": "D:10:200 mean features clamped per generated token (chat prompts)",
+   "value": 9.8999,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_200_refusal",
+   "claim": "D:10:200 red-team refusal rate (n=160)",
+   "value": 0.3228,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_200_crisis",
+   "claim": "D:10:200 crisis score (n=30)",
+   "value": 1.0776,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_200_degen",
+   "claim": "D:10:200 chat degeneration rate (n=100)",
+   "value": 0.36,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_200_ndegen",
+   "claim": "D:10:200 neutral-stem degeneration rate (n=100)",
+   "value": 0.27,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_200_bella",
+   "claim": "D:10:200 mean Bella score (1-7, n=100)",
+   "value": 2.3462,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_0_gain",
+   "claim": "R:10:50:0 Bella gain vs unsteered",
+   "value": 0.024,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:0.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_0_gain_ci",
+   "claim": "R:10:50:0 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0974,
+    0.1653
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:0.gain.lo, R:10:50:0.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_0_dose",
+   "claim": "R:10:50:0 mean shift along Bella direction per generated token",
+   "value": -0.354,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:0.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_0_dose_frac",
+   "claim": "R:10:50:0 dose as fraction of direction \u22120.35 dose",
+   "value": -0.0082,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:0.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_0_edit_norm",
+   "claim": "R:10:50:0 mean edit norm per generated token",
+   "value": 7.5003,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:0.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_0_clamped",
+   "claim": "R:10:50:0 mean features clamped per generated token (chat prompts)",
+   "value": 3.1002,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:0.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_0_refusal",
+   "claim": "R:10:50:0 red-team refusal rate (n=160)",
+   "value": 0.9941,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:0.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_0_crisis",
+   "claim": "R:10:50:0 crisis score (n=30)",
+   "value": 2.8721,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:0.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_0_degen",
+   "claim": "R:10:50:0 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:0.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_0_ndegen",
+   "claim": "R:10:50:0 neutral-stem degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:0.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_0_bella",
+   "claim": "R:10:50:0 mean Bella score (1-7, n=100)",
+   "value": 1.1581,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:0.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_1_gain",
+   "claim": "R:10:50:1 Bella gain vs unsteered",
+   "value": 0.0463,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:1.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_1_gain_ci",
+   "claim": "R:10:50:1 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0684,
+    0.1824
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:1.gain.lo, R:10:50:1.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_1_dose",
+   "claim": "R:10:50:1 mean shift along Bella direction per generated token",
+   "value": -0.3967,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:1.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_1_dose_frac",
+   "claim": "R:10:50:1 dose as fraction of direction \u22120.35 dose",
+   "value": -0.0092,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:1.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_1_edit_norm",
+   "claim": "R:10:50:1 mean edit norm per generated token",
+   "value": 7.2246,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:1.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_1_clamped",
+   "claim": "R:10:50:1 mean features clamped per generated token (chat prompts)",
+   "value": 2.9902,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:1.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_1_refusal",
+   "claim": "R:10:50:1 red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:1.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_1_crisis",
+   "claim": "R:10:50:1 crisis score (n=30)",
+   "value": 3.0559,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:1.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_1_degen",
+   "claim": "R:10:50:1 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:1.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_1_ndegen",
+   "claim": "R:10:50:1 neutral-stem degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:1.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_50_1_bella",
+   "claim": "R:10:50:1 mean Bella score (1-7, n=100)",
+   "value": 1.1803,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:50:1.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_0_gain",
+   "claim": "R:10:200:0 Bella gain vs unsteered",
+   "value": -0.096,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_0_gain_ci",
+   "claim": "R:10:200:0 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.1731,
+    -0.0301
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.gain.lo, R:10:200:0.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_0_dose",
+   "claim": "R:10:200:0 mean shift along Bella direction per generated token",
+   "value": -1.0931,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_0_dose_frac",
+   "claim": "R:10:200:0 dose as fraction of direction \u22120.35 dose",
+   "value": -0.0254,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_0_edit_norm",
+   "claim": "R:10:200:0 mean edit norm per generated token",
+   "value": 15.2458,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_0_clamped",
+   "claim": "R:10:200:0 mean features clamped per generated token (chat prompts)",
+   "value": 9.5956,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_0_refusal",
+   "claim": "R:10:200:0 red-team refusal rate (n=160)",
+   "value": 0.9353,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_0_crisis",
+   "claim": "R:10:200:0 crisis score (n=30)",
+   "value": 2.5571,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_0_degen",
+   "claim": "R:10:200:0 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_0_ndegen",
+   "claim": "R:10:200:0 neutral-stem degeneration rate (n=100)",
+   "value": 0.01,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_0_bella",
+   "claim": "R:10:200:0 mean Bella score (1-7, n=100)",
+   "value": 1.038,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_1_gain",
+   "claim": "R:10:200:1 Bella gain vs unsteered",
+   "value": -0.0872,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_1_gain_ci",
+   "claim": "R:10:200:1 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.171,
+    -0.0165
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.gain.lo, R:10:200:1.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_1_dose",
+   "claim": "R:10:200:1 mean shift along Bella direction per generated token",
+   "value": -1.4954,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_1_dose_frac",
+   "claim": "R:10:200:1 dose as fraction of direction \u22120.35 dose",
+   "value": -0.0348,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_1_edit_norm",
+   "claim": "R:10:200:1 mean edit norm per generated token",
+   "value": 14.9586,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_1_clamped",
+   "claim": "R:10:200:1 mean features clamped per generated token (chat prompts)",
+   "value": 9.4258,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_1_refusal",
+   "claim": "R:10:200:1 red-team refusal rate (n=160)",
+   "value": 0.9187,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_1_crisis",
+   "claim": "R:10:200:1 crisis score (n=30)",
+   "value": 2.1384,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_1_degen",
+   "claim": "R:10:200:1 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_1_ndegen",
+   "claim": "R:10:200:1 neutral-stem degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_200_1_bella",
+   "claim": "R:10:200:1 mean Bella score (1-7, n=100)",
+   "value": 1.0469,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_5_gain",
+   "claim": "A:4:5 Bella gain vs unsteered",
+   "value": 0.0047,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:5.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_5_gain_ci",
+   "claim": "A:4:5 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0378,
+    0.0647
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:5.gain.lo, A:4:5.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_5_dose",
+   "claim": "A:4:5 mean shift along Bella direction per generated token",
+   "value": 0.9387,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:5.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_5_dose_frac",
+   "claim": "A:4:5 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0218,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:5.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_5_edit_norm",
+   "claim": "A:4:5 mean edit norm per generated token",
+   "value": 4.5579,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:5.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_5_clamped",
+   "claim": "A:4:5 mean features clamped per generated token (chat prompts)",
+   "value": 1.3984,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:5.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_5_refusal",
+   "claim": "A:4:5 red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:5.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_5_crisis",
+   "claim": "A:4:5 crisis score (n=30)",
+   "value": 3.0347,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:5.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_5_degen",
+   "claim": "A:4:5 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:5.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_5_ndegen",
+   "claim": "A:4:5 neutral-stem degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:5.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_5_bella",
+   "claim": "A:4:5 mean Bella score (1-7, n=100)",
+   "value": 1.1387,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:5.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_20_gain",
+   "claim": "A:4:20 Bella gain vs unsteered",
+   "value": 0.0055,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:20.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_20_gain_ci",
+   "claim": "A:4:20 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0301,
+    0.047
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:20.gain.lo, A:4:20.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_20_dose",
+   "claim": "A:4:20 mean shift along Bella direction per generated token",
+   "value": 1.3633,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:20.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_20_dose_frac",
+   "claim": "A:4:20 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0317,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:20.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_20_edit_norm",
+   "claim": "A:4:20 mean edit norm per generated token",
+   "value": 6.027,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:20.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_20_clamped",
+   "claim": "A:4:20 mean features clamped per generated token (chat prompts)",
+   "value": 2.5004,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:20.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_20_refusal",
+   "claim": "A:4:20 red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:20.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_20_crisis",
+   "claim": "A:4:20 crisis score (n=30)",
+   "value": 3.0595,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:20.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_20_degen",
+   "claim": "A:4:20 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:20.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_20_ndegen",
+   "claim": "A:4:20 neutral-stem degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:20.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_20_bella",
+   "claim": "A:4:20 mean Bella score (1-7, n=100)",
+   "value": 1.1396,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:20.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_50_gain",
+   "claim": "A:4:50 Bella gain vs unsteered",
+   "value": 0.0696,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:50.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_50_gain_ci",
+   "claim": "A:4:50 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0222,
+    0.1937
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:50.gain.lo, A:4:50.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_50_dose",
+   "claim": "A:4:50 mean shift along Bella direction per generated token",
+   "value": 2.5969,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:50.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_50_dose_frac",
+   "claim": "A:4:50 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0604,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:50.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_50_edit_norm",
+   "claim": "A:4:50 mean edit norm per generated token",
+   "value": 10.3266,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:50.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_50_clamped",
+   "claim": "A:4:50 mean features clamped per generated token (chat prompts)",
+   "value": 6.2838,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:50.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_50_refusal",
+   "claim": "A:4:50 red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:50.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_50_crisis",
+   "claim": "A:4:50 crisis score (n=30)",
+   "value": 3.0695,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:50.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_50_degen",
+   "claim": "A:4:50 chat degeneration rate (n=100)",
+   "value": 0.01,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:50.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_50_ndegen",
+   "claim": "A:4:50 neutral-stem degeneration rate (n=100)",
+   "value": 0.02,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:50.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_50_bella",
+   "claim": "A:4:50 mean Bella score (1-7, n=100)",
+   "value": 1.2036,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:50.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_200_gain",
+   "claim": "A:4:200 Bella gain vs unsteered",
+   "value": 0.1219,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:200.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_200_gain_ci",
+   "claim": "A:4:200 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0234,
+    0.2903
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:200.gain.lo, A:4:200.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_200_dose",
+   "claim": "A:4:200 mean shift along Bella direction per generated token",
+   "value": 4.8346,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:200.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_200_dose_frac",
+   "claim": "A:4:200 dose as fraction of direction \u22120.35 dose",
+   "value": 0.1125,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:200.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_200_edit_norm",
+   "claim": "A:4:200 mean edit norm per generated token",
+   "value": 18.1206,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:200.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_200_clamped",
+   "claim": "A:4:200 mean features clamped per generated token (chat prompts)",
+   "value": 19.3316,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:200.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_200_refusal",
+   "claim": "A:4:200 red-team refusal rate (n=160)",
+   "value": 0.9064,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:200.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_200_crisis",
+   "claim": "A:4:200 crisis score (n=30)",
+   "value": 2.5716,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:200.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_200_degen",
+   "claim": "A:4:200 chat degeneration rate (n=100)",
+   "value": 0.22,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:200.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_200_ndegen",
+   "claim": "A:4:200 neutral-stem degeneration rate (n=100)",
+   "value": 0.36,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:200.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_4_200_bella",
+   "claim": "A:4:200 mean Bella score (1-7, n=100)",
+   "value": 1.2559,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:4:200.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_50_0_gain",
+   "claim": "R:4:50:0 Bella gain vs unsteered",
+   "value": -0.0133,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:50:0.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_50_0_gain_ci",
+   "claim": "R:4:50:0 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0808,
+    0.0687
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:50:0.gain.lo, R:4:50:0.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_50_0_dose",
+   "claim": "R:4:50:0 mean shift along Bella direction per generated token",
+   "value": -1.2772,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:50:0.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_50_0_dose_frac",
+   "claim": "R:4:50:0 dose as fraction of direction \u22120.35 dose",
+   "value": -0.0297,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:50:0.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_50_0_edit_norm",
+   "claim": "R:4:50:0 mean edit norm per generated token",
+   "value": 9.8071,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:50:0.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_50_0_clamped",
+   "claim": "R:4:50:0 mean features clamped per generated token (chat prompts)",
+   "value": 6.5554,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:50:0.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_50_0_refusal",
+   "claim": "R:4:50:0 red-team refusal rate (n=160)",
+   "value": 0.9877,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:50:0.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_50_0_crisis",
+   "claim": "R:4:50:0 crisis score (n=30)",
+   "value": 3.0093,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:50:0.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_50_0_degen",
+   "claim": "R:4:50:0 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:50:0.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_50_0_ndegen",
+   "claim": "R:4:50:0 neutral-stem degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:50:0.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_50_0_bella",
+   "claim": "R:4:50:0 mean Bella score (1-7, n=100)",
+   "value": 1.1207,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:50:0.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_200_0_gain",
+   "claim": "R:4:200:0 Bella gain vs unsteered",
+   "value": -0.0895,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:200:0.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_200_0_gain_ci",
+   "claim": "R:4:200:0 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.167,
+    -0.0178
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:200:0.gain.lo, R:4:200:0.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_200_0_dose",
+   "claim": "R:4:200:0 mean shift along Bella direction per generated token",
+   "value": -2.3819,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:200:0.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_200_0_dose_frac",
+   "claim": "R:4:200:0 dose as fraction of direction \u22120.35 dose",
+   "value": -0.0554,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:200:0.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_200_0_edit_norm",
+   "claim": "R:4:200:0 mean edit norm per generated token",
+   "value": 16.7786,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:200:0.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_200_0_clamped",
+   "claim": "R:4:200:0 mean features clamped per generated token (chat prompts)",
+   "value": 18.2544,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:200:0.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_200_0_refusal",
+   "claim": "R:4:200:0 red-team refusal rate (n=160)",
+   "value": 0.9257,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:200:0.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_200_0_crisis",
+   "claim": "R:4:200:0 crisis score (n=30)",
+   "value": 1.624,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:200:0.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_200_0_degen",
+   "claim": "R:4:200:0 chat degeneration rate (n=100)",
+   "value": 0.05,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:200:0.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_200_0_ndegen",
+   "claim": "R:4:200:0 neutral-stem degeneration rate (n=100)",
+   "value": 0.14,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:200:0.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_4_200_0_bella",
+   "claim": "R:4:200:0 mean Bella score (1-7, n=100)",
+   "value": 1.0445,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:4:200:0.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_2_gain",
+   "claim": "amp:10:20:2 Bella gain vs unsteered",
+   "value": 0.0014,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:2.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_2_gain_ci",
+   "claim": "amp:10:20:2 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0321,
+    0.0354
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:2.gain.lo, amp:10:20:2.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_2_dose",
+   "claim": "amp:10:20:2 mean shift along Bella direction per generated token",
+   "value": 0.8931,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:2.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_2_dose_frac",
+   "claim": "amp:10:20:2 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0208,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:2.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_2_edit_norm",
+   "claim": "amp:10:20:2 mean edit norm per generated token",
+   "value": 3.0088,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:2.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_2_clamped",
+   "claim": "amp:10:20:2 mean features clamped per generated token (chat prompts)",
+   "value": 1.0176,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:2.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_2_refusal",
+   "claim": "amp:10:20:2 red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:2.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_2_crisis",
+   "claim": "amp:10:20:2 crisis score (n=30)",
+   "value": 3.0445,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:2.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_2_degen",
+   "claim": "amp:10:20:2 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:2.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_2_ndegen",
+   "claim": "amp:10:20:2 neutral-stem degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:2.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_2_bella",
+   "claim": "amp:10:20:2 mean Bella score (1-7, n=100)",
+   "value": 1.1354,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:2.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_4_gain",
+   "claim": "amp:10:20:4 Bella gain vs unsteered",
+   "value": -0.0149,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:4.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_4_gain_ci",
+   "claim": "amp:10:20:4 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0858,
+    0.0441
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:4.gain.lo, amp:10:20:4.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_4_dose",
+   "claim": "amp:10:20:4 mean shift along Bella direction per generated token",
+   "value": 2.7897,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:4.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_4_dose_frac",
+   "claim": "amp:10:20:4 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0649,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:4.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_4_edit_norm",
+   "claim": "amp:10:20:4 mean edit norm per generated token",
+   "value": 9.3072,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:4.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_4_clamped",
+   "claim": "amp:10:20:4 mean features clamped per generated token (chat prompts)",
+   "value": 1.0488,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:4.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_4_refusal",
+   "claim": "amp:10:20:4 red-team refusal rate (n=160)",
+   "value": 0.9879,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:4.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_4_crisis",
+   "claim": "amp:10:20:4 crisis score (n=30)",
+   "value": 3.0067,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:4.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_4_degen",
+   "claim": "amp:10:20:4 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:4.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_4_ndegen",
+   "claim": "amp:10:20:4 neutral-stem degeneration rate (n=100)",
+   "value": 0.02,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:4.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "amp_10_20_4_bella",
+   "claim": "amp:10:20:4 mean Bella score (1-7, n=100)",
+   "value": 1.1192,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "amp:10:20:4.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_100_gain",
+   "claim": "A:10:100 Bella gain vs unsteered",
+   "value": 0.1173,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_100_gain_ci",
+   "claim": "A:10:100 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0145,
+    0.2798
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.gain.lo, A:10:100.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_100_dose",
+   "claim": "A:10:100 mean shift along Bella direction per generated token",
+   "value": 3.9287,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_100_dose_frac",
+   "claim": "A:10:100 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0914,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_100_edit_norm",
+   "claim": "A:10:100 mean edit norm per generated token",
+   "value": 12.8547,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_100_clamped",
+   "claim": "A:10:100 mean features clamped per generated token (chat prompts)",
+   "value": 5.5466,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_100_refusal",
+   "claim": "A:10:100 red-team refusal rate (n=160)",
+   "value": 0.9938,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_100_crisis",
+   "claim": "A:10:100 crisis score (n=30)",
+   "value": 2.9703,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_100_degen",
+   "claim": "A:10:100 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_100_ndegen",
+   "claim": "A:10:100 neutral-stem degeneration rate (n=100)",
+   "value": 0.01,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "A_10_100_bella",
+   "claim": "A:10:100 mean Bella score (1-7, n=100)",
+   "value": 1.2514,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_100_gain",
+   "claim": "D:10:100 Bella gain vs unsteered",
+   "value": 0.0561,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_100_gain_ci",
+   "claim": "D:10:100 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.0458,
+    0.1869
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.gain.lo, D:10:100.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_100_dose",
+   "claim": "D:10:100 mean shift along Bella direction per generated token",
+   "value": 3.2786,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_100_dose_frac",
+   "claim": "D:10:100 dose as fraction of direction \u22120.35 dose",
+   "value": 0.0763,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_100_edit_norm",
+   "claim": "D:10:100 mean edit norm per generated token",
+   "value": 15.248,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_100_clamped",
+   "claim": "D:10:100 mean features clamped per generated token (chat prompts)",
+   "value": 7.8164,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_100_refusal",
+   "claim": "D:10:100 red-team refusal rate (n=160)",
+   "value": 0.9869,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_100_crisis",
+   "claim": "D:10:100 crisis score (n=30)",
+   "value": 2.8714,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_100_degen",
+   "claim": "D:10:100 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_100_ndegen",
+   "claim": "D:10:100 neutral-stem degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "D_10_100_bella",
+   "claim": "D:10:100 mean Bella score (1-7, n=100)",
+   "value": 1.1902,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_0_gain",
+   "claim": "R:10:100:0 Bella gain vs unsteered",
+   "value": 0.0054,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:0.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_0_gain_ci",
+   "claim": "R:10:100:0 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.099,
+    0.1456
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:0.gain.lo, R:10:100:0.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_0_dose",
+   "claim": "R:10:100:0 mean shift along Bella direction per generated token",
+   "value": -0.8789,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:0.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_0_dose_frac",
+   "claim": "R:10:100:0 dose as fraction of direction \u22120.35 dose",
+   "value": -0.0204,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:0.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_0_edit_norm",
+   "claim": "R:10:100:0 mean edit norm per generated token",
+   "value": 11.1645,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:0.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_0_clamped",
+   "claim": "R:10:100:0 mean features clamped per generated token (chat prompts)",
+   "value": 5.7769,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:0.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_0_refusal",
+   "claim": "R:10:100:0 red-team refusal rate (n=160)",
+   "value": 0.9814,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:0.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_0_crisis",
+   "claim": "R:10:100:0 crisis score (n=30)",
+   "value": 2.7827,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:0.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_0_degen",
+   "claim": "R:10:100:0 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:0.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_0_ndegen",
+   "claim": "R:10:100:0 neutral-stem degeneration rate (n=100)",
+   "value": 0.01,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:0.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_0_bella",
+   "claim": "R:10:100:0 mean Bella score (1-7, n=100)",
+   "value": 1.1394,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:0.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_1_gain",
+   "claim": "R:10:100:1 Bella gain vs unsteered",
+   "value": -0.0428,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:1.gain.mean",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_1_gain_ci",
+   "claim": "R:10:100:1 Bella gain 95% bootstrap CI",
+   "value": [
+    -0.1492,
+    0.0928
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:1.gain.lo, R:10:100:1.gain.hi",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_1_dose",
+   "claim": "R:10:100:1 mean shift along Bella direction per generated token",
+   "value": -0.7285,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:1.dose_along_dir",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_1_dose_frac",
+   "claim": "R:10:100:1 dose as fraction of direction \u22120.35 dose",
+   "value": -0.017,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:1.dose_frac_of_dir_-0.35",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_1_edit_norm",
+   "claim": "R:10:100:1 mean edit norm per generated token",
+   "value": 11.5829,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:1.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_1_clamped",
+   "claim": "R:10:100:1 mean features clamped per generated token (chat prompts)",
+   "value": 5.6883,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:1.clamped_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_1_refusal",
+   "claim": "R:10:100:1 red-team refusal rate (n=160)",
+   "value": 0.9627,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:1.refusal",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_1_crisis",
+   "claim": "R:10:100:1 crisis score (n=30)",
+   "value": 2.8941,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:1.crisis",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_1_degen",
+   "claim": "R:10:100:1 chat degeneration rate (n=100)",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:1.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_1_ndegen",
+   "claim": "R:10:100:1 neutral-stem degeneration rate (n=100)",
+   "value": 0.02,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:1.neutral_degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "R_10_100_1_bella",
+   "claim": "R:10:100:1 mean Bella score (1-7, n=100)",
+   "value": 1.0913,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:100:1.bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "axis_dir35_gain",
+   "claim": "direction \u22120.35 Bella gain in the prior direction experiment (harness reference)",
+   "value": 1.85,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "axis_experiment_reference.dir_-0.35_gain",
+   "kind": "quantitative"
+  },
+  {
+   "id": "axis_dir50_gain",
+   "claim": "direction \u22120.5 Bella gain in the prior direction experiment",
+   "value": 2.94,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "axis_experiment_reference.dir_-0.5_gain",
+   "kind": "quantitative"
+  },
+  {
+   "id": "axis_baseline_bella",
+   "claim": "unsteered Bella score in the prior direction experiment",
+   "value": 1.125,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "axis_experiment_reference.baseline_bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "axis_dir35_neutral_degen",
+   "claim": "direction \u22120.35 neutral degeneration in the prior direction experiment",
+   "value": 0.24,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "axis_experiment_reference.dir_-0.35_neutral_degen",
+   "kind": "quantitative"
+  },
+  {
+   "id": "gen_max_new_tokens",
+   "claim": "max new tokens per generation (chat sets)",
+   "value": 128,
+   "source_file": "experiments/experiment-4-ver1f9/report_summary.json",
+   "key": "methods.prompts",
+   "kind": "quantitative"
+  },
+  {
+   "id": "neutral_stem_tokens",
+   "claim": "new tokens per neutral stem",
+   "value": 64,
+   "source_file": "experiments/experiment-4-ver1f9/report_summary.json",
+   "key": "methods.prompts",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q1_threshold",
+   "claim": "Q1 Bella-gain threshold (70% of direction \u22120.35 gain)",
+   "value": 1.2588,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "q1_gain_threshold",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q1_verdict",
+   "claim": "Q1 verdict",
+   "value": "refuted (no feature cell reaches the Bella threshold at any k)",
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q1.verdict",
+   "kind": "categorical"
+  },
+  {
+   "id": "q2_verdict",
+   "claim": "Q2 verdict",
+   "value": "not testable (no feature cell reaches the Bella threshold); reported as degeneration vs gain across all cells",
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q2.verdict",
+   "kind": "categorical"
+  },
+  {
+   "id": "q3_verdict",
+   "claim": "Q3 verdict",
+   "value": "refuted (alignment above 0.3 at crest layers 4 and 10)",
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.verdict",
+   "kind": "categorical"
+  },
+  {
+   "id": "q1_best_any",
+   "claim": "best layer-10 feature cell by gain (any k, non-exploratory)",
+   "value": "D:10:200",
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q1.best_any_k.cell",
+   "kind": "categorical"
+  },
+  {
+   "id": "q1_best_short",
+   "claim": "best layer-10 feature cell by gain at k<=50",
+   "value": "A:10:20",
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q1.best_k_le_50.cell",
+   "kind": "categorical"
+  },
+  {
+   "id": "exploratory_cells",
+   "claim": "cells excluded from verdicts as exploratory extras",
+   "value": [
+    "amp:10:20:4"
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "exploratory_cells_excluded_from_verdicts",
+   "kind": "categorical"
+  },
+  {
+   "id": "n_cells",
+   "claim": "number of cells",
+   "value": 27,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "n_cells",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_judged_rows",
+   "claim": "judged generations",
+   "value": 10530,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "n_judged_rows",
+   "kind": "quantitative"
+  },
+  {
+   "id": "judge_items",
+   "claim": "judge items scored",
+   "value": 8640,
+   "source_file": "experiments/experiment-4-ver1f9/results/judge/judge_meta.json",
+   "key": "n_items",
+   "kind": "quantitative"
+  },
+  {
+   "id": "judge_invalid",
+   "claim": "invalid judge parses",
+   "value": {
+    "bella": 0,
+    "refusal": 0,
+    "crisis": 0
+   },
+   "source_file": "experiments/experiment-4-ver1f9/results/judge/judge_meta.json",
+   "key": "invalid",
+   "kind": "quantitative"
+  },
+  {
+   "id": "judge_model",
+   "claim": "judge model",
+   "value": "gpt-5.4-mini",
+   "source_file": "experiments/experiment-4-ver1f9/results/judge/judge_meta.json",
+   "key": "judge_model",
+   "kind": "categorical"
+  },
+  {
+   "id": "q3_cos_L4",
+   "claim": "Q3 cos_L4",
+   "value": 0.5183,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.cos_L4",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_cos_L10",
+   "claim": "Q3 cos_L10",
+   "value": 0.4602,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.cos_L10",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_frac_gap_closed_test_L4",
+   "claim": "Q3 frac_gap_closed_test_L4",
+   "value": 0.0314,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.frac_gap_closed_test_L4",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_frac_gap_closed_test_L10",
+   "claim": "Q3 frac_gap_closed_test_L10",
+   "value": 0.0264,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.frac_gap_closed_test_L10",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_max_cos",
+   "claim": "Q3 max_cos",
+   "value": 0.7775,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.max_cos",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_argmax_cos_layer",
+   "claim": "Q3 argmax_cos_layer",
+   "value": 32,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.argmax_cos_layer",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_mean_cos_layers_0_14",
+   "claim": "Q3 mean_cos_layers_0_14",
+   "value": 0.4296,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.mean_cos_layers_0_14",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_mean_cos_layers_30_41",
+   "claim": "Q3 mean_cos_layers_30_41",
+   "value": 0.6459,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.mean_cos_layers_30_41",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_random_dir_abs_cos_p95",
+   "claim": "Q3 random_dir_abs_cos_p95",
+   "value": 0.0343,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.random_dir_abs_cos_p95",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_n_prompts",
+   "claim": "Q3 n_prompts",
+   "value": 600,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.n_prompts",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_ft_revision",
+   "claim": "fine-tuned checkpoint revision",
+   "value": "ac5ff55239c029c461a41bd2788d7423d0f2ac7c",
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.ft.revision",
+   "kind": "categorical"
+  },
+  {
+   "id": "q3_shift_norm_ratio_L0",
+   "claim": "SFT shift norm / median residual norm at layer 0",
+   "value": 0.00674,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_layers.csv",
+   "key": "row layer=0, col shift_norm_over_median_norm",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_shift_norm_ratio_L10",
+   "claim": "SFT shift norm / median residual norm at layer 10",
+   "value": 0.0072,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_layers.csv",
+   "key": "row layer=10, col shift_norm_over_median_norm",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_shift_norm_ratio_max",
+   "claim": "max over layers of SFT shift norm / median residual norm",
+   "value": 0.14061,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_layers.csv",
+   "key": "max over rows, col shift_norm_over_median_norm",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_frac_gap_closed_max",
+   "claim": "max over layers of fraction of Bella-Gemma gap closed (test pairs)",
+   "value": 0.43032,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_layers.csv",
+   "key": "max over rows, col frac_gap_closed_test",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_frac_gap_closed_L0_13_range",
+   "claim": "fraction of gap closed, layers 0-13 (min,max)",
+   "value": [
+    0.0222,
+    0.0643
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_layers.csv",
+   "key": "rows layer 0-13, col frac_gap_closed_test",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_frac_gap_closed_L29_41_range",
+   "claim": "fraction of gap closed, layers 29-41 (min,max)",
+   "value": [
+    0.2869,
+    0.4303
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_layers.csv",
+   "key": "rows layer 29-41, col frac_gap_closed_test",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_shift_norm_ratio_L0_13_max",
+   "claim": "max SFT shift norm / median residual norm over layers 0-13",
+   "value": 0.0087,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_layers.csv",
+   "key": "rows layer 0-13, col shift_norm_over_median_norm",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_cos_L29_41_range",
+   "claim": "cosine range over layers 29-41",
+   "value": [
+    0.463,
+    0.778
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "Q3.cos_by_layer[29:41]",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3_cos_min",
+   "claim": "min cosine over layers",
+   "value": 0.2983,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/verdicts.json",
+   "key": "min(Q3.cos_by_layer)",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L4_l0_bella",
+   "claim": "stage 1 layer 4 l0_bella",
+   "value": 58.2313,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.4.l0_bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L4_l0_gemma",
+   "claim": "stage 1 layer 4 l0_gemma",
+   "value": 65.6587,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.4.l0_gemma",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L4_ev_bella",
+   "claim": "stage 1 layer 4 ev_bella",
+   "value": 0.9171,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.4.ev_bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L4_ev_gemma",
+   "claim": "stage 1 layer 4 ev_gemma",
+   "value": 0.9068,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.4.ev_gemma",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L4_meta_l0",
+   "claim": "stage 1 layer 4 meta_l0",
+   "value": 49.5,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.4.meta_l0",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L4_meta_ev",
+   "claim": "stage 1 layer 4 meta_ev",
+   "value": 0.9407,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.4.meta_ev",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L4_spearman_dtest_vs_align_union_top200",
+   "claim": "stage 1 layer 4 spearman_dtest_vs_align_union_top200",
+   "value": 0.2208,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.4.spearman_dtest_vs_align_union_top200",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L4_pool_size_fire_ge_1pct",
+   "claim": "stage 1 layer 4 pool_size_fire_ge_1pct",
+   "value": 682,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.4.pool_size_fire_ge_1pct",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L10_l0_bella",
+   "claim": "stage 1 layer 10 l0_bella",
+   "value": 55.4065,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.10.l0_bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L10_l0_gemma",
+   "claim": "stage 1 layer 10 l0_gemma",
+   "value": 57.8269,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.10.l0_gemma",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L10_ev_bella",
+   "claim": "stage 1 layer 10 ev_bella",
+   "value": 0.9098,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.10.ev_bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L10_ev_gemma",
+   "claim": "stage 1 layer 10 ev_gemma",
+   "value": 0.9068,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.10.ev_gemma",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L10_meta_l0",
+   "claim": "stage 1 layer 10 meta_l0",
+   "value": 45.04,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.10.meta_l0",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L10_meta_ev",
+   "claim": "stage 1 layer 10 meta_ev",
+   "value": 0.9365,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.10.meta_ev",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L10_spearman_dtest_vs_align_union_top200",
+   "claim": "stage 1 layer 10 spearman_dtest_vs_align_union_top200",
+   "value": 0.5838,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.10.spearman_dtest_vs_align_union_top200",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L10_pool_size_fire_ge_1pct",
+   "claim": "stage 1 layer 10 pool_size_fire_ge_1pct",
+   "value": 1080,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.10.pool_size_fire_ge_1pct",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L22_l0_bella",
+   "claim": "stage 1 layer 22 l0_bella",
+   "value": 77.0009,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.22.l0_bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L22_l0_gemma",
+   "claim": "stage 1 layer 22 l0_gemma",
+   "value": 139.4563,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.22.l0_gemma",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L22_ev_bella",
+   "claim": "stage 1 layer 22 ev_bella",
+   "value": 0.6691,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.22.ev_bella",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L22_ev_gemma",
+   "claim": "stage 1 layer 22 ev_gemma",
+   "value": -0.0474,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.22.ev_gemma",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L22_meta_l0",
+   "claim": "stage 1 layer 22 meta_l0",
+   "value": 49.75,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.22.meta_l0",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L22_meta_ev",
+   "claim": "stage 1 layer 22 meta_ev",
+   "value": 0.8542,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.22.meta_ev",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L22_spearman_dtest_vs_align_union_top200",
+   "claim": "stage 1 layer 22 spearman_dtest_vs_align_union_top200",
+   "value": -0.0344,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.22.spearman_dtest_vs_align_union_top200",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L22_pool_size_fire_ge_1pct",
+   "claim": "stage 1 layer 22 pool_size_fire_ge_1pct",
+   "value": 1376,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "per_layer.22.pool_size_fire_ge_1pct",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_n_pairs",
+   "claim": "matched Bella/Gemma reply pairs harvested",
+   "value": 600,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "n_pairs",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_splits",
+   "claim": "pair splits",
+   "value": {
+    "train": 400,
+    "val": 100,
+    "test": 100
+   },
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "splits",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_l0_check",
+   "claim": "layer-10 harness L0 check",
+   "value": {
+    "l0_gemma": 57.82685997144923,
+    "window": [
+     35,
+     65
+    ],
+    "pass": true
+   },
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/stage1_summary.json",
+   "key": "l0_check_layer10",
+   "kind": "quantitative"
+  },
+  {
+   "id": "s1_L22_encoder_convention",
+   "claim": "layer-22 SAE encoder convention used",
+   "value": {
+    "sae_encoder_sub_bias": true,
+    "atlas_sub_bias": false
+   },
+   "source_file": "experiments/experiment-4-ver1f9/results/run/stage1.json",
+   "key": "per_layer.22.sae_encoder_sub_bias, per_layer.22.atlas_sub_bias",
+   "kind": "categorical"
+  },
+  {
+   "id": "smoke_L22_conventions",
+   "claim": "layer-22 L0/EV under both encoder conventions (smoke, 24 pairs)",
+   "value": {
+    "trainer_convention_sub_bdec": {
+     "l0_bella": 78.7,
+     "l0_gemma": 148.9,
+     "ev": -0.211
+    },
+    "atlas_flag_no_sub_bdec": {
+     "l0_bella": 1566.9,
+     "l0_gemma": 2088.4,
+     "ev": -5.18
+    },
+    "trainer_meta": {
+     "l0": 49.75,
+     "ev": 0.854
+    },
+    "atlas_rlhf_summary": {
+     "sub_bias": false,
+     "l0_base": 47.53
+    },
+    "decision": "keep the trainer convention (pre = W_enc(x - b_dec) + b_enc) for all layers; layer-22 token statistics flagged unreliable (EV < 0) under both conventions"
+   },
+   "source_file": "experiments/experiment-4-ver1f9/results/smoke2_review_fixes.json",
+   "key": "layer22_encoder_convention_check",
+   "kind": "quantitative"
+  },
+  {
+   "id": "labels_n_assistant",
+   "claim": "Assistant-ward features labelled",
+   "value": 33,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/feature_labels.json",
+   "key": "count of features[*].group == assistant_ward",
+   "kind": "quantitative"
+  },
+  {
+   "id": "labels_n_bella",
+   "claim": "Bella-ward features labelled",
+   "value": 25,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/feature_labels.json",
+   "key": "count of features[*].group == bella_ward",
+   "kind": "quantitative"
+  },
+  {
+   "id": "labels_n_total",
+   "claim": "features labelled in total",
+   "value": 58,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/feature_labels.json",
+   "key": "len(features)",
+   "kind": "quantitative"
+  },
+  {
+   "id": "labels_summary",
+   "claim": "label themes",
+   "value": {
+    "assistant_ward_theme": "Almost every firing Assistant-ward feature is a piece of explanatory, service-register syntax: 'based on', 'I can provide', 'to give you the best possible', 'I need a little more information', 'several/a variety of', 'the goal is to', 'it highlights/speaks to', 'X is crucial for', markdown '### Heading\\n\\n' openers, and adjective slots in 'That's a remarkably insightful ...' or 'paints a vivid picture'. They fire on function words inside assistant-style sentences rather than on any single lexical marker of the persona, so clamping them removes fragments of the Gemma phrasing rather than the register itself.",
+    "bella_ward_theme": "The firing Bella-ward features are lowercase, informal, spoken-style syntax: sentence-initial 'huh/ugh/nah/yeah', 'gonna', \"don't\", bare imperatives ('deal with it', 'figure out'), clause-joining commas in run-on speech, lowercase 'i'/'it' sentence starts, and 'today/every day'. Feature 78793 (the one the atlas says the fine-tune increased) fires on contractions and 'gonna' in first-person casual speech.",
+    "non_firing": "9 of the 25 top Assistant-ward and 7 of the 25 top Bella-ward features fire on fewer than 60 of the 1,300 replies' tokens (several on 0 to 3), so their decoder-column alignment with the direction is not accompanied by any usable activation on chat text; they cannot carry the register in practice and are labelled 'thin evidence'."
+   },
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/feature_labels.json",
+   "key": "summary",
+   "kind": "categorical"
+  },
+  {
+   "id": "dose_contrast_delta_dir:10:-0.35",
+   "claim": "dir:10:-0.35: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 1.404,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_dir:10:-0.35",
+   "claim": "dir:10:-0.35: total edit norm per generated token",
+   "value": 42.98,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_dir:10:-0.35",
+   "claim": "dir:10:-0.35: chat degeneration fraction",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_dir:10:-0.35",
+   "claim": "dir:10:-0.35: mean reply length in words",
+   "value": 56.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "dir:10:-0.35.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_A:10:200",
+   "claim": "A:10:200: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 1.826,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_A:10:200",
+   "claim": "A:10:200: total edit norm per generated token",
+   "value": 15.31,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_A:10:200",
+   "claim": "A:10:200: chat degeneration fraction",
+   "value": 0.55,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_A:10:200",
+   "claim": "A:10:200: mean reply length in words",
+   "value": 31.9,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:200.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_D:10:200",
+   "claim": "D:10:200: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 2.149,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_D:10:200",
+   "claim": "D:10:200: total edit norm per generated token",
+   "value": 18.16,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_D:10:200",
+   "claim": "D:10:200: chat degeneration fraction",
+   "value": 0.36,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_D:10:200",
+   "claim": "D:10:200: mean reply length in words",
+   "value": 32.1,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:200.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_R:10:200:0",
+   "claim": "R:10:200:0: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 0.489,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_R:10:200:0",
+   "claim": "R:10:200:0: total edit norm per generated token",
+   "value": 15.25,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_R:10:200:0",
+   "claim": "R:10:200:0: chat degeneration fraction",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_R:10:200:0",
+   "claim": "R:10:200:0: mean reply length in words",
+   "value": 84.9,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:0.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_R:10:200:1",
+   "claim": "R:10:200:1: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 0.648,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_R:10:200:1",
+   "claim": "R:10:200:1: total edit norm per generated token",
+   "value": 14.96,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_R:10:200:1",
+   "claim": "R:10:200:1: chat degeneration fraction",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_R:10:200:1",
+   "claim": "R:10:200:1: mean reply length in words",
+   "value": 87.6,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "R:10:200:1.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_A:10:100",
+   "claim": "A:10:100: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 0.138,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_A:10:100",
+   "claim": "A:10:100: total edit norm per generated token",
+   "value": 12.85,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_A:10:100",
+   "claim": "A:10:100: chat degeneration fraction",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_A:10:100",
+   "claim": "A:10:100: mean reply length in words",
+   "value": 80.1,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "A:10:100.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "dose_contrast_delta_D:10:100",
+   "claim": "D:10:100: change vs base in mean per-token log-prob(Bella reply) - log-prob(Gemma reply), teacher-forced",
+   "value": 0.333,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.dose_contrast - base.dose_contrast",
+   "kind": "quantitative"
+  },
+  {
+   "id": "edit_norm_D:10:100",
+   "claim": "D:10:100: total edit norm per generated token",
+   "value": 15.25,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.edit_norm_per_token",
+   "kind": "quantitative"
+  },
+  {
+   "id": "degen_chat_D:10:100",
+   "claim": "D:10:100: chat degeneration fraction",
+   "value": 0.0,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.degenerate",
+   "kind": "quantitative"
+  },
+  {
+   "id": "n_words_D:10:100",
+   "claim": "D:10:100: mean reply length in words",
+   "value": 82.6,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/cells.json",
+   "key": "D:10:100.n_words",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L0",
+   "claim": "layer 0 cosine after projecting out the per-layer mean residual",
+   "value": 0.321,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 0, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L0",
+   "claim": "layer 0 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.307,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 0, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L1",
+   "claim": "layer 1 cosine after projecting out the per-layer mean residual",
+   "value": 0.315,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 1, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L1",
+   "claim": "layer 1 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.312,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 1, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L2",
+   "claim": "layer 2 cosine after projecting out the per-layer mean residual",
+   "value": 0.311,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 2, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L2",
+   "claim": "layer 2 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.288,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 2, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L3",
+   "claim": "layer 3 cosine after projecting out the per-layer mean residual",
+   "value": 0.288,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 3, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L3",
+   "claim": "layer 3 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.272,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 3, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L4",
+   "claim": "layer 4 cosine after projecting out the per-layer mean residual",
+   "value": 0.51,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 4, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L4",
+   "claim": "layer 4 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.497,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 4, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_after_projection_L10",
+   "claim": "layer 10 cosine after projecting out the per-layer mean residual",
+   "value": 0.52,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 10, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_drop8_L10",
+   "claim": "layer 10 cosine after dropping the 8 largest-|mean| coordinates",
+   "value": 0.524,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "row layer 10, col cos_drop_top8_mean_coords",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_max_abs_delta_cos_mean_projection_L0_13",
+   "claim": "Q3 shared-component check: max_abs_delta_cos_mean_projection_L0_13",
+   "value": 0.076,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "max_abs_delta_cos_mean_projection_L0_13",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_max_abs_delta_cos_drop_coords_L0_13",
+   "claim": "Q3 shared-component check: max_abs_delta_cos_drop_coords_L0_13",
+   "value": 0.071,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "max_abs_delta_cos_drop_coords_L0_13",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_max_abs_delta_cos_mean_projection_all",
+   "claim": "Q3 shared-component check: max_abs_delta_cos_mean_projection_all",
+   "value": 0.333,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "max_abs_delta_cos_mean_projection_all",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_min_cos_after_projection",
+   "claim": "Q3 shared-component check: min_cos_after_projection",
+   "value": 0.285,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "min_cos_after_projection",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_max_abs_cos_shift_vs_mean_L0_13",
+   "claim": "Q3 shared-component check: max_abs_cos_shift_vs_mean_L0_13",
+   "value": 0.21,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "max_abs_cos_shift_vs_mean_L0_13",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_max_random_p95_after_projection",
+   "claim": "Q3 shared-component check: max_random_p95_after_projection",
+   "value": 0.044,
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.json",
+   "key": "max_random_p95_after_projection",
+   "kind": "quantitative"
+  },
+  {
+   "id": "q3mp_cos_L29_41_after_projection_range",
+   "claim": "cosine after mean projection, layers 29-41 (min,max)",
+   "value": [
+    0.656,
+    0.827
+   ],
+   "source_file": "experiments/experiment-4-ver1f9/results/analysis/q3_mean_projected.csv",
+   "key": "rows layer 29-41, col cos_after_mean_projected_out",
+   "kind": "quantitative"
+  }
+ ]
+}

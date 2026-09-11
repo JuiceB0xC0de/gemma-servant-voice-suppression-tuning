@@ -1,0 +1,17 @@
+{
+ "session_id": "277845063463",
+ "image": "job-core sha256:e9e2e76cd8614b3b9548edc2a36031d34bb09308ad00fdab0d4899574694571e",
+ "versions": {"torch": "2.11.0+cu130", "transformers": "5.12.1", "scipy": "1.16.3"},
+ "command": "uv run python src/run_features.py --smoke --stages 1,4,2,3 --gen_batch 24",
+ "smoke_n_pairs": 24, "smoke_cells": ["base", "dir:10:-0.35", "A:10:20", "R:10:50:0", "A:4:20"],
+ "wall_s": 244,
+ "stage1": {
+  "L4": {"l0_bella": 57.7, "l0_gemma": 67.0, "meta_l0": 49.5, "ev": 0.903, "align_pearson_vs_atlas": 1.0},
+  "L10": {"l0_bella": 55.4, "l0_gemma": 58.6, "meta_l0": 45.04, "ev": 0.904, "align_pearson_vs_atlas": 1.0, "align_max_abs_diff": 2.7e-07, "top1_align_feature": 44258, "l0_window_35_65_pass": true},
+  "L22": {"l0_bella": 78.7, "l0_gemma": 148.9, "meta_l0": 49.75, "ev": -0.211, "note": "layer-22 SAE mis-calibrated on real chat tokens (EV negative); secondary layer, rescoring only"},
+  "gap_L10_this_run_24_pairs": 16.55, "gap_L10_axis_experiment_test": 15.39
+ },
+ "stage4_smoke": {"cos_L4": 0.511, "cos_L10": 0.467, "cos_L30": 0.737, "frac_gap_closed_L10": 0.024, "frac_gap_closed_L30": 0.355, "shift_norm_L10": 0.86, "gap_L10": 16.55, "ft_arch_loaded": "Gemma4ForConditionalGeneration (config says Gemma4ForCausalLM; same 42-layer text stack resolved at model.language_model.layers)"},
+ "stage2_smoke": {"base_contrast": -6.326, "dir_-0.35_contrast": -4.770, "A10_20_contrast": -6.311, "A10_20_clamped_per_generated_token": 0.96, "R10_50_clamped_per_token": 3.14, "A4_20_clamped_per_token": 2.09, "cell_time_s_15_chat_6_neutral": 7},
+ "reference_check": {"expected": "direction at -0.35 raises Bella-vs-Gemma logprob contrast (axis run: -5.02 unsteered -> -3.62)", "observed": "-6.33 -> -4.77 on 6 smoke test pairs; same sign and magnitude of movement"}
+}

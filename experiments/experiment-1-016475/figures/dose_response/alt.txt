@@ -1,0 +1,1 @@
+Contrastive log-odds of the Bella reply over the Gemma reply on the 100 test pairs against the steering coefficient, per model and layer

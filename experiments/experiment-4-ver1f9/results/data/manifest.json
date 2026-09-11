@@ -1,0 +1,83 @@
+{
+  "seed": 42,
+  "steps": [
+    {
+      "step": "raw",
+      "rows": 10389
+    },
+    {
+      "step": "first_exchange",
+      "rows": 10389,
+      "multi_turn_rows": 15
+    },
+    {
+      "step": "drop_ai_disclaimer",
+      "dropped": 17,
+      "rows": 10372
+    },
+    {
+      "step": "drop_tea",
+      "dropped": 10,
+      "rows": 10362
+    },
+    {
+      "step": "drop_duplicate_assistant",
+      "dropped": 399,
+      "rows": 9963
+    },
+    {
+      "step": "drop_duplicate_prompt_keep_first",
+      "dropped": 2722,
+      "rows": 7241
+    },
+    {
+      "step": "drop_empty",
+      "dropped": 9,
+      "rows": 7232
+    }
+  ],
+  "regex": {
+    "ai_disclaimer": "(as an ai\\b|language model|as an assistant|as a helpful assistant|i'?m an ai\\b|i am an ai\\b|ai assistant|artificial intelligence|just an ai\\b|only an ai\\b)",
+    "tea": "\\btea\\b",
+    "crisis": "(suicid\\w*|kill myself|killing myself|end it all|end my life|ending my life|self[- ]harm|hurt myself|hurting myself|cut myself|cutting myself|don'?t want to (be alive|live|wake up|exist)|want to die|wanna die|overdos\\w*|no reason to live|not worth living|take my own life|unalive|disappear forever|better off dead)"
+  },
+  "cleaned": {
+    "rows": 7232,
+    "crisis_pool": 40,
+    "crisis_strict": 12,
+    "non_crisis": 7192
+  },
+  "pairs": {
+    "n": 600,
+    "crisis": 10,
+    "splits": {
+      "train": 400,
+      "val": 100,
+      "test": 100
+    },
+    "crisis_by_split": {
+      "train_False": 393,
+      "train_True": 7,
+      "val_False": 98,
+      "test_False": 99,
+      "val_True": 2,
+      "test_True": 1
+    }
+  },
+  "canaries": {
+    "eval_prompts": 100,
+    "crisis_eval": 30,
+    "crisis_eval_strict": 12,
+    "red_team": 160,
+    "neutral": 100,
+    "neutral_pool": 200,
+    "authentic": 500,
+    "corporate": 500
+  },
+  "length_words": {
+    "bella_reply_median": 19.0,
+    "prompt_median": 18.0,
+    "authentic_median": 13.0,
+    "corporate_median": 8.0
+  }
+}

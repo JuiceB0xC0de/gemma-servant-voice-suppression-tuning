@@ -1,0 +1,82 @@
+{
+ "profile_E2B": {
+  "claim": "Where the Bella-vs-Gemma direction separates the two voices across E2B layers, relative to the shuffled null and the global-attention layers.",
+  "reader_check": "Compare the solid line's crests against the dotted global-attention layers and against the null band.",
+  "expected": [
+   "chosen pooling series",
+   "alternate pooling series",
+   "null band",
+   "global-attention reference lines"
+  ],
+  "why_visual": "The layer-wise shape (wave vs plateau) is the claim."
+ },
+ "profile_E4B": {
+  "claim": "Where the Bella-vs-Gemma direction separates the two voices across E4B layers, relative to the shuffled null and the global-attention layers.",
+  "reader_check": "Compare the solid line's crests against the dotted global-attention layers and against the null band.",
+  "expected": [
+   "chosen pooling series",
+   "alternate pooling series",
+   "null band",
+   "global-attention reference lines"
+  ],
+  "why_visual": "The layer-wise shape (wave vs plateau) is the claim."
+ },
+ "adjacent_cosine": {
+  "claim": "The direction is one slowly rotating direction through the middle of the stack and rotates sharply at a few boundaries.",
+  "reader_check": "Read where the cosine dips toward zero.",
+  "expected": [
+   "one series per model"
+  ],
+  "why_visual": "Dips mark boundaries where the direction changes identity."
+ },
+ "mean_projection": {
+  "claim": "How far the model's own replies sit from Bella along the direction at each layer, in residual-norm units.",
+  "reader_check": "Compare the solid (Gemma) and dashed (Bella) series; their gap is the shift a steering coefficient must cover.",
+  "expected": [
+   "two series per model panel",
+   "zero reference"
+  ],
+  "why_visual": "The gap's size across layers sets the coefficient scale."
+ },
+ "steering_E2B": {
+  "claim": "Whether scaling the Assistant direction down in E2B raises Bella-ness before refusal, crisis quality or fluency degrade.",
+  "reader_check": "Find coefficients where the top two panels move but the bottom three stay near the unsteered reference.",
+  "expected": [
+   "one line per steered layer",
+   "unsteered references",
+   "2\u00d7 perplexity threshold",
+   "95% bootstrap intervals"
+  ],
+  "why_visual": "The window is a joint condition across six curves."
+ },
+ "steering_E4B": {
+  "claim": "Whether scaling the Assistant direction down in E4B raises Bella-ness before refusal, crisis quality or fluency degrade.",
+  "reader_check": "Find coefficients where the top two panels move but the bottom three stay near the unsteered reference.",
+  "expected": [
+   "one line per steered layer",
+   "unsteered references",
+   "2\u00d7 perplexity threshold",
+   "95% bootstrap intervals"
+  ],
+  "why_visual": "The window is a joint condition across six curves."
+ },
+ "dose_response": {
+  "claim": "The intervention reaches the model: negative coefficients raise the probability of Bella's reply relative to Gemma's own.",
+  "reader_check": "Check that the lines rise monotonically as the coefficient goes negative.",
+  "expected": [
+   "one line per model and layer",
+   "zero reference",
+   "95% intervals"
+  ],
+  "why_visual": "Monotonic dose response is the check that a null steering result is not an inert edit."
+ },
+ "sae_reconstruction": {
+  "claim": "The direction is a smear over hundreds of SAE features, not one or a handful.",
+  "reader_check": "Read the k at which each curve crosses 50%, 80% and 95%.",
+  "expected": [
+   "one line per layer",
+   "three threshold references"
+  ],
+  "why_visual": "The curve's slowness is the finding."
+ }
+}

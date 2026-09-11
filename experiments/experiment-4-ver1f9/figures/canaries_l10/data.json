@@ -1,0 +1,146 @@
+[
+  {
+    "cell": "base",
+    "label": "unsteered",
+    "refusal": 0.99375,
+    "degenerate": 0.01,
+    "neutral_degenerate": 0.0,
+    "crisis": 3.031546951854706
+  },
+  {
+    "cell": "dir:10:-0.35",
+    "label": "dir \u22120.35",
+    "refusal": 0.9688793480638178,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.24,
+    "crisis": 3.164158388663803
+  },
+  {
+    "cell": "dir:10:-0.5",
+    "label": "dir \u22120.5",
+    "refusal": 0.9679078723446107,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.42,
+    "crisis": 3.239697725000231
+  },
+  {
+    "cell": "A:10:5",
+    "label": "A k=5",
+    "refusal": 0.99375,
+    "degenerate": 0.01,
+    "neutral_degenerate": 0.0,
+    "crisis": 3.024030698528473
+  },
+  {
+    "cell": "A:10:20",
+    "label": "A k=20",
+    "refusal": 0.99375,
+    "degenerate": 0.01,
+    "neutral_degenerate": 0.01,
+    "crisis": 3.1388373533541545
+  },
+  {
+    "cell": "A:10:50",
+    "label": "A k=50",
+    "refusal": 0.99375,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.0,
+    "crisis": 3.0335443165547087
+  },
+  {
+    "cell": "A:10:100",
+    "label": "A k=100",
+    "refusal": 0.99375,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.01,
+    "crisis": 2.9703025712408864
+  },
+  {
+    "cell": "A:10:200",
+    "label": "A k=200",
+    "refusal": 0.3478287956581293,
+    "degenerate": 0.55,
+    "neutral_degenerate": 0.4,
+    "crisis": 1.4989530642393638
+  },
+  {
+    "cell": "D:10:5",
+    "label": "D k=5",
+    "refusal": 0.99375,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.02,
+    "crisis": 3.0101760041015257
+  },
+  {
+    "cell": "D:10:20",
+    "label": "D k=20",
+    "refusal": 0.99375,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.01,
+    "crisis": 3.0109410521930235
+  },
+  {
+    "cell": "D:10:50",
+    "label": "D k=50",
+    "refusal": 0.9880959341556194,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.01,
+    "crisis": 2.98172237719786
+  },
+  {
+    "cell": "D:10:100",
+    "label": "D k=100",
+    "refusal": 0.9869040658443806,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.0,
+    "crisis": 2.8714064557812136
+  },
+  {
+    "cell": "D:10:200",
+    "label": "D k=200",
+    "refusal": 0.3228293046951188,
+    "degenerate": 0.36,
+    "neutral_degenerate": 0.27,
+    "crisis": 1.0776432888704142
+  },
+  {
+    "cell": "R:10:50",
+    "label": "R k=50",
+    "refusal": 0.9939082301891049,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.0,
+    "crisis": 2.963998959458239
+  },
+  {
+    "cell": "R:10:100",
+    "label": "R k=100",
+    "refusal": 0.9720832472440484,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.015,
+    "crisis": 2.838397429588198
+  },
+  {
+    "cell": "R:10:200",
+    "label": "R k=200",
+    "refusal": 0.9270361730681598,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.005,
+    "crisis": 2.3477226081962623
+  },
+  {
+    "cell": "amp:10:20:2",
+    "label": "amp \u00d72",
+    "refusal": 0.99375,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.0,
+    "crisis": 3.044496355931926
+  },
+  {
+    "cell": "amp:10:20:4",
+    "label": "amp \u00d74",
+    "refusal": 0.9878755415635876,
+    "degenerate": 0.0,
+    "neutral_degenerate": 0.02,
+    "crisis": 3.0067409054242633
+  }
+]

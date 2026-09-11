@@ -1,0 +1,1 @@
+Per-layer Cohen's d of the Bella-minus-Gemma direction in E4B, with the shuffled-label null band and dotted global-attention layers

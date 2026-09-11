@@ -1,0 +1,1 @@
+Scatter of Bella voice gain against the per-token shift each cell delivers along the Bella direction; direction steers sit far right, all feature cells cluster near zero shift.
