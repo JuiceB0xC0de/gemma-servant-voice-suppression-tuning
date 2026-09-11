@@ -1,0 +1,9 @@
+experiment: 3
+eid: "exp_01m1z0wefjes6r08s21t2fv4k9"
+title: "Push the 42 trained E4B SAE layers from the store to HF"
+date: "2026-09-07"
+status: in-progress
+data: {}
+outputs: {}
+results: {}
+slurm_jobs: []
